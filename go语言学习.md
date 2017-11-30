@@ -164,7 +164,7 @@ http://www.jianshu.com/p/27429fde5911
 月
 
 ####golang生成动态库
-```
+```python程序
 riddle@asiamiao:~/gopy/test$ ll
 total 1388
 -rwxrwxr-x 1 riddle riddle      45 Nov 26 00:30 build.sh*
@@ -218,7 +218,7 @@ github.com/larspensjo/config 读取ini配置文件
 #### python 链接 GO生成的动态库
 
 ##### go语言：
-```
+```goLang
 riddle@asiamiao:~/gopy/test$
 riddle@asiamiao:~/gopy/test$ cat main.go
 package main
@@ -260,10 +260,10 @@ golang以插件的方式加载golang动态库
 https://studygolang.com/articles/11068
 
 #### go struct 继承
-```
+```python
 riddle@asiamiao:~/gopy/src/int$
 riddle@asiamiao:~/gopy/src/int$ vi int.go
-package main
+package ain
 
 import (
     "log"
@@ -334,7 +334,7 @@ https://studygolang.com/articles/2652
 Go语言Interface漫谈
 http://www.infoq.com/cn/articles/go-interface-talk/
 
-## 用GO实现的改进的观察者模式
+## 用GO实现的改进的观察者模式(参考GO HTTP)
 https://studygolang.com/articles/4139
 
 【译】如何使用 Golang 中的 Go-Routines 写出高性能的代码
@@ -345,6 +345,94 @@ https://zhuanlan.zhihu.com/p/20888181
 高性能，简单，方便的开源服务器网络库
 https://github.com/davyxu/cellnet
 
+golang中怎么处理socket长连接？
+https://www.zhihu.com/question/22925358
 
-测试一下
-再测试一下
+Go 语言使用 TCP keepalive 【已翻译100%】
+http://www.oschina.net/translate/tcp-keepalive-with-golang
+#### Go 语言 开发博客
+https://blog.golang.org/
+
+riddle@asiamiao:~$ ./stan-bench -s nats://localhost:4222 -np 1 -ns 100 -n 5 -ms 100 abc
+
+
+#### VIM 语法高亮
+``` C++
+https://github.com/tpope/vim-pathogen
+https://studygolang.com/articles/4777
+
+mkdir -p ~/.vim/autoload ~/.vim/bundle
+curl -LSso ~/.vim/autoload/pathogen.vim https://tpo.pe/pathogen.vim
+
+.vimrc
+
+execute pathogen#infect()
+execute pathogen#infect()
+syntax on
+filetype plugin indent on
+
+syntax enable
+filetype plugin on
+set number
+let g:go_disable_autoinstall = 0
+
+let g:go_highlight_functions = 1
+let g:go_highlight_methods = 1
+let g:go_highlight_structs = 1
+let g:go_highlight_operators = 1
+let g:go_highlight_build_constraints = 1
+let g:neocomplete#enable_at_startup = 1
+
+
+```
+#### golang 内置函数new() 和struct{} 初始化的区别
+
+new() 这是一个用来分配内存的内置函数，它的第一个参数是一个类型，不是一个值，它的返回值是一个指向新分配的 t 类型的零值的指针。
+
+在golang的代码定义如下：
+```
+func new(t Type) *Type
+strut{}
+```
+直接使用struct{} 来初始化strut时，返回的是一个struct类型的值，而不是指针两者是不一样的
+
+两者对比代码如下：
+```
+type Student struct{
+    id int
+    name string
+}
+
+func main(){
+    var s_1 *Student = new(Student)
+    s_1.id = 100
+    s_1.name = "cat"
+    var s_2 Student = Student{id:1,name:"tom"}
+    fmt.Println(s_1,s_2)
+}
+```
+输出结果：
+&{100 cat} {1 tom}
+从上面代码的声明和打印的结果中就可以看出 s_1 的类型为指针，s_2 为一个Student类型
+
+
+#### nats-streaming
+```
+./nats-streaming-server
+./stan-sub --all -c test-cluster -id myID foo
+./stan-pub foo 2112345
+
+```
+#### Go语言JSON与Byte[]转化
+http://www.cnblogs.com/damir/archive/2012/05/06/2486520.html
+```
+    m := Message{"测试", "测试序列化", false, 45667}
+    b, _ := json.Marshal(m) //将json对象序列化为byte[]
+    var ki Message
+    json.Unmarshal(b, &ki)          //将序列化的byte[]重写反序列化为对象。
+    fmt.Println("%d b:", b, len(b)) //打印序列化的byte[]
+    fmt.Println(ki)                 //打印对象的信息
+    fmt.Println(ki.Name)            //打印具体的信息
+
+    msg = b
+```
