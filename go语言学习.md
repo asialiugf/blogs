@@ -426,6 +426,7 @@ func main(){
 #### Go语言JSON与Byte[]转化
 http://www.cnblogs.com/damir/archive/2012/05/06/2486520.html
 ```
+    subj, msg := args[0], []byte(args[1])
     m := Message{"测试", "测试序列化", false, 45667}
     b, _ := json.Marshal(m) //将json对象序列化为byte[]
     var ki Message
@@ -436,3 +437,26 @@ http://www.cnblogs.com/damir/archive/2012/05/06/2486520.html
 
     msg = b
 ```
+#### libuv中文教程
+http://docs.libuv.org/en/v1.x/
+https://dist.libuv.org/dist/
+http://luohaha.github.io/Chinese-uvbook/
+https://github.com/forhappy/uvbook
+https://github.com/nikhilm/uvbook
+https://magic.io/blog/uvloop-make-python-networking-great-again/
+
+#### libuv安装
+```
+apt-get install autoconf
+apt-get install autotools-dev m4 autoconf2.13 autobook autoconf-archive gnu-standards autoconf-doc libtool
+
+$ sh autogen.sh
+$ ./configure
+$ make
+$ make check
+$ make install
+```
+#### CEP
+http://cs.brown.edu/research/borealis/public/
+http://docs.ceph.com/docs/master/start/intro/
+https://github.com/zhenghorse/CEP
