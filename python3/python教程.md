@@ -483,3 +483,89 @@ g
 脚注
 
 [1]除了一件事。 模块对象有一个叫做__dict__的秘密只读属性，它返回用于实现模块名称空间的字典; 名称__dict__是一个属性，但不是全局名称。 很明显，使用这样做违反了命名空间实现的抽象，应该被限制在事后调试器之类的东西。
+
+### python关于类的总结
+
+- 比如必须调用父类的构造方法__init__才能正确初始化父类实例属性，使得子类实例对象能够继承到父类实例对象的实例属性；
+- 再如需要重写父类方法时，有时候没有必要完全摒弃父类实现，只是在父类实现前后加一些实现，最终还是要调用父类方法
+
+1、 ===
+f = F()
+a = F().a
+这一语句，会执行F()类的__init__()函数。但不会执行F()的父类的__init__()，必须显示地调用才行。
+
+2、===
+f = F()
+子类会继承父类的 “类变量” ，如果子类改变了这些变量的值，会影响子类的这个变量的值。
+如果父类的变量，是通过__init__()定义的，则在子类中，不会继承，除非子类显示地执行了父类的__init__()。
+
+3、===
+在子类中，如果 F()是A()的子类， 在F()中通过 A.__init__(self)调用初始化方法，这里面的self，代表F()，而不是A()。
+
+具体的代码如下：
+```
+riddle@:~/gott/pt/class$ cat t1.py
+class A(object):
+ a = "--a"
+ def __init__(self):
+   self.aa = "aa"
+   print("enter A")
+   print("leave A")
+
+class B(object):
+ def __init__(self):
+   self.bb = "bb"
+   print("enter B")
+   print("leave B")
+
+class C(A):
+ def __init__(self):
+   self.cc = "cc"
+   print("enter C")
+   super(C, self).__init__()
+   print("leave C")
+
+class D(A):
+ def __init__(self):
+   self.dd = "dd"
+   print("enter D")
+   super(D, self).__init__()
+   print("leave D")
+
+class E(B, C):
+ a = "--e"
+ def __init__(self):
+   self.ee = "ee"
+   print("??",self.ff)
+   self.ff = "e.ff"
+   print("enter E")
+   B.__init__(self)
+   C.__init__(self)
+   print("leave E")
+
+class F(E, D):
+ def __init__(self):
+   self.ff = "f.ff"   # 如果没有这一句，那么 class E中的 print("??",self.ff)会报错。
+   print("enter F")
+   E.__init__(self)
+   D.__init__(self)
+   print("leave F")
+
+f=F()
+print(f.ff)
+#print(f.dd)
+#print(f.aa)
+print(f.a)
+print(F().ff)
+print(F().a)
+#print(F().aa)
+#print "MRO:", [x.__name__ for x in E.__mro__]
+riddle@:~/gott/pt/class$
+```
+##### Python's Super is nifty, but you can't use it（Python's Super Considered Harmful）
+https://fuhm.net/super-harmful/
+
+##### MRO & super
+http://blog.csdn.net/seizef/article/details/5310107
+##### Python进阶-继承中的MRO与super
+http://blog.csdn.net/SakuraInLuoJia/article/details/73916878

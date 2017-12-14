@@ -122,3 +122,23 @@ setup (name = 'Demo hello',
 http://python.jobbole.com/86069/
 ##### 使用 Python 进行并发编程 - asyncio 篇 (三)
 https://juejin.im/post/586729e3b123db005dddccd9
+如何让 Python 像 Julia 一样快地运行
+http://blog.csdn.net/u013597671/article/details/72593896
+
+
+用Cython加速Python程序
+https://www.cnblogs.com/yafengabc/p/6130849.html
+Cython基础--C结构体，枚举，以及常量在Cython中的定义和使用
+http://blog.csdn.net/i2cbus/article/details/18456129
+http://blog.csdn.net/mmc2015/article/details/51914599
+15.11 用Cython写高性能的数组操作
+http://python3-cookbook.readthedocs.io/zh_CN/latest/c15/p11_use_cython_to_write_high_performance_array_operation.html
+http://python3-cookbook.readthedocs.io/zh_CN/latest/c15/p10_wrap_existing_c_code_with_cython.html
+https://pandas.pydata.org/pandas-docs/stable/enhancingperf.html
+Python科学计算：Cython基础
+https://wklchris.github.io/Py3-Cython-basic.html
+
+python – C代码与cython的简单包装
+https://stackoverflow.com/questions/3046305/simple-wrapping-of-c-code-with-cython
+####  在python里调用C函数的三种方式
+https://www.yanxurui.cc/posts/python/3-ways-of-calling-c-functions-from-python/
