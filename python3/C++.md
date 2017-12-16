@@ -325,3 +325,29 @@ https://www.zhihu.com/question/21656266
 什么是图灵完备？
 https://www.zhihu.com/question/20115374
 
+##### C++11 std::bind std::function 高级用法
+http://blog.csdn.net/eclipser1987/article/details/24406203
+
+
+http://www.cplusplus.com/reference/set/set/
+
+
+##### STL accumulate计算自定义结构类型
+http://blog.csdn.net/cnnumen/article/details/5717629
+
+#####【C++ STL应用与实现】86: 如何使用std::accumulate
+http://lib.csdn.net/article/cplusplus/22795
+
+##### elloop的博客值得读
+http://my.csdn.net/elloop
+http://elloop.github.io/
+http://elloop.github.io/categories.html#c++-ref
+
+C++运算符重载详解
+http://blog.csdn.net/lishuzhai/article/details/50781753
+
+C++重载运算符（一）如何重载运算符
+http://blog.csdn.net/lishuzhai/article/details/50764312
+
+##### 利用C++11的function和bind简化类创建线程
+https://www.cnblogs.com/monotone/p/4366170.html
