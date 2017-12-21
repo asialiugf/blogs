@@ -26,7 +26,7 @@
 
 具体内容如下：
 
-server.cpp:
+### server.cpp:
 ``` c++
 
 riddle@asiamiao:~/uws/tests$ cat server.cpp
@@ -74,7 +74,7 @@ int main()
 riddle@asiamiao:~/uws/tests$ 
 ```
 
-client1.cpp
+### client1.cpp
 
 ``` c++
 riddle@asiamiao:~/uws/tests$ cat client1.cpp
@@ -130,7 +130,7 @@ int main()
 }
 riddle@asiamiao:~/uws/tests$ 
 ```
-client.cpp
+### client.cpp
 ``` c++
 riddle@asiamiao:~/uws/tests$ cat client.cpp
 #include <uWS/uWS.h>
@@ -185,7 +185,7 @@ int main()
 }
 riddle@asiamiao:~/uws/tests$ 
 ```
-m的内容如下：
+### m的内容如下：
 ```
 riddle@asiamiao:~/uws/tests$ cat m
 # g++ -std=c++11 -O3 -I ../src -fPIC -o main main.cpp -luWS -lssl -lz -lpthread
@@ -194,5 +194,86 @@ g++ -std=c++11 -O3 -I ../src -fPIC -o client client.cpp -luWS -lssl -lz -lpthrea
 g++ -std=c++11 -O3 -I ../src -fPIC -o client1 client1.cpp -luWS -lssl -lz -lpthread
 riddle@asiamiao:~/uws/tests$ 
 ```
+### 具体的操作如下：
 
+打开三个窗口
+第一个窗口 运行 ./server
+第二个窗口 运行 ./client
+第三个窗口 运行 ./client
+
+#### server窗口显示如下：
+```
+riddle@asiamiao:~/uws/tests$ ./server
+Server receive: Hello
+Client receive: Hello
+Server receive: Hello
+Server receive: Hello
+Server receive: Hello
+Server receive: Hello
+Server receive: Hello
+Server receive: buggg!!!!!!
+Server receive: Hello
+Server receive: buggg!!!!!!
+Server receive: Hello
+Server receive: buggg!!!!!!
+Server receive: Hello
+Server receive: buggg!!!!!!
+Server receive: Hello
+```
+#### client1窗口显示如下：
+```
+riddle@asiamiao:~/uws/tests$ ./client1
+Client receive: buggg!!!!!!
+Client receive: buggg!!!!!!
+Client receive: buggg!!!!!!
+Client receive: buggg!!!!!!
+Client receive: buggg!!!!!!
+Client receive: buggg!!!!!!
+Client receive: buggg!!!!!!
+Client receive: buggg!!!!!!
+Client receive: buggg!!!!!!
+```
+#### client窗口显示如下：
+```
+riddle@asiamiao:~/uws/tests$ ./client
+Client receive: Hello
+Client receive: Hello
+Client receive: Hello
+Client receive: Hello
+Client receive: Hello
+Client receive: Hello
+Client receive: Hello
+Client receive: Hello
+Client receive: Hello
+```
+#### 结论
+##### 一
+一个server可以监听多个client发过来的请求
+在这一个server内，只需要用一个
+```c++
+ h.onMessage([](uWS::WebSocket<uWS::SERVER> *ws, char *message, size_t length, uWS::OpCode opCode) {
+```
+就可以监听并可以回复多个请求。
+
+##### 二
+在server.cpp内部，也可通过
+```c++
+ h.connect("ws://localhost:3000");
+```
+以及：
+```
+h.onMessage([](uWS::WebSocket<uWS::CLIENT> *ws, char *message, size_t length, uWS::OpCode opCode) {
+```
+来实现内部的client 和 server通信
+
+##### 注意
+onmessage里面的 SERVER 以及 CLIENT 的区别
+启动的顺序，必须是server先启动
+在client程序中，只需要 
+```c++
+ h.connect("ws://localhost:3000");
+```
+不需要 listen动作。
+
+-------- 完 --------
 
