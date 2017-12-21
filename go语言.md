@@ -264,7 +264,7 @@ https://github.com/GONGCHEN1003/Golang-CTP
 
 ##### ****NATS pub sub  goroutine执行问题
 
-```
+```go
 riddle@asiamiao:~/gopy/src/github.com/nats-io/nats/pub$ cat nats-pub.go
 // Copyright 2012-2016 Apcera Inc. All rights reserved.
 

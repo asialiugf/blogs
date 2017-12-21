@@ -6,7 +6,7 @@ make
 c语言编译
 http://nethack4.org/blog/building-c.html
 
-```
+``` python
 class Event(object):
     def __init__(self):
         print('enter into Event()')
