@@ -44,8 +44,8 @@ int main()
         ws->send("Hello");
     });
 
-    // 客户端打印接收到的消息
-    h.onMessage([](uWS::WebSocket<uWS::CLIENT> *ws, char *message, size_t length, uWS::OpCode opCode) {
+    // 客户端打印接收到的消息
+    h.onMessage([](uWS::WebSocket<uWS::CLIENT> *ws, char *message, size_t length, uWS::OpCode opCode) {
         char tmp[16];
         memcpy(tmp, message, length);
         tmp[length] = 0;
@@ -68,6 +68,8 @@ int main()
         std::cout << " listen error !!" << std::endl;
     }
     h.connect("ws://localhost:3000");
+    h.connect("ws://localhost:3000");  //这里也可以有多个连接，并且能和server连接上，但上面的 只有一个 onmessage(CLIENT) 能回应.
+    h.connect("ws://localhost:3000");
 
     h.run();
 }
