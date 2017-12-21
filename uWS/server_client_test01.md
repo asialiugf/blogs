@@ -277,5 +277,22 @@ onmessage里面的 SERVER 以及 CLIENT 的区别
 ```
 不需要 listen动作。
 
--------- 完 --------
+-------- 分割线 ---------------------------
+
+### 在控制台上运行
+
+先运行上面的 ./server，
+在chrome浏览器上按F12出现控制台，输入以下代码，可以看到，服务器可以收到 "tom"。
+
+```javascript
+ws = new WebSocket("ws://47.93.37.54:3000");
+ws.onopen = function() {
+    alert("连接成功");
+    ws.send('tom');
+    alert("给服务端发送一个字符串：tom");
+};
+ws.onmessage = function(e) {
+    alert("收到服务端的消息：" + e.data);
+};
+```
 
