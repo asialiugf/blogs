@@ -23,5 +23,176 @@
 - client.cpp
 - client1.cpp
 - m
+
 具体内容如下：
+
+server.cpp:
+``` c++
+
+riddle@asiamiao:~/uws/tests$ cat server.cpp
+#include <uWS/uWS.h>
+#include <iostream>
+
+#pragma comment(lib, "uWS.lib")
+
+int main()
+{
+    uWS::Hub h;
+
+    // 客户端连上后发送hello
+    h.onConnection([](uWS::WebSocket<uWS::CLIENT> *ws, uWS::HttpRequest req) {
+        ws->send("Hello");
+    });
+
+    // 客户端打印接收到的消息
+    h.onMessage([](uWS::WebSocket<uWS::CLIENT> *ws, char *message, size_t length, uWS::OpCode opCode) {
+        char tmp[16];
+        memcpy(tmp, message, length);
+        tmp[length] = 0;
+        printf("Client receive: %s\n", tmp);
+
+        ws->close();
+    });
+
+    // 服务端接收到包后原封不动返回
+    h.onMessage([](uWS::WebSocket<uWS::SERVER> *ws, char *message, size_t length, uWS::OpCode opCode) {
+        char tmp[16];
+        memcpy(tmp, message, length);
+        tmp[length] = 0;
+        printf("Server receive: %s\n", tmp);
+        ws->send(message, length, opCode);
+    });
+
+    bool k = h.listen(3000) ;
+    if(!k) {
+        std::cout << " listen error !!" << std::endl;
+    }
+    h.connect("ws://localhost:3000");
+
+    h.run();
+}
+riddle@asiamiao:~/uws/tests$ 
+```
+
+client1.cpp
+
+``` c++
+riddle@asiamiao:~/uws/tests$ cat client1.cpp
+#include <uWS/uWS.h>
+#include <unistd.h>
+
+#pragma comment(lib, "uWS.lib")
+
+int main()
+{
+    uWS::Hub h;
+
+    // 客户端连上后发送hello
+    h.onConnection([](uWS::WebSocket<uWS::CLIENT> *ws, uWS::HttpRequest req) {
+        while(1) {
+            ws->send("buggg!!!!!!");
+            //sleep(1);
+            usleep(1000000);
+                        break;
+        }
+
+    });
+
+    // 客户端打印接收到的消息
+    h.onMessage([](uWS::WebSocket<uWS::CLIENT> *ws, char *message, size_t length, uWS::OpCode opCode) {
+        char tmp[16];
+        memcpy(tmp, message, length);
+        tmp[length] = 0;
+        printf("Client receive: %s\n", tmp);
+        ws->send(message, length, opCode);
+        usleep(1000000);
+
+        //ws->close();
+    });
+
+    // 服务端接收到包后原封不动返回
+    /*
+    h.onMessage([](uWS::WebSocket<uWS::SERVER> *ws, char *message, size_t length, uWS::OpCode opCode) {
+        char tmp[16];
+        memcpy(tmp, message, length);
+        tmp[length] = 0;
+        printf("Server receive: %s\n", tmp);
+        ws->send(message, length, opCode);
+    });
+    */
+
+    /*
+    h.listen(3000);
+    */
+    h.connect("ws://localhost:3000");
+
+    h.run();
+}
+riddle@asiamiao:~/uws/tests$ 
+```
+client.cpp
+``` c++
+riddle@asiamiao:~/uws/tests$ cat client.cpp
+#include <uWS/uWS.h>
+#include <unistd.h>
+
+#pragma comment(lib, "uWS.lib")
+
+int main()
+{
+    uWS::Hub h;
+
+    // 客户端连上后发送hello
+    h.onConnection([](uWS::WebSocket<uWS::CLIENT> *ws, uWS::HttpRequest req) {
+        while(1) {
+            ws->send("Hello");
+            //sleep(1);
+            usleep(1000000);
+                        break;
+        }
+
+    });
+
+    // 客户端打印接收到的消息
+    h.onMessage([](uWS::WebSocket<uWS::CLIENT> *ws, char *message, size_t length, uWS::OpCode opCode) {
+        char tmp[16];
+        memcpy(tmp, message, length);
+        tmp[length] = 0;
+        printf("Client receive: %s\n", tmp);
+        ws->send(message, length, opCode);
+        usleep(1000000);
+
+        //ws->close();
+    });
+
+    // 服务端接收到包后原封不动返回
+    /*
+    h.onMessage([](uWS::WebSocket<uWS::SERVER> *ws, char *message, size_t length, uWS::OpCode opCode) {
+        char tmp[16];
+        memcpy(tmp, message, length);
+        tmp[length] = 0;
+        printf("Server receive: %s\n", tmp);
+        ws->send(message, length, opCode);
+    });
+    */
+
+    /*
+    h.listen(3000);
+    */
+    h.connect("ws://localhost:3000");
+
+    h.run();
+}
+riddle@asiamiao:~/uws/tests$ 
+```
+m的内容如下：
+```
+riddle@asiamiao:~/uws/tests$ cat m
+# g++ -std=c++11 -O3 -I ../src -fPIC -o main main.cpp -luWS -lssl -lz -lpthread
+g++ -std=c++11 -O3 -I ../src -fPIC -o server server.cpp -luWS -lssl -lz -lpthread
+g++ -std=c++11 -O3 -I ../src -fPIC -o client client.cpp -luWS -lssl -lz -lpthread
+g++ -std=c++11 -O3 -I ../src -fPIC -o client1 client1.cpp -luWS -lssl -lz -lpthread
+riddle@asiamiao:~/uws/tests$ 
+```
+
 
