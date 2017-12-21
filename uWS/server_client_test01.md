@@ -29,7 +29,7 @@
 ### server.cpp:
 ``` c++
 
-riddle@asiamiao:~/uws/tests$ cat server.cpp
+riddle@:~/uws/tests$ cat server.cpp
 #include <uWS/uWS.h>
 #include <iostream>
 
@@ -71,13 +71,13 @@ int main()
 
     h.run();
 }
-riddle@asiamiao:~/uws/tests$ 
+riddle@:~/uws/tests$ 
 ```
 
 ### client1.cpp
 
 ``` c++
-riddle@asiamiao:~/uws/tests$ cat client1.cpp
+riddle@:~/uws/tests$ cat client1.cpp
 #include <uWS/uWS.h>
 #include <unistd.h>
 
@@ -128,11 +128,11 @@ int main()
 
     h.run();
 }
-riddle@asiamiao:~/uws/tests$ 
+riddle@:~/uws/tests$ 
 ```
 ### client.cpp
 ``` c++
-riddle@asiamiao:~/uws/tests$ cat client.cpp
+riddle@:~/uws/tests$ cat client.cpp
 #include <uWS/uWS.h>
 #include <unistd.h>
 
@@ -183,16 +183,16 @@ int main()
 
     h.run();
 }
-riddle@asiamiao:~/uws/tests$ 
+riddle@:~/uws/tests$ 
 ```
 ### m的内容如下：
 ```
-riddle@asiamiao:~/uws/tests$ cat m
+riddle@:~/uws/tests$ cat m
 # g++ -std=c++11 -O3 -I ../src -fPIC -o main main.cpp -luWS -lssl -lz -lpthread
 g++ -std=c++11 -O3 -I ../src -fPIC -o server server.cpp -luWS -lssl -lz -lpthread
 g++ -std=c++11 -O3 -I ../src -fPIC -o client client.cpp -luWS -lssl -lz -lpthread
 g++ -std=c++11 -O3 -I ../src -fPIC -o client1 client1.cpp -luWS -lssl -lz -lpthread
-riddle@asiamiao:~/uws/tests$ 
+riddle@:~/uws/tests$ 
 ```
 ### 具体的操作如下：
 
@@ -203,7 +203,7 @@ riddle@asiamiao:~/uws/tests$
 
 #### server窗口显示如下：
 ```
-riddle@asiamiao:~/uws/tests$ ./server
+riddle@:~/uws/tests$ ./server
 Server receive: Hello
 Client receive: Hello
 Server receive: Hello
@@ -222,7 +222,7 @@ Server receive: Hello
 ```
 #### client1窗口显示如下：
 ```
-riddle@asiamiao:~/uws/tests$ ./client1
+riddle@:~/uws/tests$ ./client1
 Client receive: buggg!!!!!!
 Client receive: buggg!!!!!!
 Client receive: buggg!!!!!!
@@ -235,7 +235,7 @@ Client receive: buggg!!!!!!
 ```
 #### client窗口显示如下：
 ```
-riddle@asiamiao:~/uws/tests$ ./client
+riddle@:~/uws/tests$ ./client
 Client receive: Hello
 Client receive: Hello
 Client receive: Hello
@@ -261,7 +261,7 @@ Client receive: Hello
  h.connect("ws://localhost:3000");
 ```
 以及：
-```
+```c++
 h.onMessage([](uWS::WebSocket<uWS::CLIENT> *ws, char *message, size_t length, uWS::OpCode opCode) {
 ```
 来实现内部的client 和 server通信
