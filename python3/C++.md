@@ -283,6 +283,14 @@ chan1(event1.cb1,event2.cb3,event5,cb4)
 chan2(event1.cb2,event1.cb3)
 // read or write
 
+每个IE页面一个websockets连接
+后台，每个websockets连接一个IOLOOP线程接收页面请求，
+这个线程根据不同的请求，发给worker线程工作。
+这些worker把相应的结果，返给（某个线程？） 前端相应的页面。
+
+这些是轻量的。
+
+
 
 ```
 ##### epoll
@@ -303,6 +311,9 @@ https://zhuanlan.zhihu.com/p/31794582
 
 ##### C++11 并发指南一(C++11 多线程初探)
 http://www.cnblogs.com/haippy/p/3235560.html
+
+##### 漫谈c++11 Thread库之使写多线程程序
+http://www.cnblogs.com/ittinybird/p/4820142.html
 
 ##### 参考cppreference.com
 http://zh.cppreference.com/w/cpp/thread/thread
@@ -351,3 +362,142 @@ http://blog.csdn.net/lishuzhai/article/details/50764312
 
 ##### 利用C++11的function和bind简化类创建线程
 https://www.cnblogs.com/monotone/p/4366170.html
+
+空明流转的博客
+https://www.cnblogs.com/lingjingqiu/
+
+λ-calculus（惊愕到手了欧耶，GetBlogPostIds.aspx）
+http://www.cppblog.com/vczh/archive/2009/04/08/79291.html
+
+vczh专业造轮子，拉黑抢前排
+https://www.zhihu.com/people/excited-vczh/activities
+
+空明流转少年低俗，青年猥琐，中年油腻。
+https://www.zhihu.com/people/wuye9036/activities
+
+https://gcc.godbolt.org/
+
+https://hackr.io/tutorials/learn-c-plus-plus
+
+
+GCC系列: __attribute__((visibility("")))
+http://blog.csdn.net/veryitman/article/details/46756683
+
+C++构造函数后面的冒号
+http://blog.csdn.net/kaixinbingju/article/details/9094289
+
+c++ 11学习笔记--Lambda 表达式（对比测试Lambda ，bind，Function Object）
+https://www.cnblogs.com/budaixi/p/3874011.html
+
+
+C++11 function使用
+http://blog.csdn.net/hanbingfengying/article/details/28651507
+
+旨在搜集国内外各种 C++11 的学习资源
+https://github.com/sib9/cpp1x-study-resource
+
+std::vector的几种遍历方式比较
+http://blog.csdn.net/ls306196689/article/details/35787955
+
+
+lambda函数的引入为STL的使用提供了极大的方便。比如下面这个例子，当你想便利一个vector的时候，原来你得这么写：
+```
+[cpp] view plaincopy
+ 
+vector<int> v;  
+v.push_back( 1 );  
+v.push_back( 2 );  
+//...  
+for ( auto itr = v.begin(), end = v.end(); itr != end; itr++ )  
+{  
+    cout << *itr;  
+}  
+```
+现在有了lambda函数你就可以这么写
+```
+[cpp] view plaincopy
+ 
+vector<int> v;  
+v.push_back( 1 );  
+v.push_back( 2 );  
+//...  
+for_each( v.begin(), v.end(), [] (int val)  
+{  
+    cout << val;  
+} );
+```  
+而且这么写了之后执行效率反而提高了。因为编译器有可能使用”循环展开“来加速执行过程（计算机系统结构课程中学的）。
+
+##### std::function vs template
+https://stackoverflow.com/questions/14677997/stdfunction-vs-template
+
+```
+#include <iostream>
+#include <functional>
+#include <string>
+#include <chrono>
+
+template <typename F>
+float calc1(F f) { return -1.0f * f(3.3f) + 666.0f; }
+
+float calc2(std::function<float(float)> f) { return -1.0f * f(3.3f) + 666.0f; }
+
+int main() {
+    using namespace std::chrono;
+
+    const auto tp1 = system_clock::now();
+    for (int i = 0; i < 1e8; ++i) {
+        calc1([](float arg){ return arg * 0.5f; });
+    }
+    const auto tp2 = high_resolution_clock::now();
+
+    const auto d = duration_cast<milliseconds>(tp2 - tp1);  
+    std::cout << d.count() << std::endl;
+    return 0;
+}
+```
+
+C++11模版元编程
+https://www.cnblogs.com/qicosmos/p/4480460.html
+
+使用C++11变长参数模板 处理任意长度、类型之参数实例
+http://blog.csdn.net/yanxiangtianji/article/details/21045525
+泛化之美--C++11可变模版参数的妙用
+https://www.cnblogs.com/qicosmos/p/4325949.html
+
+模板
+http://www.jb51.net/article/41627.htm
+
+https://www.zhihu.com/question/21656266
+
+
+一个demo学会c++编程
+http://blog.csdn.net/luanpeng825485697/article/details/76537402
+
+
+#### uWS 开始了
+
+```
+/home/riddle/source/uWebSockets/tests
+g++ -std=c++11 -O3 -I ../src -fPIC -o main main.cpp -luWS -lssl -lz -lpthread
+```
+
+```
+qmake uWebSockets.pro
+成生makefile
+```
+
+
+
+使用 Prism.js 实现漂亮的代码语法高亮
+http://prismjs.com/examples.html
+https://highlightjs.org/static/demo/
+https://github.com/isagalaev/highlight.js
+
+代码高亮javascript 插件 syntaxhighlighter 使用介绍
+http://blog.csdn.net/huutu/article/details/50371460
+
+使用hexo+github搭建免费个人博客详细教程
+http://blog.haoji.me/build-blog-website-by-hexo-github.html?from=xa
+
+http://ijiaober.github.io/2014/08/04/hexo/hexo-03/
