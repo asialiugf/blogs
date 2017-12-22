@@ -286,7 +286,7 @@ onmessage里面的 SERVER 以及 CLIENT 的区别
 -------- 分割线 ---------------------------
 
 ### 在控制台上运行
-![image](https://github.com/872822645/danxuankuangDemo/blob/master/1.jpg)
+
 ![image](https://github.com/asialiugf/blogs/blob/master/uWS/uws-test01.png)
 
 先运行上面的 ./server，
