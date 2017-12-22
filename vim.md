@@ -53,9 +53,8 @@ http://www.tuicool.com/articles/VBzY7rZ
 http://blog.58share.com/?p=247
 https://github.com/maksimr/vim-jsbeautify
 ```
-=============================================================
-
-在~/ 目录下，编辑   .vimrc  文件
+###### 在~/ 目录下，编辑   .vimrc  文件
+```vim
 -----------------------------------------------------------------
 set nocompatible                          " be iMproved  
         filetype off                              " required!  
@@ -66,6 +65,7 @@ set nocompatible                          " be iMproved
         Bundle 'maksimr/vim-jsbeautify'
         filetype plugin indent on        " required!  
 -----------------------------------------------------------
+```
 vim命令行输入 :BundleInstall 安装完成，配置
 
 在.vim目录下有一个文件： .editorconfig
