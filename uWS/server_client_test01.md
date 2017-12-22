@@ -26,6 +26,9 @@
 
 具体内容如下：
 
+在server.cpp里，虽然只定义了一个 uWS::Hub h; 但这个h,可以担任client和server两个角色。
+可以看到，在程序的最后，即有 listen(server角色) 又有 connect(client角色)
+
 ### server.cpp:
 ``` c++
 
@@ -77,6 +80,9 @@ riddle@:~/uws/tests$
 ```
 
 ### client1.cpp
+在client里，如果只有 connect动作， 那么， 对于 诸如 onConnection([](uWS::WebSocket<uWS::CLIENT> *ws, uWS::HttpRequest req) 
+这样的语句中，如果 将CLIENT改为SERVER，那不会有任何作用。
+另外， 在这里lambda表达式里，可以捕获各种参数来进行操作。
 
 ``` c++
 riddle@:~/uws/tests$ cat client1.cpp
