@@ -1,6 +1,7 @@
-### zmq 性能测试
+### zmq pub sub 收发延迟 性能测试
 
 测试程序如下：
+请注意，本程序是在libzmq的解压包的tests目录下，新建了一个tests目录
 
 ``` c
 root@d:~/source/libzmq/tests/ttt# cat pubsub.c
