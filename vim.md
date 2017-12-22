@@ -355,3 +355,214 @@ let g:formatters_java = ['harttle']
 noremap :Autoformat
 
 ==============
+
+#### 整理2017-12-22
+```
+riddle@d:~/.vim$ ll -la
+total 24
+drwxrwxr-x  4 riddle riddle 4096 Dec 22 09:55 .
+drwxr-xr-x 34 riddle riddle 4096 Dec 22 09:55 ..
+drwxrwxr-x  2 riddle riddle 4096 Dec 14 20:18 autoload
+drwxrwxr-x 11 riddle riddle 4096 Dec 14 21:53 bundle
+-rw-rw-r--  1 riddle riddle  319 Dec 14 16:43 .editorconfig
+-rw-rw-r--  1 riddle riddle  111 Dec 19 15:05 .netrwhist
+riddle@d:~/.vim$ 
+```
+
+``` vim
+riddle@d:~/.vim$ ll
+total 8
+drwxrwxr-x  2 riddle riddle 4096 Dec 14 20:18 autoload
+drwxrwxr-x 11 riddle riddle 4096 Dec 14 21:53 bundle
+riddle@d:~/.vim$ cd bundle
+riddle@d:~/.vim/bundle$ ll
+total 36
+drwxrwxr-x  6 riddle riddle 4096 Dec 14 15:58 sparkup
+drwxrwxr-x  5 riddle riddle 4096 Dec 14 17:30 vim-autoformat
+drwxrwxr-x  6 riddle riddle 4096 Dec 14 17:05 vim-colorschemes
+drwxrwxr-x  5 riddle riddle 4096 Dec 14 15:53 vim-fugitive
+drwxrwxr-x 17 riddle riddle 4096 Nov 28 20:16 vim-go
+drwxrwxr-x  9 riddle riddle 4096 Dec 14 16:09 vim-javascript
+drwxrwxr-x  5 riddle riddle 4096 Dec 14 16:41 vim-jsbeautify
+drwxrwxr-x  7 riddle riddle 4096 Dec 14 15:51 Vundle.vim
+drwxrwxr-x 10 riddle riddle 4096 Dec 14 21:57 YouCompleteMe
+riddle@d:~/.vim/bundle$ 
+```
+
+```
+riddle@d:~/.vim$ cat .editorconfig 
+;.editorconfig
+
+root = true
+
+[**.js]
+bin=node
+indent_style = space
+indent_size = 4
+
+[**.json]
+indent_style = space
+indent_size = 4
+
+[**.jsx]
+e4x = true
+indent_style = space
+indent_size = 4
+
+[**.css]
+indent_style = space
+indent_size = 4
+
+[**.html]
+indent_style = space
+indent_size = 4
+max_char = 78
+brace_style = expand
+riddle@d:~/.vim$ 
+```
+
+```
+riddle@d:~/.vim$ cat .netrwhist 
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhist_cnt =1
+let g:netrw_dirhist_1='/home/riddle/hexo/source/_posts'
+riddle@d:~/.vim$ 
+```
+##### 关键部分来了 2017-12-22
+``` vim
+riddle@asiamiao:~$ 
+riddle@asiamiao:~$ cat .vimrc
+" 请执行以下安装
+" apt-get install astyle clang-format python-pep8 python3-pep8 python-autopep8 
+set nocompatible              " be iMproved, required
+filetype off                  " required
+
+" set the runtime path to include Vundle and initialize
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+" alternatively, pass a path where Vundle should install plugins
+"call vundle#begin('~/some/path/here')
+" let Vundle manage Vundle, required
+" Plugin 'VundleVim/Vundle.vim'
+" The following are examples of different formats supported.
+" Keep Plugin commands between vundle#begin/end.
+" plugin on GitHub repo
+" Plugin 'tpope/vim-fugitive'
+" plugin from http://vim-scripts.org/vim/scripts.html
+" Plugin 'L9'
+" Git plugin not hosted on GitHub
+" Plugin 'git://git.wincent.com/command-t.git'
+" git repos on your local machine (i.e. when working on your own plugin)
+" Plugin 'file:///home/gmarik/path/to/plugin'
+" The sparkup vim script is in a subdirectory of this repo called vim.
+" Pass the path to set the runtimepath properly.
+" Plugin 'rstacruz/sparkup', {'rtp': 'vim/'}
+" Install L9 and avoid a Naming conflict if you've already installed a
+" different version somewhere else.
+" Plugin 'ascenator/L9', {'name': 'newL9'}
+Plugin 'gmarik/Vundle.vim'
+Bundle 'pangloss/vim-javascript'
+Bundle 'maksimr/vim-jsbeautify'
+Plugin 'flazz/vim-colorschemes'
+Plugin 'Chiel92/vim-autoformat'
+Plugin 'fatih/vim-go'
+" ------- All of your Plugins must be added before the following line
+call vundle#end()
+filetype plugin indent on    " required
+" To ignore plugin indent changes, instead use:
+"filetype plugin on
+"
+" Brief help
+" :PluginList       - lists configured plugins
+" :PluginInstall    - installs plugins; append `!` to update or just :PluginUpdate
+" :PluginSearch foo - searches for foo; append `!` to refresh local cache
+" :PluginClean      - confirms removal of unused plugins; append `!` to auto-approve removal
+"
+" see :h vundle for more details or wiki for FAQ
+" Put your non-Plugin stuff after this line
+"  ----------------------------------------------------------------------------------------------
+set bs=2                                " allow backspacing over everything in insert mode  
+set ai                                  " always set autoindenting on  
+"set backup                             " keep a backup file  
+set viminfo='20,\"50                    " read/write a .viminfo file, don't store more  than 50 lines of registers  
+set history=50                          " keep 50 lines of command line history  
+set ruler                               " show the cursor position all the time  
+  
+execute pathogen#infect()
+syntax on
+set nohls
+set hlsearch  
+set incsearch  
+set tabstop=4  
+set autoindent  
+set cindent  
+set confirm  
+set nonumber  
+set expandtab  
+set autoindent   
+set smartindent   
+filetype indent on   
+set syn=cpp  
+set fileencodings=utf-8,ucs-bom,gb18030,gbk,gb2312,cp936
+set termencoding=utf-8
+set encoding=utf-8
+hi Identifier cterm=NONE
+hi Comment cterm=NONE ctermfg=4
+hi Statement cterm=NONE
+hi Constant cterm=NONE ctermfg=1
+hi Type cterm=NONE
+hi PreProc cterm=NONE ctermfg=5
+hi Special cterm=NONE ctermfg=5
+set paste
+" -----------------------------------------------------------------------------
+" map <c-f> :call JsBeautify()<cr>
+autocmd FileType javascript noremap <buffer>  <c-f> :call JsBeautify()<cr>
+autocmd FileType json noremap <buffer> <c-f> :call JsonBeautify()<cr>
+autocmd FileType jsx noremap <buffer> <c-f> :call JsxBeautify()<cr>
+autocmd FileType html noremap <buffer> <c-f> :call HtmlBeautify()<cr>
+autocmd FileType css noremap <buffer> <c-f> :call CSSBeautify()<cr>
+" ------------------------------------------------------------------------------
+"auto-format
+"F5自动格式化代码并保存
+noremap <F2> :Autoformat<CR>:w<CR>
+let g:formatdef_harttle = '"astyle --style=linux -s4 -U "'
+let g:formatters_cpp = ['harttle']
+let g:formatters_c = ['harttle']
+let g:formatters_java = ['harttle']
+"noremap :Autoformat
+" -------------------------------------------------------------------
+" 自动补全配置
+set completeopt=longest,menu    "让Vim的补全菜单行为与一般IDE一致(参考VimTip1228)
+autocmd InsertLeave * if pumvisible() == 0|pclose|endif "离开插入模式后自动关闭预览窗口
+inoremap <expr> <CR>       pumvisible() ? "\<C-y>" : "\<CR>"    "回车即选中当前项
+"上下左右键的行为 会显示其他信息
+inoremap <expr> <Down>     pumvisible() ? "\<C-n>" : "\<Down>"
+inoremap <expr> <Up>       pumvisible() ? "\<C-p>" : "\<Up>"
+inoremap <expr> <PageDown> pumvisible() ? "\<PageDown>\<C-p>\<C-n>" : "\<PageDown>"
+inoremap <expr> <PageUp>   pumvisible() ? "\<PageUp>\<C-p>\<C-n>" : "\<PageUp>"
+
+"youcompleteme  默认tab  s-tab 和自动补全冲突
+"let g:ycm_key_list_select_completion=['<c-n>']
+let g:ycm_key_list_select_completion = ['<Down>']
+"let g:ycm_key_list_previous_completion=['<c-p>']
+let g:ycm_key_list_previous_completion = ['<Up>']
+let g:ycm_confirm_extra_conf=0 "关闭加载.ycm_extra_conf.py提示
+
+let g:ycm_collect_identifiers_from_tags_files=1 " 开启 YCM 基于标签引擎
+let g:ycm_min_num_of_chars_for_completion=2     " 从第2个键入字符就开始罗列匹配项
+let g:ycm_cache_omnifunc=0      " 禁止缓存匹配项,每次都重新生成匹配项
+let g:ycm_seed_identifiers_with_syntax=1        " 语法关键字补全
+nnoremap <F5> :YcmForceCompileAndDiagnostics<CR>        "force recomile with syntastic
+"nnoremap <leader>lo :lopen<CR> "open locationlist
+"nnoremap <leader>lc :lclose<CR>        "close locationlist
+inoremap <leader><leader> <C-x><C-o>
+"在注释输入中也能补全
+let g:ycm_complete_in_comments = 1
+"在字符串输入中也能补全
+let g:ycm_complete_in_strings = 1
+"注释和字符串中的文字也会被收入补全
+let g:ycm_collect_identifiers_from_comments_and_strings = 0
+
+nnoremap <leader>jd :YcmCompleter GoToDefinitionElseDeclaration<CR> " 跳转到定义处
+riddle@asiamiao:~$ 
+```
