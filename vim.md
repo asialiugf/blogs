@@ -48,10 +48,11 @@ filetype plugin indent on	 " required!
 这样就可以安心的写js了。
 
 ###### vim-jsbeautify 安装
-
+```
 http://www.tuicool.com/articles/VBzY7rZ
 http://blog.58share.com/?p=247
 https://github.com/maksimr/vim-jsbeautify
+```
 =============================================================
 
 在~/ 目录下，编辑   .vimrc  文件
