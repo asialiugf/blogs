@@ -1,10 +1,10 @@
-最全的vim配置
+###### 最全的vim配置
 https://github.com/langsim/vim-ide
 
-python补全
+###### python补全
 https://github.com/davidhalter/jedi-vim/
 
-颜色插件
+###### 颜色插件
 https://github.com/flazz/vim-colorschemes
 
 vim 安装vim-javascript插件--Vundle管理
@@ -47,10 +47,11 @@ filetype plugin indent on	 " required!
 
 这样就可以安心的写js了。
 
-vim-jsbeautify 安装
-([](http://www.tuicool.com/articles/VBzY7rZ
+###### vim-jsbeautify 安装
+
+http://www.tuicool.com/articles/VBzY7rZ
 http://blog.58share.com/?p=247
-https://github.com/maksimr/vim-jsbeautify))
+https://github.com/maksimr/vim-jsbeautify
 =============================================================
 
 在~/ 目录下，编辑   .vimrc  文件
