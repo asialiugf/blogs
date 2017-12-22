@@ -289,7 +289,8 @@ onmessage里面的 SERVER 以及 CLIENT 的区别
 
 ![image](https://github.com/asialiugf/blogs/blob/master/uWS/uws-test01.png)
 
-先运行上面的 ./server，
+先在linux机器上运行上面的 ./server，
+在chrome浏览器,运行一个插件："simple websocket client" 输入url:   ws:://x.x.x.x:3000，并进行连接。
 在chrome浏览器上按F12出现控制台，输入以下代码，可以看到，服务器可以收到 "tom"。
 
 ```javascript
