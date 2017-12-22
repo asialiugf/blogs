@@ -287,6 +287,8 @@ onmessage里面的 SERVER 以及 CLIENT 的区别
 
 ### 在控制台上运行
 
+
+
 先运行上面的 ./server，
 在chrome浏览器上按F12出现控制台，输入以下代码，可以看到，服务器可以收到 "tom"。
 
