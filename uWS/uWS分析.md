@@ -276,6 +276,28 @@ void Node::run() {
     loop->run();
 }
 ```
+在Node.h中，loop 是 Node类的成员变量 
+```c++
+protected:
+    Loop *loop;
+    NodeData *nodeData;
+    std::recursive_mutex asyncMutex;
 
+public:
+    Loop *getLoop() {
+        return loop;
+    }
+```
+在Node的构造函数中，通过createLoop来初始化一个loop
+```c++
+Node::Node(int recvLength, int prePadding, int postPadding, bool useDefaultLoop) {
+    nodeData = new NodeData;
+    nodeData->recvBufferMemoryBlock = new char[recvLength];
+    nodeData->recvBuffer = nodeData->recvBufferMemoryBlock + prePadding;
+    nodeData->recvLength = recvLength - prePadding - postPadding;
+
+    nodeData->tid = pthread_self();
+    loop = Loop::createLoop(useDefaultLoop);
+```
 
 
