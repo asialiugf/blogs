@@ -434,9 +434,24 @@ protected:
     
 ```
 对于以上的 setCb() 在三个地方出现。
-1、 class Node 的 listen 里
-2、 class Node 的 connect 里
-3、 Socket.h 的 Socket:Poll 里
+- 1、 class Node 的 listen 里
+- 2、 class Node 的 connect 里
+- 3、 Socket.h 的 Socket:Poll 里
+
+其中第部分，Socket类里面有一个成员函数 setState()，在这里做了 setCb动作，对于 onMessage onPing onPang 等都是在这里注册。
+```c++
+    template<class STATE>
+    void setState()
+    {
+        if(ssl) {
+            setCb(sslIoHandler<STATE>);
+        } else {
+            std::cout << "i\n----  no ssl befor setCB -----i\n";
+            setCb(ioHandler<STATE>);
+            std::cout << "i\n----  no ssl after setCB -----i\n";
+        }
+    }
+```
 
 
 
