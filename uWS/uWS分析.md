@@ -264,8 +264,18 @@ protected:
 
 
 ### 我们来看 h.run做了些什么
-那这些成员变量是如何被事件驱动的
-
+那这些成员变量(匿名函数)是如何被事件驱动的
+Hub 的run继承了 Node::run。
+```c++
+Hub.h:    using uS::Node::run;
+```
+在Node.cpp中定义，相当简单，就是一个loop->run()。
+```c++
+void Node::run() {
+    nodeData->tid = pthread_self();
+    loop->run();
+}
+```
 
 
 
