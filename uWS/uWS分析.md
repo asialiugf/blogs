@@ -380,6 +380,16 @@ struct Loop {
 ```
 即执行真正的callbacks[]
 
+在Epoll.cpp的开头，定了callbacks[]
+```c++
+namespace uS {
+
+// todo: remove this mutex, have callbacks set at program start
+std::recursive_mutex cbMutex;
+void (*callbacks[16])(Poll *, int, int);
+int cbHead = 0;
+```
+
 
 
 
