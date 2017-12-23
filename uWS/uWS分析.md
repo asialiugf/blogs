@@ -121,11 +121,12 @@ riddle@d:~/uws/tests$
 ```
 ### 下面来具体分析
 
-先定义了一个对象h.
+##### 先定义了一个对象h.
 ```c++
 uWS::Hub h;
 ```
-然后执行事件注册
+##### 然后执行事件注册
+这里，onConnection 的参数是一个 lambda表达式[]，也就是一个匿名函数。
 ```c++
     // 服务端接收到包后原封不动返回
     h.onConnection([](uWS::WebSocket<uWS::SERVER> *ws, uWS::HttpRequest req) {
@@ -133,6 +134,29 @@ uWS::Hub h;
     });
 
 ```
+这个匿名函数，也可以用来捕获外面的变量，例如：
+你可以在程序外面定义一个 ss, 当建立连接时，server有句柄保留下来（通过下面的 [&ss] , ss = ws;)
+```c++
+    uWS::WebSocket<uWS::SERVER> *ss;
+
+    h.onConnection([&ss](uWS::WebSocket<uWS::SERVER> *ws, uWS::HttpRequest req) {
+        ss = ws;
+        ws->send("Hello");
+    });
+```
+这样，在后面的程序中，可以使用，方法如下：
+```c++
+    h.onMessage([&ss](uWS::WebSocket<uWS::SERVER> *ws, char *message, size_t length, uWS::OpCode opCode) {
+        ss->send(message, length, opCode); 
+    });
+```
+即：在onMessage的回调函数中，捕获ss，然后使用它。
+
+注意：对于server端的onConnection的回调函数的的参数 ws，每个client都不一样。也就是说，这个server在这里等着client来建立连接，都是使用的这个调用，但每个client建立连接时，产生的ws都不一样，和每个client是一对一的关系。
+用户程序需要记录这个ws，以便将来向不同的client发送不同的数据。
+比如：可以建立一个 std::vector< > 来记录不同的ws，也可用map，set。要看需求。
+
+##### 再继续分析
 在 src/目录下的Hub.h中定义了Hub类：
 ```c++
 struct WIN32_EXPORT Hub : private uS::Node, public Group<SERVER>, public Group<CLIENT> {
@@ -204,7 +228,11 @@ void Group<isServer>::onMessage(std::function<void (WebSocket<isServer> *, char 
 }
 ```
 在这里，我们看到，当调用 h.onConnection时，只是简单地执行了 
-``c++
+```c++
     connectionHandler = handler;
 ```
-即：把用户定义的 函数，赋给了connectionHandler。
+即：把用户定义的 函数（见上面的分析所说的lamda表达式)，赋给了connectionHandler。
+
+要注意，上面是基于 模板 template <bool isServer> ,其中，传入的是一个bool变量，对于 isServer，要么为真，要么假，就是，不是SERVER，就是CLIENT。所以，我们写回调函数时，第一个参数要指明是SERVER还是CLIENT.
+
+##### 来看看connectionHandler是什么
