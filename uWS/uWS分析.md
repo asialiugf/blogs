@@ -389,6 +389,49 @@ std::recursive_mutex cbMutex;
 void (*callbacks[16])(Poll *, int, int);
 int cbHead = 0;
 ```
+在Epoll.h中
+```c++
+extern std::recursive_mutex cbMutex;
+extern void (*callbacks[16])(Poll *, int, int);
+extern int cbHead;
+```
+在Epoll.h中，有一个类 Poll，真正的回调函数的注册，是在这里完成的。这个Poll类中有一个 setCb()。
+```c++
+struct Poll {
+protected:
+    struct {
+        int fd : 28; 
+protected:
+    struct {
+        int fd : 28; 
+        unsigned int cbIndex : 4;
+    } state = {-1, 0};
+
+    Poll(Loop *loop, uv_os_sock_t fd) {
+        fcntl(fd, F_SETFL, fcntl(fd, F_GETFL, 0) | O_NONBLOCK);
+        state.fd = fd;
+        loop->numPolls++;
+    }
+
+    // todo: pre-set all of callbacks up front and remove mutex
+    void setCb(void (*cb)(Poll *p, int status, int events)) {
+        cbMutex.lock();
+        state.cbIndex = cbHead;
+        for (int i = 0; i < cbHead; i++) {
+            if (callbacks[i] == cb) {
+                state.cbIndex = i;
+                break;
+            }
+        }
+        if (state.cbIndex == cbHead) {
+            callbacks[cbHead++] = cb;
+        }
+        cbMutex.unlock();
+    }
+    
+```
+
+
 
 
 
