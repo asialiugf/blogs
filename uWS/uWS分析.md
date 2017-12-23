@@ -369,6 +369,17 @@ struct Loop {
 };
 
 ```
+在 Loop::run()中
+有以下一段：
+```c++
+        for (int i = 0; i < numFdReady; i++) {
+            Poll *poll = (Poll *) readyEvents[i].data.ptr;
+            int status = -bool(readyEvents[i].events & EPOLLERR);
+            callbacks[poll->state.cbIndex](poll, status, readyEvents[i].events);
+        }
+```
+即执行真正的callbacks[]
+
 
 
 
