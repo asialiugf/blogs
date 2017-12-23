@@ -512,5 +512,47 @@ void Hub::connect(std::string uri, void *user, std::map<std::string, std::string
         HttpSocket<CLIENT> *httpSocket = (HttpSocket<CLIENT> *) uS::Node::connect<allocateHttpSocket, onClientConnection>(hostname.c_str(), port, secure, eh);
 
 ```
+由上面的程序可以看到，onClientConnection 是由 Node::connect()来传入的。
+在Node.h里有下面一段：
+```c++
+    template <uS::Socket *I(Socket *s), void C(Socket *p, bool error)>
+    Socket *connect(const char *hostname, int port, bool secure, NodeData *nodeData) {
+        Context *netContext = nodeData->netContext;
 
+        addrinfo hints, *result;
+        memset(&hints, 0, sizeof(addrinfo));
+        hints.ai_family = AF_UNSPEC;
+        hints.ai_socktype = SOCK_STREAM;
+        if (getaddrinfo(hostname, std::to_string(port).c_str(), &hints, &result) != 0) {
+            return nullptr;
+        }
 
+        uv_os_sock_t fd = netContext->createSocket(result->ai_family, result->ai_socktype, result->ai_protocol);
+        if (fd == INVALID_SOCKET) {
+            freeaddrinfo(result);
+            return nullptr;
+        }
+        
+        ::connect(fd, result->ai_addr, result->ai_addrlen);
+        freeaddrinfo(result);
+
+        SSL *ssl = nullptr;
+        if (secure) {
+            ssl = SSL_new(nodeData->clientContext);
+            SSL_set_connect_state(ssl);
+            SSL_set_tlsext_host_name(ssl, hostname);
+        }
+
+        Socket initialSocket(nodeData, getLoop(), fd, ssl);
+        uS::Socket *socket = I(&initialSocket);
+
+        std::cout << "\n--------22 -------------\n";
+        socket->setCb(connect_cb<C>);
+        socket->start(loop, socket, socket->setPoll(UV_WRITABLE));
+        return socket;
+    }
+```
+在以上 Node::connect()的最后，由下面的 setCb() 注册。
+```c++
+socket->setCb(connect_cb<C>);
+```
