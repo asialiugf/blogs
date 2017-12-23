@@ -133,5 +133,40 @@ uWS::Hub h;
     });
 
 ```
+在 src/目录下的Hub.h中定义了Hub类：
+```c++
+struct WIN32_EXPORT Hub : private uS::Node, public Group<SERVER>, public Group<CLIENT> {
+    // ...
+    // ...
+    using uS::Node::run;
+    using uS::Node::getLoop;
+    using Group<SERVER>::onConnection;
+    using Group<CLIENT>::onConnection;
+    using Group<SERVER>::onTransfer;
+    using Group<CLIENT>::onTransfer;
+    using Group<SERVER>::onMessage;
+    using Group<CLIENT>::onMessage;
+    using Group<SERVER>::onDisconnection;
+    using Group<CLIENT>::onDisconnection;
+    using Group<SERVER>::onPing;
+    using Group<CLIENT>::onPing;
+    using Group<SERVER>::onPong;
+    using Group<CLIENT>::onPong;
+    using Group<SERVER>::onError;
+    using Group<CLIENT>::onError;
+    using Group<SERVER>::onHttpRequest;
+    using Group<SERVER>::onHttpData;
+    using Group<SERVER>::onHttpConnection;
+    using Group<SERVER>::onHttpDisconnection;
+    using Group<SERVER>::onHttpUpgrade;
+    using Group<SERVER>::onCancelledHttpRequest;
+
+    friend struct WebSocket<SERVER>;
+    friend struct WebSocket<CLIENT>;
+};
+
+```
+可以看到， 各种事件，都在这里。其中 server 和 client 的 onConnection均是从 Group里继承过来。
+再来看看 Group
 
 
