@@ -237,6 +237,9 @@ void Group<isServer>::onMessage(std::function<void (WebSocket<isServer> *, char 
 
 ##### 来看看connectionHandler是什么
 其实，它是Group类的一个成员变量, 要注意，它是从uS::NodeData类继承过来. 在c++中，你可以将struct 等同于class。只是，如果你在里面的定义，如果不加任何的修饰（public,private,protected），那么它default是public,而在class里，默认是private。
+
+各种Handler都在下面：
+
 ```c++
 struct WIN32_EXPORT Group : private uS::NodeData {
 protected:
@@ -430,7 +433,10 @@ protected:
     }
     
 ```
-
+对于以上的 setCb() 在三个地方出现。
+1、 class Node 的 listen 里
+2、 class Node 的 connect 里
+3、 Socket.h 的 Socket:Poll 里
 
 
 
