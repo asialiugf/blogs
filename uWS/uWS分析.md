@@ -299,5 +299,76 @@ Node::Node(int recvLength, int prePadding, int postPadding, bool useDefaultLoop)
     nodeData->tid = pthread_self();
     loop = Loop::createLoop(useDefaultLoop);
 ```
+#### uWS如何选择网络库
+
+在src/Backend.h中有以下定义：
+``` c++
+#ifndef BACKEND_H
+#define BACKEND_H
+
+// Default to Epoll if nothing specified and on Linux
+// Default to Libuv if nothing specified and not on Linux
+#ifdef USE_ASIO
+#include "Asio.h"
+#elif !defined(__linux__) || defined(USE_LIBUV)
+#include "Libuv.h"
+#else
+#define USE_EPOLL
+#include "Epoll.h"
+#endif
+
+#endif // BACKEND_H
+```
+在编译中，因为是在  uWebsockets目录下直接 make，ubuntu下所使用的是 Epoll。
+
+#### Epoll.h中的createLoop()
+简单地生成一个Loop对象
+```c++
+    static Loop *createLoop(bool defaultLoop = true) {
+        std::cout << " Epoll.h --> createLoop \n" ;
+        return new Loop(defaultLoop);
+    }
+```
+Loop类如下：
+其中run也在里面
+```c++
+struct Loop {
+    int epfd;
+    int numPolls = 0;
+    bool cancelledLastTimer;
+    int delay = -1;
+    epoll_event readyEvents[1024];
+    std::chrono::system_clock::time_point timepoint;
+    std::vector<Timepoint> timers;
+    std::vector<std::pair<Poll *, void (*)(Poll *)>> closing;
+
+    void (*preCb)(void *) = nullptr;
+    void (*postCb)(void *) = nullptr;
+    void *preCbData, *postCbData;
+
+    Loop(bool defaultLoop) {
+        epfd = epoll_create1(EPOLL_CLOEXEC);
+        timepoint = std::chrono::system_clock::now();
+    }
+
+    static Loop *createLoop(bool defaultLoop = true) {
+        std::cout << " Epoll.h --> createLoop \n" ;
+        return new Loop(defaultLoop);
+    }
+
+    void destroy() {
+        ::close(epfd);
+        delete this;
+    }
+
+    void run();
+
+    int getEpollFd() {
+        return epfd;
+    }
+};
+
+```
+
 
 
