@@ -453,6 +453,32 @@ protected:
     }
 ```
 
+在Hub.cpp里，Hub的成员方法有两个地方调用了 setState()
+```c++
+void Hub::onServerAccept(uS::Socket *s) {
+    HttpSocket<SERVER> *httpSocket = new HttpSocket<SERVER>(s);
+    delete s;
+
+    httpSocket->setState<HttpSocket<SERVER>>();
+    httpSocket->start(httpSocket->nodeData->loop, httpSocket, httpSocket->setPoll(UV_READABLE));
+    httpSocket->setNoDelay(true);
+    Group<SERVER>::from(httpSocket)->addHttpSocket(httpSocket);
+    Group<SERVER>::from(httpSocket)->httpConnectionHandler(httpSocket);
+}
+
+void Hub::onClientConnection(uS::Socket *s, bool error) {
+    HttpSocket<CLIENT> *httpSocket = (HttpSocket<CLIENT> *) s;
+
+    if (error) {
+        httpSocket->onEnd(httpSocket);
+    } else {
+        httpSocket->setState<HttpSocket<CLIENT>>();
+        httpSocket->change(httpSocket->nodeData->loop, httpSocket, httpSocket->setPoll(UV_READABLE));
+        httpSocket->setNoDelay(true);
+        httpSocket->upgrade(nullptr, nullptr, 0, nullptr, 0, nullptr);
+    }
+}
+```
 
 
 
