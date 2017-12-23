@@ -121,5 +121,17 @@ riddle@d:~/uws/tests$
 ```
 ### 下面来具体分析
 
+先定义了一个对象h.
+```c++
+uWS::Hub h;
+```
+然后执行事件注册
+```c++
+    // 服务端接收到包后原封不动返回
+    h.onConnection([](uWS::WebSocket<uWS::SERVER> *ws, uWS::HttpRequest req) {
+        ws->send("-----No------");
+    });
+
+```
 
 
