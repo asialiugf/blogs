@@ -168,5 +168,22 @@ struct WIN32_EXPORT Hub : private uS::Node, public Group<SERVER>, public Group<C
 ```
 可以看到， 各种事件，都在这里。其中 server 和 client 的 onConnection均是从 Group里继承过来。
 再来看看 Group
-
+```c++
+public:
+    void onConnection(std::function<void(WebSocket<isServer> *, HttpRequest)> handler);
+    void onTransfer(std::function<void(WebSocket<isServer> *)> handler);
+    void onMessage(std::function<void(WebSocket<isServer> *, char *, size_t, OpCode)> handler);
+    void onDisconnection(std::function<void(WebSocket<isServer> *, int code, char *message, size_t length)> handler);
+    void onPing(std::function<void(WebSocket<isServer> *, char *, size_t)> handler);
+    void onPong(std::function<void(WebSocket<isServer> *, char *, size_t)> handler);
+    void onError(std::function<void(errorType)> handler);
+    void onHttpConnection(std::function<void(HttpSocket<isServer> *)> handler);
+    void onHttpRequest(std::function<void(HttpResponse *, HttpRequest, char *data, size_t length, size_t remainingBytes
+)> handler);
+    void onHttpData(std::function<void(HttpResponse *, char *data, size_t length, size_t remainingBytes)> handler);
+    void onHttpDisconnection(std::function<void(HttpSocket<isServer> *)> handler);
+    void onCancelledHttpRequest(std::function<void(HttpResponse *)> handler);
+    void onHttpUpgrade(std::function<void(HttpSocket<isServer> *, HttpRequest)> handler);
+```
+可以看到，象onConnection, onMessage OnPing 等，其参数是一个函数handler，一个回调函数。
 
