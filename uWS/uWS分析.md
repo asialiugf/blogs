@@ -186,4 +186,25 @@ public:
     void onHttpUpgrade(std::function<void(HttpSocket<isServer> *, HttpRequest)> handler);
 ```
 可以看到，象onConnection, onMessage OnPing 等，其参数是一个函数handler，一个回调函数。
+在Group.cpp里的定义如下：
+```c++
+template <bool isServer>
+void Group<isServer>::onConnection(std::function<void (WebSocket<isServer> *, HttpRequest)> handler) {
+    connectionHandler = handler;
+}
 
+template <bool isServer>
+void Group<isServer>::onTransfer(std::function<void (WebSocket<isServer> *)> handler) {
+    transferHandler = handler;
+}
+
+template <bool isServer>
+void Group<isServer>::onMessage(std::function<void (WebSocket<isServer> *, char *, size_t, OpCode)> handler) {
+    messageHandler = handler;
+}
+```
+在这里，我们看到，当调用 h.onConnection时，只是简单地执行了 
+``c++
+    connectionHandler = handler;
+```
+即：把用户定义的 函数，赋给了connectionHandler。
