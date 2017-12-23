@@ -479,7 +479,38 @@ void Hub::onClientConnection(uS::Socket *s, bool error) {
     }
 }
 ```
+在Hub listen() 里，也就是当执行 程序里的 h.listen()时，
+onServerAccept被当作模板参数，传入。
+```
+bool Hub::listen(const char *host, int port, uS::TLS::Context sslContext, int options, Group<SERVER> *eh) {
+    if (!eh) {
+        eh = (Group<SERVER> *) this;
+    }
 
+    if (uS::Node::listen<onServerAccept>(host, port, sslContext, options, (uS::NodeData *) eh, nullptr)) {
+        eh->errorHandler(port);
+        return false;
+    }
+    return true;
+}
+```
+同样，在 Hub connect() 里，也就是当执行 程序里的 h.connect()时，
+onClientConnection 被当作模板参数，传入。
+```c++
+void Hub::connect(std::string uri, void *user, std::map<std::string, std::string> extraHeaders, int timeoutMs, Group<CLIENT> *eh) {
+    if (!eh) {
+        eh = (Group<CLIENT> *) this;
+    }
 
+    int port;
+    bool secure;
+    std::string hostname, path;
+
+    if (!parseURI(uri, secure, hostname, port, path)) {
+        eh->errorHandler(user);
+    } else {
+        HttpSocket<CLIENT> *httpSocket = (HttpSocket<CLIENT> *) uS::Node::connect<allocateHttpSocket, onClientConnection>(hostname.c_str(), port, secure, eh);
+
+```
 
 
