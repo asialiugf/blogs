@@ -258,5 +258,12 @@ protected:
     std::function<void(HttpSocket<isServer> *)> httpDisconnectionHandler;
     std::function<void(HttpSocket<isServer> *, HttpRequest)> httpUpgradeHandler;
 ```
+#### 小结一下
+经过分析，象 h.onConnection h.onMessage h.onPing等，只是简单地，初始化了 Hub h这个对象的成员变量，这些成员变量，是一些函数。
+
+
+#### 那这些成员变量是如何被事件驱动的
+我们来看 h.run做了些什么
+
 
 
