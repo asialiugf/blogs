@@ -191,7 +191,7 @@ struct WIN32_EXPORT Hub : private uS::Node, public Group<SERVER>, public Group<C
 
 ```
 可以看到， 各种事件，都在这里。其中 server 和 client 的 onConnection均是从 Group里继承过来。
-再来看看 Group
+再来看看 Group类
 ```c++
 public:
     void onConnection(std::function<void(WebSocket<isServer> *, HttpRequest)> handler);
@@ -236,3 +236,27 @@ void Group<isServer>::onMessage(std::function<void (WebSocket<isServer> *, char 
 要注意，上面是基于 模板 template <bool isServer> ,其中，传入的是一个bool变量，对于 isServer，要么为真，要么假，就是，不是SERVER，就是CLIENT。所以，我们写回调函数时，第一个参数要指明是SERVER还是CLIENT.
 
 ##### 来看看connectionHandler是什么
+其实，它是Group类的一个成员变量, 要注意，它是从uS::NodeData类继承过来. 在c++中，你可以将struct 等同于class。只是，如果你在里面的定义，如果不加任何的修饰（public,private,protected），那么它default是public,而在class里，默认是private。
+```c++
+struct WIN32_EXPORT Group : private uS::NodeData {
+protected:
+    friend struct Hub;
+    friend struct WebSocket<isServer>;
+    friend struct HttpSocket<false>;
+    friend struct HttpSocket<true>;
+
+    std::function<void(WebSocket<isServer> *, HttpRequest)> connectionHandler;
+    std::function<void(WebSocket<isServer> *)> transferHandler;
+    std::function<void(WebSocket<isServer> *, char *message, size_t length, OpCode opCode)> messageHandler;
+    std::function<void(WebSocket<isServer> *, int code, char *message, size_t length)> disconnectionHandler;
+    std::function<void(WebSocket<isServer> *, char *, size_t)> pingHandler;
+    std::function<void(WebSocket<isServer> *, char *, size_t)> pongHandler;
+    std::function<void(HttpSocket<isServer> *)> httpConnectionHandler;
+    std::function<void(HttpResponse *, HttpRequest, char *, size_t, size_t)> httpRequestHandler;
+    std::function<void(HttpResponse *, char *, size_t, size_t)> httpDataHandler;
+    std::function<void(HttpResponse *)> httpCancelledRequestHandler;
+    std::function<void(HttpSocket<isServer> *)> httpDisconnectionHandler;
+    std::function<void(HttpSocket<isServer> *, HttpRequest)> httpUpgradeHandler;
+```
+
+
