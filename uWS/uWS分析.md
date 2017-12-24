@@ -63,6 +63,8 @@ riddle@d:~/uws/tests$
 
 最后的h.run()，让程序进入到事循环。
 
+注：后面的执行结果，是由下面的程序输出的。
+
 ``` c++
 riddle@d:~/uws/tests$ cat server.cpp
 #include <uWS/uWS.h>
@@ -75,29 +77,32 @@ int main()
 {
     uWS::Hub h;
 
-        // --------------------------------------------------------------------------------------------
-    // 服务端接收到包后原封不动返回 
+    // --------------------------------------------------------------------------------------------
+    // 服务端接收到包后原封不动返回
     h.onConnection([](uWS::WebSocket<uWS::SERVER> *ws, uWS::HttpRequest req) {
         ws->send("-----No------");
+                std::cout <<"Server onConnection send: -----No------" << std::endl;
     });
 
     h.onMessage([](uWS::WebSocket<uWS::SERVER> *ws, char *message, size_t length, uWS::OpCode opCode) {
         char tmp[16];
         memcpy(tmp, message, length);
         tmp[length] = 0;
-        printf("Server receive: %s\n", tmp);
+        printf("Server onMessage receive: %s\n", tmp);
         ws->send(message, length, opCode);
+        printf("Server onMessage send: %s\n", tmp);
     });
 
     bool k = h.listen(3000) ;
     if(!k) {
         std::cout << " listen error !!" << std::endl;
     }
-        // --------------------------------------------------------------------------------------------
+    // --------------------------------------------------------------------------------------------
 
     // 客户端连上后发送hello
     h.onConnection([](uWS::WebSocket<uWS::CLIENT> *ws, uWS::HttpRequest req) {
         ws->send("Hello");
+                std::cout <<"Client onConnection send: Hello" << std::endl;
     });
 
     // 客户端打印接收到的消息
@@ -105,14 +110,18 @@ int main()
         char tmp[16];
         memcpy(tmp, message, length);
         tmp[length] = 0;
-        printf("Client receive: %s\n", tmp);
+        printf("Client onMessage receive: %s\n", tmp);
         ws->send(message, length, opCode);
+        printf("Client onMessage send: %s\n", tmp);
+        ws->send(message, length, opCode);
+        printf("Client onMessage send: %s\n", tmp);
         usleep(1000000);
 
         //ws->close();
     });
+
     h.connect("ws://localhost:3000");
-        // --------------------------------------------------------------------------------------------
+    // --------------------------------------------------------------------------------------------
 
 
     h.run();
