@@ -66,7 +66,7 @@ riddle@d:~/uws/tests$
 注：后面的执行结果，是由下面的程序输出的。
 
 ``` c++
-riddle@d:~/uws/tests$ cat server.cpp
+riddle@d:~/uws/tests$ cat looprun.cpp
 #include <uWS/uWS.h>
 #include <unistd.h>
 #include <iostream>
