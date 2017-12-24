@@ -559,9 +559,9 @@ socket->setCb(connect_cb<C>);
 ### 具体的执行过程
 
 #### 一 listen connect时，各注册一个回调函数
-accept_poll_cb<A>
-connect_cb<A>
-    
+- accept_poll_cb<A>
+- connect_cb<A>
+
 ```c++
 riddle@asiamiao:~/uws/tests$ ./server
  Epoll.h --> createLoop 
@@ -579,6 +579,7 @@ riddle@asiamiao:~/uws/tests$ ./server
 [[ Epoll.h ]]  Poll::setCb() ::::   ====> callbacks[cbHead++] = cb;
  Node.cpp -->  Node::run() !!! 
 Enter into  Epoll.cpp Loop::run () 
+
 ```
 #### 二 主程序 h.run()进入for循环，
 首先执行这两个回调函数，一个是server 的，一个是client的，它们分别再注册各自的 ioHandler
@@ -599,11 +600,10 @@ before callbacks[]
 [[ Socket.h]]  Poll::setState() ::::   ====> setCb(ioHandler<STATE>); 
 [[ Epoll.h ]]  Poll::setCb() ::::   ====> callbacks[cbHead++] = cb;
 after callbacks []
-thread id is: 140627084162944
+thread id is: 139818605246336
 +++++++++++++++++++++++++++++++++++++for end+++++++++++++++++++++++++++++++++++
 ```
-#### 三 主程序 h.run() 再进入这个for循环
-执行各自的ioHandler，再注册
+#### 三 主程序 h.run() 再进入这个for循环 ( server onConnection )
 ```c++
 +++++++++++++++++++++++++++++++++++++for begin+++++++++++++++++++++++++++++++++
 [[Epoll.cpp]]  Loop::run()  :::: ====>  for (int i = 0; i < numFdReady; i++) 
@@ -612,11 +612,13 @@ before callbacks[]
 [[ Socket.h]]  Poll::ioHandler() ::::   ====> STATE::onData((Socket *) p, nodeData->recvBuffer, length); 
 [[ Socket.h]]  Poll::setState() ::::   ====> setCb(ioHandler<STATE>); 
 [[ Epoll.h ]]  Poll::setCb() ::::   ====> callbacks[cbHead++] = cb;
+Server onConnection send: -----No------
 after callbacks []
-thread id is: 140627084162944
+thread id is: 139818605246336
 +++++++++++++++++++++++++++++++++++++for end+++++++++++++++++++++++++++++++++++
-
-
+```
+#### 四 主程序 h.run() 再进入这个for循环 ( client onConnection )
+```c++
 +++++++++++++++++++++++++++++++++++++for begin+++++++++++++++++++++++++++++++++
 [[Epoll.cpp]]  Loop::run()  :::: ====>  for (int i = 0; i < numFdReady; i++) 
 before callbacks[] 
@@ -624,16 +626,17 @@ before callbacks[]
 [[ Socket.h]]  Poll::ioHandler() ::::   ====> STATE::onData((Socket *) p, nodeData->recvBuffer, length); 
 [[ Socket.h]]  Poll::setState() ::::   ====> setCb(ioHandler<STATE>); 
 [[ Epoll.h ]]  Poll::setCb() ::::   ====> callbacks[cbHead++] = cb;
+Client onConnection send: Hello
 [[WebSocket.cpp]] handleFragment()  ::::   ====> group->messageHandler();
-Client receive: -----No------
+Client onMessage receive: -----No------
+Client onMessage send: -----No------
+Client onMessage send: -----No------
 after callbacks []
-thread id is: 140627084162944
+thread id is: 139818605246336
 +++++++++++++++++++++++++++++++++++++for end+++++++++++++++++++++++++++++++++++
 ```
-#### 三 主程序 h.run() 再进入这个for循环
-# 看看以上是怎么回事，为什么会收到    Client receive: -----No------ 
+#### 五 主程序 h.run() 再进入这个for循环 ( server onMessage )
 ```c++
-
 +++++++++++++++++++++++++++++++++++++for begin+++++++++++++++++++++++++++++++++
 [[Epoll.cpp]]  Loop::run()  :::: ====>  for (int i = 0; i < numFdReady; i++) 
 before callbacks[] 
@@ -641,194 +644,296 @@ before callbacks[]
 [[ Socket.h]]  Poll::ioHandler() ::::   ====> STATE::onData((Socket *) p, nodeData->recvBuffer, length); 
 [[WebSocket.cpp]]  onData ::::  ====>  WebSocketProtocol<>consume();
 [[WebSocket.cpp]] handleFragment()  ::::   ====> group->messageHandler();
-Server receive: Hello
+Server onMessage receive: Hello
+Server onMessage send: Hello
 [[WebSocket.cpp]] handleFragment()  ::::   ====> group->messageHandler();
-Server receive: -----No------
+Server onMessage receive: -----No------
+Server onMessage send: -----No------
 [[WebSocket.cpp]] handleFragment()  ::::   ====> group->messageHandler();
-Server receive: -----No------
-[[WebSocket.cpp]] handleFragment()  ::::   ====> group->messageHandler();
-Server receive: -----No------
+Server onMessage receive: -----No------
+Server onMessage send: -----No------
 after callbacks []
-thread id is: 140627084162944
-+++++++++++++++++++++++++++++++++++++for end+++++++++++++++++++++++++++++++++++
-
-
-+++++++++++++++++++++++++++++++++++++for begin+++++++++++++++++++++++++++++++++
-[[Epoll.cpp]]  Loop::run()  :::: ====>  for (int i = 0; i < numFdReady; i++) 
-before callbacks[] 
-[[Epoll.cpp]]  Loop::run()  :::: ====> callbacks[poll->state.cbIndex] (...); 
-[[ Socket.h]]  Poll::ioHandler() ::::   ====> STATE::onData((Socket *) p, nodeData->recvBuffer, length); 
-[[WebSocket.cpp]]  onData ::::  ====>  WebSocketProtocol<>consume();
-[[WebSocket.cpp]] handleFragment()  ::::   ====> group->messageHandler();
-Client receive: Hello
-[[WebSocket.cpp]] handleFragment()  ::::   ====> group->messageHandler();
-Client receive: -----No------
-[[WebSocket.cpp]] handleFragment()  ::::   ====> group->messageHandler();
-Client receive: -----No------
-[[WebSocket.cpp]] handleFragment()  ::::   ====> group->messageHandler();
-Client receive: -----No------
-after callbacks []
-thread id is: 140627084162944
-+++++++++++++++++++++++++++++++++++++for end+++++++++++++++++++++++++++++++++++
-
-
-+++++++++++++++++++++++++++++++++++++for begin+++++++++++++++++++++++++++++++++
-[[Epoll.cpp]]  Loop::run()  :::: ====>  for (int i = 0; i < numFdReady; i++) 
-before callbacks[] 
-[[Epoll.cpp]]  Loop::run()  :::: ====> callbacks[poll->state.cbIndex] (...); 
-[[ Socket.h]]  Poll::ioHandler() ::::   ====> STATE::onData((Socket *) p, nodeData->recvBuffer, length); 
-[[WebSocket.cpp]]  onData ::::  ====>  WebSocketProtocol<>consume();
-[[WebSocket.cpp]] handleFragment()  ::::   ====> group->messageHandler();
-Server receive: Hello
-[[WebSocket.cpp]] handleFragment()  ::::   ====> group->messageHandler();
-Server receive: Hello
-[[WebSocket.cpp]] handleFragment()  ::::   ====> group->messageHandler();
-Server receive: Hello
-[[WebSocket.cpp]] handleFragment()  ::::   ====> group->messageHandler();
-Server receive: -----No------
-[[WebSocket.cpp]] handleFragment()  ::::   ====> group->messageHandler();
-Server receive: -----No------
-[[WebSocket.cpp]] handleFragment()  ::::   ====> group->messageHandler();
-Server receive: -----No------
-[[WebSocket.cpp]] handleFragment()  ::::   ====> group->messageHandler();
-Server receive: -----No------
-[[WebSocket.cpp]] handleFragment()  ::::   ====> group->messageHandler();
-Server receive: -----No------
-[[WebSocket.cpp]] handleFragment()  ::::   ====> group->messageHandler();
-Server receive: -----No------
-[[WebSocket.cpp]] handleFragment()  ::::   ====> group->messageHandler();
-Server receive: -----No------
-[[WebSocket.cpp]] handleFragment()  ::::   ====> group->messageHandler();
-Server receive: -----No------
-[[WebSocket.cpp]] handleFragment()  ::::   ====> group->messageHandler();
-Server receive: -----No------
-after callbacks []
-thread id is: 140627084162944
-+++++++++++++++++++++++++++++++++++++for end+++++++++++++++++++++++++++++++++++
-
-
-+++++++++++++++++++++++++++++++++++++for begin+++++++++++++++++++++++++++++++++
-[[Epoll.cpp]]  Loop::run()  :::: ====>  for (int i = 0; i < numFdReady; i++) 
-before callbacks[] 
-[[Epoll.cpp]]  Loop::run()  :::: ====> callbacks[poll->state.cbIndex] (...); 
-[[ Socket.h]]  Poll::ioHandler() ::::   ====> STATE::onData((Socket *) p, nodeData->recvBuffer, length); 
-[[WebSocket.cpp]]  onData ::::  ====>  WebSocketProtocol<>consume();
-[[WebSocket.cpp]] handleFragment()  ::::   ====> group->messageHandler();
-Client receive: Hello
-[[WebSocket.cpp]] handleFragment()  ::::   ====> group->messageHandler();
-Client receive: Hello
-[[WebSocket.cpp]] handleFragment()  ::::   ====> group->messageHandler();
-Client receive: Hello
-[[WebSocket.cpp]] handleFragment()  ::::   ====> group->messageHandler();
-Client receive: -----No------
-[[WebSocket.cpp]] handleFragment()  ::::   ====> group->messageHandler();
-Client receive: -----No------
-[[WebSocket.cpp]] handleFragment()  ::::   ====> group->messageHandler();
-Client receive: -----No------
-[[WebSocket.cpp]] handleFragment()  ::::   ====> group->messageHandler();
-Client receive: -----No------
-[[WebSocket.cpp]] handleFragment()  ::::   ====> group->messageHandler();
-Client receive: -----No------
-[[WebSocket.cpp]] handleFragment()  ::::   ====> group->messageHandler();
-Client receive: -----No------
-[[WebSocket.cpp]] handleFragment()  ::::   ====> group->messageHandler();
-Client receive: -----No------
-[[WebSocket.cpp]] handleFragment()  ::::   ====> group->messageHandler();
-Client receive: -----No------
-[[WebSocket.cpp]] handleFragment()  ::::   ====> group->messageHandler();
-Client receive: -----No------
-after callbacks []
-thread id is: 140627084162944
-+++++++++++++++++++++++++++++++++++++for end+++++++++++++++++++++++++++++++++++
-
-
-+++++++++++++++++++++++++++++++++++++for begin+++++++++++++++++++++++++++++++++
-[[Epoll.cpp]]  Loop::run()  :::: ====>  for (int i = 0; i < numFdReady; i++) 
-before callbacks[] 
-[[Epoll.cpp]]  Loop::run()  :::: ====> callbacks[poll->state.cbIndex] (...); 
-[[ Socket.h]]  Poll::ioHandler() ::::   ====> STATE::onData((Socket *) p, nodeData->recvBuffer, length); 
-[[WebSocket.cpp]]  onData ::::  ====>  WebSocketProtocol<>consume();
-[[WebSocket.cpp]] handleFragment()  ::::   ====> group->messageHandler();
-Server receive: Hello
-[[WebSocket.cpp]] handleFragment()  ::::   ====> group->messageHandler();
-Server receive: Hello
-[[WebSocket.cpp]] handleFragment()  ::::   ====> group->messageHandler();
-Server receive: Hello
-[[WebSocket.cpp]] handleFragment()  ::::   ====> group->messageHandler();
-Server receive: Hello
-[[WebSocket.cpp]] handleFragment()  ::::   ====> group->messageHandler();
-Server receive: Hello
-[[WebSocket.cpp]] handleFragment()  ::::   ====> group->messageHandler();
-Server receive: Hello
-[[WebSocket.cpp]] handleFragment()  ::::   ====> group->messageHandler();
-Server receive: Hello
-[[WebSocket.cpp]] handleFragment()  ::::   ====> group->messageHandler();
-Server receive: Hello
-[[WebSocket.cpp]] handleFragment()  ::::   ====> group->messageHandler();
-Server receive: Hello
-[[WebSocket.cpp]] handleFragment()  ::::   ====> group->messageHandler();
-Server receive: -----No------
-[[WebSocket.cpp]] handleFragment()  ::::   ====> group->messageHandler();
-Server receive: -----No------
-[[WebSocket.cpp]] handleFragment()  ::::   ====> group->messageHandler();
-Server receive: -----No------
-[[WebSocket.cpp]] handleFragment()  ::::   ====> group->messageHandler();
-Server receive: -----No------
-[[WebSocket.cpp]] handleFragment()  ::::   ====> group->messageHandler();
-Server receive: -----No------
-[[WebSocket.cpp]] handleFragment()  ::::   ====> group->messageHandler();
-Server receive: -----No------
-[[WebSocket.cpp]] handleFragment()  ::::   ====> group->messageHandler();
-Server receive: -----No------
-[[WebSocket.cpp]] handleFragment()  ::::   ====> group->messageHandler();
-Server receive: -----No------
-[[WebSocket.cpp]] handleFragment()  ::::   ====> group->messageHandler();
-Server receive: -----No------
-[[WebSocket.cpp]] handleFragment()  ::::   ====> group->messageHandler();
-Server receive: -----No------
-[[WebSocket.cpp]] handleFragment()  ::::   ====> group->messageHandler();
-Server receive: -----No------
-[[WebSocket.cpp]] handleFragment()  ::::   ====> group->messageHandler();
-Server receive: -----No------
-[[WebSocket.cpp]] handleFragment()  ::::   ====> group->messageHandler();
-Server receive: -----No------
-[[WebSocket.cpp]] handleFragment()  ::::   ====> group->messageHandler();
-Server receive: -----No------
-[[WebSocket.cpp]] handleFragment()  ::::   ====> group->messageHandler();
-Server receive: -----No------
-[[WebSocket.cpp]] handleFragment()  ::::   ====> group->messageHandler();
-Server receive: -----No------
-[[WebSocket.cpp]] handleFragment()  ::::   ====> group->messageHandler();
-Server receive: -----No------
-[[WebSocket.cpp]] handleFragment()  ::::   ====> group->messageHandler();
-Server receive: -----No------
-[[WebSocket.cpp]] handleFragment()  ::::   ====> group->messageHandler();
-Server receive: -----No------
-[[WebSocket.cpp]] handleFragment()  ::::   ====> group->messageHandler();
-Server receive: -----No------
-[[WebSocket.cpp]] handleFragment()  ::::   ====> group->messageHandler();
-Server receive: -----No------
-[[WebSocket.cpp]] handleFragment()  ::::   ====> group->messageHandler();
-Server receive: -----No------
-[[WebSocket.cpp]] handleFragment()  ::::   ====> group->messageHandler();
-Server receive: -----No------
-[[WebSocket.cpp]] handleFragment()  ::::   ====> group->messageHandler();
-Server receive: -----No------
-[[WebSocket.cpp]] handleFragment()  ::::   ====> group->messageHandler();
-Server receive: -----No------
-[[WebSocket.cpp]] handleFragment()  ::::   ====> group->messageHandler();
-Server receive: -----No------
-[[WebSocket.cpp]] handleFragment()  ::::   ====> group->messageHandler();
-Server receive: -----No------
-after callbacks []
-thread id is: 140627084162944
+thread id is: 139818605246336
 +++++++++++++++++++++++++++++++++++++for end+++++++++++++++++++++++++++++++++++
 ```
-# 下面的C是如何执行？
+#### 六 主程序 h.run() 再进入这个for循环 ( client onMessage )
 ```c++
-    template <void C(Socket *p, bool error)>
-    static void connect_cb(Poll *p, int status, int events) {
-        std::cout << "[[  Node.h ]]  Node::connect_cb() ::::   ====>  C((Socket *) p, status < 0); \n";
-        C((Socket *) p, status < 0);
-    }
++++++++++++++++++++++++++++++++++++++for begin+++++++++++++++++++++++++++++++++
+[[Epoll.cpp]]  Loop::run()  :::: ====>  for (int i = 0; i < numFdReady; i++) 
+before callbacks[] 
+[[Epoll.cpp]]  Loop::run()  :::: ====> callbacks[poll->state.cbIndex] (...); 
+[[ Socket.h]]  Poll::ioHandler() ::::   ====> STATE::onData((Socket *) p, nodeData->recvBuffer, length); 
+[[WebSocket.cpp]]  onData ::::  ====>  WebSocketProtocol<>consume();
+[[WebSocket.cpp]] handleFragment()  ::::   ====> group->messageHandler();
+Client onMessage receive: Hello
+Client onMessage send: Hello
+Client onMessage send: Hello
+[[WebSocket.cpp]] handleFragment()  ::::   ====> group->messageHandler();
+Client onMessage receive: -----No------
+Client onMessage send: -----No------
+Client onMessage send: -----No------
+[[WebSocket.cpp]] handleFragment()  ::::   ====> group->messageHandler();
+Client onMessage receive: -----No------
+Client onMessage send: -----No------
+Client onMessage send: -----No------
+after callbacks []
+thread id is: 139818605246336
++++++++++++++++++++++++++++++++++++++for end+++++++++++++++++++++++++++++++++++
+
+
++++++++++++++++++++++++++++++++++++++for begin+++++++++++++++++++++++++++++++++
+[[Epoll.cpp]]  Loop::run()  :::: ====>  for (int i = 0; i < numFdReady; i++) 
+before callbacks[] 
+[[Epoll.cpp]]  Loop::run()  :::: ====> callbacks[poll->state.cbIndex] (...); 
+[[ Socket.h]]  Poll::ioHandler() ::::   ====> STATE::onData((Socket *) p, nodeData->recvBuffer, length); 
+[[WebSocket.cpp]]  onData ::::  ====>  WebSocketProtocol<>consume();
+[[WebSocket.cpp]] handleFragment()  ::::   ====> group->messageHandler();
+Server onMessage receive: Hello
+Server onMessage send: Hello
+[[WebSocket.cpp]] handleFragment()  ::::   ====> group->messageHandler();
+Server onMessage receive: Hello
+Server onMessage send: Hello
+[[WebSocket.cpp]] handleFragment()  ::::   ====> group->messageHandler();
+Server onMessage receive: -----No------
+Server onMessage send: -----No------
+[[WebSocket.cpp]] handleFragment()  ::::   ====> group->messageHandler();
+Server onMessage receive: -----No------
+Server onMessage send: -----No------
+[[WebSocket.cpp]] handleFragment()  ::::   ====> group->messageHandler();
+Server onMessage receive: -----No------
+Server onMessage send: -----No------
+[[WebSocket.cpp]] handleFragment()  ::::   ====> group->messageHandler();
+Server onMessage receive: -----No------
+Server onMessage send: -----No------
+after callbacks []
+thread id is: 139818605246336
++++++++++++++++++++++++++++++++++++++for end+++++++++++++++++++++++++++++++++++
+
+
++++++++++++++++++++++++++++++++++++++for begin+++++++++++++++++++++++++++++++++
+[[Epoll.cpp]]  Loop::run()  :::: ====>  for (int i = 0; i < numFdReady; i++) 
+before callbacks[] 
+[[Epoll.cpp]]  Loop::run()  :::: ====> callbacks[poll->state.cbIndex] (...); 
+[[ Socket.h]]  Poll::ioHandler() ::::   ====> STATE::onData((Socket *) p, nodeData->recvBuffer, length); 
+[[WebSocket.cpp]]  onData ::::  ====>  WebSocketProtocol<>consume();
+[[WebSocket.cpp]] handleFragment()  ::::   ====> group->messageHandler();
+Client onMessage receive: Hello
+Client onMessage send: Hello
+Client onMessage send: Hello
+[[WebSocket.cpp]] handleFragment()  ::::   ====> group->messageHandler();
+Client onMessage receive: Hello
+Client onMessage send: Hello
+Client onMessage send: Hello
+[[WebSocket.cpp]] handleFragment()  ::::   ====> group->messageHandler();
+Client onMessage receive: -----No------
+Client onMessage send: -----No------
+Client onMessage send: -----No------
+[[WebSocket.cpp]] handleFragment()  ::::   ====> group->messageHandler();
+Client onMessage receive: -----No------
+Client onMessage send: -----No------
+Client onMessage send: -----No------
+[[WebSocket.cpp]] handleFragment()  ::::   ====> group->messageHandler();
+Client onMessage receive: -----No------
+Client onMessage send: -----No------
+Client onMessage send: -----No------
+[[WebSocket.cpp]] handleFragment()  ::::   ====> group->messageHandler();
+Client onMessage receive: -----No------
+Client onMessage send: -----No------
+Client onMessage send: -----No------
+after callbacks []
+thread id is: 139818605246336
++++++++++++++++++++++++++++++++++++++for end+++++++++++++++++++++++++++++++++++
+
+
++++++++++++++++++++++++++++++++++++++for begin+++++++++++++++++++++++++++++++++
+[[Epoll.cpp]]  Loop::run()  :::: ====>  for (int i = 0; i < numFdReady; i++) 
+before callbacks[] 
+[[Epoll.cpp]]  Loop::run()  :::: ====> callbacks[poll->state.cbIndex] (...); 
+[[ Socket.h]]  Poll::ioHandler() ::::   ====> STATE::onData((Socket *) p, nodeData->recvBuffer, length); 
+[[WebSocket.cpp]]  onData ::::  ====>  WebSocketProtocol<>consume();
+[[WebSocket.cpp]] handleFragment()  ::::   ====> group->messageHandler();
+Server onMessage receive: Hello
+Server onMessage send: Hello
+[[WebSocket.cpp]] handleFragment()  ::::   ====> group->messageHandler();
+Server onMessage receive: Hello
+Server onMessage send: Hello
+[[WebSocket.cpp]] handleFragment()  ::::   ====> group->messageHandler();
+Server onMessage receive: Hello
+Server onMessage send: Hello
+[[WebSocket.cpp]] handleFragment()  ::::   ====> group->messageHandler();
+Server onMessage receive: Hello
+Server onMessage send: Hello
+[[WebSocket.cpp]] handleFragment()  ::::   ====> group->messageHandler();
+Server onMessage receive: -----No------
+Server onMessage send: -----No------
+[[WebSocket.cpp]] handleFragment()  ::::   ====> group->messageHandler();
+Server onMessage receive: -----No------
+Server onMessage send: -----No------
+[[WebSocket.cpp]] handleFragment()  ::::   ====> group->messageHandler();
+Server onMessage receive: -----No------
+Server onMessage send: -----No------
+[[WebSocket.cpp]] handleFragment()  ::::   ====> group->messageHandler();
+Server onMessage receive: -----No------
+Server onMessage send: -----No------
+[[WebSocket.cpp]] handleFragment()  ::::   ====> group->messageHandler();
+Server onMessage receive: -----No------
+Server onMessage send: -----No------
+[[WebSocket.cpp]] handleFragment()  ::::   ====> group->messageHandler();
+Server onMessage receive: -----No------
+Server onMessage send: -----No------
+[[WebSocket.cpp]] handleFragment()  ::::   ====> group->messageHandler();
+Server onMessage receive: -----No------
+Server onMessage send: -----No------
+[[WebSocket.cpp]] handleFragment()  ::::   ====> group->messageHandler();
+Server onMessage receive: -----No------
+Server onMessage send: -----No------
+after callbacks []
+thread id is: 139818605246336
++++++++++++++++++++++++++++++++++++++for end+++++++++++++++++++++++++++++++++++
+
+
++++++++++++++++++++++++++++++++++++++for begin+++++++++++++++++++++++++++++++++
+[[Epoll.cpp]]  Loop::run()  :::: ====>  for (int i = 0; i < numFdReady; i++) 
+before callbacks[] 
+[[Epoll.cpp]]  Loop::run()  :::: ====> callbacks[poll->state.cbIndex] (...); 
+[[ Socket.h]]  Poll::ioHandler() ::::   ====> STATE::onData((Socket *) p, nodeData->recvBuffer, length); 
+[[WebSocket.cpp]]  onData ::::  ====>  WebSocketProtocol<>consume();
+[[WebSocket.cpp]] handleFragment()  ::::   ====> group->messageHandler();
+Client onMessage receive: Hello
+Client onMessage send: Hello
+Client onMessage send: Hello
+[[WebSocket.cpp]] handleFragment()  ::::   ====> group->messageHandler();
+Client onMessage receive: Hello
+Client onMessage send: Hello
+Client onMessage send: Hello
+[[WebSocket.cpp]] handleFragment()  ::::   ====> group->messageHandler();
+Client onMessage receive: Hello
+Client onMessage send: Hello
+Client onMessage send: Hello
+[[WebSocket.cpp]] handleFragment()  ::::   ====> group->messageHandler();
+Client onMessage receive: Hello
+Client onMessage send: Hello
+Client onMessage send: Hello
+[[WebSocket.cpp]] handleFragment()  ::::   ====> group->messageHandler();
+Client onMessage receive: -----No------
+Client onMessage send: -----No------
+Client onMessage send: -----No------
+[[WebSocket.cpp]] handleFragment()  ::::   ====> group->messageHandler();
+Client onMessage receive: -----No------
+Client onMessage send: -----No------
+Client onMessage send: -----No------
+[[WebSocket.cpp]] handleFragment()  ::::   ====> group->messageHandler();
+Client onMessage receive: -----No------
+Client onMessage send: -----No------
+Client onMessage send: -----No------
+[[WebSocket.cpp]] handleFragment()  ::::   ====> group->messageHandler();
+Client onMessage receive: -----No------
+Client onMessage send: -----No------
+Client onMessage send: -----No------
+[[WebSocket.cpp]] handleFragment()  ::::   ====> group->messageHandler();
+Client onMessage receive: -----No------
+Client onMessage send: -----No------
+Client onMessage send: -----No------
+[[WebSocket.cpp]] handleFragment()  ::::   ====> group->messageHandler();
+Client onMessage receive: -----No------
+Client onMessage send: -----No------
+Client onMessage send: -----No------
+[[WebSocket.cpp]] handleFragment()  ::::   ====> group->messageHandler();
+Client onMessage receive: -----No------
+Client onMessage send: -----No------
+Client onMessage send: -----No------
+[[WebSocket.cpp]] handleFragment()  ::::   ====> group->messageHandler();
+Client onMessage receive: -----No------
+Client onMessage send: -----No------
+Client onMessage send: -----No------
+after callbacks []
+thread id is: 139818605246336
++++++++++++++++++++++++++++++++++++++for end+++++++++++++++++++++++++++++++++++
+
+
++++++++++++++++++++++++++++++++++++++for begin+++++++++++++++++++++++++++++++++
+[[Epoll.cpp]]  Loop::run()  :::: ====>  for (int i = 0; i < numFdReady; i++) 
+before callbacks[] 
+[[Epoll.cpp]]  Loop::run()  :::: ====> callbacks[poll->state.cbIndex] (...); 
+[[ Socket.h]]  Poll::ioHandler() ::::   ====> STATE::onData((Socket *) p, nodeData->recvBuffer, length); 
+[[WebSocket.cpp]]  onData ::::  ====>  WebSocketProtocol<>consume();
+[[WebSocket.cpp]] handleFragment()  ::::   ====> group->messageHandler();
+Server onMessage receive: Hello
+Server onMessage send: Hello
+[[WebSocket.cpp]] handleFragment()  ::::   ====> group->messageHandler();
+Server onMessage receive: Hello
+Server onMessage send: Hello
+[[WebSocket.cpp]] handleFragment()  ::::   ====> group->messageHandler();
+Server onMessage receive: Hello
+Server onMessage send: Hello
+[[WebSocket.cpp]] handleFragment()  ::::   ====> group->messageHandler();
+Server onMessage receive: Hello
+Server onMessage send: Hello
+[[WebSocket.cpp]] handleFragment()  ::::   ====> group->messageHandler();
+Server onMessage receive: Hello
+Server onMessage send: Hello
+[[WebSocket.cpp]] handleFragment()  ::::   ====> group->messageHandler();
+Server onMessage receive: Hello
+Server onMessage send: Hello
+[[WebSocket.cpp]] handleFragment()  ::::   ====> group->messageHandler();
+Server onMessage receive: Hello
+Server onMessage send: Hello
+[[WebSocket.cpp]] handleFragment()  ::::   ====> group->messageHandler();
+Server onMessage receive: Hello
+Server onMessage send: Hello
+[[WebSocket.cpp]] handleFragment()  ::::   ====> group->messageHandler();
+Server onMessage receive: -----No------
+Server onMessage send: -----No------
+[[WebSocket.cpp]] handleFragment()  ::::   ====> group->messageHandler();
+Server onMessage receive: -----No------
+Server onMessage send: -----No------
+[[WebSocket.cpp]] handleFragment()  ::::   ====> group->messageHandler();
+Server onMessage receive: -----No------
+Server onMessage send: -----No------
+[[WebSocket.cpp]] handleFragment()  ::::   ====> group->messageHandler();
+Server onMessage receive: -----No------
+Server onMessage send: -----No------
+[[WebSocket.cpp]] handleFragment()  ::::   ====> group->messageHandler();
+Server onMessage receive: -----No------
+Server onMessage send: -----No------
+[[WebSocket.cpp]] handleFragment()  ::::   ====> group->messageHandler();
+Server onMessage receive: -----No------
+Server onMessage send: -----No------
+[[WebSocket.cpp]] handleFragment()  ::::   ====> group->messageHandler();
+Server onMessage receive: -----No------
+Server onMessage send: -----No------
+[[WebSocket.cpp]] handleFragment()  ::::   ====> group->messageHandler();
+Server onMessage receive: -----No------
+Server onMessage send: -----No------
+[[WebSocket.cpp]] handleFragment()  ::::   ====> group->messageHandler();
+Server onMessage receive: -----No------
+Server onMessage send: -----No------
+[[WebSocket.cpp]] handleFragment()  ::::   ====> group->messageHandler();
+Server onMessage receive: -----No------
+Server onMessage send: -----No------
+[[WebSocket.cpp]] handleFragment()  ::::   ====> group->messageHandler();
+Server onMessage receive: -----No------
+Server onMessage send: -----No------
+[[WebSocket.cpp]] handleFragment()  ::::   ====> group->messageHandler();
+Server onMessage receive: -----No------
+Server onMessage send: -----No------
+[[WebSocket.cpp]] handleFragment()  ::::   ====> group->messageHandler();
+Server onMessage receive: -----No------
+Server onMessage send: -----No------
+[[WebSocket.cpp]] handleFragment()  ::::   ====> group->messageHandler();
+Server onMessage receive: -----No------
+Server onMessage send: -----No------
+[[WebSocket.cpp]] handleFragment()  ::::   ====> group->messageHandler();
+Server onMessage receive: -----No------
+Server onMessage send: -----No------
+[[WebSocket.cpp]] handleFragment()  ::::   ====> group->messageHandler();
+Server onMessage receive: -----No------
+Server onMessage send: -----No------
+after callbacks []
+thread id is: 139818605246336
++++++++++++++++++++++++++++++++++++++for end+++++++++++++++++++++++++++++++++++
+
 ```
+
+### 结束
+
