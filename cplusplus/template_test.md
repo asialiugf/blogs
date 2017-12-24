@@ -23,5 +23,5 @@ int main(){
     connect_cb<abc>(25,1);
     return 0; 
 }
-riddle@asiamiao:~/codingtest/cpp$ 
+riddle@d:~/codingtest/cpp$ 
 ```
