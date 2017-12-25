@@ -35,6 +35,7 @@ Further options are:
 ### zguide 学习
 
 ##### zguide 编译
+进入到examples/C这个目录下，执行./build all
 ```c
-root@asiamiao:~/source/zguide/examples/C# ./build all
+root@d:~/source/zguide/examples/C# ./build all
 ```
