@@ -31,3 +31,10 @@ Further options are:
                            expects --with-gcov option for configure
 
 ```
+
+### zguide 学习
+
+##### zguide 编译
+```c
+root@asiamiao:~/source/zguide/examples/C# ./build all
+```
