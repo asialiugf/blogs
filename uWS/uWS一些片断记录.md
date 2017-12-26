@@ -31,7 +31,13 @@
 
 这时，如果在 onDisconnection<SERVER> 又调用了 getDefaultGroup<uWS::SERVER>().close()，那么相当于这一句被调用两次，
 那么就会出现：Segmentation fault。
+    
+请注意下面的代码，在onPong调用getDefaultGroup<uWS::SERVER>().close()时，会造成 onDisconnection<SERVER>  收到信息，而  onDisconnection<SERVER>中又调用了getDefaultGroup<uWS::SERVER>().close()一次，于是出现 Segmentation fault。
     
+### 为什么？
+调用getDefaultGroup<uWS::SERVER>().close()时，为什么 会造成 onDisconnection<SERVER>  收到信息 ？
+要查一下原代码。 留个作业。
+     
 ```c++
 h.getDefaultGroup<uWS::SERVER>().close();
 ```
