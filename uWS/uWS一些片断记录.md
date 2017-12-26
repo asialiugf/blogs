@@ -1,6 +1,7 @@
 #### getDefaultGroup
 通过捕获 Hub h,找到server然后可以关闭它。
-一般来说，这里的SERVER端的 onDisconnection 是client 失联了，所以，这里应该处理 该 client相关的数据，而不应该把 自己给关掉。
+
+一般来说，这里的SERVER端的 onDisconnection 是client 失联了，所以，这里应该处理 该 client相关的数据，而不应该把 自己给关掉，因为自己是SERVER。
 
 ```c++
     uWS::Hub h;
