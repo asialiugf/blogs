@@ -70,7 +70,11 @@ main()的server在onMessage里，创建完这个新的 server线程后， 再向
 
 
 #### 程序如下
-
+```c
+/*
+g++ -std=c++11 -O3 -I ../src -fPIC -o tr1.x transfer1.cpp -L/home/riddle/uws -luWS -lssl -lz -lpthread
+*/
+```
 ```c
 riddle@d:~/uws/tests$ cat ~/codingtest/uWebsockets/tests/transfer1.ok1.cpp
 #include <uWS/uWS.h>
