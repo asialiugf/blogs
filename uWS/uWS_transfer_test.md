@@ -222,7 +222,7 @@ riddle@d:~/uws/tests$
 #### 运行的结果如下：
 
 ```c
-riddle@asiamiao:~/uws/tests$ ./tr1.x
+riddle@d:~/uws/tests$ ./tr1.x
  inside client will create a new client thread !!
  thread client is creating!!!!!!!!
 thread client send: Hello forked client === 
