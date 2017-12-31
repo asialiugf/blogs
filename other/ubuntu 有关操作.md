@@ -8,3 +8,7 @@ Release:        16.04
 Codename:       xenial
 root@d:~# 
 ```
+#### 查找 并 替换
+```c
+ sed -i s/uGG/uBEE/g `grep uGG -rl --include="*.cpp" ./`
+```
