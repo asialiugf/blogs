@@ -56,3 +56,15 @@ g++ main.cpp pgbackend.cpp pgconnection.cpp -o pool -std=c++14 -I/usr/include/po
 请注意数据库连接的数量 - 此参数由参数max_connections（integer）指定。
 
 源代码https://github.com/borisovs/pool
+
+### 具体的操作
+```c
+$ git clone https://github.com/borisovs/pool.git
+$ cd pool
+$ g++ main.cpp pgbackend.cpp pgconnection.cpp -o pool -std=c++14 -I/usr/include/postgresql/ -lpq -lpthread
+$ /usr/local/pgsql/bin/createdb demo
+$ /usr/local/pgsql/bin/psql -s demo -f pool.sql
+$ ./pool
+```
+
+
