@@ -32,3 +32,5 @@ Type:  \copyright for distribution terms
        \q to quit
 test=# 
 ``` 
+#### 参考：
+https://www.postgresql.org/docs/10/static/install-short.html
