@@ -112,4 +112,67 @@ root@d:/var/log/mongodb# chown -R mongodb:mongodb /data/mongo
 root@d:/var/log/mongodb# systemctl start mongodb.service
 root@d:/var/log/mongodb# service mongod start
 root@d:/var/log/mongodb# service mongod stop
+```
+### Ubuntu16.04安装MongoDB Community 和 MongoDB C++ Driver
+http://blog.csdn.net/u010821666/article/details/78069677
 
+要注意，
+- 先必须安装 MongoDB C Driver
+```c
+wget https://github.com/mongodb/mongo-c-driver/releases/download/1.9.0/mongo-c-driver-1.9.0.tar.gz
+tar xvf mongo-c-driver-1.9.0.tar.gz
+cd mongo-c-driver-1.9.0/
+ ./configure
+make
+make install
+```
+- 再安装 MongoDB C++ Driver
+```c
+wget https://github.com/mongodb/mongo-cxx-driver/archive/r3.2.0-rc1.tar.gz
+tar xvf r3.2.0-rc1.tar.gz
+cd mongo-cxx-driver-r3.2.0-rc1/
+cd build
+cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr/local ..
+make EP_mnmlstc_core
+make
+make install
+```
+cmake的参数要加上，切记。
+
+- 测试用例
+```c
+#include <iostream>
+
+#include <bsoncxx/builder/stream/document.hpp>
+#include <bsoncxx/json.hpp>
+
+#include <mongocxx/client.hpp>
+#include <mongocxx/instance.hpp>
+
+int main(int, char**) {
+    mongocxx::instance inst{};
+    mongocxx::client conn{mongocxx::uri{}};
+
+    bsoncxx::builder::stream::document document{};
+
+    auto collection = conn["testdb"]["testcollection"];
+    document << "hello" << "world";
+
+    collection.insert_one(document.view());
+    auto cursor = collection.find({});
+
+    for (auto&& doc : cursor) {
+        std::cout << bsoncxx::to_json(doc) << std::endl;
+    }
+}
+```
+- 编译方式：
+```c
+c++ --std=c++11 test.cpp -o test $(pkg-config --cflags --libs libmongocxx)
+```
+- 运行输出
+```
+root@d:/tmp# ./test
+{ "_id" : { "$oid" : "5a488d553dc59722de5c4a32" }, "hello" : "world" }
+root@d:/tmp# 
+```
