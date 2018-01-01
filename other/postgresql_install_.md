@@ -32,15 +32,18 @@ Type:  \copyright for distribution terms
        \q to quit
 test=# 
 ``` 
+
 #### 参考：
 https://www.postgresql.org/docs/10/static/install-short.html
 
 ### libpqxx 安装
+```c
 root@d:~/source/libpqxx-6.0.0# apt-get install libpq-dev
  wget https://github.com/jtv/libpqxx/archive/6.0.0.tar.gz
  tar xvf 6.0.0........
  cd source/libpqxx-6.0.0
  ./configure
  make
- 
+ make install
+ ```
 
