@@ -1,5 +1,6 @@
 
-![image](https://github.com/asialiugf/blogs/blob/master/uWS/uWS%20transfer%20group%20%E7%A4%BA%E6%84%8F%E5%9B%BE.PNG)
+![image](https://github.com/asialiugf/blogs/blob/master/image/uWS%20transfer%20group%20%E7%A4%BA%E6%84%8F%E5%9B%BE.PNG)
+![image](https://github.com/asialiugf/blogs/blob/master/image/uWS%20transfer%20group%20%E7%A4%BA%E6%84%8F%E5%9B%BE1.PNG)
 
 ### uWS_transfer_test.md 
 
