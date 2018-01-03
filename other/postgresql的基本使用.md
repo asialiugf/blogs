@@ -44,7 +44,78 @@ psql: FATAL:  role "riddle" does not exist
 riddle@d:~$ 
 ```
 
-#### 详细的内容如下：
+### 【【基本使用】】
+
+#### 查看有多少个数据库 
+```
+future=# \l
+                              List of databases
+   Name    | Owner | Encoding |   Collate   |    Ctype    | Access privileges 
+-----------+-------+----------+-------------+-------------+-------------------
+ future    | dbrun | UTF8     | en_US.UTF-8 | en_US.UTF-8 | 
+ postgres  | dbrun | UTF8     | en_US.UTF-8 | en_US.UTF-8 | 
+ template0 | dbrun | UTF8     | en_US.UTF-8 | en_US.UTF-8 | =c/dbrun         +
+           |       |          |             |             | dbrun=CTc/dbrun
+ template1 | dbrun | UTF8     | en_US.UTF-8 | en_US.UTF-8 | =c/dbrun         +
+           |       |          |             |             | dbrun=CTc/dbrun
+(4 rows)
+
+future=# 
+```
+#### 查看一个数据库的大小
+```
+postgres=# 
+postgres=# select pg_database_size('future'); 
+ pg_database_size 
+------------------
+          7509479
+(1 row)
+
+postgres=# select pg_database_size('postgres');
+ pg_database_size 
+------------------
+          7509479
+(1 row)
+
+postgres=# 
+```
+#### 查看所有数据库的大小
+```
+postgres=# 
+postgres=#  select pg_database.datname, pg_database_size(pg_database.datname) AS size from pg_database; 
+  datname  |  size   
+-----------+---------
+ postgres  | 7509479
+ future    | 7509479
+ template1 | 7373315
+ template0 | 7373315
+(4 rows)
+
+postgres=# 
+```
+
+#### 查看表空间的大小
+```
+future=# 
+future=# select spcname from pg_tablespace; 
+  spcname   
+------------
+ pg_default
+ pg_global
+(2 rows)
+
+future=# 
+future=# select pg_size_pretty(pg_tablespace_size('pg_default'));
+ pg_size_pretty 
+----------------
+ 28 MB
+(1 row)
+
+future=#
+```
+
+
+#### 【【创建数据库详细的内容如下：】】
 ```c
 root@d:~# 
 root@d:~# adduser dbrun
