@@ -125,6 +125,20 @@ postgres=# \du
 postgres=# 
 ```
 
+#### 查看角色
+```
+postgres=# select rolname from pg_roles;
+       rolname        
+----------------------
+ dbrun
+ pg_monitor
+ pg_read_all_settings
+ pg_read_all_stats
+ pg_stat_scan_tables
+ pg_signal_backend
+(6 rows)
+```
+
 
 
 #### 【创建数据库详细的内容如下：】
