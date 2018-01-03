@@ -2,11 +2,13 @@
 
 #### 【基本概念】
 
-- 一个linux的用户，可以有多个目录用来初始化postgresql
-- 一个被postgresql初始化的目录，对应一个postgresql的服务，必须有独立的IP:PORT
+- 一个linux的用户，可以有多个目录用来初始化postgresql。
+- 一个被postgresql初始化的目录，对应一个postgresql的服务，必须有独立的IP:PORT。
+- 一个postgresql服务，有一组相应的进程。
+- 通过不同的的IP:PORT对，可以在一个linux上开启多组postgresql服务。
 - 一个物理目录，对应一个服务，一个服务，可以创建多个database。
-- 一个角色可以管理多个database
-- 一个database也可以被多个角色管理  M:N关系
+- 一个角色可以管理多个database。
+- 一个database也可以被多个角色管理  M:N关系。
 - 一个用户，是具体登录权限的角角色。
 
 
