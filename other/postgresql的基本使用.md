@@ -62,6 +62,8 @@ riddle@d:~$
 第一个参数future是数据库，第二个参数dbrun是角色，第三个参数指定port，第四个参数指定服务的IP。
 ```
 riddle@asiamiao:~$ /usr/local/pgsql/bin/psql future dbrun --port=6688 --host=127.0.0.2
+dbrun@asiamiao:~$ /usr/local/pgsql/bin/psql -p 6688 future dbrun 
+dbrun@asiamiao:~$ /usr/local/pgsql/bin/psql -p 6688 postgres dbrun
 ```
 
 #### 查看有多少个数据库 
