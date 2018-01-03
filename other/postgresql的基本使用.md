@@ -114,6 +114,18 @@ future=# select pg_size_pretty(pg_tablespace_size('pg_default'));
 future=#
 ```
 
+#### 查看角色
+```
+postgres=# \du
+                                   List of roles
+ Role name |                         Attributes                         | Member of 
+-----------+------------------------------------------------------------+-----------
+ dbrun     | Superuser, Create role, Create DB, Replication, Bypass RLS | {}
+
+postgres=# 
+```
+
+
 
 #### 【创建数据库详细的内容如下：】
 ```c
