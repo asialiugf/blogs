@@ -113,6 +113,22 @@ future=# select pg_size_pretty(pg_tablespace_size('pg_default'));
 
 future=#
 ```
+#### 角色和用户的概念
+
+（一）概念的区分
+
+    最近在学数据库，老师要求我们通过使用postgresql来学习。拿着用SQL server演示的教材，看着SQL server的实验指导书，在Postgresql上做实现，虽说都是关系型数据库，但是很多概念都是不一样的，真的是相当难受。使用postgresql的人在国内比较少，在学习访问权限的时候遇到很多问题，在度娘上没找到答案，只好自己查阅了官方文档，经过大量的实践才算略懂一二。在此分享给大家，说的很啰嗦，请谅解。注下面的实践都是在PostgreSQL 9.5上完成的，图形化管理软件为pgAdmin III。
+
+    Postgresql的官方文档上对于role的定义是A role is an entity that can own database objectsand have database privileges; a role can be considered a "user",a "group", or both depending on how it isused.意思是一个角色是一个可以有自己的数据库对象和数据库操纵权限的实体,一个角色可以被认为是一个“用户”,一个“组”,或者两者都可，取决于它的使用方式。
+
+    Postgresql的官方文档上对于CREATE USER命令的说明是CREATEUSER is now an alias forCREATEROLE. The only difference is that when the command is spelled CREATE USER,LOGIN is assumed by default,whereas NOLOGIN is assumed whenthe command is spelledCREATEROLE.也就是说CREATE USER实际上就是CREATE ROLE，唯一不同的是， CREATE USER命令默认是带有登录权限的，而CREATE ROLE则没有。
+
+       而所谓的登录角色和组角色在似乎是pgAdmin所定义的，我官方文档上并没有找到login role或者group role的定义，不过我找到这样一条说明The concept of rolessubsumes the concepts of "users" and "groups". In PostgreSQLversions before 8.1, users and groups were distinct kinds of entities, but nowthere are only roles. Any role can act as a user, a group, or both.
+
+大家自己理解把。（看这意思似乎是8.1版之前存在过users和groups的概念，不过现在都是role了）
+
+       总的来说，登录角色就是具有登录权限的角色，是通常意义上的用户，不具有登录权限的角色就是组角色，是一些登录角色的集合。这样的目的是为了方便批量授权。在PostgreSQL中登录角色、组角色和用户本质上都是角色；看下面的操作就知道了。
+
 
 #### 查看角色
 ```
@@ -138,6 +154,8 @@ postgres=# select rolname from pg_roles;
  pg_signal_backend
 (6 rows)
 ```
+
+
 
 
 
