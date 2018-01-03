@@ -1,4 +1,4 @@
-###使用postgresql
+### 使用postgresql
 
 #### 初始化数据库文件
 这里，在一个新的linux用户下初始化数据库文件
@@ -36,6 +36,12 @@ Type "help" for help.
 
 future=# 
 future=# 
+```
+##### 创建完了后，只是dbrun用户可以使用，其它linux用户，比如riddle上不来
+```
+riddle@d:~$ /usr/local/pgsql/bin/psql -p 6688 future
+psql: FATAL:  role "riddle" does not exist
+riddle@d:~$ 
 ```
 
 #### 详细的内容如下：
