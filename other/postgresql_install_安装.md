@@ -16,6 +16,20 @@ mkdir /usr/local/pgsql/data
 chown postgres /usr/local/pgsql/data
 /usr/local/pgsql/bin/initdb -D /usr/local/pgsql/data  
 ```
+初始化后，应该有一个默认的postgres数据库存在
+在linux的postgres用户下，执行
+```
+/usr/local/pgsql/bin/psql
+postgres@d:~$ 
+postgres@d:~$ /usr/local/pgsql/bin/psql
+psql (10.1)
+Type "help" for help.
+
+postgres=# 
+```
+可以看到进入到了postgres数据库，并出现#提示符。
+
+下面可以创建一个新的数据库test。
 
 #### 创建数据库test，并使用它
 要注意，使用这个数据库时，psql命令默认会用linux的postgres用户登录。
