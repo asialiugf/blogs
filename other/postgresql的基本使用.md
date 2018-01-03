@@ -1,5 +1,15 @@
 ### 使用postgresql
 
+#### 【基本概念】
+
+- 一个linux的用户，可以有多个目录用来初始化postgresql
+- 一个被postgresql初始化的目录，对应一个postgresql的服务，必须有独立的IP:PORT
+- 一个物理目录，对应一个服务，一个服务，可以创建多个database。
+- 一个角色可以管理多个database
+- 一个database也可以被多个角色管理  M:N关系
+- 一个用户，是具体登录权限的角角色。
+
+
 #### 初始化数据库文件
 这里，在一个新的linux用户下初始化数据库文件
 ```c
@@ -45,6 +55,12 @@ riddle@d:~$
 ```
 
 ### 【基本使用】
+
+#### 登录数据库
+第一个参数future是数据库，第二个参数dbrun是角色，第三个参数指定port，第四个参数指定服务的IP。
+```
+riddle@asiamiao:~$ /usr/local/pgsql/bin/psql future dbrun --port=6688 --host=127.0.0.2
+```
 
 #### 查看有多少个数据库 
 ```
