@@ -16,9 +16,29 @@ pwd
 /usr/local/pgsql/bin/pg_ctl -D /home/dbrun/data -l logfile start
 ```
 
+#### 创建数据库并使用，库名叫future
+```
+/usr/local/pgsql/bin/createdb -p 6688 future
+/usr/local/pgsql/bin/createdb -p 6688 future
+```
 
+```c
+dbrun@d:~$ /usr/local/pgsql/bin/createdb -p 6688 future
+dbrun@d:~$ 
+dbrun@d:~$ 
+dbrun@d:~$ /usr/local/pgsql/bin/psql -p 6688
+psql: FATAL:  database "dbrun" does not exist
+dbrun@d:~$ 
+dbrun@d:~$ 
+dbrun@d:~$ /usr/local/pgsql/bin/psql -p 6688 future
+psql (10.1)
+Type "help" for help.
 
-####详细的内容如下：
+future=# 
+future=# 
+```
+
+#### 详细的内容如下：
 ```c
 root@d:~# 
 root@d:~# adduser dbrun
