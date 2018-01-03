@@ -44,7 +44,7 @@ psql: FATAL:  role "riddle" does not exist
 riddle@d:~$ 
 ```
 
-### 【【基本使用】】
+### 【基本使用】
 
 #### 查看有多少个数据库 
 ```
@@ -115,7 +115,7 @@ future=#
 ```
 
 
-#### 【【创建数据库详细的内容如下：】】
+#### 【创建数据库详细的内容如下：】
 ```c
 root@d:~# 
 root@d:~# adduser dbrun
