@@ -20,8 +20,8 @@ pwd
 
 ####详细的内容如下：
 ```c
-root@asiamiao:~# 
-root@asiamiao:~# adduser dbrun
+root@d:~# 
+root@d:~# adduser dbrun
 Adding user `dbrun' ...
 Adding new group `dbrun' (1007) ...
 Adding new user `dbrun' (1007) with group `dbrun' ...
@@ -38,29 +38,25 @@ Enter the new value, or press ENTER for the default
         Home Phone []: 
         Other []: 
 Is the information correct? [Y/n] 
-root@asiamiao:~# 
-root@asiamiao:~# 
-root@asiamiao:~# 
-root@asiamiao:~# su - dbrun
-dbrun@asiamiao:~$ ll
+root@d:~# 
+root@d:~# 
+root@d:~# 
+root@d:~# su - dbrun
+dbrun@d:~$ ll
 total 20
 drwxr-xr-x  2 dbrun dbrun 4096 Jan  3 15:18 ./
 drwxr-xr-x 10 root  root  4096 Jan  3 15:18 ../
 -rw-r--r--  1 dbrun dbrun  220 Jan  3 15:18 .bash_logout
 -rw-r--r--  1 dbrun dbrun 3771 Jan  3 15:18 .bashrc
 -rw-r--r--  1 dbrun dbrun  655 Jan  3 15:18 .profile
-dbrun@asiamiao:~$ 
-dbrun@asiamiao:~$ 
-dbrun@asiamiao:~$ 
-dbrun@asiamiao:~$ 
-dbrun@asiamiao:~$ 
-dbrun@asiamiao:~$ 
-dbrun@asiamiao:~$ 
-dbrun@asiamiao:~$ pwd
+dbrun@d:~$ 
+dbrun@d:~$ 
+dbrun@d:~$ 
+dbrun@d:~$ pwd
 /home/dbrun
-dbrun@asiamiao:~$ 
-dbrun@asiamiao:~$ mkdir data
-dbrun@asiamiao:~$ ll
+dbrun@d:~$ 
+dbrun@d:~$ mkdir data
+dbrun@d:~$ ll
 total 24
 drwxr-xr-x  3 dbrun dbrun 4096 Jan  3 15:18 ./
 drwxr-xr-x 10 root  root  4096 Jan  3 15:18 ../
@@ -68,19 +64,19 @@ drwxr-xr-x 10 root  root  4096 Jan  3 15:18 ../
 -rw-r--r--  1 dbrun dbrun 3771 Jan  3 15:18 .bashrc
 drwxrwxr-x  2 dbrun dbrun 4096 Jan  3 15:18 data/
 -rw-r--r--  1 dbrun dbrun  655 Jan  3 15:18 .profile
-dbrun@asiamiao:~$ pwd
+dbrun@d:~$ pwd
 /home/dbrun
-dbrun@asiamiao:~$ cd data
-dbrun@asiamiao:~/data$ ll
+dbrun@d:~$ cd data
+dbrun@d:~/data$ ll
 total 8
 drwxrwxr-x 2 dbrun dbrun 4096 Jan  3 15:18 ./
 drwxr-xr-x 3 dbrun dbrun 4096 Jan  3 15:18 ../
-dbrun@asiamiao:~/data$ pwd
+dbrun@d:~/data$ pwd
 /home/dbrun/data
-dbrun@asiamiao:~/data$ 
-dbrun@asiamiao:~/data$ 
-dbrun@asiamiao:~/data$ 
-dbrun@asiamiao:~/data$ /usr/local/pgsql/bin/initdb -D .
+dbrun@d:~/data$ 
+dbrun@d:~/data$ 
+dbrun@d:~/data$ 
+dbrun@d:~/data$ /usr/local/pgsql/bin/initdb -D .
 The files belonging to this database system will be owned by user "dbrun".
 This user must also own the server process.
 
@@ -108,9 +104,9 @@ Success. You can now start the database server using:
 
     /usr/local/pgsql/bin/pg_ctl -D . -l logfile start
 
-dbrun@asiamiao:~/data$ 
-dbrun@asiamiao:~/data$ 
-dbrun@asiamiao:~/data$ ll
+dbrun@d:~/data$ 
+dbrun@d:~/data$ 
+dbrun@d:~/data$ ll
 total 120
 drwx------ 19 dbrun dbrun  4096 Jan  3 15:20 ./
 drwxr-xr-x  3 dbrun dbrun  4096 Jan  3 15:18 ../
@@ -136,5 +132,5 @@ drwx------  3 dbrun dbrun  4096 Jan  3 15:20 pg_wal/
 drwx------  2 dbrun dbrun  4096 Jan  3 15:20 pg_xact/
 -rw-------  1 dbrun dbrun    88 Jan  3 15:20 postgresql.auto.conf
 -rw-------  1 dbrun dbrun 22764 Jan  3 15:20 postgresql.conf
-dbrun@asiamiao:~/data$ 
+dbrun@d:~/data$ 
 ```
