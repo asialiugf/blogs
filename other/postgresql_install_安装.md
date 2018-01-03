@@ -30,7 +30,8 @@ psql: FATAL:  role "riddle" does not exist
 riddle@d:~/u$ 
 ```
 
-
+### 安装过程如下：
+参考：https://www.postgresql.org/docs/10/static/install-short.html
 ```
 https://ftp.postgresql.org/pub/source/v10.1/postgresql-10.1.tar.bz2
 root@d:~/source# tar xvf postgresql-10.1.tar.bz2 
