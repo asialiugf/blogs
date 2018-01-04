@@ -12,3 +12,8 @@ root@d:~#
 ```c
  sed -i s/uGG/uBEE/g `grep uGG -rl --include="*.cpp" ./`
 ```
+
+### 将换行换成了,
+```
+sed ':a;N;$!ba;s/\n/,/g' zz > zz1
+```
