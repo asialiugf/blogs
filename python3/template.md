@@ -19,7 +19,7 @@ warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 另外，下面还测试了：
 将函数指针定义成一个类型，并用这个类型来定义一个vector，通过将 struct强制转成 char * 来进行不同函数的参数传递。
 
-```
+```c
 // $ cat func.cpp
 #include <iostream>
 #include <functional>
