@@ -1,3 +1,18 @@
+### vector 查找
+```c
+#include <algorithm>
+#include <vector>
+
+    auto result = find(this->cs.begin(), this->cs.end(), ws);     //查找 ws
+    if(result == this->cs.end()) {    //没找到
+      std::cout << "Not found" << std::endl;
+    } else {
+      std::cout << "Yes" << std::endl;  //找到了
+      (*result)->send("HHHH from assiInit client \n"); //注意， *result要括起来。
+    }
+```
+
+
 #### getDefaultGroup
 通过捕获 Hub h,找到server然后可以关闭它。
 
