@@ -1,3 +1,13 @@
+### 如果到对 cs[0] = ws 这样的赋值的话，有可能要加锁如下：
+```c
+ std::mutex m;
+            m.lock();
+            client = ws;
+            ws->send("first message here");
+            m.unlock();
+```
+
+
 ### vector 查找
 ```c
 #include <algorithm>
