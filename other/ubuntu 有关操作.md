@@ -11,6 +11,7 @@ root@d:~#
 #### 查找 并 替换
 ```c
  sed -i s/uGG/uBEE/g `grep uGG -rl --include="*.cpp" ./`
+ sed -i s/UGG/UBEE/g `grep UGG -rl --include="*.h" ./` 
 ```
 
 ### 将换行换成了,
