@@ -1,7 +1,12 @@
 #### 动态行情  C#
 动态数据
 RolandPheasant/Dynamic.Trader
+
 https://github.com/RolandPheasant/FlatStreamToHierarchy
+https://github.com/RolandPheasant/TailBlazer
+
+
+
 #### 指标库C#  lppkarl/Trady
 #### 界面 C#
 https://github.com/haifengat/hf_trade_terminal/tree/master/terminal
