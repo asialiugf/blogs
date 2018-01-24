@@ -19,3 +19,6 @@ https://github.com/SoftAlgoTrade/TradingStrategies
 https://github.com/letianzj/QuantTrading
 #### 统一接口：
 https://github.com/QuantBox
+
+银河的http 接口（yhapi），需要去请求获取数据等
+https://github.com/onestarshang/golden_eye
