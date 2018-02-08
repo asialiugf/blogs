@@ -29,3 +29,45 @@ mysql> show databases;
 
 mysql> 
 ```
+```
+mysql> CREATE DATABASE wordpressdb;
+mysql> GRANT ALL PRIVILEGES ON wordpressdb.* TO wpuser@localhost;
+mysql> FLUSH PRIVILEGES;
+mysql> select user from mysql.user;  
++------------------+
+| user             |
++------------------+
+| debian-sys-maint |
+| mysql.session    |
+| mysql.sys        |
+| root             |
+| wpuser           |
++------------------+
+5 rows in set (0.00 sec)
+
+mysql> 
+```
+```
+mysql> SELECT DISTINCT CONCAT('User: ''',user,'''@''',host,''';') AS query FROM mysql.user;
+mysql> use  mysql;
+mysql> show tables;
+```
+### 备份数据库
+```
+rabbit@iZ23psatkqsZ:~$ mysqldump -uroot -p wordpressdb>kkk.sql
+
+rabbit@iZ23psatkqsZ:~$ mysql -u root -p 
+mysql> CREATE DATABASE wpdb;
+mysql> GRANT ALL PRIVILEGES ON wpdb.* TO wpuser@localhost;        
+mysql> FLUSH PRIVILEGES;
+mysql> use wpdb;
+mysql> show tables;
+Empty set (0.00 sec)
+mysql> quit
+Bye
+```
+### 恢复数据库
+```
+rabbit@iZ23psatkqsZ:~$ mysql -uroot -p wpdb < kkk.sql   
+```
+
