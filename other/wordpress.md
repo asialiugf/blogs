@@ -1,6 +1,9 @@
 ### 
 http://blog.csdn.net/qq_31714339/article/details/78237512
 ```c
+
+root@iZ23psatkqsZ:/var/www/html# chown -R www-data:www-data *
+
 service php7.0-fpm restart 
 service apache2 restart
 service mysql restart
