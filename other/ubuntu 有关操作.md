@@ -18,3 +18,8 @@ root@d:~#
 ```
 sed ':a;N;$!ba;s/\n/,/g' zz > zz1
 ```
+
+### 查找
+```
+find .|xargs grep -ri "不能访问此页面" -l
+```
