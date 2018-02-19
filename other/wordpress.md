@@ -73,4 +73,14 @@ Bye
 ```
 rabbit@iZ23psatkqsZ:~$ mysql -uroot -p wpdb < kkk.sql   
 ```
+### 以后可能用到的插件
+
+WP Editor.md被成功删除。
+
+WordPress支付宝Alipay|财付通Tenpay|贝宝PayPal集成插件
+启用 | 删除
+WordPress支付宝Alipay|财付通Tenpay|贝宝PayPal集成插件, 集成支付宝,财付通,贝宝,网银,V3:支持支付宝多接口!
+
+3.7.2版本 | 由歪SIR | 查看详情
+
 
