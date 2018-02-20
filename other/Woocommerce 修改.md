@@ -18,4 +18,8 @@
 ```
 这个文件里 修改了登录链接
 
-### 四
+### 四 去掉了 ThemeGrill Demo Importer 推荐
+
+```
+/var/www/html/wordpress/wp-content/themes/estore# vi ./inc/tgm-plugin-activation/tgmpa-estore.php
+```
