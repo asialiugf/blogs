@@ -9,6 +9,13 @@
 ```
 注意，这里需要 修改登录 的链接。 
 
+#### estore  修改 下单界面
+```
+/var/www/html/wordpress/wp-content/themes/estore/woocommerce/checkout#  vi form-billing.php 
+```
+
+
+
 ### 二（这里修改了 woocommerce 插件)
 我的账户登录界面修改
 ```
