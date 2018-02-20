@@ -26,5 +26,7 @@ find .|xargs grep -ri "不能访问此页面" -l
 
 ### vim jsbeautify要安装node
 ```
- apt install nodejs-legacy
+ apt-get install nodejs-legacy
+ apt-get install astyle
+ 
 ```
