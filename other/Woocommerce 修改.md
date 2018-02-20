@@ -12,3 +12,10 @@
 ```
 /var/www/html/wordpress/wp-content/plugins/woocommerce/templates/myaccount# vi form-login.php
 ```
+### 三
+```
+/var/www/html/wordpress/wp-content/themes/estore# vi header.php
+```
+这个文件里 修改了登录链接
+
+### 四
