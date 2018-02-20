@@ -7,11 +7,16 @@
 ```
 注意，这里需要 修改登录 的链接。 
 
-### 二
+### 二（这里修改了 woocommerce 插件)
 我的账户登录界面修改
 ```
 /var/www/html/wordpress/wp-content/plugins/woocommerce/templates/myaccount# vi form-login.php
 ```
+修改了用户 “账户详情” 修改界面！
+```
+/var/www/html/wordpress/wp-content/plugins/woocommerce/templates/myaccount# vi form-edit-account.php
+```
+
 ### 三
 ```
 /var/www/html/wordpress/wp-content/themes/estore# vi header.php
