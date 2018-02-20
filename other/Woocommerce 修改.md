@@ -8,3 +8,7 @@
 注意，这里需要 修改登录 的链接。 
 
 ### 二
+我的账户登录界面修改
+```
+/var/www/html/wordpress/wp-content/plugins/woocommerce/templates/myaccount# vi form-login.php
+```
