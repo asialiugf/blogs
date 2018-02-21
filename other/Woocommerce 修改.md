@@ -13,7 +13,15 @@
 ```
 /var/www/html/wordpress/wp-content/themes/estore/woocommerce/checkout#  vi form-billing.php 
 ```
-
+```php
+    <?php if ( wc_ship_to_billing_address_only() && WC()->cart->needs_shipping() ) : ?>
+        <h3><?php _e( 'Billing &amp; Shipping', 'estore' ); ?></h3>
+    <?php else : ?>
+        <!-- modified by eeee 2018-02-21 --------------  -->
+        <!-- <h3><?php _e( '账单详情', 'estore' ); ?></h3> -->
+        <h3>账单详情</h3>
+    <?php endif; ?>
+```
 
 
 ### 二（这里修改了 woocommerce 插件)
