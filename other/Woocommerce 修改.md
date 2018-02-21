@@ -9,7 +9,7 @@
 ```
 注意，这里需要 修改登录 的链接。 
 
-#### estore  修改 下单界面
+#### estore  修改（结算-->下单）界面
 ```
 /var/www/html/wordpress/wp-content/themes/estore/woocommerce/checkout#  vi form-billing.php 
 ```
@@ -21,6 +21,27 @@
         <!-- <h3><?php _e( '账单详情', 'estore' ); ?></h3> -->
         <h3>账单详情</h3>
     <?php endif; ?>
+```
+在 /var/www/html/wordpress/wp-content/themes/estore/function.php文件里：修改了unset的项，会在 下单界面中体现。去掉了 "姓氏" "国家" ...
+```php
+// ---------------------------------------------------------------------------------------------
+function custom_override_checkout_fields( $fields ) {
+  //unset($fields['order']['order_comments']);
+  unset( $fields['billing']['billing_country'] );
+  //unset( $fields['billing']['billing_first_name'] );
+  unset( $fields['billing']['billing_last_name'] );
+  unset( $fields['billing']['billing_company'] );
+  unset( $fields['billing']['billing_address_1'] );
+  unset( $fields['billing']['billing_address_2'] );
+  unset( $fields['billing']['billing_city'] );
+  unset( $fields['billing']['billing_state'] );
+  unset( $fields['billing']['billing_postcode'] );
+  //unset($fields['billing']['billing_email']);
+  unset( $fields['billing']['billing_phone'] );
+return $fields;
+}
+add_filter( 'woocommerce_checkout_fields' , 'custom_override_checkout_fields' );
+//-----------------------------------------------------------------------------------------
 ```
 
 ------------------------------------------------------------------------------------------------
