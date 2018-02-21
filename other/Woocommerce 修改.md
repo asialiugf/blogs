@@ -1,3 +1,7 @@
+### 如何修改woocommerce的模板
+http://doc.weixiaoduo.com/woocommerce/10475.html
+
+
 我的账户  页面，里面有链接，需要更改IP域名。
 
 ### 一
