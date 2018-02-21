@@ -17,13 +17,28 @@
 
 
 ### 二（这里修改了 woocommerce 插件)
-我的账户登录界面修改
+#### 我的账户登录界面修改
 ```
 /var/www/html/wordpress/wp-content/plugins/woocommerce/templates/myaccount# vi form-login.php
 ```
-修改了用户 “账户详情” 修改界面！
+#### 修改了用户 “账户详情” 修改界面！
 ```
 /var/www/html/wordpress/wp-content/plugins/woocommerce/templates/myaccount# vi form-edit-account.php
+```
+#### 修改线下支付 
+```
+/var/www/html/wordpress/wp-content/plugins/woocommerce/includes/gateways/cod/class-wc-gateway-cod.php
+```
+在里面增加了：
+```php
+    protected function setup_properties() {
+        $this->id                 = 'cod';
+        /* $this->icon               = apply_filters( 'woocommerce_cod_icon', '' ); */
+        $this->icon = plugins_url('../cheque/images/wechatpay.png', __FILE__);
+        $this->method_title       = __( 'Cash on delivery', 'woocommerce' );
+        $this->method_description = __( 'Have your customers pay with cash (or by other means) upon delivery.', 'woocommerce' );
+        $this->has_fields         = false;
+    }
 ```
 
 ### 三
