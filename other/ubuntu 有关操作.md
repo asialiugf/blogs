@@ -30,3 +30,8 @@ find .|xargs grep -ri "不能访问此页面" -l
  apt-get install astyle
  
 ```
+
+### ps + kill
+```
+kill -9 $(ps -ef | grep DataSer | grep -v grep | awk '{print $2}')
+```
