@@ -13,7 +13,7 @@ http://www.linuxidc.com/Linux/2009-12/23585.htm
 
 #### 使用C语言扩展Python3
 https://www.cnblogs.com/yaoyu126/p/6435912.html
-```
+```c
 apt-get update
 apt-get update --fix-missing
 apt-get install python3-dev
