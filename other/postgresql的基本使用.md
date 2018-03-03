@@ -301,7 +301,7 @@ drwx------  2 dbrun dbrun  4096 Jan  3 15:20 pg_xact/
 dbrun@d:~/data$ 
 ```
 #### 查看表
-```
+```c
 \dt
 
 future=# 
@@ -333,7 +333,7 @@ future=# \d
 future=# 
 ```
 #### 查看表结构  \d 表名
-```
+```c
 future=# \d kkk
                            Table "public.kkk"
     Column     |         Type          | Collation | Nullable | Default 
@@ -356,4 +356,10 @@ Indexes:
     "kkk_serials_key" UNIQUE CONSTRAINT, btree (serials)
 
 future=# 
+```
+#### 删除表
+```c
+demo=# DROP TABLE demo;
+DROP TABLE
+demo=# 
 ```
