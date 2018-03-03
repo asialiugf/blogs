@@ -32,6 +32,7 @@ pwd
 ```
 /usr/local/pgsql/bin/createdb -p 6688 future
 /usr/local/pgsql/bin/createdb -p 6688 future
+/usr/local/pgsql/bin/createdb -p 6688 future --username postgres
 ```
 
 ```c
@@ -298,4 +299,61 @@ drwx------  2 dbrun dbrun  4096 Jan  3 15:20 pg_xact/
 -rw-------  1 dbrun dbrun    88 Jan  3 15:20 postgresql.auto.conf
 -rw-------  1 dbrun dbrun 22764 Jan  3 15:20 postgresql.conf
 dbrun@d:~/data$ 
+```
+#### 查看表
+```
+\dt
+
+future=# 
+future=# CREATE TABLE kkk (
+future(#     datetime        VARCHAR(10) NOT NULL,
+future(#     ms              VARCHAR(10) NOT NULL,
+future(#     serials         VARCHAR UNIQUE NOT NULL,
+future(#     trading_day     VARCHAR(10),
+future(#     highest         DOUBLE PRECISION NOT NULL,
+future(#     lowest          DOUBLE PRECISION NOT NULL,
+future(#     last_price      DOUBLE PRECISION NOT NULL,
+future(#     ask_price1      DOUBLE PRECISION NOT NULL,
+future(#     ask_volume1     DOUBLE PRECISION NOT NULL,
+future(#     bid_price1      DOUBLE PRECISION NOT NULL,
+future(#     bid_volume1     DOUBLE PRECISION NOT NULL,
+future(#     open_interest   DOUBLE PRECISION NOT NULL,
+future(#     volume          DOUBLE PRECISION NOT NULL,
+future(#     PRIMARY KEY (datetime, ms)       
+future(# ); 
+CREATE TABLE
+future=# 
+future=# \d
+        List of relations
+ Schema | Name | Type  |  Owner   
+--------+------+-------+----------
+ public | kkk  | table | postgres
+(1 row)
+
+future=# 
+```
+#### 查看表结构  \d 表名
+```
+future=# \d kkk
+                           Table "public.kkk"
+    Column     |         Type          | Collation | Nullable | Default 
+---------------+-----------------------+-----------+----------+---------
+ datetime      | character varying(10) |           | not null | 
+ ms            | character varying(10) |           | not null | 
+ serials       | character varying     |           | not null | 
+ trading_day   | character varying(10) |           |          | 
+ highest       | double precision      |           | not null | 
+ lowest        | double precision      |           | not null | 
+ last_price    | double precision      |           | not null | 
+ ask_price1    | double precision      |           | not null | 
+ ask_volume1   | double precision      |           | not null | 
+ bid_price1    | double precision      |           | not null | 
+ bid_volume1   | double precision      |           | not null | 
+ open_interest | double precision      |           | not null | 
+ volume        | double precision      |           | not null | 
+Indexes:
+    "kkk_pkey" PRIMARY KEY, btree (datetime, ms)
+    "kkk_serials_key" UNIQUE CONSTRAINT, btree (serials)
+
+future=# 
 ```
