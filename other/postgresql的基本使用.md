@@ -363,3 +363,107 @@ demo=# DROP TABLE demo;
 DROP TABLE
 demo=# 
 ```
+
+#### 表的基本操作
+```c
+future=# 
+future=# CREATE TABLE TICK_1 (
+    datetime        VARCHAR(20) NOT NULL,
+    ms              VARCHAR(6) NOT NULL,  
+    serials         VARCHAR UNIQUE NOT NULL,
+    trading_day     VARCHAR(10),
+    highest         DOUBLE PRECISION NOT NULL,
+    lowest          DOUBLE PRECISION NOT NULL,
+    last_price      DOUBLE PRECISION NOT NULL,
+    ask_price1      DOUBLE PRECISION NOT NULL,
+    ask_volume1     DOUBLE PRECISION NOT NULL,
+    bid_price1      DOUBLE PRECISION NOT NULL,
+    bid_volume1     DOUBLE PRECISION NOT NULL,
+    open_interest   DOUBLE PRECISION NOT NULL,
+    volume          DOUBLE PRECISION NOT NULL,
+    PRIMARY KEY (datetime, ms)       
+); 
+CREATE TABLE
+future=# 
+future=# 
+future=# \d TICK_1
+                         Table "public.tick_1"
+    Column     |         Type          | Collation | Nullable | Default 
+---------------+-----------------------+-----------+----------+---------
+ datetime      | character varying(20) |           | not null | 
+ ms            | character varying(6)  |           | not null | 
+ serials       | character varying     |           | not null | 
+ trading_day   | character varying(10) |           |          | 
+ highest       | double precision      |           | not null | 
+ lowest        | double precision      |           | not null | 
+ last_price    | double precision      |           | not null | 
+ ask_price1    | double precision      |           | not null | 
+ ask_volume1   | double precision      |           | not null | 
+ bid_price1    | double precision      |           | not null | 
+ bid_volume1   | double precision      |           | not null | 
+ open_interest | double precision      |           | not null | 
+ volume        | double precision      |           | not null | 
+Indexes:
+    "tick_1_pkey" PRIMARY KEY, btree (datetime, ms)
+    "tick_1_serials_key" UNIQUE CONSTRAINT, btree (serials)
+
+future=# 
+future=# INSERT INTO TICK_1(datetime,ms,serials,trading_day,highest,lowest,last_price,ask_price1,ask_volume1,bid_price1,bid_volume1,open_interest,volume) VALUES ('20180101-22:30:15','000000','198142','2018-01-01',1243,1432,23,5,76,57,56,45,43);   
+INSERT 0 1
+future=# 
+future=# 
+future=# 
+future=# select * from TICK_1;
+     datetime      |   ms   | serials | trading_day | highest | lowest | last_price | ask_price1 | ask_volume1 | bid_price1 | bid_volume1 | open_int
+erest | volume 
+-------------------+--------+---------+-------------+---------+--------+------------+------------+-------------+------------+-------------+---------
+------+--------
+ 20180101-22:30:15 | 000000 | 198142  | 2018-01-01  |    1243 |   1432 |         23 |          5 |          76 |         57 |          56 |         
+   45 |     43
+(1 row)
+
+future=# 
+future=# INSERT INTO TICK_1(datetime,ms,serials,trading_day,highest,lowest,last_price,ask_price1,ask_volume1,bid_price1,bid_volume1,open_interest,volume) VALUES ('20180101-22:30:15','000000','198142','2018-01-01',1243,1432,23,5,76,57,56,45,43);
+ERROR:  duplicate key value violates unique constraint "tick_1_pkey"
+DETAIL:  Key (datetime, ms)=(20180101-22:30:15, 000000) already exists.
+future=# 
+future=# INSERT INTO TICK_1(datetime,ms,serials,trading_day,highest,lowest,last_price,ask_price1,ask_volume1,bid_price1,bid_volume1,open_interest,volume) VALUES ('20180101-22:30:15','500000','198142','2018-01-01',1243,1432,23,5,76,57,56,45,43);
+ERROR:  duplicate key value violates unique constraint "tick_1_serials_key"
+DETAIL:  Key (serials)=(198142) already exists.
+future=# 
+future=# INSERT INTO TICK_1(datetime,ms,serials,trading_day,highest,lowest,last_price,ask_price1,ask_volume1,bid_price1,bid_volume1,open_interest,volume) VALUES ('20180101-22:30:15','500000','198143','2018-01-01',1243,1432,23,5,76,57,56,45,43);
+INSERT 0 1
+future=# 
+future=# select * from TICK_1;
+     datetime      |   ms   | serials | trading_day | highest | lowest | last_price | ask_price1 | ask_volume1 | bid_price1 | bid_volume1 | open_int
+erest | volume 
+-------------------+--------+---------+-------------+---------+--------+------------+------------+-------------+------------+-------------+---------
+------+--------
+ 20180101-22:30:15 | 000000 | 198142  | 2018-01-01  |    1243 |   1432 |         23 |          5 |          76 |         57 |          56 |         
+   45 |     43
+ 20180101-22:30:15 | 500000 | 198143  | 2018-01-01  |    1243 |   1432 |         23 |          5 |          76 |         57 |          56 |         
+   45 |     43
+(2 rows)
+
+future=# 
+future=# select * from TICK_1 while datetime='20180101-22:30:15' and ms='500000';
+ERROR:  syntax error at or near "datetime"
+LINE 1: select * from TICK_1 while datetime='20180101-22:30:15' and ...
+                                   ^
+future=# 
+future=# select * from TICK_1 WHEN datetime='20180101-22:30:15' and ms='500000';     
+ERROR:  syntax error at or near "WHEN"
+LINE 1: select * from TICK_1 WHEN datetime='20180101-22:30:15' and m...
+                             ^
+future=# 
+future=# select * from TICK_1 where datetime='20180101-22:30:15' and ms='500000';     
+     datetime      |   ms   | serials | trading_day | highest | lowest | last_price | ask_price1 | ask_volume1 | bid_price1 | bid_volume1 | open_int
+erest | volume 
+-------------------+--------+---------+-------------+---------+--------+------------+------------+-------------+------------+-------------+---------
+------+--------
+ 20180101-22:30:15 | 500000 | 198143  | 2018-01-01  |    1243 |   1432 |         23 |          5 |          76 |         57 |          56 |         
+   45 |     43
+(1 row)
+
+future=# 
+```
