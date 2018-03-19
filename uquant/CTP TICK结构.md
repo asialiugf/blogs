@@ -15,7 +15,7 @@ struct CThostFtdcDepthMarketDataField								///深度行情
   double        LowestPrice;            ///最低价
   int           Volume;                 ///数量
   double        Turnover;               ///成交金额
-  double        Openinterest;           ///持仓量
+  double        OpenInterest;           ///持仓量
   double        ClosePrice;             ///今收盘
   double        SettlementPrice;        ///本次结算价
   double        UpperLimitPrice;        ///涨停板价
