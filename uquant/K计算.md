@@ -8,6 +8,7 @@
 【E】： tick > segE                          { curBar 结束，在此seg之外，while，再new 一个bar }   这种情况要处理 00:00:00 ----
 情形【E】要修改， 如果tick 是 00:00:00 其实也在 barE 之外，因为barE 是 24:00:00。但 tick < segE
 ```
+![](https://github.com/asialiugf/blogs/blob/master/uquant/k_calculte002.PNG)
 ### 情形2 ( mark >= 0 )
 ```
 tick > barE segE    有可能属于 【B】 ， 例如  seg1 (21:00:00—22:00:00) seg2(22:30:00—24:00:00) seg3(00:00:00—01:00:00) 属于一个BAR
