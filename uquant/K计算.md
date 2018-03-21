@@ -24,16 +24,18 @@
 tick > barE segE    有可能属于 【B】 ， 例如  seg1 (21:00:00—22:00:00) seg2(22:30:00—24:00:00) seg3(00:00:00—01:00:00) 属于一个BAR
 当 tick落于 seg2时，就出现这种情况。
 
-【A】：segE==tick <barE  { curseg 结束，} 0点：落在barE外
-【B】：segE< tick <barE  { curseg 结束，} 0点：落在barE外
+【A】：segE==tick <barE  { curseg 结束，} 
+【B】：segE< tick <barE  { curseg 结束，} 
 【C】：segE< tick==barE  { curbar 结束，}
 【D】：segE==tick==barE  { curbar 结束，}
-【E】：tick > segE barE  { curbar结束，在此seg之外，while，再new 一个bar 
+【E】：tick > segE barE  { }  1：0点问题  图中seg2问题
 
 情形【E】要修改， 如果tick 是 00:00:00 其实也在 barE 之外，因为barE 是 24:00:00。但 tick < barE
 
 ```
 -  情形2 会出现 barE<barB的情况 跨0点的情形。
+-  反向考虑，如果满足【A】【B】【C】【D】 属于正常情况。
+-  如果出现 segE > barE， 并且跨段， 就必须将其和 情形1分开，并且要考虑0点问题。
 
 ### 【情形3 ( mark <  0 )】
 - curiX = iSegNum ;
