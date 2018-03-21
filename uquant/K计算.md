@@ -31,8 +31,8 @@ segE <= barE :
 【D】：segE==tick==barE  { curbar 结束，}
 【E】：segE<=barE< tick  { }  1：0点问题  图中seg2问题
 
-【1】：segE>barE  ( segE<=tick<=24:00:00 || 00:00:00<barE )  属于上面的 【A】【B】
-【2】：segE>barE  ( tick > barE )
+【1】：segE>barE  ( segE <= tick <= 24:00:00 || 00:00:00 < tick < barE )  属于上面的 【A】【B】
+【2】：segE>barE  ( 除情形1之外的情形 )
 
 情形【E】要修改， 如果tick 是 00:00:00 其实也在 barE 之外，因为barE 是 24:00:00。但 tick < barE
 
