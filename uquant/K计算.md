@@ -1,5 +1,5 @@
 ![](https://github.com/asialiugf/blogs/blob/master/uquant/k_calculte001.PNG)
-### 情形1 ( mark == 0 )
+### 【情形1 ( mark == 0 )】
 ```c
 【A】：barE==tick <segE {newBar}
 【B】：barE <tick <segE {newBar也可能结束，再new一个bar}
@@ -20,7 +20,7 @@
 
 
 ![](https://github.com/asialiugf/blogs/blob/master/uquant/k_calculte002.PNG)
-### 情形2 ( mark >= 0 )
+### 【情形2 ( mark >= 0 )】
 ```c
 tick > barE segE    有可能属于 【B】 ， 例如  seg1 (21:00:00—22:00:00) seg2(22:30:00—24:00:00) seg3(00:00:00—01:00:00) 属于一个BAR
 当 tick落于 seg2时，就出现这种情况。
@@ -36,7 +36,7 @@ tick > barE segE    有可能属于 【B】 ， 例如  seg1 (21:00:00—22:00:0
 ```
 -  情形2 会出现 barE<barB的情况 跨0点的情形。
 
-### 情形3 ( mark <  0 )
+### 【情形3 ( mark <  0 )】
 - curiX = iSegNum ;
 - seg[idx]->mark = -1 ;
 - cB,cE,barB,barE curB curE 均为 "\0\0\0...." ;
