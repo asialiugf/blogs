@@ -1,11 +1,11 @@
 ![](https://github.com/asialiugf/blogs/blob/master/uquant/k_calculte001.PNG)
 ### 情形1 ( mark == 0 )
 ```
-【A】：barE==tick< segE { curBar 结束，newBar}
-【B】：barE <tick< segE { curBar 结束，newBar也可能结束，再new一个bar}
-【C】：barE <tick==segE { curBar 结束，此seg最后一个bar结束，此seg之外紧临再new一个bar} 除了多结束一个bar 以外，和下面一样 bar结束， seg也结束 
-【D】： barE == tick == segE  { curBar 结束，在此seg之外，紧临，再new 一个bar }          和后面一样 bar结束， seg也结束 
-【E】： tick > segE                          { curBar 结束，在此seg之外，while，再new 一个bar }   这种情况要处理 00:00:00 ----
+【A】：barE==tick < segE {newBar}
+【B】：barE <tick < segE {newBar也可能结束，再new一个bar}
+【C】：barE <tick ==segE {此seg最后一个bar结束，此seg之外紧临再new一个bar} 除了多结束一个bar 以外，和下面一样 bar结束， seg也结束 
+【D】：barE==tick ==segE {，在此seg之外，紧临，再new 一个bar }          和后面一样 bar结束， seg也结束 
+【E】：tick > segE  barE {在此seg之外，while，再new 一个bar }   这种情况要处理 00:00:00 ----
 情形【E】要修改， 如果tick 是 00:00:00 其实也在 barE 之外，因为barE 是 24:00:00。但 tick < segE
 ```
 ![](https://github.com/asialiugf/blogs/blob/master/uquant/k_calculte002.PNG)
@@ -23,3 +23,22 @@ tick > barE segE    有可能属于 【B】 ， 例如  seg1 (21:00:00—22:00:0
 
 ```
 ### 情形3 ( mark <  0 )
+- curiX = iSegNum ;
+- seg[idx]->mark = -1 ;
+- cB,cE,barB,barE 均为 "\0\0\0...." ;
+```
+  // ------- 最后多申请一个 seg. -- 用于最开始第一个Kbar处理。 ------
+  curiX = iSegNum ;
+  //idx = iSegNum ;
+  seg[idx] = (stSegment *)malloc(sizeof(stSegment)) ;
+  see_memzero(seg[idx]->cB,9);
+  see_memzero(seg[idx]->cE,9);
+  see_memzero(seg[idx]->barB,9);
+  see_memzero(seg[idx]->barE,9);
+  seg[idx]->iB =0;
+  seg[idx]->iE =0;
+  seg[idx]->bariB =0;
+  seg[idx]->bariE =0;
+  seg[idx]->mark = -1;
+  // ---------------------------- 初始化  bar0 bar1 ----------------
+```
