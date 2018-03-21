@@ -1,3 +1,4 @@
+![](https://github.com/asialiugf/blogs/blob/master/uquant/k_calculte001.PNG)
 ### 情形1 ( mark == 0 )
 ```
 【A】： barE == tick <  segE  { curBar 结束，newBar}
