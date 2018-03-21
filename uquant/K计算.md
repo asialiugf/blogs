@@ -32,8 +32,8 @@ segE <= barE :
 【B】：segE< tick <barE  { curseg 结束，} 
 【C】：segE< tick==barE  { curbar 结束，}
 【D】：segE==tick==barE  { curbar 结束，}
-【E】：segE<=barE< tick  { }  1：0点问题  图中seg2问题
-【F】：tick <segE<=barE
+【E】：segE<=barE< tick 
+【F】：tick <segE<=barE  { }   0点问题  图中seg2问题
 
 【1】：tick = segE > barE
 【2】：tick > segE > barE
