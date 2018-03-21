@@ -8,12 +8,15 @@
 【E】：tick > segE barE {在此seg之外，while，再new 一个bar }   这种情况要处理 00:00:00 ----
 情形【E】要修改， 如果tick 是 00:00:00 其实也在 barE 之外，因为barE 是 24:00:00。但 tick < segE
 ```
-- 情形1 只会有 barB<barE 还是 curB<curE 还是 segB<segE，不可能出现因为过了0点以后，segB>segE barB>barE curB>curE的情况。
-- 1 【E】 表示tick落在了seg之外。因为0点问题，可能会出现 tick < segB segE的情况。
-- 2 【E】 还有一种情况就是 00:00:00 000 这种 ms<500的情形，要算到前一个bar里。
-- 3 衔接问题： 周五晚盘 和 下周一的K柱衔接。
-- 4 开盘问题： 20：59：59 .......
-- 5 任意时候开机问题： ......
+- 1  情形1 只会有 barB<barE 还是 curB<curE 还是 segB<segE，不可能出现因为过了0点以后，segB>segE barB>barE curB>curE的情况。
+- 2  1【E】 表示tick落在了seg之外。因为0点问题，可能会出现 tick < segB segE的情况。
+- 3  1【E】 还有一种情况就是 00:00:00 000 这种 ms<500的情形，要算到前一个bar里。
+- 4  衔接问题： 周五晚盘 和 下周一的K柱衔接。
+- 5  开盘问题： 20：59：59 .......
+- 6  任意时候开机问题： ......
+
+
+
 
 ![](https://github.com/asialiugf/blogs/blob/master/uquant/k_calculte002.PNG)
 ### 情形2 ( mark >= 0 )
