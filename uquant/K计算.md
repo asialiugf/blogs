@@ -34,6 +34,8 @@ tick > barE segE    有可能属于 【B】 ， 例如  seg1 (21:00:00—22:00:0
 情形【E】要修改， 如果tick 是 00:00:00 其实也在 barE 之外，因为barE 是 24:00:00。但 tick < barE
 
 ```
+-  情形2 会出现 barE<barB的情况 跨0点的情形。
+
 ### 情形3 ( mark <  0 )
 - curiX = iSegNum ;
 - seg[idx]->mark = -1 ;
