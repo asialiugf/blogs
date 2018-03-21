@@ -18,7 +18,7 @@
 
 
 
-![](https://github.com/asialiugf/blogs/blob/master/uquant/k_calculte002.PNG)
+![](https://github.com/asialiugf/blogs/blob/master/uquant/k_calculte003.PNG)
 ### 【情形2 ( mark >= 0 )】
 ```c
 tick > barE segE    有可能属于 【B】 ， 例如  seg1 (21:00:00—22:00:00) seg2(22:30:00—24:00:00) seg3(00:00:00—01:00:00) 属于一个BAR
