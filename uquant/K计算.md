@@ -24,11 +24,15 @@
 tick > barE segE    有可能属于 【B】 ， 例如  seg1 (21:00:00—22:00:00) seg2(22:30:00—24:00:00) seg3(00:00:00—01:00:00) 属于一个BAR
 当 tick落于 seg2时，就出现这种情况。
 
+segE <= barE : 
 【A】：segE==tick <barE  { curseg 结束，} 
 【B】：segE< tick <barE  { curseg 结束，} 
 【C】：segE< tick==barE  { curbar 结束，}
 【D】：segE==tick==barE  { curbar 结束，}
-【E】：tick > segE barE  { }  1：0点问题  图中seg2问题
+【E】：segE<=barE< tick  { }  1：0点问题  图中seg2问题
+
+【1】：segE>barE  ( segE<=tick<=24:00:00 || 00:00:00<barE )  属于上面的 【A】【B】
+【2】：segE>barE  ( tick > barE )
 
 情形【E】要修改， 如果tick 是 00:00:00 其实也在 barE 之外，因为barE 是 24:00:00。但 tick < barE
 
