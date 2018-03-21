@@ -5,7 +5,10 @@
 【B】：barE <tick <segE  {可能结束两个bar}
 【C】：barE <tick==segE  {一次结束两个bar}   无0点问题
 【D】：barE==tick==segE  {结束当前bar}       无0点问题
-【E】：tick > segE barE  {结束当前bar}      1：0点问题（A B，见下）  2：无效tick问题   3：tick <segE问题  4：第一个tick 
+【E】：barE<=segE <tick
+【F】：tick <barE<=segE  {结束当前bar}      1：0点问题（A B，见下）  2：无效tick问题   3：tick <segE问题  4：第一个tick 
+
+
 ```
 - 1  情形1 只会有 barB<barE 还是 curB<curE 还是 segB<segE，不可能出现因为过了0点以后，segB>segE barB>barE curB>curE的情况。
 - 2  A  【E】 表示tick落在了seg之外。因为0点问题，可能会出现 tick < segB segE的情况。
@@ -30,6 +33,13 @@ segE <= barE :
 【C】：segE< tick==barE  { curbar 结束，}
 【D】：segE==tick==barE  { curbar 结束，}
 【E】：segE<=barE< tick  { }  1：0点问题  图中seg2问题
+【F】：tick <segE<=barE
+
+【1】：tick = segE > barE
+【2】：tick > segE > barE
+【3】：       segE > barE > tick
+【4】：       segE > barE = tick
+【5】：       segE > tick > barE
 
 【1】：segE>barE  ( segE <= tick <= 24:00:00 || 00:00:00 < tick <= barE )  属于上面的 【A】【B】
 【2】：segE>barE  ( tick>barE )
