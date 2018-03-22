@@ -1,19 +1,14 @@
 ![](https://github.com/asialiugf/blogs/blob/master/uquant/k_calculte001.PNG)
 ### 【情形1 ( mark == 0 )】
 ```c++
-barE = tick :
-【A】：barE==tick <segE  内   ==>  e         s         {结束当前bar}
+【C】：barE <tick==segE  外   ==>  a         s +  2    {一次结束两个bar}
 【D】：barE==tick==segE  外   ==>  a         s         {结束当前bar}
 
-barE < tick :
-【B】：barE <tick <segE  内   ==>  f         s or 2    {可能结束两个bar}
-【C】：barE <tick==segE  外   ==>  a         s +  2    {一次结束两个bar}
- 
- segE <tick :
 【E】：barE<=segE <tick  外   ==>  b         s
-
-barE > tick :
 【F】：tick <barE<=segE  外   ==>  b + 0?    s         {结束当前bar}   1：0点问题（A B，见下）  2：无效tick     4：第一个tick 
+
+【A】：barE==tick <segE  内   ==>  e         s         {结束当前bar}
+【B】：barE <tick <segE  内   ==>  f         s or 2    {可能结束两个bar}
 
 a: new bar next seg 
 b: new bar while(tick in seg) next seg 
