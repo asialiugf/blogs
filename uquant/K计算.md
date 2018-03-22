@@ -3,8 +3,8 @@
 ```c
 【A】：barE==tick <segE  {结束当前bar}
 【B】：barE <tick <segE  {可能结束两个bar}
-【C】：barE <tick==segE  {一次结束两个bar}   无0点问题
-【D】：barE==tick==segE  {结束当前bar}       无0点问题
+【C】：barE <tick==segE  {一次结束两个bar}    ==>  1+
+【D】：barE==tick==segE  {结束当前bar}        ==>  1
 【E】：barE<=segE <tick
 【F】：tick <barE<=segE  {结束当前bar}      1：0点问题（A B，见下）  2：无效tick问题   3：tick <segE问题  4：第一个tick 
 
@@ -28,18 +28,18 @@ tick > barE segE    有可能属于 【B】 ， 例如  seg1 (21:00:00—22:00:0
 当 tick落于 seg2时，就出现这种情况。
 
 segE <= barE : 
-【A】：segE==tick <barE  { curseg 结束，} 
-【B】：segE< tick <barE  { curseg 结束，} 
-【C】：segE< tick==barE  { curbar 结束，}
-【D】：segE==tick==barE  { curbar 结束，}
-【E】：segE<=barE< tick 
-【F】：tick <segE<=barE  { }   0点问题  图中seg2问题
+【A】：segE==tick <barE    内
+【B】：segE< tick <barE    内
+【C】：segE< tick==barE    外  ==>  1
+【D】：segE==tick==barE    外  ==>  1
+【E】：segE<=barE< tick    外
+【F】：tick <segE<=barE    外                        { }   0点问题   
 
-【1】：tick = segE > barE
-【2】：tick > segE > barE
-【3】：       segE > barE > tick
-【4】：       segE > barE = tick
-【5】：       segE > tick > barE
+【1】：tick = segE > barE         内
+【2】：tick > segE > barE         内                       图中seg2问题
+【3】：       segE > barE > tick  内
+【4】：       segE > barE = tick  外  ==>  1
+【5】：       segE > tick > barE  外  ==>  1+
 
 【1】：segE>barE  ( segE <= tick <= 24:00:00 || 00:00:00 < tick <= barE )  属于上面的 【A】【B】
 【2】：segE>barE  ( tick>barE )
