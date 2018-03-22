@@ -1,12 +1,12 @@
 ![](https://github.com/asialiugf/blogs/blob/master/uquant/k_calculte001.PNG)
 ### 【情形1 ( mark == 0 )】
 ```c
-【A】：barE==tick <segE  {结束当前bar}
-【B】：barE <tick <segE  {可能结束两个bar}
-【C】：barE <tick==segE  {一次结束两个bar}    ==>  1+
-【D】：barE==tick==segE  {结束当前bar}        ==>  1
-【E】：barE<=segE <tick
-【F】：tick <barE<=segE  {结束当前bar}      1：0点问题（A B，见下）  2：无效tick问题   3：tick <segE问题  4：第一个tick 
+【A】：barE==tick <segE  内  {结束当前bar}
+【B】：barE <tick <segE  内  {可能结束两个bar}
+【C】：barE <tick==segE  外   ==>  1+            {一次结束两个bar}
+【D】：barE==tick==segE  外   ==>  1             {结束当前bar}
+【E】：barE<=segE <tick  外 
+【F】：tick <barE<=segE  外             {结束当前bar}      1：0点问题（A B，见下）  2：无效tick问题   3：tick <segE问题  4：第一个tick 
 
 
 ```
@@ -35,11 +35,11 @@ segE <= barE :
 【E】：segE<=barE< tick    外
 【F】：tick <segE<=barE    外                        { }   0点问题   
 
-【1】：tick = segE > barE         内
-【2】：tick > segE > barE         内                       图中seg2问题
-【3】：       segE > barE > tick  内
-【4】：       segE > barE = tick  外  ==>  1
-【5】：       segE > tick > barE  外  ==>  1+
+【1】：tick = segE > barE           内
+【2】：tick > segE > barE           内                       图中seg2问题
+【3】：       segE > barE > tick    内
+【4】：       segE > barE = tick    外  ==>  1
+【5】：       segE > tick > barE    外  ==>  1+
 
 【1】：segE>barE  ( segE <= tick <= 24:00:00 || 00:00:00 < tick <= barE )  属于上面的 【A】【B】
 【2】：segE>barE  ( tick>barE )
