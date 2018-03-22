@@ -1,6 +1,6 @@
 ![](https://github.com/asialiugf/blogs/blob/master/uquant/k_calculte001.PNG)
 ### 【情形1 ( mark == 0 )】
-```c
+```c++
 【A】：barE==tick <segE  内   ==>  e         s         {结束当前bar}
 【B】：barE <tick <segE  内   ==>  f         s or 2    {可能结束两个bar}
 【C】：barE <tick==segE  外   ==>  a         s +  2    {一次结束两个bar}
@@ -28,7 +28,7 @@ s: send bar !!
 
 ![](https://github.com/asialiugf/blogs/blob/master/uquant/k_calculte003.PNG)
 ### 【情形2 ( mark >= 0 )】
-```c
+```c++
 tick > barE segE    有可能属于 【B】 ， 例如  seg1 (21:00:00—22:00:00) seg2(22:30:00—24:00:00) seg3(00:00:00—01:00:00) 属于一个BAR
 当 tick落于 seg2时，就出现这种情况。
 
