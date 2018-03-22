@@ -8,6 +8,8 @@ barE = tick :
 barE < tick :
 【B】：barE <tick <segE  内   ==>  f         s or 2    {可能结束两个bar}
 【C】：barE <tick==segE  外   ==>  a         s +  2    {一次结束两个bar}
+ 
+ segE <tick :
 【E】：barE<=segE <tick  外   ==>  b         s
 
 barE > tick :
