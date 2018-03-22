@@ -38,12 +38,12 @@ segE <= barE :
 【C】：segE< tick==barE    外  ==>  a             s
 【D】：segE==tick==barE    外  ==>  a             s
 【E】：segE<=barE< tick    外  ==>  b             s
-【F】：tick <segE<=barE    外  ==>  b + 0?        s                { }   0点问题   
+【F】：tick <segE<=barE    外  ==>  b + 0?        s             0点问题   
 
 segE > barE : 
-【1】：tick = segE > barE           内  ==>  c     
-【2】：tick > segE > barE           内  ==>  d                  图中seg2问题
-【3】：       segE > barE > tick    内  ==>  d
+【1】：tick = segE > barE           内  ==>  c                  图中seg1
+【2】：tick > segE > barE           内  ==>  d                  图中seg2 
+【3】：       segE > barE > tick    内  ==>  d                  图中seg3 4 5 
 【4】：       segE > barE = tick    外  ==>  a    s
 【5】：       segE > tick > barE    外  ==>  b    s
 
