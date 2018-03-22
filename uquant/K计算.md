@@ -35,17 +35,17 @@ tick > barE segE    有可能属于 【B】 ， 例如  seg1 (21:00:00—22:00:0
 segE <= barE : 
 【A】：segE==tick <barE    内  ==   c
 【B】：segE< tick <barE    内  ==>  d
-【C】：segE< tick==barE    外  ==>  a             s
-【D】：segE==tick==barE    外  ==>  a             s
-【E】：segE<=barE< tick    外  ==>  b             s
-【F】：tick <segE<=barE    外  ==>  b + 0?        s             0点问题   
+【C】：segE< tick==barE    外  ==>  a             s    tick==barE
+【D】：segE==tick==barE    外  ==>  a             s    tick==barE
+【E】：segE<=barE< tick    外  ==>  b             s    tick> barE
+【F】：tick <segE<=barE    外  ==>  b + 0?        s    tick< barE             0点问题   
 
 segE > barE : 
-【1】：tick = segE > barE           内  ==>  c                  图中seg1
-【2】：tick > segE > barE           内  ==>  d                  图中seg2 
-【3】：       segE > barE > tick    内  ==>  d                  图中seg3 4 5 
-【4】：       segE > barE = tick    外  ==>  a    s
-【5】：       segE > tick > barE    外  ==>  b    s
+【1】：tick = segE > barE           内  ==>  c                          图中seg1
+【2】：tick > segE > barE           内  ==>  d                          图中seg2 
+【3】：       segE > barE > tick    内  ==>  d                          图中seg3 4 5 
+【4】：       segE > barE = tick    外  ==>  a    s    tick==barE
+【5】：       segE > tick > barE    外  ==>  b    s    tick> barE
 
 a: new bar next seg 
 b: new bar while(tick in seg) next seg 
