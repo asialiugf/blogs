@@ -1,14 +1,15 @@
 ![](https://github.com/asialiugf/blogs/blob/master/uquant/k_calculte001.PNG)
 ### 【情形1 ( mark == 0 )】
 ```c++
-【C】：barE <tick==segE  外   ==>  a         s +  2    {一次结束两个bar}
-【D】：barE==tick==segE  外   ==>  a         s         {结束当前bar}
+【A】：barE==tick <segE  内   ==>  e         s         {结束当前bar}
+【B】：barE <tick <segE  内   ==>  f         s or 2    {可能结束两个bar}
+
+【C】：barE==tick==segE  外   ==>  a         s         {结束当前bar}
+【D】：barE <tick==segE  外   ==>  a         s +  2    {一次结束两个bar}
 
 【E】：barE<=segE <tick  外   ==>  b         s
 【F】：tick <barE<=segE  外   ==>  b + 0?    s         {结束当前bar}   1：0点问题（A B，见下）  2：无效tick     4：第一个tick 
 
-【A】：barE==tick <segE  内   ==>  e         s         {结束当前bar}
-【B】：barE <tick <segE  内   ==>  f         s or 2    {可能结束两个bar}
 
 a: new bar next seg 
 b: new bar while(tick in seg) next seg 
@@ -57,6 +58,31 @@ s: send bar !!
 
 【1】：segE>barE  ( segE <= tick <= 24:00:00 || 00:00:00 < tick <= barE )  属于上面的 【A】【B】
 【2】：segE>barE  ( tick>barE )
+
+
+segE <= barE : 
+
+
+【C】：segE< tick==barE    外  ==>  a             s    tick==barE
+【D】：segE==tick==barE    外  ==>  a             s    tick==barE
+【4】：segE> barE==tick    外  ==>  a             s    tick==barE
+
+【E】：segE<=barE< tick    外  ==>  b             s    tick> barE
+【F】：tick <segE<=barE    外  ==>  b + 0?        s    tick< barE             0点问题   
+【5】：segE >tick> barE    外  ==>  b             s    tick> barE
+
+【A】：segE==tick <barE    内  ==   c
+【1】：tick= segE> barE    内  ==>  c                          图中seg1
+
+【B】：segE< tick <barE    内  ==>  d
+【2】：tick> segE> barE    内  ==>  d                          图中seg2 
+【3】：segE> barE> tick    内  ==>  d                          图中seg3 4 5 
+
+
+
+
+
+
 
 情形【E】要修改， 如果tick 是 00:00:00 其实也在 barE 之外，因为barE 是 24:00:00。但 tick < barE
 
