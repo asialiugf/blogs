@@ -17,6 +17,17 @@ e: update bar + next bar
 f: update bar + while(tick in bar)
 s: send bar !!
 
+// 计算SendBar时的顺序：
+【A】：barE==tick <segE  内   ==>  e         s         {结束当前bar}
+【C】：barE==tick==segE  外   ==>  a         s         {结束当前bar}
+
+【B】：barE <tick <segE  内   ==>  f         s or 2    {可能结束两个bar}
+【D】：barE <tick==segE  外   ==>  a         s +  2    {一次结束两个bar}
+
+【E】：barE<=segE <tick  外   ==>  b         s
+
+【F】：tick <barE<=segE  外   ==>  b + 0?    s + 0?    {结束当前bar}   1：0点问题（A B，见下）  2：无效tick     4：第一个tick 
+
 ```
 - 1  情形1 只会有 barB<barE 还是 curB<curE 还是 segB<segE，不可能出现因为过了0点以后，segB>segE barB>barE curB>curE的情况。
 - 2  A  【E】 表示tick落在了seg之外。因为0点问题，可能会出现 tick < segB segE的情况。
