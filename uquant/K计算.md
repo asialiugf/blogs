@@ -73,6 +73,12 @@ s: send bar !!
 
 segE <= barE : 
 
+【A】：segE==tick <barE    内  ==   c
+【1】：tick= segE> barE    内  ==>  c                          图中seg1
+
+【B】：segE< tick <barE    内  ==>  d
+【2】：tick> segE> barE    内  ==>  d                          图中seg2 
+【3】：segE> barE> tick    内  ==>  d                          图中seg3 4 5 
 
 【C】：segE< tick==barE    外  ==>  a             s    tick==barE
 【D】：segE==tick==barE    外  ==>  a             s    tick==barE
@@ -82,15 +88,16 @@ segE <= barE :
 【F】：tick <segE<=barE    外  ==>  b + 0?        s    tick< barE             0点问题   
 【5】：segE >tick> barE    外  ==>  b             s    tick> barE
 
-【A】：segE==tick <barE    内  ==   c
-【1】：tick= segE> barE    内  ==>  c                          图中seg1
 
-【B】：segE< tick <barE    内  ==>  d
-【2】：tick> segE> barE    内  ==>  d                          图中seg2 
-【3】：segE> barE> tick    内  ==>  d                          图中seg3 4 5 
+// 计算SendBar时的顺序：
+【C】：segE< tick==barE    外  ==>  a             s    tick==barE
+【D】：segE==tick==barE    外  ==>  a             s    tick==barE
+【4】：segE> barE==tick    外  ==>  a             s    tick==barE
 
+【5】：segE >tick> barE    外  ==>  b             s    tick> barE
+【E】：segE<=barE< tick    外  ==>  b             s    tick> barE
 
-
+【F】：tick <segE<=barE    外  ==>  b + 0?        s    tick< barE             0点问题   
 
 
 
