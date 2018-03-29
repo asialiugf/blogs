@@ -14,14 +14,13 @@
     
 
 ```c++
-【A】：barE==tick <segE  内   ==>  a         s ?            {结束当前bar}
-【B】：barE <tick <segE  内   ==>  a+        s ? or 2       {可能结束两个bar}
 
-【C】：barE==tick==segE  外   ==>  c         s ?            {结束当前bar}
-【D】：barE <tick==segE  外   ==>  c+        s ? + or  2    {一次结束两个bar}
+【A】：barE <tick <segE  内   ==>  a+        s ? or 2       {可能结束两个bar}
 
-【E】：barE<=segE <tick  外   ==>  e         s ?
-【F】：tick <barE<=segE  外   ==>  e         s ?            {结束当前bar}   1：0点问题（A B，见下）  2：无效tick     4：第一个tick 
+【B】：barE <tick==segE  外   ==>  c+        s ? + or  2    {一次结束两个bar}
+
+【C】：barE<=segE <tick  外   ==>  e         s ?
+【D】：tick <barE<=segE  外   ==>  e         s ?            {结束当前bar}   1：0点问题（A B，见下）  2：无效tick     4：第一个tick 
 
 
 a: Newbar      NextBar         (same seg)
