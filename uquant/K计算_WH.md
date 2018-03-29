@@ -6,37 +6,30 @@
     21:00:00--24:00:00  00:00:00--02:30:00 这两个seg之间连续。 
 
 ```c++
-【A】：barE==tick <segE  外   ==>  e         s         {结束当前bar}
-【B】：barE <tick <segE  外   ==>  f         s or 2    {可能结束两个bar}
+【A】：barE==tick <segE  内   ==>  a         s ?            {结束当前bar}
+【B】：barE <tick <segE  内   ==>  a+        s ? or 2       {可能结束两个bar}
 
-【C】：barE==tick==segE  外   ==>  a         s         {结束当前bar}
-【D】：barE <tick==segE  外   ==>  a         s +  2    {一次结束两个bar}
+【C】：barE==tick==segE  外   ==>  c         s ?            {结束当前bar}
+【D】：barE <tick==segE  外   ==>  c+        s ? + or  2    {一次结束两个bar}
 
-【E】：barE<=segE <tick  外   ==>  b         s
-【F】：tick <barE<=segE  外   ==>  b + 0?    s         {结束当前bar}   1：0点问题（A B，见下）  2：无效tick     4：第一个tick 
+【E】：barE<=segE <tick  外   ==>  e         s ?
+【F】：tick <barE<=segE  外   ==>  e         s ?            {结束当前bar}   1：0点问题（A B，见下）  2：无效tick     4：第一个tick 
 
 
-a: new bar next seg 
-b: new bar while(tick in seg) next seg 
-e: update bar + next bar
-f: update bar + while(tick in bar)
-s: send bar !!
+a: Newbar      NextBar         (same seg)
+a+: NewBar  +   while(bar)      (same seg)
+c: if(SN)  update,  if(!SN) NextSeg, NextBar,
+c+: if(SN)  NewBar,  if(!SN) NextSeg, NextBar,
+
+e: while(seg) 
+
 
 // 计算SendBar时的顺序：
-【A】：barE==tick <segE  内   ==>  e         s         {结束当前bar}
-【C】：barE==tick==segE  外   ==>  a         s         {结束当前bar}
-
-【B】：barE <tick <segE  内   ==>  f         s or 2    {可能结束两个bar}
-【D】：barE <tick==segE  外   ==>  a         s +  2    {一次结束两个bar}
-
-【E】：barE<=segE <tick  外   ==>  b         s
-
-【F】：tick <barE<=segE  外   ==>  b + 0?    s + 0?    {结束当前bar}   1：0点问题（A B，见下）  2：无效tick     4：第一个tick 
+???
+???
 
 ```
-- 1  情形1 只会有 barB<barE 还是 curB<curE 还是 segB<segE，不可能出现因为过了0点以后，segB>segE barB>barE curB>curE的情况。
-- 2  A  【E】 表示tick落在了seg之外。因为0点问题，可能会出现 tick < segB segE的情况。
-- 3  B  【E】 还有一种情况就是 00:00:00 000 这种 ms<500的情形，要算到前一个bar里。
+
 - 4  衔接问题： 周五晚盘 和 下周一的K柱衔接。
 - 5  开盘问题： 20：59：59 .......
 - 6  任意时候开机问题： ......
@@ -52,25 +45,21 @@ tick > barE segE    有可能属于 【B】 ， 例如  seg1 (21:00:00—22:00:0
 当 tick落于 seg2时，就出现这种情况。
 
 segE <= barE : 
-【A】：segE==tick <barE    内  ==   c
-【B】：segE< tick <barE    内  ==>  d
-【C】：segE< tick==barE    外  ==>  a             s    tick==barE
-【D】：segE==tick==barE    外  ==>  a             s    tick==barE
-【E】：segE<=barE< tick    外  ==>  b             s    tick> barE
-【F】：tick <segE<=barE    外  ==>  b + 0?        s    tick< barE             0点问题   
+【A】：segE==tick <barE    内  ==   n
+【B】：segE< tick <barE    内  ==>  n
+【C】：segE< tick==barE    外  ==>  c             s    tick==barE
+【D】：segE==tick==barE    外  ==>  c             s    tick==barE
+【E】：segE<=barE< tick    外  ==>  e             s    tick> barE
+【F】：tick <segE<=barE    外  ==>  e             s    tick< barE
 
 segE > barE : 
 【1】：tick = segE > barE           内  ==>  c                          图中seg1
-【2】：tick > segE > barE           内  ==>  d                          图中seg2 
-【3】：       segE > barE > tick    内  ==>  d                          图中seg3 4 5 
-【4】：       segE > barE = tick    外  ==>  a    s    tick==barE
-【5】：       segE > tick > barE    外  ==>  b    s    tick> barE
+【2】：tick > segE > barE           内  ==>  c                          图中seg2 
+【3】：       segE > barE > tick    内  ==>  c                          图中seg3 4 5 
+【4】：       segE > barE = tick    外  ==>  e    s    tick==barE
+【5】：       segE > tick > barE    外  ==>  e    s    tick> barE
 
-a: new bar next seg 
-b: new bar while(tick in seg) next seg 
-c: update bar + next seg
-d: update bar + while(tick in seg)
-s: send bar !!
+ 
 
 【1】：segE>barE  ( segE <= tick <= 24:00:00 || 00:00:00 < tick <= barE )  属于上面的 【A】【B】
 【2】：segE>barE  ( tick>barE )
