@@ -18,15 +18,22 @@
 ```
 
 ![](https://github.com/asialiugf/blogs/blob/master/uquant/k_calculte001.PNG)
+
 ### 【情形1 ( mark == 0 )】
     seg[i]->sn : 用于记录这个seg和下一个seg之间是否连续。为1表示不连续 比如 09:00:00--10:15:00   10:30:00--11:30:00 这两个seg之间不连续
     21:00:00--24:00:00  00:00:00--02:30:00 这两个seg之间连续。 
     
+```c++
+【A】：barE <tick<=segE   内   ==>  a
+【C】：barE<=segE <tick   外   ==>  e
+【D】：tick <barE<=segE   外   ==>  e  24:00:00
 
+注： barE == tick 这种情况不用考虑， 会在 curB <= tick <= curE 处理掉。 （这里 curB == barB   curE == barE)
+a:  while( next barB <=  tick <= next barE ) {  if( tick == next barE ) {} ==> 将会处理到 tick==segE的情况; }
+```
 ```c++
 
 【A】：barE <tick <segE  内   ==>  a+        s ? or 2       {可能结束两个bar}
-
 【B】：barE <tick==segE  外   ==>  c+        s ? + or  2    {一次结束两个bar}
 
 【C】：barE<=segE <tick  外   ==>  e         s ?
@@ -57,6 +64,17 @@ e: while(seg)
 
 ![](https://github.com/asialiugf/blogs/blob/master/uquant/k_calculte003.PNG)
 ### 【情形2 ( mark >= 0 )】
+
+```c++
+segE <= barE : 
+【A】：segE <tick<=barE    内  ==   n
+【E】：segE<=barE< tick    外  ==>  e             s    tick> barE
+【F】：tick <segE<=barE    外  ==>  e             s    tick< barE
+
+
+```
+请考虑 24:00:00 之后 不连续的情况，最后的tick将是 00:00:00 000   00:00:00 500,要并入 24:00:00的K线中
+
 ```c++
 tick > barE segE    有可能属于 【B】 ， 例如  seg1 (21:00:00—22:00:00) seg2(22:30:00—24:00:00) seg3(00:00:00—01:00:00) 属于一个BAR
 当 tick落于 seg2时，就出现这种情况。
