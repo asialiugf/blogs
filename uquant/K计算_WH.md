@@ -12,6 +12,11 @@
 -  所有连续的seg，结束 seg->cE 都是减1 比如  21:00:00----23:59:59  <--连续--> 00:00:00----02:30:00 （iE与cE保持一致)
 -  跨段的 barB--barE 仍然是 整点
 
+```c
+805 i:9 iF:120 id:6:10, mk:1  sn:1  segBE:11:29:00-11:30:00 barBE:11:29:00--13:31:00  sgiBE:41340--41400  bariBE:41340--48660   barBxEx:6--7
+805 i:9 iF:120 id:7:10, mk:2  sn:0  segBE:13:30:00-13:30:59 barBE:11:29:00--13:31:00  sgiBE:48600--48659  bariBE:41340--48660   barBxEx:6--7
+```
+
 ![](https://github.com/asialiugf/blogs/blob/master/uquant/k_calculte001.PNG)
 ### 【情形1 ( mark == 0 )】
     seg[i]->sn : 用于记录这个seg和下一个seg之间是否连续。为1表示不连续 比如 09:00:00--10:15:00   10:30:00--11:30:00 这两个seg之间不连续
