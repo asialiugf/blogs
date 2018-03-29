@@ -6,8 +6,8 @@
     21:00:00--24:00:00  00:00:00--02:30:00 这两个seg之间连续。 
 
 ```c++
-【A】：barE==tick <segE  内   ==>  e         s         {结束当前bar}
-【B】：barE <tick <segE  内   ==>  f         s or 2    {可能结束两个bar}
+【A】：barE==tick <segE  外   ==>  e         s         {结束当前bar}
+【B】：barE <tick <segE  外   ==>  f         s or 2    {可能结束两个bar}
 
 【C】：barE==tick==segE  外   ==>  a         s         {结束当前bar}
 【D】：barE <tick==segE  外   ==>  a         s +  2    {一次结束两个bar}
