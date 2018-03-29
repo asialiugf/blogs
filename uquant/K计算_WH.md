@@ -1,5 +1,7 @@
 ![](https://github.com/asialiugf/blogs/blob/master/uquant/k_calculte001.PNG)
 ### 【情形1 ( mark == 0 )】
+    seg[i]->sn : 用于记录这个seg和下一个seg之间是否连续。为1表示不连续 比如 09:00:00--10:15:00   10:30:00--11:30:00 这两个seg之间不连续
+    21:00:00--24:00:00  00:00:00--02:30:00 这两个seg之间连续。 
 ```c++
 【A】：barE==tick <segE  内   ==>  e         s         {结束当前bar}
 【B】：barE <tick <segE  内   ==>  f         s or 2    {可能结束两个bar}
