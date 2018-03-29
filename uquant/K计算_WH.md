@@ -7,6 +7,11 @@
 - 在MARK==0时 curB--curE ，和bar保持一致。
 - 如果MARK>0,  curB--curE  则和seg保持一致，bar最后一个seg， curB--curE和bar保持一致。
 
+#### 初始化
+-  所有不连续的seg，结束 seg->cE 都是 整点 比如  09:00:00----10:15:00  <--不连续-->  10:30:00----11:30:00 （iE与cE保持一致)
+-  所有连续的seg，结束 seg->cE 都是减1 比如  21:00:00----23:59:59  <--连续--> 00:00:00----02:30:00 （iE与cE保持一致)
+-  跨段的 barB--barE 仍然是 整点
+
 ![](https://github.com/asialiugf/blogs/blob/master/uquant/k_calculte001.PNG)
 ### 【情形1 ( mark == 0 )】
     seg[i]->sn : 用于记录这个seg和下一个seg之间是否连续。为1表示不连续 比如 09:00:00--10:15:00   10:30:00--11:30:00 这两个seg之间不连续
