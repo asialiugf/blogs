@@ -10,7 +10,7 @@
  第二个参数   factory 就是后面的function。
 
 
-### 
+### Javascript 函数即对象
 */
 ```js
 (function(global, factory) {
@@ -37,6 +37,14 @@
 
 <script>
 (function(m){alert(m)}("ppppppppp"))
+/*
+相当于有一个函数：
+function(m) {
+  alert(m)
+}
+然后直接执行：
+function("pppppppppp")
+*/
  let kk = new barCharts()
  //kk.aa1()
  kk.aa2()
