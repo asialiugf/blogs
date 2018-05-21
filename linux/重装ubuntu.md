@@ -6,7 +6,7 @@ apt-get install vim-gui-common
 apt-get install vim-runtime  
 apt-get install git
 apt-get install libssl-dev
-
+apt-get lib32ncurses5 lib32z1
 
 ```
 # vim安装
@@ -26,4 +26,28 @@ git config credential.helper store
  cd uWebsockets
  make
  make install
+ ```
+ 
+ # grpc安装
+ #### protobuf 安装
+ ```c++
+$ git clone https://github.com/google/protobuf.git
+$ cd protobuf
+$ git submodule update --init --recursive
+$ ./autogen.sh
+$ ./configure
+$ make
+$ make check
+$ sudo make install
+$ sudo ldconfig # refresh shared library cache.
+ ```
+ #### grpc安装
+ ```c++
+ # cd source
+ # git clone https://github.com/grpc/grpc.git
+ # git submodule update --init
+ # cd grpc
+ # git submodule update --init
+ # make
+ # make install
  ```
