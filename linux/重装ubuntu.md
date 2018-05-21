@@ -8,6 +8,8 @@ apt-get install git
 apt-get install libssl-dev
 apt-get lib32ncurses5 lib32z1
 apt-get install cmake
+apt-get install uuid-dev
+
 
 ```
 # vim安装
