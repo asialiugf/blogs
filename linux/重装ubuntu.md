@@ -49,4 +49,8 @@ $ sudo ldconfig # refresh shared library cache.
  # git submodule update --init
  # make
  # make install
+ # cd third_party/protobuf
+ # make
+ # make install
  ```
+ 
