@@ -45,7 +45,6 @@ $ sudo ldconfig # refresh shared library cache.
  ```c++
  # cd source
  # git clone https://github.com/grpc/grpc.git
- # git submodule update --init
  # cd grpc
  # git submodule update --init
  # make
