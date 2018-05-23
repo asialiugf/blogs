@@ -13,6 +13,10 @@ https://www.percona.com/blog/2017/02/13/clickhouse-new-opensource-columnar-datab
 https://tech.yandex.com/catboost/
 https://www.altinity.com/blog/2018/1/18/clickhouse-for-machine-learning
 
+#### kdb+
+https://github.com/KxSystems/kdb
+https://code.kx.com/q/tutorials/in-memory-queries/
+
 #### books
 https://www.oreilly.com/openbook/linuxdrive3/book/
 
