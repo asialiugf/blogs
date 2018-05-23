@@ -11,4 +11,8 @@ https://stackoverflow.com/questions/885658/is-it-possible-to-allocate-in-user-sp
 #### clickhouse
 https://www.percona.com/blog/2017/02/13/clickhouse-new-opensource-columnar-database/ 
 
+#### books
+https://www.oreilly.com/openbook/linuxdrive3/book/
+
+
 
