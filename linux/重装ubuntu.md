@@ -1,3 +1,12 @@
+# 设置 sudo 用户
+```
+vi /etc/sudoers
+添加以下两行，将heaven用户设置为 sudo 用户。
+heaven  ALL=(ALL:ALL) ALL
+%sudo   ALL=(ALL:ALL) NOPASSWD: ALL
+```
+
+
 # 各种安装包
 ```c++
 apt-get update
