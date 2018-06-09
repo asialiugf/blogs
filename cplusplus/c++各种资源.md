@@ -6,5 +6,6 @@
 
 ##### 用 C++ 11 来实现 LINQ to Object
 - https://www.cnblogs.com/huangmingchuan/p/4988821.html
+
 微软出了一个C++ React Extension，也是实现了一套LINQ封装，也是基于IEnumerable的思想的，不过还实现了一套Observable，可以去看看。
 - https://github.com/Reactive-Extensions/RxCpp
