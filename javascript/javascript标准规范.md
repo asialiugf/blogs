@@ -1,0 +1,2 @@
+- http://hongfanqie.github.io/standardjs/
+- https://github.com/standard/standard
