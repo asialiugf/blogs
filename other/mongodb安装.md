@@ -3,6 +3,12 @@
 - https://blog.csdn.net/flyfish111222/article/details/51886787
 
 ### install
+```
+apt-get install mongodb
+vi /etc/mongodb.conf
+service mongodb start&
+mongo
+```
 
 
 ### redis
