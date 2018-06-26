@@ -1,9 +1,9 @@
 ubuntu下go语言安装
 
-https://golang.org/dl/
-https://www.golangtc.com/download
-https://studygolang.com/articles/2620
-http://www.runoob.com/go/go-environment.html
+- https://golang.org/dl/
+- https://www.golangtc.com/download
+- https://studygolang.com/articles/2620
+- http://www.runoob.com/go/go-environment.html
 
 nats-ionats-ioasyncio
 root # wget https://www.golangtc.com/static/go/1.9.2/go1.9.2.linux-amd64.tar.gz
@@ -15,7 +15,7 @@ wget https://redirector.gvt1.com/edgedl/go/go1.9.2.src.tar.gz
  riddle@asialine:~$ cat /proc/cpuinfo | grep name | cut -f2 -d: | uniq -c
       8  Intel(R) Core(TM) i7-6770HQ CPU @ 2.60GHz
 
-https://www.cnblogs.com/mafeng/p/6558941.html
+- https://www.cnblogs.com/mafeng/p/6558941.html
 
 ```
 环境变量设置如下：
