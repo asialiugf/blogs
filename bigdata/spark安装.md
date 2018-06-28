@@ -9,6 +9,9 @@
 - https://blog.csdn.net/huochen1994/article/details/79395934
 - http://www.aboutyun.com/thread-20808-1-1.html
 
+博客汇总
+- http://blog.51cto.com/lqding/1769311
+
 ```c
 export GOPATH=/go
 export GOROOT=/usr/local/go
