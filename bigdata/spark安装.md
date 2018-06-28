@@ -9,6 +9,7 @@
 - https://blog.csdn.net/huochen1994/article/details/79395934
 - http://www.aboutyun.com/thread-20808-1-1.html
 - http://www.360doc.com/content/16/1209/20/29770038_613374182.shtml
+- http://www.aboutyun.com/forum.php?mod=viewthread&tid=24432&fromguid=hot
 
 博客汇总
 - http://blog.51cto.com/lqding/1769311
