@@ -2,6 +2,7 @@
 - http://www.powerxing.com/spark-quick-start-guide/
 - https://blog.csdn.net/red_stone1/article/details/71330101
 - https://blog.csdn.net/microsoft2014/article/details/54572502
+- https://www.jianshu.com/p/55a7fcd79f0e
 
 ```c
 export GOPATH=/go
