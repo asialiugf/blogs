@@ -4,6 +4,9 @@
 - https://blog.csdn.net/microsoft2014/article/details/54572502
 - https://www.jianshu.com/p/55a7fcd79f0e
 
+### 其它
+- https://www.linuxidc.com/Linux/2017-10/147220.htm
+
 ```c
 export GOPATH=/go
 export GOROOT=/usr/local/go
