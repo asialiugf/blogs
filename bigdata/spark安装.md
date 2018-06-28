@@ -6,6 +6,7 @@
 
 ### 其它
 - https://www.linuxidc.com/Linux/2017-10/147220.htm
+- https://blog.csdn.net/huochen1994/article/details/79395934
 
 ```c
 export GOPATH=/go
