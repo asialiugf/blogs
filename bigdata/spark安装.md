@@ -67,3 +67,5 @@ client:
 ### 解密SparkStreaming另类实验及SparkStreaming本质解析
 第1课：SparkStreaming 三板斧之一：解密SparkStreaming另类实验及SparkStreaming本质解析
 - https://www.cnblogs.com/tom-lee/p/5452086.html
+spark自带的PageView测试用例
+- https://blog.csdn.net/sinat_18497785/article/details/52311410
