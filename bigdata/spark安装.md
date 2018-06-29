@@ -15,6 +15,9 @@
 博客汇总
 - http://blog.51cto.com/lqding/1769311
 
+spark的安装：
+
+从网站上下载 jdk,scala,spark,并tar xvf 展开到相应的目录，设置以下环境变量：
 ```c
 export GOPATH=/go
 export GOROOT=/usr/local/go
