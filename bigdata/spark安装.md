@@ -38,6 +38,15 @@ export PATH=${SPARK_HOME}/bin:$PATH
 export SBT_HOME=/opt/scala/sbt
 export PATH=${SBT_HOME}/bin:$PATH 
 ```
+stb是一个shell程序：
+```c++
+root@iZ23psatkqsZ:/bin# cat /opt/scala/sbt/bin/sbt
+# SBT_OPTS="-Xms512M -Xmx1536M -Xss1M -XX:+CMSClassUnloadingEnabled -XX:MaxPermSize=256M"
+# SBT_OPTS="-Xms512M -Xmx512M -Xss1M -XX:+CMSClassUnloadingEnabled -XX:MaxPermSize=256M"
+#SBT_OPTS=""
+java $SBT_OPTS -jar /opt/scala/sbt/bin/sbt-launch.jar "$@"
+root@iZ23psatkqsZ:/bin#
+```
 
 ### nc 基本使用
 - https://blog.csdn.net/wangqingchuan92/article/details/79666885
