@@ -69,3 +69,42 @@ client:
 - https://www.cnblogs.com/tom-lee/p/5452086.html
 spark自带的PageView测试用例
 - https://blog.csdn.net/sinat_18497785/article/details/52311410
+
+### 官方例子
+- http://spark.apache.org/examples.html
+
+```scala
+# spark-shell
+scala> val count = sc.parallelize(1 to 5).filter { _ =>
+     |   val x = math.random
+     |   val y = math.random
+     |   x*x + y*y < 1
+     | }.count()
+count: Long = 4                                                                 
+
+scala> println(s"Pi is roughly ${4.0 * count / 5 S}")
+<console>:26: error: value S is not a member of Double
+       println(s"Pi is roughly ${4.0 * count / 5 S}")
+                                                 ^
+
+scala> 
+
+scala> println(s"Pi is roughly ${4.0 * count / 5 S}")
+<console>:26: error: value S is not a member of Double
+       println(s"Pi is roughly ${4.0 * count / 5 S}")
+                                                 ^
+
+scala> 
+
+scala> println(s"Pi is roughly ${4.0 * count / 5}")
+Pi is roughly 3.2
+
+scala> 
+
+scala> println(s"Pi is roughly ${4.0 * count / 5}")
+Pi is roughly 3.2
+
+scala> 
+```
+
+
