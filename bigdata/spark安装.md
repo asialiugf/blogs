@@ -35,3 +35,6 @@ export PATH=${SPARK_HOME}/bin:$PATH
 export SBT_HOME=/opt/scala/sbt
 export PATH=${SBT_HOME}/bin:$PATH 
 ```
+
+### nc 基本使用
+- https://blog.csdn.net/wangqingchuan92/article/details/79666885
