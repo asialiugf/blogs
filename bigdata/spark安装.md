@@ -39,6 +39,8 @@ export PATH=${SBT_HOME}/bin:$PATH
 ### nc 基本使用
 - https://blog.csdn.net/wangqingchuan92/article/details/79666885
 ```c
+apt-get -y install netcat-traditional 
+
 server:
 nc.traditional -l -p 10000 -e /bin/bash 
 client:
