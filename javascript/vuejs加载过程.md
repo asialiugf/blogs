@@ -55,6 +55,7 @@ module.exports = {
 ### vue安装
 ##### cli官网
 - https://cli.vuejs.org/guide/creating-a-project.html#installation
+- http://www.php.cn/js-tutorial-391730.html
 ```js
 npm install vue
 npm install -g @vue/cli
