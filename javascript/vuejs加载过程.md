@@ -52,3 +52,10 @@ module.exports = {
       config.dev.assetsPublicPath
   },
 ```
+### vue安装
+##### cli官网
+- https://cli.vuejs.org/guide/creating-a-project.html#installation
+```js
+npm install vue
+npm install -g @vue/cli
+```
