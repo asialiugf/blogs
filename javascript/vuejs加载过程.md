@@ -60,3 +60,11 @@ module.exports = {
 npm install vue
 npm install -g @vue/cli
 ```
+### 创建一个新项目
+```js
+$ vue create hello
+$ cd hello
+$ npm run serve  //运行
+```
+在浏览器上 http://192.168.3.71:8080/ 显示.
+
