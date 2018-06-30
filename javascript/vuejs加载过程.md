@@ -52,7 +52,7 @@ module.exports = {
       config.dev.assetsPublicPath
   },
 ```
-### vue安装
+### vue3.0安装
 ##### cli官网
 - https://cli.vuejs.org/guide/creating-a-project.html#installation
 - http://www.php.cn/js-tutorial-391730.html
@@ -77,6 +77,7 @@ Beautify
 
 ### 
 - https://www.jianshu.com/p/2bcdce1dc8d4
+
 要注意: eslint --init这个命令必须在 自建的工程目录下执行.
 ```js
  npm i eslint -g
