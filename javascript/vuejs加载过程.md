@@ -74,3 +74,19 @@ VS Code ESLint extension
 Vetur 
 Beautify
 ```
+
+### 
+- https://www.jianshu.com/p/2bcdce1dc8d4
+要注意: eslint --init这个命令必须在 自建的工程目录下执行.
+```js
+ npm i eslint -g
+ eslint  --init
+ 
+```
+在vscode中 文件--首选项--设置-->输入 eslint.options,点击前面的铅笔图标,在用户设置中加入以下:
+```js
+{
+    "editor.fontSize": 16,
+    "eslint.options": {"configFile": "/github.com/hello/.eslintrc.js"},
+}
+```
