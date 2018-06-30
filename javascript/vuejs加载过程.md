@@ -68,3 +68,9 @@ $ npm run serve  //运行
 ```
 在浏览器上 http://192.168.3.71:8080/ 显示.
 
+### vscode 安装 插件
+```js
+VS Code ESLint extension
+Vetur 
+Beautify
+```
