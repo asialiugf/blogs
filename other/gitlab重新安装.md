@@ -53,4 +53,3 @@ root@henrongyi:/opt/gitlab# gitlab-ctl restart
 [操作指引]( http://192.168.66.254/users/techservice/projects)
 
 ```
-```
