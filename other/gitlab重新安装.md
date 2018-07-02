@@ -35,3 +35,22 @@ irb(main):004:0> user.save!
 => true
 irb(main):005:0> quit
 ```
+### 操作维护
+```js
+root@henrongyi:/opt/gitlab# vi /etc/gitlab/gitlab.rb
+root@henrongyi:/opt/gitlab# gitlab-ctl stop
+root@henrongyi:/opt/gitlab# gitlab-ctl restart
+```
+
+### 界面修改
+以root用户登录，点击 admin area，进入配置，Appearance settings，修改logo，首页。
+
+修改 Sign in/Sign up pages: 添加相关链接。
+```js
+欢迎来到技术服务之家。
+
+
+[操作指引]( http://192.168.66.254/users/techservice/projects)
+
+```
+```
