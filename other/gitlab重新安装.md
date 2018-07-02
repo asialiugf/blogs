@@ -35,6 +35,33 @@ irb(main):004:0> user.save!
 => true
 irb(main):005:0> quit
 ```
+### 汉化
+- https://www.cnblogs.com/cheng95/p/8037865.html
+- 看第三部分
+
+下面的当前的操作
+```js
+cat /opt/gitlab/embedded/service/gitlab-rails/VERSION
+11.0.2
+
+#这里也是多方总结
+git clone https://gitlab.com/xhang/gitlab.git
+cd gitlab/
+git fetch
+
+gitlab-ctl stop
+
+git diff origin/11-0-stable origin/11-0-stable-zh > /tmp/kkk
+cd /opt/gitlab/embedded/service/gitlab-rails
+git apply /tmp/kkk
+patch -d/opt/gitlab/embedded/service/gitlab-rails -p1 < /tmp/kkk
+
+#这步好像可以不用，我直接打上了
+gitlab-ctl reconfigure
+#启动
+gitlab-ctl start
+```
+
 ### 操作维护
 ```js
 root@henrongyi:/opt/gitlab# vi /etc/gitlab/gitlab.rb
