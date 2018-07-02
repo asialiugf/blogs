@@ -10,7 +10,14 @@ sudo dpkg -r gitlab-ce
 sudo rpm -e gitlab-ce
 ```
 ### 安装gitlib-ce
+- https://about.gitlab.com/installation/#ubuntu
+
+注意安装社区版本 gitlab-ce
 ```c
+sudo apt-get install -y curl openssh-server ca-certificates
+sudo apt-get install -y postfix
+curl -sS https://packages.gitlab.com/install/repositories/gitlab/gitlab-ce/script.deb.sh | sudo bash
+sudo EXTERNAL_URL =“http://gitlab.example.com”apt-get install gitlab-ce
 
 ```
 ### 修改密码
