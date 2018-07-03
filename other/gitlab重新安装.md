@@ -27,9 +27,9 @@ sudo EXTERNAL_URL =“http://gitlab.example.com”apt-get install gitlab-ce
 Loading production environment (Rails 4.2.5.2)
 irb(main):001:0> user = User.where(id: 1).first
 => #<User id: 1, email: "admin@example.com", ...
-irb(main):002:0> user.password=12345678
-=> 12345678
-irb(main):003:0> user.password_confirmation=12345678
+irb(main):002:0> user.password="TT12345678"
+=> TT12345678
+irb(main):003:0> user.password_confirmation="TT12345678"
 => 12345678
 irb(main):004:0> user.save!
 => true
