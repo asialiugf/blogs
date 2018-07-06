@@ -1,3 +1,10 @@
+### 安装模式
+- https://blog.csdn.net/songhao22/article/details/79069983
+
+Spark最主要资源管理方式按排名为Hadoop Yarn, Apache Standalone 和Mesos。在单机使用时，Spark还可以采用最基本的local模式。
+
+Spark On Mesos模式，这是很多公司采用的模式，官方推荐这种模式（当然，原因之一是血缘关系）
+
 ###
 - http://www.powerxing.com/spark-quick-start-guide/
 - https://blog.csdn.net/red_stone1/article/details/71330101
