@@ -134,4 +134,6 @@ Pi is roughly 3.2
 scala> 
 ```
 
+### 快速开始
+- http://spark.apache.org/docs/latest/quick-start.html
 
