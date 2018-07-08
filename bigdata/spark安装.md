@@ -154,6 +154,11 @@ scala>
 在 http://192.168.66.254:8081/# 上可以看到 相应的 master slave Executor的相关信息。
 
 参考：
+
+各模式下运行spark自带实例SparkPi
 - https://blog.csdn.net/yt_sports/article/details/50424522
+
+Spark-shell和Spark-Submit的使用
+- https://www.cnblogs.com/zmdandy/p/6255937.html
 
 
