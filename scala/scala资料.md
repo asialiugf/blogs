@@ -6,3 +6,4 @@ Scala 课堂!
 - http://twitter.github.io/scala_school/zh_cn/index.html
 - https://stackoverflow.com/tags/scala/info
 - https://www.artima.com/pins1ed/a-scalable-language.html
+- https://www.artima.com/pins1ed/
