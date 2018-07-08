@@ -161,4 +161,7 @@ scala>
 Spark-shell和Spark-Submit的使用
 - https://www.cnblogs.com/zmdandy/p/6255937.html
 
+##### 查看jobs
+- http://192.168.66.254:4040/jobs/
+
 
