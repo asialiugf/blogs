@@ -25,6 +25,17 @@ Spark On Mesos模式，这是很多公司采用的模式，官方推荐这种模
 spark的安装：
 
 从网站上下载 jdk,scala,spark,并tar xvf 展开到相应的目录，设置以下环境变量：
+
+##### jdk
+- http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html
+
+##### scala
+- https://www.scala-lang.org/download/
+
+##### spark
+- http://spark.apache.org/downloads.html
+
+##### 修改/etc/profile
 ```c
 export GOPATH=/go
 export GOROOT=/usr/local/go
@@ -87,7 +98,16 @@ scala> val count = sc.parallelize(1 to 5).filter { _ =>
      |   val y = math.random
      |   x*x + y*y < 1
      | }.count()
-count: Long = 4                                                                 
+count: Long = 4  
+
+scala> val count = sc.parallelize(1 to 5).filter { _ =>
+        val x = math.random
+        val y = math.random
+        x*x + y*y < 1
+      }.count()
+
+
+
 
 scala> println(s"Pi is roughly ${4.0 * count / 5 S}")
 <console>:26: error: value S is not a member of Double
