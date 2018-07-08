@@ -141,10 +141,15 @@ scala>
 ```js
 :/opt/spark/spark-2.3.1-bin-hadoop2.7/sbin# ./start-master.sh -i 192.168.66.254
 :/opt/spark/spark-2.3.1-bin-hadoop2.7/sbin# ./start-slave.sh spark://192.168.66.254:7077
+:/opt/spark/spark-2.3.1-bin-hadoop2.7/sbin# spark-shell --master spark://192.168.66.254:7077
 ```
 这时候，可以查看logs目录下的文件，看master开启的是哪个监听端口，然后在 浏览器打开 192.168.66.254:8081
 ```js
 :/opt/spark/spark-2.3.1-bin-hadoop2.7/logs
+```
+#### 提交任务
+```js
+:/opt/spark/spark-2.3.1-bin-hadoop2.7# ./bin/spark-submit --class org.apache.spark.examples.SparkPi --master spark://192.168.66.254:7077 /opt/spark/spark-2.3.1-bin-hadoop2.7/examples/jars/spark-examples_2.11-2.3.1.jar
 ```
 
 
