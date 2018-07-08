@@ -164,4 +164,7 @@ Spark-shell和Spark-Submit的使用
 ##### 查看jobs
 - http://192.168.66.254:4040/jobs/
 
-
+##### 在普通用户下提交任务
+```js
+fileserv@:/opt/spark/spark-2.3.1-bin-hadoop2.7$ ./bin/spark-submit run-example --master spark://192.168.66.254:7077 sql.SparkSQLExample
+```
