@@ -148,6 +148,10 @@ scala>
 :/opt/spark/spark-2.3.1-bin-hadoop2.7/logs
 ```
 #### 提交任务
+官方文档：
+
+- http://spark.apache.org/docs/latest/submitting-applications.html
+
 ```js
 :/opt/spark/spark-2.3.1-bin-hadoop2.7# ./bin/spark-submit --class org.apache.spark.examples.SparkPi --master spark://192.168.66.254:7077 /opt/spark/spark-2.3.1-bin-hadoop2.7/examples/jars/spark-examples_2.11-2.3.1.jar
 ```
