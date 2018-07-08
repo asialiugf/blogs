@@ -151,6 +151,7 @@ scala>
 ```js
 :/opt/spark/spark-2.3.1-bin-hadoop2.7# ./bin/spark-submit --class org.apache.spark.examples.SparkPi --master spark://192.168.66.254:7077 /opt/spark/spark-2.3.1-bin-hadoop2.7/examples/jars/spark-examples_2.11-2.3.1.jar
 ```
+在 http://192.168.66.254:8081/# 上可以看到 相应的 master slave Executor的相关信息。
 
 
 
