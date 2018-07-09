@@ -23,3 +23,6 @@ Understanding Play2 Iteratees for Normal Humans
 - http://mandubian.com/2012/08/27/understanding-play2-iteratees-for-normal-humans/
 
 - https://stackoverflow.com/questions/26952366/is-haskells-laziness-an-elegant-alternative-to-pythons-generators
+
+### 基础
+- https://docs.scala-lang.org/tour/basics.html
