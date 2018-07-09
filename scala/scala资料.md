@@ -12,3 +12,6 @@ Scala 课堂!
 知乎 如何学好Scala？请给出一条科学的时间线
 - https://www.zhihu.com/question/26707124/answer/36476090
 - https://www.zhihu.com/search?type=content&q=twitter%20scala
+
+写点什么 有关jvm,scala与后端架构
+- http://hongjiang.info/scala/
