@@ -17,6 +17,9 @@ Scala 课堂!
 - http://hongjiang.info/scala/
 
 Understanding Play2 Iteratees for Normal Humans
+
+了解普通人的Play2 Iteratees
+
 - http://mandubian.com/2012/08/27/understanding-play2-iteratees-for-normal-humans/
 
 - https://stackoverflow.com/questions/26952366/is-haskells-laziness-an-elegant-alternative-to-pythons-generators
