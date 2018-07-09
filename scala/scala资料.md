@@ -8,3 +8,7 @@ Scala 课堂!
 - https://www.artima.com/pins1ed/a-scalable-language.html
 - https://www.artima.com/pins1ed/
 - https://blog.csdn.net/u013063153/article/details/53023852
+
+知乎 如何学好Scala？请给出一条科学的时间线
+- https://www.zhihu.com/question/26707124/answer/36476090
+- https://www.zhihu.com/search?type=content&q=twitter%20scala
