@@ -15,3 +15,8 @@ Scala 课堂!
 
 写点什么 有关jvm,scala与后端架构
 - http://hongjiang.info/scala/
+
+Understanding Play2 Iteratees for Normal Humans
+- http://mandubian.com/2012/08/27/understanding-play2-iteratees-for-normal-humans/
+
+- https://stackoverflow.com/questions/26952366/is-haskells-laziness-an-elegant-alternative-to-pythons-generators
