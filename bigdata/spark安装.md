@@ -173,3 +173,6 @@ Spark-shell和Spark-Submit的使用
 ```js
 fileserv@:/opt/spark/spark-2.3.1-bin-hadoop2.7$ ./bin/spark-submit run-example --master spark://192.168.66.254:7077 sql.SparkSQLExample
 ```
+
+### Spark项目之电商用户行为分析大数据平台之（十二）Spark上下文构建及模拟数据生成
+- https://www.cnblogs.com/qingyunzong/category/1219125.html
