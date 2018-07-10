@@ -18,6 +18,7 @@ Spark On Mesos模式，这是很多公司采用的模式，官方推荐这种模
 - http://www.360doc.com/content/16/1209/20/29770038_613374182.shtml
 - http://www.aboutyun.com/forum.php?mod=viewthread&tid=24432&fromguid=hot
 - https://blog.csdn.net/jianghuxiaojin/article/details/51452593
+- https://blog.csdn.net/github_33934628/article/details/73835140
 
 博客汇总
 - http://blog.51cto.com/lqding/1769311
