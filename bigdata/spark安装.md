@@ -180,3 +180,5 @@ fileserv@:/opt/spark/spark-2.3.1-bin-hadoop2.7$ ./bin/spark-submit run-example -
 - https://www.cnblogs.com/qingyunzong/category/1202252.html
 ###### 使用Flume+Kafka+SparkStreaming进行实时日志分析
 - https://blog.csdn.net/trigl/article/details/70237981
+###### 【Spark五十二】Spark Streaming整合Flume-NG一
+- http://bit1129.iteye.com/blog/2184467
