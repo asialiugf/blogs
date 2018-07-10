@@ -178,3 +178,5 @@ fileserv@:/opt/spark/spark-2.3.1-bin-hadoop2.7$ ./bin/spark-submit run-example -
 - https://www.cnblogs.com/qingyunzong/category/1219125.html
 ###### Spark学习之路 （二十八）分布式图计算系统
 - https://www.cnblogs.com/qingyunzong/category/1202252.html
+###### 使用Flume+Kafka+SparkStreaming进行实时日志分析
+- https://blog.csdn.net/trigl/article/details/70237981
