@@ -16,5 +16,5 @@
 - https://www.jianshu.com/p/f5aa9f604351
 ##### 爬虫项目（二）用phantomjs做爬虫
 - https://blog.csdn.net/u014798883/article/details/54976829/
-##### https://www.cnblogs.com/jinxiao-pu/p/6677782.html
-- python爬虫积累（一）--------selenium+python+PhantomJS的使用
+##### python爬虫积累（一）--------selenium+python+PhantomJS的使用
+- https://www.cnblogs.com/jinxiao-pu/p/6677782.html
