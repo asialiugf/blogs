@@ -5,6 +5,9 @@
 - https://yq.aliyun.com/articles/136451
 ##### Java Mail API及其应用 ―― 一个邮件列表服务器的实现 （四）
 - https://www.aliyun.com/jiaocheng/346133.html
+- https://www.aliyun.com/jiaocheng/346132.html
+- http://www.oracle.com/technetwork/java/javamail/index.html
+- https://stackoverflow.com/questions/tagged/javamail
 
 ##### 控制您的服务器
 - https://github.com/firehol/netdata
