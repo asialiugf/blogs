@@ -18,6 +18,8 @@
 - https://www.jianshu.com/p/f5aa9f604351
 ##### 爬虫项目（二）用phantomjs做爬虫
 - https://blog.csdn.net/u014798883/article/details/54976829/
+##### Node.js 动态网页爬取 PhantomJS 使用入门
+- https://blog.csdn.net/qq_21265915/article/details/65626712
 ##### python爬虫积累（一）--------selenium+python+PhantomJS的使用
 - https://www.cnblogs.com/jinxiao-pu/p/6677782.html
 ##### 入门 Webpack，看这篇就够了
