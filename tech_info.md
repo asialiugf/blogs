@@ -3,6 +3,8 @@
 
 ##### SpringBoot开发案例之整合mail发送服务
 - https://yq.aliyun.com/articles/136451
+##### Java Mail API及其应用 ―― 一个邮件列表服务器的实现 （四）
+- https://www.aliyun.com/jiaocheng/346133.html
 
 ##### 控制您的服务器
 - https://github.com/firehol/netdata
