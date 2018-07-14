@@ -31,3 +31,4 @@
 
 ### 运维
 - Zabbix netdata
+- http://www.mottoin.com/102599.html OpenLDAP 
