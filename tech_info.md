@@ -32,3 +32,4 @@
 ### 运维
 - Zabbix netdata
 - http://www.mottoin.com/102599.html OpenLDAP 
+- http://blog.51cto.com/namtsorye/1737552
