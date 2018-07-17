@@ -104,5 +104,17 @@ Zend Engine v2.4.0, Copyright (c) 1998-2014 Zend Technologies
 [root@localhost bin]# 
 ```
 
-
-
+### the Apache HTTP Server版本
+```c
+[root@localhost bin]# 
+[root@localhost bin]# /usr/local/apache/bin/httpd -v
+Server version: Apache/2.4.23 (Unix)
+Server built:   Sep 10 2016 02:32:03
+[root@localhost bin]# 
+```
+```c
+[root@localhost /]# ./usr/local/apache/bin/apachectl -v
+Server version: Apache/2.4.23 (Unix)
+Server built:   Sep 10 2016 02:32:03
+[root@localhost /]# 
+```
