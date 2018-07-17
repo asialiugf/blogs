@@ -1,5 +1,35 @@
 ### 查看centos版本
 ```c
+### 7.0 --
+[root@dev ~]#  cat /etc/os-release
+NAME="CentOS Linux"
+VERSION="7 (Core)"
+ID="centos"
+ID_LIKE="rhel fedora"
+VERSION_ID="7"
+PRETTY_NAME="CentOS Linux 7 (Core)"
+ANSI_COLOR="0;31"
+CPE_NAME="cpe:/o:centos:centos:7"
+HOME_URL="https://www.centos.org/"
+BUG_REPORT_URL="https://bugs.centos.org/"
+
+CENTOS_MANTISBT_PROJECT="CentOS-7"
+CENTOS_MANTISBT_PROJECT_VERSION="7"
+REDHAT_SUPPORT_PRODUCT="centos"
+REDHAT_SUPPORT_PRODUCT_VERSION="7"
+
+[root@dev ~]# 
+
+###-- 6.8 7.0 ---
+[root@localhost etc]# cat /etc/redhat-release
+CentOS release 6.8 (Final)
+[root@localhost etc]# 
+
+[root@dev ~]#  cat /etc/redhat-release
+CentOS Linux release 7.3.1611 (Core) 
+[root@dev ~]# 
+
+
 [root@localhost etc]# cat /etc/issue
 CentOS release 6.8 (Final)
 Kernel \r on an \m
