@@ -91,3 +91,18 @@ mysql-libs-5.1.73-7.el6.x86_64
 [root@localhost bin]# 
 ```
 
+### mysql常用命令
+```c
+mysql> show databases;
+```
+### PHP版本
+```c
+[root@localhost bin]# ./php -v
+PHP 5.4.45 (cli) (built: Sep 10 2016 03:22:56) 
+Copyright (c) 1997-2014 The PHP Group
+Zend Engine v2.4.0, Copyright (c) 1998-2014 Zend Technologies
+[root@localhost bin]# 
+```
+
+
+
