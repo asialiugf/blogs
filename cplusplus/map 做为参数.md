@@ -4,7 +4,7 @@
 map可以被看做是普通变量一样可以直接赋值，同时map也可以看做普通变量一样在函数间以值传递或者以指针传递方式传递。
 
 下面是一个小小的例子：
-```c
+```c++
 #include <iostream>
 #include <map>
 #include <string.h>
