@@ -38,3 +38,32 @@ npm run dev
      * @default false
      * @since 2.14.0
 ```
+```c++
+[root@iZ23psatkqsZ kityminder-core]# npm run dev
+
+> kityminder-core@1.4.49 dev /root/github/kityminder-core
+> grunt dev
+
+Running "browserSync:bsFiles" (browserSync) task
+[Browsersync] Access URLs:
+ --------------------------------------
+       Local: http://localhost:3000
+    External: http://121.199.28.62:3000
+ --------------------------------------
+          UI: http://localhost:3001
+ UI External: http://121.199.28.62:3001
+ --------------------------------------
+[Browsersync] Serving files from: ./
+[Browsersync] Watching files...
+[Browsersync] Couldn't open browser (if you are using BrowserSync in a headless environment, you might want to set the open option to false)
+
+```
+
+#### 访问
+```c++
+       Local: http://localhost:3000
+    External: http://121.199.28.62:3000
+ --------------------------------------
+          UI: http://localhost:3001
+ UI External: http://121.199.28.62:3001
+```
