@@ -18,9 +18,9 @@ npm install
 npm run dev
 ```
 
+#### 修改hostname 
 
-
-[root@iZ23psatkqsZ kityminder-core]# vi node_modules/browser-sync/dist/default-config.js
+* [root@iZ23psatkqsZ kityminder-core]# vi node_modules/browser-sync/dist/default-config.js
 ```c++
     minify: true,
     /**
