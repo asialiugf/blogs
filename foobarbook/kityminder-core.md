@@ -19,7 +19,7 @@ npm run dev
 ```
 
 #### 修改hostname 
-
+*　注意下面的hostname IP要加引号。
 * [root@iZ23psatkqsZ kityminder-core]# vi node_modules/browser-sync/dist/default-config.js
 ```c++
     minify: true,
