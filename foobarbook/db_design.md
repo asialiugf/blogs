@@ -16,3 +16,11 @@ node_id     node_name     parrent_ids     child_ids                  desc       
 
 ### 查询设计
 * ElasticSearch
+
+
+### 相关事项
+* 每个节点的访问量
+* 每个节点的人物记
+```c++
+
+```
