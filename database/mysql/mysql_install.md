@@ -161,3 +161,25 @@ Complete!
 /bin/mysql
 [root@iZ23psatkqsZ rabbit]# 
 ```
+### 开启服务
+```c++
+[root@iZ23psatkqsZ rabbit]# 
+[root@iZ23psatkqsZ rabbit]# systemctl start  mysqld.service
+[root@iZ23psatkqsZ rabbit]# systemctl status mysqld.service
+● mysqld.service - MySQL Server
+   Loaded: loaded (/usr/lib/systemd/system/mysqld.service; enabled; vendor preset: disabled)
+   Active: active (running) since Fri 2018-08-03 01:56:16 CST; 5s ago
+     Docs: man:mysqld(8)
+           http://dev.mysql.com/doc/refman/en/using-systemd.html
+  Process: 19515 ExecStartPre=/usr/bin/mysqld_pre_systemd (code=exited, status=0/SUCCESS)
+ Main PID: 19583 (mysqld)
+   Status: "SERVER_OPERATING"
+   CGroup: /system.slice/mysqld.service
+           └─19583 /usr/sbin/mysqld
+
+Aug 03 01:55:59 iZ23psatkqsZ systemd[1]: Starting MySQL Server...
+Aug 03 01:56:16 iZ23psatkqsZ systemd[1]: Started MySQL Server.
+[root@iZ23psatkqsZ rabbit]# 
+```
+
+
