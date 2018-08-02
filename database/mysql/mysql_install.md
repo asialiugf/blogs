@@ -187,4 +187,6 @@ Aug 03 01:56:16 iZ23psatkqsZ systemd[1]: Started MySQL Server.
 [root@iZ23psatkqsZ /]# find . -name "mysql.h"
 ./usr/include/mysql/mysql.h
 ```
+### 连接池
+* https://dev.mysql.com/downloads/connector/cpp/
 
