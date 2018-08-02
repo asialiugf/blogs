@@ -181,5 +181,10 @@ Aug 03 01:55:59 iZ23psatkqsZ systemd[1]: Starting MySQL Server...
 Aug 03 01:56:16 iZ23psatkqsZ systemd[1]: Started MySQL Server.
 [root@iZ23psatkqsZ rabbit]# 
 ```
-
+### 安装 开发包
+```c++
+[root@iZ23psatkqsZ /]#  yum install mysql-devel -y 
+[root@iZ23psatkqsZ /]# find . -name "mysql.h"
+./usr/include/mysql/mysql.h
+```
 
