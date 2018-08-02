@@ -30,4 +30,8 @@ node_id     node_name     parrent_ids     child_ids                  desc       
 * 后端计算相关位置？还是前端计算。
 * 如何保存数据量
 
+### 数据库设计
+* https://blog.csdn.net/jim8757/article/details/52385612
+
+
 
