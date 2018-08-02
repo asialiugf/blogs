@@ -190,5 +190,6 @@ Aug 03 01:56:16 iZ23psatkqsZ systemd[1]: Started MySQL Server.
 ### 连接池
 * https://dev.mysql.com/downloads/connector/cpp/
 * https://www.cnblogs.com/lianshuiwuyi/p/8592870.html
+* https://blog.csdn.net/chenxun_2010/article/details/68954212
 
 
