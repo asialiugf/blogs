@@ -191,5 +191,7 @@ Aug 03 01:56:16 iZ23psatkqsZ systemd[1]: Started MySQL Server.
 * https://dev.mysql.com/downloads/connector/cpp/
 * https://www.cnblogs.com/lianshuiwuyi/p/8592870.html
 * https://blog.csdn.net/chenxun_2010/article/details/68954212
+#### X DevAPI User Guide
+* https://dev.mysql.com/doc/x-devapi-userguide/en/database-connection-example.html
 
 
