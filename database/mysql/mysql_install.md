@@ -421,6 +421,76 @@ catch (const char *ex)
 ```
 
 
+#### output
+```c++
+[root@localhost ~]# grep "password" /var/log/mysqld.log
+mysql> ALTER USER 'root'@'localhost' IDENTIFIED BY 'HaHa1234YY89$';
+
+创建数据库
+[root@iZ23psatkqsZ /]# mysql -uroot -p
+Enter password: 
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 15
+Server version: 8.0.12 MySQL Community Server - GPL
+
+Copyright (c) 2000, 2018, Oracle and/or its affiliates. All rights reserved.
+
+Oracle is a registered trademark of Oracle Corporation and/or its
+affiliates. Other names may be trademarks of their respective
+owners.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+mysql> 
+mysql> 
+mysql> create database test;
+Query OK, 1 row affected (0.10 sec)
+
+mysql> 
+
+```
+
+* [root@iZ23psatkqsZ mysql]# ./app
+```c++ 
+[root@iZ23psatkqsZ mysql]# ./app
+Creating session on mysqlx://root:HaHa1234YY89$@localhost:33060 ...
+Session accepted, creating collection...
+ERROR: CDK Error: Unknown database 'test'
+[root@iZ23psatkqsZ mysql]# 
+[root@iZ23psatkqsZ mysql]# ./app
+Creating session on mysqlx://root:HaHa1234YY89$@localhost:33060 ...
+Session accepted, creating collection...
+Inserting documents...
+- added doc with id: 00005b6345c00000000000000001
+- added doc with id: 00005b6345c00000000000000001
+- added doc with id: 00005b6345c00000000000000001
+- added doc
+Fetching documents...
+doc#0: {"_id": "00005b6345c00000000000000002", "age": 2, "name": "bar", "toys": ["car", "ball"]}
+ field `_id`: 00005b6345c00000000000000002
+ field `age`: 2
+ field `name`: bar
+ field `toys`: <array with 2 element(s)>
+ name: bar
+- toys:
+  car
+  ball
+
+doc#1: {"_id": "00005b6345c00000000000000003", "age": 3, "date": {"day": 20, "month": "Apr"}, "name": "baz"}
+ field `_id`: 00005b6345c00000000000000003
+ field `age`: 3
+ field `date`: <document>
+ field `name`: baz
+ name: baz
+- date field
+  date `day`: 20
+  date `month`: Apr
+  month: Apr
+  day: 20
+
+Done!
+[root@iZ23psatkqsZ mysql]# 
+```
 
 
 
