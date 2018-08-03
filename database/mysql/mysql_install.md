@@ -1,4 +1,5 @@
 ### mysql install
+* https://www.cnblogs.com/bigbrotherer/p/7241845.html
 ```c++
 [root@iZ23psatkqsZ rabbit]# wget https://repo.mysql.com//mysql80-community-release-el7-1.noarch.rpm
 --2018-08-03 01:49:48--  https://repo.mysql.com//mysql80-community-release-el7-1.noarch.rpm
