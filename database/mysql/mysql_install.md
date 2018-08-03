@@ -498,7 +498,23 @@ Done!
 [root@iZ23psatkqsZ mysql]# 
 ```
 
+#### mysql shell
+```c++
+[rabbit@iZ23psatkqsZ ~]$ 
+[rabbit@iZ23psatkqsZ ~]$ mysqlsh
+MySQL Shell 8.0.12
 
+Copyright (c) 2016, 2018, Oracle and/or its affiliates. All rights reserved.
+
+Oracle is a registered trademark of Oracle Corporation and/or its
+affiliates. Other names may be trademarks of their respective
+owners.
+
+Type '\help' or '\?' for help; '\quit' to exit.
+
+
+ MySQL  JS > 
+```
 
 
 
