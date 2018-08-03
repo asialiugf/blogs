@@ -264,3 +264,8 @@ mysql-connector-c++-jdbc: This package provides the shared legacy connector libr
 
 mysql-connector-c++-devel: This package installs development files required for building applications that use Connector/C++ libraries provided by the other packages, and static connector libraries. This package depends on the shared libraries provided by the other packages and cannot be installed by itself.
 ```
+### connector-j-examples
+* https://dev.mysql.com/doc/connectors/en/connector-j-examples.html
+```c++
+https://dev.mysql.com/doc/connectors/en/connector-j-examples.html
+```
