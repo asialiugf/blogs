@@ -275,7 +275,7 @@ https://dev.mysql.com/doc/connectors/en/connector-j-examples.html
 # https://dev.mysql.com/doc/connectors/en/connector-cpp-apps-make.html
 ```c++
 ```
-
+* https://dev.mysql.com/doc/dev/connector-cpp/8.0/devapi_ref.html
 
 
 
