@@ -499,6 +499,7 @@ Done!
 ```
 
 #### mysql shell
+* https://dev.mysql.com/doc/mysql-shell/8.0/en/
 ```c++
 [rabbit@iZ23psatkqsZ ~]$ 
 [rabbit@iZ23psatkqsZ ~]$ mysqlsh
