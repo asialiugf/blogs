@@ -250,3 +250,17 @@ Installed:
 Complete!
 [root@iZ23psatkqsZ ~]# 
 ```
+
+### 安装开发环境xdevapi.h
+* https://dev.mysql.com/doc/connectors/en/connector-cpp-installation-binary.html#connector-cpp-installation-binary-linux
+```c++
+[root@iZ23psatkqsZ /]# yum install mysql-connector-c++-devel
+[root@iZ23psatkqsZ /]# yum install mysql-connector-c++-jdbc
+[root@iZ23psatkqsZ /]# yum install mysql-connector-c++
+
+mysql-connector-c++: This package provides the shared connector library implementing X DevAPI and X DevAPI for C.
+
+mysql-connector-c++-jdbc: This package provides the shared legacy connector library implementing the JDBC API.
+
+mysql-connector-c++-devel: This package installs development files required for building applications that use Connector/C++ libraries provided by the other packages, and static connector libraries. This package depends on the shared libraries provided by the other packages and cannot be installed by itself.
+```
