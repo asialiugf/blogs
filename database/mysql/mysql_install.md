@@ -194,4 +194,59 @@ Aug 03 01:56:16 iZ23psatkqsZ systemd[1]: Started MySQL Server.
 #### X DevAPI User Guide
 * https://dev.mysql.com/doc/x-devapi-userguide/en/database-connection-example.html
 
+#### 安装 connector
+```c++
+[root@iZ23psatkqsZ ~]# wget https://cdn.mysql.com//Downloads/Connector-C++/mysql-connector-c++-8.0.12-1.el7.x86_64.rpm
+--2018-08-03 13:42:33--  https://cdn.mysql.com//Downloads/Connector-C++/mysql-connector-c++-8.0.12-1.el7.x86_64.rpm
+Resolving cdn.mysql.com (cdn.mysql.com)... 96.7.157.112
+Connecting to cdn.mysql.com (cdn.mysql.com)|96.7.157.112|:443... connected.
+HTTP request sent, awaiting response... 200 OK
+Length: 591368 (578K) [application/x-redhat-package-manager]
+Saving to: ‘mysql-connector-c++-8.0.12-1.el7.x86_64.rpm’
 
+100%[========================================================================================================>] 591,368      943KB/s   in 0.6s   
+
+2018-08-03 13:42:35 (943 KB/s) - ‘mysql-connector-c++-8.0.12-1.el7.x86_64.rpm’ saved [591368/591368]
+
+[root@iZ23psatkqsZ ~]# ll
+total 584
+drwxr-xr-x 6 root root   4096 Aug  2 00:23 github
+-rw-r--r-- 1 root root 591368 Jun 27 13:10 mysql-connector-c++-8.0.12-1.el7.x86_64.rpm
+[root@iZ23psatkqsZ ~]# yum install mysql-connector-c++-8.0.12-1.el7.x86_64.rpm 
+Loaded plugins: fastestmirror
+Examining mysql-connector-c++-8.0.12-1.el7.x86_64.rpm: mysql-connector-c++-8.0.12-1.el7.x86_64
+Marking mysql-connector-c++-8.0.12-1.el7.x86_64.rpm to be installed
+Resolving Dependencies
+--> Running transaction check
+---> Package mysql-connector-c++.x86_64 0:8.0.12-1.el7 will be installed
+--> Finished Dependency Resolution
+
+Dependencies Resolved
+
+==================================================================================================================================================
+ Package                           Arch                 Version                      Repository                                              Size
+==================================================================================================================================================
+Installing:
+ mysql-connector-c++               x86_64               8.0.12-1.el7                 /mysql-connector-c++-8.0.12-1.el7.x86_64               2.0 M
+
+Transaction Summary
+==================================================================================================================================================
+Install  1 Package
+
+Total size: 2.0 M
+Installed size: 2.0 M
+Is this ok [y/d/N]: y
+Downloading packages:
+Running transaction check
+Running transaction test
+Transaction test succeeded
+Running transaction
+  Installing : mysql-connector-c++-8.0.12-1.el7.x86_64                                                                                        1/1 
+  Verifying  : mysql-connector-c++-8.0.12-1.el7.x86_64                                                                                        1/1 
+
+Installed:
+  mysql-connector-c++.x86_64 0:8.0.12-1.el7                                                                                                       
+
+Complete!
+[root@iZ23psatkqsZ ~]# 
+```
