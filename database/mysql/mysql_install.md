@@ -275,6 +275,8 @@ https://dev.mysql.com/doc/connectors/en/connector-j-examples.html
 ### build
 编译请看这个文档：
 * https://dev.mysql.com/doc/connectors/en/connector-cpp-apps-make.html
+xdevapi例子请看这个文档：
+* https://dev.mysql.com/doc/x-devapi-userguide/en/database-connection-example.html
 例子，请看这个文档：
 * https://dev.mysql.com/doc/dev/connector-cpp/8.0/devapi_ref.html
 
