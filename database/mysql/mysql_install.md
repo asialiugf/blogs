@@ -270,3 +270,23 @@ mysql-connector-c++-devel: This package installs development files required for 
 ```c++
 https://dev.mysql.com/doc/connectors/en/connector-j-examples.html
 ```
+
+### build
+# https://dev.mysql.com/doc/connectors/en/connector-cpp-apps-make.html
+```c++
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
