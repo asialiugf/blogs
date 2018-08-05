@@ -7,3 +7,6 @@ cd /root/github/astyle/build/gcc
 # make
 # make install
 ```
+#### bzip2
+* yum install -y bzip2
+
