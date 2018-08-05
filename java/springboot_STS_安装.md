@@ -14,3 +14,12 @@
 
 ### 安装
 - https://www.cnblogs.com/jedjia/p/spring_boot.html
+
+### maven安装
+* http://maven.apache.org/download.cgi
+* https://www.cnblogs.com/eagle6688/p/7838224.html
+
+1. 前往https://maven.apache.org/download.cgi下载最新版的Maven程序：
+2. 将文件解压到D:\Program Files\Apache\maven目录下:
+3. 新建环境变量MAVEN_HOME，赋值D:\Program Files\Apache\maven
+4. 编辑环境变量Path，追加%MAVEN_HOME%\bin\;
