@@ -23,3 +23,15 @@
 2. 将文件解压到D:\Program Files\Apache\maven目录下:
 3. 新建环境变量MAVEN_HOME，赋值D:\Program Files\Apache\maven
 4. 编辑环境变量Path，追加%MAVEN_HOME%\bin\;
+
+#### 修改 C:\D盘\apache-maven-3.5.4\conf\settings.xml
+增加以下配置，采用阿里源。
+```js
+
+    <mirror>
+        <id>alimaven</id>
+        <name>aliyun maven</name>
+        <url>http://maven.aliyun.com/nexus/content/groups/public/</url>
+        <mirrorOf>*</mirrorOf>
+    </mirror>      
+```
