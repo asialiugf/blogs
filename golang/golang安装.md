@@ -1,3 +1,6 @@
+### golang安装
+* https://golangtc.com/download
+
 ### 下载
 - https://studygolang.com/dl
 ### 安装
