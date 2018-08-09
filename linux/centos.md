@@ -10,3 +10,6 @@ cd /root/github/astyle/build/gcc
 #### bzip2
 * yum install -y bzip2
 
+
+#### 安装软件新方法
+* https://blog.csdn.net/supergao222/article/details/78308197
