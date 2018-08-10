@@ -1,4 +1,23 @@
+* https://docs.mongodb.com/manual/tutorial/install-mongodb-on-red-hat/
+
+
+#### Configure the package management system (yum).
+Create a /etc/yum.repos.d/mongodb-org-4.0.repo
 ```c
+[mongodb-org-4.0]
+name=MongoDB Repository
+baseurl=https://repo.mongodb.org/yum/redhat/$releasever/mongodb-org/4.0/x86_64/
+gpgcheck=1
+enabled=1
+gpgkey=https://www.mongodb.org/static/pgp/server-4.0.asc
+```
+#### yum
+```c
+sudo yum install -y mongodb-org
+```
+
+```c
+# mongo
 > show dbs
 admin   0.000GB
 config  0.000GB
