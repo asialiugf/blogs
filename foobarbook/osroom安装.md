@@ -1,3 +1,83 @@
+### 下载osroom
+* https://github.com/osroom/osroom
+```c
+git clone https://github.com/osroom/osroom.git
+```
+```c++
+# cd osroom/apps
+/root/github/osroom/apps/configs
+[root@iZ23psatkqsZ configs]# 
+[root@iZ23psatkqsZ configs]# ll
+total 92
+-rw-r--r-- 1 root   root   30526 Aug 10 23:33 config.py
+-rw-r--r-- 1 197608 197121 31394 Aug 10 02:27 config_sample.py
+-rw-r--r-- 1 root   root    1232 Aug 10 23:28 db_config.py
+-rw-r--r-- 1 197608 197121  1253 Aug 10 02:27 db_config_sample.py
+-rw-r--r-- 1 197608 197121    48 Aug 10 02:27 __init__.py
+-rw-r--r-- 1 197608 197121  1469 Aug 10 02:27 mdb_collection.py
+drwxr-xr-x 2 root   root    4096 Aug 10 23:33 __pycache__
+-rwxr-xr-x 1 197608 197121  4108 Aug 10 02:27 sys_config.py
+[root@iZ23psatkqsZ configs]#
+```
+
+### mongodb redis 配置
+```python
+[root@iZ23psatkqsZ configs]# cat db_config.py
+# -*-coding:utf-8-*-
+__author__ = "Allen Woo"
+DB_CONFIG = {
+    "mongodb": {
+        "mongo_sys": {
+            "username": "myadmin",
+            "config": {
+                "fsync": False,
+                "replica_set": None
+            },
+            "password": "secret",
+            "dbname": "osr_sys",
+            "host": [
+                "127.0.0.1:27017"
+            ]
+        },
+        "mongo_user": {
+            "username": "myadmin",
+            "config": {
+                "fsync": False,
+                "replica_set": None
+            },
+            "password": "secret",
+            "dbname": "osr_user",
+            "host": [
+                "127.0.0.1:27017"
+            ]
+        },
+        "mongo_web": {
+            "username": "myadmin",
+            "config": {
+                "fsync": False,
+                "replica_set": None
+            },
+            "password": "secret",
+            "dbname": "osr_web",
+            "host": [
+                "127.0.0.1:27017"
+            ]
+        }
+    },
+    "redis": {
+        "password": "foobarbook",
+        "port": [
+            "6379"
+        ],
+        "host": [
+            "127.0.0.1"
+        ]
+    }
+}
+[root@iZ23psatkqsZ configs]# 
+```
+
+
 ### mongodb配置
 ```c++
 [root@iZ23psatkqsZ osroom]# mongo
