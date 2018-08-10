@@ -1,8 +1,11 @@
 ### 下载osroom
 * https://github.com/osroom/osroom
 ```c
-git clone https://github.com/osroom/osroom.git
+# git clone https://github.com/osroom/osroom.git
+# cd osroom
+# pip install -r requirements.txt
 ```
+### 配置 osroom
 ```c++
 # cd osroom/apps
 /root/github/osroom/apps/configs
