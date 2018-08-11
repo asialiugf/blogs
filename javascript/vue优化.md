@@ -5,6 +5,8 @@
 * https://www.jb51.net/article/133976.htm
 ### CommonsChunkPlugin
 * https://webpack.docschina.org/plugins/commons-chunk-plugin
+### 构建一个简单的模板布局系统
+* https://array-huang.gitbooks.io/multipage-webapp-architecture-with-webpack/content/chapter4/webpack-layout-system.html
 
 大型vue单页面项目优化总结
 这是之前在公司oa项目优化时罗列的优化点，基本都已经完成，当时花了点心思整理的，保存在这里，方便以后其他项目用到查漏补缺。
