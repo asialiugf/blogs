@@ -1,3 +1,9 @@
+### 相关资料
+* https://www.mkdocs.org/
+* https://demo.osroom.com/
+* https://osroom.com/
+
+
 ### 下载osroom
 * https://github.com/osroom/osroom
 ```c
