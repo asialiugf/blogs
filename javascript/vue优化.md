@@ -11,6 +11,8 @@
 * https://webpack.docschina.org/plugins/commons-chunk-plugin
 ### 插件 html-webpack-plugin 的详解
 * https://segmentfault.com/a/1190000013883242
+* https://www.jb51.net/article/133357.htm
+
 ### 构建一个简单的模板布局系统
 * https://array-huang.gitbooks.io/multipage-webapp-architecture-with-webpack/content/chapter4/webpack-layout-system.html
 
