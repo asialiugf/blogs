@@ -3,6 +3,8 @@
 * https://www.jb51.net/article/138575.htm
 ### vue2.0之多页面的开发的示例
 * https://www.jb51.net/article/133976.htm
+### CommonsChunkPlugin
+* https://webpack.docschina.org/plugins/commons-chunk-plugin
 
 大型vue单页面项目优化总结
 这是之前在公司oa项目优化时罗列的优化点，基本都已经完成，当时花了点心思整理的，保存在这里，方便以后其他项目用到查漏补缺。
