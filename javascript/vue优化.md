@@ -3,6 +3,8 @@
 * https://www.jb51.net/article/138575.htm
 ### vue2.0之多页面的开发的示例
 * https://www.jb51.net/article/133976.htm
+### webpack4: 代码分割CommonChunkPlugin的寿终正寝
+* https://blog.csdn.net/qq_35534823/article/details/79406995
 ### CommonsChunkPlugin
 * https://webpack.docschina.org/plugins/commons-chunk-plugin
 ### 构建一个简单的模板布局系统
