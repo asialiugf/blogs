@@ -316,7 +316,7 @@ The 'mode' option has not been set, webpack will fallback to 'production' for th
 You can also set it to 'none' to disable any default behavior. Learn more: https://webpack.js.org/concepts/mode/
 [GD-0103-0121@rjsys /d/github.com/webpacktest/mytest]$
 ```
-### css
+### 【css】
 ```js
 [GD-0103-0121@rjsys /d/github.com/webpacktest/mytest]$ npm install --save-dev style-loader css-loader file-loader
 npm WARN css-loader@1.0.0 requires a peer of webpack@^4.0.0 but none is installed. You must install peer dependencies yourself.
@@ -364,32 +364,7 @@ drwxr-xr-x 1 GD-0103-0121 197121     0 八月 12 14:51 src/
 }
 [GD-0103-0121@rjsys /d/github.com/webpacktest/mytest]$
 ```
-### 修改 webpack.config.js
-增加 rules:
-```js
-[GD-0103-0121@rjsys /d/github.com/webpacktest/mytest]$ cat webpack.config.js
-var path = require('path')
 
-module.exports = {
-  entry: './src/index.js',
-  output: {
-    filename: 'main.js',
-    path: path.resolve(__dirname, 'dist')
-  }
-  rules: [{
-    test: /\.css$/,
-    use: [
-      'style-loader',
-      'css-loader'
-    ]
-  }, {
-    test: /\.(gif|png|jpg)$/,
-    use: ['file-loader']
-  }]
-
-}
-[GD-0103-0121@rjsys /d/github.com/webpacktest/mytest]$
-```
 ### 修改 index.js
 ```js
 [GD-0103-0121@rjsys /d/github.com/webpacktest/mytest/src]$ ll
