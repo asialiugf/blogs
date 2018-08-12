@@ -364,5 +364,117 @@ drwxr-xr-x 1 GD-0103-0121 197121     0 八月 12 14:51 src/
 }
 [GD-0103-0121@rjsys /d/github.com/webpacktest/mytest]$
 ```
+### 修改 webpack.config.js
+增加 rules:
+```js
+[GD-0103-0121@rjsys /d/github.com/webpacktest/mytest]$ cat webpack.config.js
+var path = require('path')
+
+module.exports = {
+  entry: './src/index.js',
+  output: {
+    filename: 'main.js',
+    path: path.resolve(__dirname, 'dist')
+  }
+  rules: [{
+    test: /\.css$/,
+    use: [
+      'style-loader',
+      'css-loader'
+    ]
+  }, {
+    test: /\.(gif|png|jpg)$/,
+    use: ['file-loader']
+  }]
+
+}
+[GD-0103-0121@rjsys /d/github.com/webpacktest/mytest]$
+```
+### 修改 index.js
+```js
+[GD-0103-0121@rjsys /d/github.com/webpacktest/mytest/src]$ ll
+total 1
+-rw-r--r-- 1 GD-0103-0121 197121 429 八月 12 15:41 index.js
+[GD-0103-0121@rjsys /d/github.com/webpacktest/mytest/src]$ cat index.js
+import _ from 'lodash';
+import './index.css';
+import picture from './hsq.gif';
+
+function component() {
+  var element = document.createElement('div');
+
+  // Lodash, now imported by this script
+  element.innerHTML = _.join(['Hello', 'webpack'], ' ');
+  element.classList.add('colorRed');
+
+  var image = new Image();
+  image.src = picture;
+  element.appendChild(image);
+
+  return element;
+}
+
+document.body.appendChild(component());
+[GD-0103-0121@rjsys /d/github.com/webpacktest/mytest/src]$
+```
+
+```js
+[GD-0103-0121@rjsys /d/github.com/webpacktest/mytest/src]$ ls -l
+total 6
+-rw-r--r-- 1 GD-0103-0121 197121 4077 八月 12 16:05 hsq.gif
+-rw-r--r-- 1 GD-0103-0121 197121  145 八月 12 16:04 index.css
+-rw-r--r-- 1 GD-0103-0121 197121  429 八月 12 15:41 index.js
+[GD-0103-0121@rjsys /d/github.com/webpacktest/mytest/src]$ ll
+```
+### index.css
+```js
+[GD-0103-0121@rjsys /d/github.com/webpacktest/mytest/src]$ cat index.css
+body {
+  background-color: #d0e4fe;
+}
+
+h1 {
+  color: orange;
+  text-align: center;
+}
+
+p {
+  font-family: "Times New Roman";
+  font-size: 20px;
+}
+[GD-0103-0121@rjsys /d/github.com/webpacktest/mytest/src]$
+```
+### 配置 webpack.config.js
+```js
+[GD-0103-0121@rjsys /d/github.com/webpacktest/mytest]$ cat webpack.config.js
+var path = require('path')
+
+module.exports = {
+  entry: './src/index.js',
+  output: {
+    filename: 'main.js',
+    path: path.resolve(__dirname, 'dist')
+  },
+  module: {
+    rules:[
+      {
+        test: /\.css$/,
+            use: [
+              'style-loader',
+              'css-loader'
+            ]
+      },
+      {
+        test:/\.(gif|png|jpg)$/,
+            use: ['file-loader']
+      }
+    ]
+  }
+}
+[GD-0103-0121@rjsys /d/github.com/webpacktest/mytest]$
+```
+### npm run build
+### 浏览器打开 file:///D:/github.com/webpacktest/mytest/dist/index.html
+即可以看到效果
 
 
