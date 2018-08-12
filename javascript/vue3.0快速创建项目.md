@@ -1,3 +1,7 @@
+
+### vuejs/vue-docs-zh-cn 这里会放所有VUE中文文档
+* https://github.com/vuejs/vue-docs-zh-cn
+
 ### 本地安装vue-cli
 参考：
 
