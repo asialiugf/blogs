@@ -477,4 +477,5 @@ module.exports = {
 ### 浏览器打开 file:///D:/github.com/webpacktest/mytest/dist/index.html
 即可以看到效果
 
-
+###   插件的使用举例
+* https://www.cnblogs.com/xuelongqy/p/7081419.html
