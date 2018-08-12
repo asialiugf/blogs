@@ -1,6 +1,11 @@
 ### install
 * https://webpack.js.org/guides/installation/
 
+
+### webpack 4 使用示例（一）
+* https://blog.csdn.net/Hill_Kinsham/article/details/81328440
+* https://blog.csdn.net/snow_small/article/details/79709585
+
 ### version
 ```js
 [GD-0103-0121@rjsys /d/github.com/webpacktest/mytest]$ npm -version
@@ -311,6 +316,53 @@ The 'mode' option has not been set, webpack will fallback to 'production' for th
 You can also set it to 'none' to disable any default behavior. Learn more: https://webpack.js.org/concepts/mode/
 [GD-0103-0121@rjsys /d/github.com/webpacktest/mytest]$
 ```
+### css
+```js
+[GD-0103-0121@rjsys /d/github.com/webpacktest/mytest]$ npm install --save-dev style-loader css-loader file-loader
+npm WARN css-loader@1.0.0 requires a peer of webpack@^4.0.0 but none is installed. You must install peer dependencies yourself.
+npm WARN file-loader@1.1.11 requires a peer of webpack@^2.0.0 || ^3.0.0 || ^4.0.0 but none is installed. You must install peer dependencies yourself.
+npm WARN mytest@1.0.0 No description
+npm WARN mytest@1.0.0 No repository field.
 
++ css-loader@1.0.0
++ file-loader@1.1.11
++ style-loader@0.22.1
+added 50 packages from 61 contributors in 9.052s
+[GD-0103-0121@rjsys /d/github.com/webpacktest/mytest]$
+[GD-0103-0121@rjsys /d/github.com/webpacktest/mytest]$
+[GD-0103-0121@rjsys /d/github.com/webpacktest/mytest]$ ll
+total 38
+drwxr-xr-x 1 GD-0103-0121 197121     0 八月 12 15:30 dist/
+drwxr-xr-x 1 GD-0103-0121 197121     0 八月 12 15:33 node_modules/
+-rw-r--r-- 1 GD-0103-0121 197121   464 八月 12 15:33 package.json
+-rw-r--r-- 1 GD-0103-0121 197121 14589 八月 12 15:33 package-lock.json
+drwxr-xr-x 1 GD-0103-0121 197121     0 八月 12 14:51 src/
+-rw-r--r-- 1 GD-0103-0121 197121   159 八月 12 15:27 webpack.config.js
+[GD-0103-0121@rjsys /d/github.com/webpacktest/mytest]$
+[GD-0103-0121@rjsys /d/github.com/webpacktest/mytest]$ vi package.json
+[GD-0103-0121@rjsys /d/github.com/webpacktest/mytest]$ cat package.json
+{
+  "name": "mytest",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "webpack --mode development",
+    "build": "npx webpack --config webpack.config.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "lodash": "^4.17.10"
+  },
+  "devDependencies": {
+    "css-loader": "^1.0.0",
+    "file-loader": "^1.1.11",
+    "style-loader": "^0.22.1"
+  }
+}
+[GD-0103-0121@rjsys /d/github.com/webpacktest/mytest]$
+```
 
 
