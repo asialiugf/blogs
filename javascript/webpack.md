@@ -213,7 +213,7 @@ total 73
 -rw-r--r-- 1 GD-0103-0121 197121 72399 八月 12 14:56 main.js
 [GD-0103-0121@rjsys /d/github.com/webpacktest/mytest/dist]$
 ```
-### num run dev
+### npm run dev
 ```js
 [GD-0103-0121@rjsys /d/github.com/webpacktest/mytest]$ cat package.json
 {
