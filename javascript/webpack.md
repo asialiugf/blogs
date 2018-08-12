@@ -170,6 +170,14 @@ drwxr-xr-x 1 GD-0103-0121 197121 0 八月 12 14:55 lodash/
 [GD-0103-0121@rjsys /d/github.com/webpacktest/mytest/node_modules]$
 ```
 ### npx webpack
+下面这几个命令差不多，
+```js
+$ webpack
+$ webpack --mode development
+$ npx webpack
+$ npx webpack --mode development
+```
+
 ```js
 [GD-0103-0121@rjsys /d/github.com/webpacktest/mytest]$ npx webpack
 npx: 1 安装成功，用时 12.003 秒
@@ -200,3 +208,109 @@ total 73
 -rw-r--r-- 1 GD-0103-0121 197121 72399 八月 12 14:56 main.js
 [GD-0103-0121@rjsys /d/github.com/webpacktest/mytest/dist]$
 ```
+### num run dev
+```js
+[GD-0103-0121@rjsys /d/github.com/webpacktest/mytest]$ cat package.json
+{
+  "name": "mytest",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "webpack --mode development"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "lodash": "^4.17.10"
+  }
+}
+[GD-0103-0121@rjsys /d/github.com/webpacktest/mytest]$
+```
+```js
+[GD-0103-0121@rjsys /d/github.com/webpacktest/mytest]$ npm run dev
+
+> mytest@1.0.0 dev D:\github.com\webpacktest\mytest
+> webpack --mode development
+
+Hash: 3db362630bbd79fb5b1f
+Version: webpack 4.16.5
+Time: 526ms
+Built at: 2018-08-12 15:22:17
+  Asset     Size  Chunks             Chunk Names
+main.js  551 KiB    main  [emitted]  main
+Entrypoint main = main.js
+[../../node_modules/webpack/buildin/global.js] (webpack)/buildin/global.js 489 bytes {main} [built]
+[../../node_modules/webpack/buildin/module.js] (webpack)/buildin/module.js 497 bytes {main} [built]
+[./src/index.js] 256 bytes {main} [built]
+    + 1 hidden module
+[GD-0103-0121@rjsys /d/github.com/webpacktest/mytest]$
+```
+### webpack.config.js
+```js
+[GD-0103-0121@rjsys /d/github.com/webpacktest/mytest]$ cat webpack.config.js
+var path = require('path')
+
+module.exports = {
+  entry: './src/index.js',
+  output: {
+    filename: 'main.js',
+    path: path.resolve(__dirname, 'dist')
+  }
+}
+[GD-0103-0121@rjsys /d/github.com/webpacktest/mytest]$
+```
+### package.json
+添加一句："build": "npx webpack --config webpack.config.js"
+
+```js
+[GD-0103-0121@rjsys /d/github.com/webpacktest/mytest]$ cat package.json
+{
+  "name": "mytest",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "webpack --mode development",
+    "build": "npx webpack --config webpack.config.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "lodash": "^4.17.10"
+  }
+}
+[GD-0103-0121@rjsys /d/github.com/webpacktest/mytest]$
+```
+### npm run build
+```js
+[GD-0103-0121@rjsys /d/github.com/webpacktest/mytest]$ npm run build
+
+> mytest@1.0.0 build D:\github.com\webpacktest\mytest
+> npx webpack --config webpack.config.js
+
+npx: 1 安装成功，用时 2.839 秒
+Path must be a string. Received undefined
+C:\Users\GD-0103-0121\AppData\Roaming\npm\node_modules\webpack\bin\webpack.js
+Hash: be4ddd1abc08b5900878
+Version: webpack 4.16.5
+Time: 546ms
+Built at: 2018-08-12 15:30:13
+  Asset      Size  Chunks             Chunk Names
+main.js  70.5 KiB       0  [emitted]  main
+Entrypoint main = main.js
+[1] ./src/index.js 256 bytes {0} [built]
+[2] (webpack)/buildin/global.js 489 bytes {0} [built]
+[3] (webpack)/buildin/module.js 497 bytes {0} [built]
+    + 1 hidden module
+
+WARNING in configuration
+The 'mode' option has not been set, webpack will fallback to 'production' for this value. Set 'mode' option to 'development' or 'production' to enable defaults for each environment.
+You can also set it to 'none' to disable any default behavior. Learn more: https://webpack.js.org/concepts/mode/
+[GD-0103-0121@rjsys /d/github.com/webpacktest/mytest]$
+```
+
+
+
