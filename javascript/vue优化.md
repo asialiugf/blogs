@@ -1,6 +1,8 @@
 
+
 ### vue多页面开发和打包正确处理方法
 * https://www.jb51.net/article/138575.htm
+* https://www.cnblogs.com/xuelongqy/p/7081419.html
 ### vue2.0之多页面的开发的示例
 * https://www.jb51.net/article/133976.htm
 ### webpack4: 代码分割CommonChunkPlugin的寿终正寝
