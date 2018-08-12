@@ -19,6 +19,11 @@ npm config set registry https://registry.npm.taobao.org
 cnpm config set registry https://registry.npm.taobao.org 
 yarn config set registry https://registry.npm.taobao.org 
 ```
+或者：
+```js
+[GD-0103-0121@rjsys ~]$ npm install -g cnpm --registry=https://registry.npm.taobao.org
+```
+
 - 配置后可通过下面方式来验证是否成功 ： 
 ```js
 npm config get registry
