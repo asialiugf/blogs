@@ -41,3 +41,8 @@ yarn global add @vue/cli
 
 vue create my-project
 ```
+### vue create myproject 在windows下需要安装的依赖
+```js
+# npm install -g node-gyp 
+# npm i -g windows-build-tools
+```
