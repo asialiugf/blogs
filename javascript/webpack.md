@@ -20,7 +20,7 @@ v8.11.3
 [GD-0103-0121@rjsys /d/github.com/webpacktest/mytest]$
 
 ```
-### mkdir mytest
+### 一 mkdir mytest
 ```js
 [GD-0103-0121@rjsys /d/github.com/webpacktest]$ mkdir mytest
 [GD-0103-0121@rjsys /d/github.com/webpacktest]$ cd mytest/
@@ -28,7 +28,8 @@ v8.11.3
 total 0
 [GD-0103-0121@rjsys /d/github.com/webpacktest/mytest]$
 ```
-### npm init
+### 二 npm init
+
 ```js
 [GD-0103-0121@rjsys /d/github.com/webpacktest/mytest]$
 [GD-0103-0121@rjsys /d/github.com/webpacktest/mytest]$ npm init
