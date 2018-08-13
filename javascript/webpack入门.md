@@ -174,11 +174,14 @@ $  npm install --save-dev style-loader css-loader file-loader
 ```js
 npm run dev
 npm run build
+npm i -g webpack-dev-server
 ```
 
 ### 八 浏览器打开
 ```js
 file:///D:/github.com/webpacktest/test01/dist/index.html
+
+
 ```
 
 
