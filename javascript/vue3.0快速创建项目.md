@@ -1,4 +1,7 @@
 
+### vue-cli 3.0脚手架配置及扩展 （二）：vue.config.js多页配置
+* https://blog.csdn.net/franks_t_d/article/details/80740268
+
 ### vuejs/vue-docs-zh-cn 这里会放所有VUE中文文档
 * https://github.com/vuejs/vue-docs-zh-cn
 
