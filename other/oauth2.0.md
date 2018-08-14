@@ -1,5 +1,8 @@
 ### rfc6749
 * https://tools.ietf.org/html/rfc6749
+
+对应到微服务场景，服务提供方相当于上图中的Resource Server，服务调用方相当于Client，而授权中心相当于Authorization Server和Resource Owner的合体。
+
 ```
 1.2.  Protocol Flow
 
