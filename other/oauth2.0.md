@@ -69,3 +69,47 @@ RFC 6749                        OAuth 2.0                   October 2012
    Figure 3 in Section 4.1.
 
 ```
+
+### 4.1.  Authorization Code Grant
+```
+4.1.  Authorization Code Grant
+
+   The authorization code grant type is used to obtain both access
+   tokens and refresh tokens and is optimized for confidential clients.
+   Since this is a redirection-based flow, the client must be capable of
+   interacting with the resource owner's user-agent (typically a web
+   browser) and capable of receiving incoming requests (via redirection)
+   from the authorization server.
+
+     +----------+
+     | Resource |
+     |   Owner  |
+     |          |
+     +----------+
+          ^
+          |
+         (B)
+     +----|-----+          Client Identifier      +---------------+
+     |         -+----(A)-- & Redirection URI ---->|               |
+     |  User-   |                                 | Authorization |
+     |  Agent  -+----(B)-- User authenticates --->|     Server    |
+     |          |                                 |               |
+     |         -+----(C)-- Authorization Code ---<|               |
+     +-|----|---+                                 +---------------+
+       |    |                                         ^      v
+      (A)  (C)                                        |      |
+       |    |                                         |      |
+       ^    v                                         |      |
+     +---------+                                      |      |
+     |         |>---(D)-- Authorization Code ---------'      |
+     |  Client |          & Redirection URI                  |
+     |         |                                             |
+     |         |<---(E)----- Access Token -------------------'
+     +---------+       (w/ Optional Refresh Token)
+
+   Note: The lines illustrating steps (A), (B), and (C) are broken into
+   two parts as they pass through the user-agent.
+
+                     Figure 3: Authorization Code Flow
+```
+
