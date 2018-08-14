@@ -1,3 +1,6 @@
+### 使用 OAuth 2 和 JWT 为微服务提供安全保障
+* https://segmentfault.com/a/1190000009164779
+
 ### 微服务化改造系列之四：授权中心
 * https://blog.csdn.net/emac/article/details/53455089
 ### Spring cloud微服务实战——基于OAUTH2.0统一认证授权的微服务基础架构
