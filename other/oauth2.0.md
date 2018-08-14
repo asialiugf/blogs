@@ -1,3 +1,7 @@
+### 使用微服务架构思想，设计部署API代理网关和OAuth2.0授权认证框架
+* https://cloud.tencent.com/developer/article/1137630
+* https://www.cnblogs.com/bluedoctor/p/8967951.html
+
 ### 使用 OAuth 2 和 JWT 为微服务提供安全保障
 * https://segmentfault.com/a/1190000009164779
 
