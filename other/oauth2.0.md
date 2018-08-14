@@ -1,5 +1,7 @@
 ### 微服务化改造系列之四：授权中心
 * https://blog.csdn.net/emac/article/details/53455089
+### Spring cloud微服务实战——基于OAUTH2.0统一认证授权的微服务基础架构
+* https://blog.csdn.net/w1054993544/article/details/78932614
 
 ### rfc6749
 * https://tools.ietf.org/html/rfc6749
