@@ -25,3 +25,32 @@
  1015  history
 [root@iZ23psatkqsZ ~]# 
 ```
+```c
+ 1014  pip install scrapyjs
+ 1015  history
+ 1016  pip3 install scrapy-splash
+ 1017  yum install docker
+ 1018  service docker start
+ 1019  dock pull scrapinghub/splash
+ 1020  docker pull scrapinghub/splash
+ 1021  docker run -p 8050:8050 scrapinghub/splash
+```
+```python
+[root@iZ23psatkqsZ ~]# docker run -p 8050:8050 scrapinghub/splash
+2018-08-19 16:11:58+0000 [-] Log opened.
+2018-08-19 16:11:59.152317 [-] Splash version: 3.2
+2018-08-19 16:11:59.674561 [-] Qt 5.9.1, PyQt 5.9, WebKit 602.1, sip 4.19.3, Twisted 16.1.1, Lua 5.2
+2018-08-19 16:11:59.674763 [-] Python 3.5.2 (default, Nov 23 2017, 16:37:01) [GCC 5.4.0 20160609]
+2018-08-19 16:11:59.674904 [-] Open files limit: 1048576
+2018-08-19 16:11:59.675022 [-] Can't bump open files limit
+2018-08-19 16:11:59.915070 [-] Xvfb is started: ['Xvfb', ':1672607086', '-screen', '0', '1024x768x24', '-nolisten', 'tcp']
+QStandardPaths: XDG_RUNTIME_DIR not set, defaulting to '/tmp/runtime-root'
+2018-08-19 16:12:05.774052 [-] proxy profiles support is enabled, proxy profiles path: /etc/splash/proxy-profiles
+2018-08-19 16:12:06.655100 [-] verbosity=1
+2018-08-19 16:12:06.655308 [-] slots=50
+2018-08-19 16:12:06.655454 [-] argument_cache_max_entries=500
+2018-08-19 16:12:06.655977 [-] Web UI: enabled, Lua: enabled (sandbox: enabled)
+2018-08-19 16:12:06.656100 [-] Server listening on 0.0.0.0:8050
+2018-08-19 16:12:06.670048 [-] Site starting on 8050
+2018-08-19 16:12:06.670233 [-] Starting factory <twisted.web.server.Site object at 0x7f567a3157f0>
+```
