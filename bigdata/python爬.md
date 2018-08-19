@@ -6,6 +6,8 @@
 * https://blog.csdn.net/mingzznet/article/details/51325053
 # splash安装
 * https://www.cnblogs.com/jclian91/p/8590617.html
+# splash初体验
+* https://www.jianshu.com/p/4052926bc12c
 
 ```python
  1003  which pip
