@@ -4,6 +4,8 @@
 # Scrapy爬虫框架（实战篇）【Scrapy框架对接Splash抓取javaScript动态渲染页面】
 * https://www.cnblogs.com/518894-lu/p/9067208.html
 * https://blog.csdn.net/mingzznet/article/details/51325053
+# splash安装
+* https://www.cnblogs.com/jclian91/p/8590617.html
 
 ```python
  1003  which pip
