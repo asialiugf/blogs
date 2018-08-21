@@ -48,7 +48,7 @@ chmod-socket=664
 vacuum=true
 daemonize = /home/onedit/destiny/uwsgi.log
 ```
-在项目目录下：
+## 在项目目录下：
 ```
 [gethtml@iZ23psatkqsZ ~/mytest]$ cat uwsgi.ini
 [uwsgi]
