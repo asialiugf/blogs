@@ -155,6 +155,7 @@ daemonize = /home/gethtml/foobar/uwsgi.log
 ```
 ps -ef | grep uwsgi | grep -v grep | awk '{print $2}' | xargs kill -9
 ```
+#### 修改了 urls.py 要重启 uwsgi
 
 ### 【五】 启动
 
