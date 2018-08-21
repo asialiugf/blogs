@@ -78,6 +78,46 @@ Django version 2.1, using settings 'foobar.settings'
 Starting development server at http://0.0.0.0:8000/
 Quit the server with CONTROL-C.
 ```
+浏览器打开显示
+```
+DisallowedHost at /
+Invalid HTTP_HOST header: '121.199.28.62:8000'. You may need to add '121.199.28.62' to ALLOWED_HOSTS.
+Request Method:	GET
+Request URL:	http://121.199.28.62:8000/
+Django Version:	2.1
+Exception Type:	DisallowedHost
+Exception Value:	
+Invalid HTTP_HOST header: '121.199.28.62:8000'. You may need to add '121.199.28.62' to ALLOWED_HOSTS.
+Exception Location:	/root/anaconda3/lib/python3.6/site-packages/django/http/request.py in get_host, line 106
+Python Executable:	/root/anaconda3/bin/python
+Python Version:	3.6.5
+Python Path:	
+['/home/gethtml/foobar',
+ '/root/anaconda3/lib/python36.zip',
+ '/root/anaconda3/lib/python3.6',
+ '/root/anaconda3/lib/python3.6/lib-dynload',
+ '/root/anaconda3/lib/python3.6/site-packages']
+Server time:	Tue, 21 Aug 2018 15:36:25 +0000
+```
+#### 修改 ~/foobar/foobar/setting.py
+```
+[gethtml@iZ23psatkqsZ ~/foobar/foobar]$ pwd
+/home/gethtml/foobar/foobar
+[gethtml@iZ23psatkqsZ ~/foobar/foobar]$ ll
+total 16
+-rw-r--r-- 1 gethtml gethtml    0 Aug 21 23:31 __init__.py
+drwxrwxr-x 2 gethtml gethtml 4096 Aug 21 23:35 __pycache__
+-rw-r--r-- 1 gethtml gethtml 3089 Aug 21 23:39 settings.py
+-rw-r--r-- 1 gethtml gethtml  748 Aug 21 23:31 urls.py
+-rw-r--r-- 1 gethtml gethtml  389 Aug 21 23:31 wsgi.py
+[gethtml@iZ23psatkqsZ ~/foobar/foobar]$
+```
+
+###　setting.py的配置中加上以下：
+```
+ALLOWED_HOSTS = ["*"]
+STATIC_ROOT = '/home/gethtml/foobar'
+```
 
 
 ### 【三】 
