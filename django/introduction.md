@@ -147,9 +147,13 @@ server {
 ###　setting.py的配置中加上以下：
 ```
 ALLOWED_HOSTS = ["*"]
+STATIC_ROOT = '/home/gethtml/mytest'
 ```
 
-
+### [gethtml@iZ23psatkqsZ ~/mytest]$  python manage.py createsuperuser 
+###  static
+先在settings.py配置文件中设置一个：STATIC_ROOT = '/var/searchlog/static/'
+然后再运行python manage.py collectstatic ，这样django会将相应的静态文件放到static的目录下面。
 
 
 see games like Agar.io or slither.io their server build using c++ .
