@@ -1,3 +1,7 @@
+* http://blog.51cto.com/xpleaf/1748871
+* http://blog.51cto.com/xpleaf/1748629
+* https://github.com/xpleaf/Blog_mini
+
 ```python
 (venv) [gethtml@iZ23psatkqsZ ~/Blog_mini]$ deactivate 
 [gethtml@iZ23psatkqsZ ~/Blog_mini]$ mysql -u root -p
