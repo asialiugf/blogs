@@ -48,11 +48,75 @@ chmod-socket=664
 vacuum=true
 daemonize = /home/onedit/destiny/uwsgi.log
 ```
+在项目目录下：
+```
+[gethtml@iZ23psatkqsZ ~/mytest]$ cat uwsgi.ini
+[uwsgi]
+socket = 127.0.0.1:8997
+chdir=/home/gethtml/mytest
+module=mytest.wsgi
+master = true
+processes=2
+threads=2
+max-requests=2000
+chmod-socket=664
+vacuum=true
+daemonize = /home/gethtml/mytest/uwsgi.log
+[gethtml@iZ23psatkqsZ ~/mytest]$ 
+```
+在 gethtml 用户下启动uwsgi
+```
+uwsgi --ini /home/gethtml/mytest/uwsgi.ini
+```
 
 要注意：
 uwsgi.ini配置文件中
 module=wsgi
 这里的wsgi必须是/destiny/destiny/wsgi.py，并且要把它copy到 /destiny目录下，即和uwsgi.ini在一个目录。
+
+
+如果配置成 
+```
+module=mytest.wsgi
+```
+wsgi.py的目录为 mytest/mytest
+```
+[gethtml@iZ23psatkqsZ ~/mytest]$ tree
+.
+├── db.sqlite3
+├── manage.py
+├── mytest
+│   ├── __init__.py
+│   ├── __pycache__
+│   │   ├── __init__.cpython-36.pyc
+│   │   ├── settings.cpython-36.pyc
+│   │   ├── urls.cpython-36.pyc
+│   │   └── wsgi.cpython-36.pyc
+│   ├── settings.py
+│   ├── urls.py
+│   └── wsgi.py
+├── uwsgi.ini
+└── uwsgi.log
+
+2 directories, 12 files
+[gethtml@iZ23psatkqsZ ~/mytest]$ 
+```
+
+```
+    server {
+        listen 8996; #暴露给外部访问的端口
+        server_name localhost;
+            charset utf-8;
+        location / {
+            include uwsgi_params;
+            uwsgi_pass 127.0.0.1:8997; #外部访问8996就转发到内部8997
+        }
+        location /static/ {
+            alias /home/gethtml/dig/myapp/static/; #项目静态路径设置
+        }
+    }
+```
+
 
 /etc/nginx/nginx.conf的配置：
 以下配置需要放在  http{}里面。
@@ -80,6 +144,12 @@ server {
     }
 }
 ```
+###　setting.py的配置中加上以下：
+```
+ALLOWED_HOSTS = ["*"]
+```
+
+
 
 
 see games like Agar.io or slither.io their server build using c++ .
