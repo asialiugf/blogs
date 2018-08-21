@@ -31,6 +31,7 @@ mysql> show databases;
 
 mysql>
 ```
+```
 mysql> use mysql
 Database changed
 mysql> show tables;
