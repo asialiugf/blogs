@@ -244,8 +244,93 @@ Superuser created successfully.
 ```
 这样就可以在 http://121.199.28.62:8996/admin 后台中登录了。
 
+### 【八】 连接mysql
+* foobar/foobar/settings.py文件中的数据库配置：
+```
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.mysql',
+        'OPTIONS': {
+            'read_default_file': '/home/gethtml/foobar/my.cnf',
+        },
+    }
+}
+```
+* 配置 /home/gethtml/foobar/my.cnf
+```
+[gethtml@iZ23psatkqsZ ~/foobar]$ cat my.cnf
+[client]
+database = foobar
+user = root
+password = 111111
+default-character-set = utf8
+[gethtml@iZ23psatkqsZ ~/foobar]$ 
+```
+* 建库 foobar
+```
+[gethtml@iZ23psatkqsZ ~/foobar/foobar]$ mysql -uroot -p
+Enter password: 
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 35
+Server version: 8.0.12 MySQL Community Server - GPL
 
+Copyright (c) 2000, 2018, Oracle and/or its affiliates. All rights reserved.
 
+Oracle is a registered trademark of Oracle Corporation and/or its
+affiliates. Other names may be trademarks of their respective
+owners.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+mysql> 
+mysql> show databases;
++--------------------+
+| Database           |
++--------------------+
+| blog_mini          |
+| djangodb           |
+| foobar             |
+| information_schema |
+| mysql              |
+| performance_schema |
+| sys                |
+| test               |
++--------------------+
+8 rows in set (0.00 sec)
+
+mysql> CREATE DATABASE foobar CHARACTER SET utf8;
+```
+#### 重新移植
+```
+[gethtml@iZ23psatkqsZ ~/foobar]$ python manage.py migrate
+```
+做了以上动作之后，查看数据库：
+```
+mysql> 
+mysql> use foobar
+Reading table information for completion of table and column names
+You can turn off this feature to get a quicker startup with -A
+
+Database changed
+mysql> show tables;
++----------------------------+
+| Tables_in_foobar           |
++----------------------------+
+| auth_group                 |
+| auth_group_permissions     |
+| auth_permission            |
+| auth_user                  |
+| auth_user_groups           |
+| auth_user_user_permissions |
+| django_admin_log           |
+| django_content_type        |
+| django_migrations          |
+| django_session             |
++----------------------------+
+10 rows in set (0.00 sec)
+
+mysql> 
+```
 
 
 
