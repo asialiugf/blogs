@@ -1,4 +1,6 @@
 ### 【一】环境
+* https://stackoverflow.com/questions/33315210/error-command-x86-64-linux-gnu-gcc-when-installing-mysqlclient
+* pip install git+https://github.com/PyMySQL/mysqlclient-python.git
 ```c
 python version !!!!
 [gethtml@iZ23psatkqsZ ~]$ python --version
