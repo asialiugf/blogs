@@ -1,4 +1,10 @@
 
+### DormyMo/SpiderKeeper 监控
+* https://github.com/DormyMo/SpiderKeeper
+
+### python爬虫scrapy之如何同时执行多个scrapy爬行任务
+* https://blog.csdn.net/ff_smile/article/details/78871228
+
 ### Scrapy学习笔记(8)-使用signals来监控spider的状态
 * http://jinbitou.net/2016/12/19/2271.html
 ### 在pipeline中,可以监听spider的启动和关闭,代码如下:
