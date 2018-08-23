@@ -1,3 +1,5 @@
+### 中间件 八.Scrapy 学习下Spider中间件Spider Middlewares
+* https://blog.csdn.net/beyond_f/article/details/74626311
 
 ### DormyMo/SpiderKeeper 监控
 * https://github.com/DormyMo/SpiderKeeper
