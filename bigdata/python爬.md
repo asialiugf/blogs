@@ -1,6 +1,9 @@
 
 ### DormyMo/SpiderKeeper 监控
 * https://github.com/DormyMo/SpiderKeeper
+* https://www.v2ex.com/amp/t/330272
+* https://www.v2ex.com/t/354532
+* https://github.com/ioiogoo/scrapy-monitor/tree/master
 
 ### python爬虫scrapy之如何同时执行多个scrapy爬行任务
 * https://blog.csdn.net/ff_smile/article/details/78871228
