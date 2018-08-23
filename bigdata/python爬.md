@@ -1,6 +1,8 @@
 
 ### Scrapy学习笔记(8)-使用signals来监控spider的状态
 * http://jinbitou.net/2016/12/19/2271.html
+### 在pipeline中,可以监听spider的启动和关闭,代码如下:
+* https://my.oschina.net/u/2396236/blog/1801853
 
 * http://baijiahao.baidu.com/s?id=1585117266335386391&wfr=spider&for=pc
 # Scrapy爬虫入门教程十三 Settings（设置）
