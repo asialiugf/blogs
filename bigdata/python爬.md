@@ -1,3 +1,7 @@
+
+### Scrapy学习笔记(8)-使用signals来监控spider的状态
+* http://jinbitou.net/2016/12/19/2271.html
+
 * http://baijiahao.baidu.com/s?id=1585117266335386391&wfr=spider&for=pc
 # Scrapy爬虫入门教程十三 Settings（设置）
 * https://blog.csdn.net/Inke88/article/details/61915020
