@@ -1,3 +1,6 @@
+### 异常
+* https://segmentfault.com/q/1010000005360571/a-1020000005361720
+
 ### 源码
 * https://www.cnblogs.com/3wtoucan/p/6020060.html
 
