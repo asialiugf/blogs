@@ -169,3 +169,39 @@ innodb_flush_log_at_trx_commit = 0
 2018-08-24T05:35:07.006663Z 1 [Note] A temporary password is generated for root@localhost: yh/&6&W0lld2
 [root@dev support-files]# 
 ```
+
+```
+[root@dev bin]# netstat -lntp -lntp
+Active Internet connections (only servers)
+Proto Recv-Q Send-Q Local Address           Foreign Address         State       PID/Program name    
+tcp        0      0 0.0.0.0:111             0.0.0.0:*               LISTEN      1/systemd           
+tcp        0      0 0.0.0.0:80              0.0.0.0:*               LISTEN      4284/nginx: master  
+tcp        0      0 0.0.0.0:20160           0.0.0.0:*               LISTEN      1009/sshd           
+tcp        0      0 127.0.0.1:9000          0.0.0.0:*               LISTEN      15286/php-fpm: mast 
+tcp6       0      0 :::3306                 :::*                    LISTEN      12315/mysqld        
+tcp6       0      0 :::3308                 :::*                    LISTEN      29610/mysqld        
+tcp6       0      0 :::111                  :::*                    LISTEN      1/systemd           
+[root@dev bin]# 
+[root@dev bin]# mysql --socket=/usr/local/mysql3308/mysql.sock
+ERROR 1045 (28000): Access denied for user 'root'@'localhost' (using password: NO)
+[root@dev bin]# 
+[root@dev bin]# mysql --socket=/usr/local/mysql3308/mysql.sock -uroot -p
+Enter password: 
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 3
+Server version: 5.7.23-log
+
+Copyright (c) 2000, 2018, Oracle and/or its affiliates. All rights reserved.
+
+Oracle is a registered trademark of Oracle Corporation and/or its
+affiliates. Other names may be trademarks of their respective
+owners.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+mysql> 
+mysql> show databases;
+ERROR 1820 (HY000): You must reset your password using ALTER USER statement before executing this statement.
+mysql> 
+mysql> 
+```
