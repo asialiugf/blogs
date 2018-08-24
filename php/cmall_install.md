@@ -97,3 +97,10 @@ drwxr-xr-x.  5 root root 4096 Jan 17  2018 share
 drwxr-xr-x.  3 root root 4096 Feb 27 13:57 src
 [root@localhost local]# 
 ```
+
+### mysql install
+```
+wget https://cdn.mysql.com//Downloads/MySQL-5.7/mysql-5.7.23-el7-x86_64.tar.gz
+tar xvf mysql-5.7.23-el7-x86_64.tar.gz
+mv mysql-5.7.23-el7-x86_64 /usr/local/mysql5.7.23
+```
