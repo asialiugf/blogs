@@ -114,8 +114,9 @@ mv mysql-5.7.23-el7-x86_64 /usr/local/mysql5.7.23
 /usr/local/mysql5.7.23/bin
 [root@dev bin]# 
 ```
+#### 参考 
 ```
-https://www.jb51.net/article/135995.htm
+* https://www.jb51.net/article/135995.htm
 
 mkdir /usr/local/mysql3308
 chown -R mysql.mysql /usr/local/mysql3308/
@@ -125,7 +126,7 @@ mkdir -p /home/data/mysql3308/binlog
 chown -R mysql.mysql /home/data/mysql3308
 
 ```
-
+#### cat /etc/my.cnf
 ```
 [root@dev support-files]# cat /etc/my.cnf
 # for advice on how to change settings please see
@@ -159,7 +160,7 @@ innodb_flush_log_at_trx_commit = 0
 [root@dev support-files]# 
 ```
 
-
+#### 
 ```
 [root@dev support-files]# /usr/local/mysql5.7.23/bin/mysqld --initialize --user=mysql --basedir=/usr/local/mysql5.7.23 --datadir=/data/mysql3308 --explicit_defaults_for_timestamp=1
 2018-08-24T05:35:06.188996Z 0 [Warning] InnoDB: New log files created, LSN=45790
@@ -170,6 +171,26 @@ innodb_flush_log_at_trx_commit = 0
 [root@dev support-files]# 
 ```
 
+#### ./mysqld_multi --defaults-extra-file=/etc/my.cnf start 2
+```
+[root@dev bin]# ./mysqld_multi --defaults-extra-file=/etc/my.cnf start 2                          
+WARNING: my_print_defaults command not found.
+Please make sure you have this command available and
+in your path. The command is available from the latest
+MySQL distribution.
+ABORT: Can't find command 'my_print_defaults'.
+This command is available from the latest MySQL
+distribution. Please make sure you have the command
+in your PATH.
+[root@dev bin]# 
+/usr/local/mysql5.7.23/bin
+[root@dev bin]# export PATH=/usr/local/mysql5.7.23/bin:$PATH
+[root@dev bin]# ./mysqld_multi --defaults-extra-file=/etc/my.cnf start 2
+[root@dev bin]# 
+```
+
+
+#### mysql --socket=/usr/local/mysql3308/mysql.sock -uroot -p
 ```
 [root@dev bin]# netstat -lntp -lntp
 Active Internet connections (only servers)
@@ -204,4 +225,20 @@ mysql> show databases;
 ERROR 1820 (HY000): You must reset your password using ALTER USER statement before executing this statement.
 mysql> 
 mysql> 
+mysql> 
+mysql> alter user 'root'@'localhost' identified by '123456';
+Query OK, 0 rows affected (0.11 sec)
+
+mysql> 
+mysql>
+```
+#### mysqld_multi --defaults-extra-file=/etc/my.cnf stop 2   
+```
+[root@dev bin]# mysqld_multi --defaults-extra-file=/etc/my.cnf stop 2   
+[root@dev bin]# 
+[root@dev bin]# mysqld_multi --defaults-extra-file=/etc/my.cnf report   
+Reporting MySQL servers
+MySQL server from group: mysqld1 is not running
+MySQL server from group: mysqld2 is not running
+[root@dev bin]# 
 ```
