@@ -60,7 +60,7 @@ total 35760
 /usr/local/php/sbin
 [root@localhost sbin]#
 ```
-### memcache
+### memcached
 ```
 [root@localhost ~]# 
 [root@localhost ~]# ps -ef | grep memca
