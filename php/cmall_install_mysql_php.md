@@ -1,3 +1,4 @@
+#【原始配置】
 ### nginx
 ```
 /usr/local/nginx/conf
@@ -97,7 +98,7 @@ drwxr-xr-x.  5 root root 4096 Jan 17  2018 share
 drwxr-xr-x.  3 root root 4096 Feb 27 13:57 src
 [root@localhost local]# 
 ```
-
+#【二 重新安装】
 # mysql install
 ```
 wget https://cdn.mysql.com//Downloads/MySQL-5.7/mysql-5.7.23-el7-x86_64.tar.gz
@@ -419,6 +420,62 @@ zlib
 [root@dev bin]# 
 ```
 
+# php-fpm 配置 启动
+* http://www.4wei.cn/archives/1002061
 
+* /usr/local/php-5.6.37/etc
+```
+[root@dev php-5.6.37]# cd ./etc
+[root@dev etc]# ll
+total 168
+-rw-r--r--. 1 root root  1152 Aug 25 12:10 pear.conf
+-rw-r--r--. 1 root root 21975 Aug 25 12:10 php-fpm1.conf
+-rw-r--r--. 1 root root 21972 Aug 25 12:10 php-fpm20170919.conf
+-rw-r--r--. 1 root root 22025 Aug 25 12:19 php-fpm.conf
+-rw-r--r--. 1 root root 22236 Aug 25 12:10 php-fpm.conf.default
+-rw-r--r--. 1 root root 65817 Aug 25 12:10 php.ini
+[root@dev etc]# 
+```
+php-fpm.conf的配置：
+```
+php-fpm.conf:listen = /dev/shm/php-fpm/php-fpm.sock
+```
+
+
+* /usr/local/php-5.6.37/sbin/php-fpm
+```
+[root@dev etc]# cd ../sbin
+[root@dev sbin]# ll
+total 37168
+-rwxr-xr-x. 1 root root 38058912 Aug 25 11:15 php-fpm
+[root@dev sbin]# 
+[root@dev sbin]# pwd
+/usr/local/php-5.6.37/sbin
+[root@dev sbin]# 
+```
+### nginx 配置
+* 
+```
+cp server* /usr/local/nginx-1.14.0/conf
+[root@dev conf]# cd -
+/var/www/backup_20180824/nginx/conf
+[root@dev conf]# 
+cp nginx.conf /usr/local/nginx-1.14.0/conf
+```
+```
+#/nginx.conf;
+error_log  /var/log/nginx/error.log error;
+pid        /var/log/nginx/nginx.pid;
+
+    upstream php5.4 {
+      server   unix:/dev/shm/php-fpm/php-fpm.sock;
+    }
+
+    upstream php5.3 {
+      server   unix:/dev/shm/php-fpm/php-fpm5.3.sock;
+    }
+````
+
+### 【导入数据库】
 
 
