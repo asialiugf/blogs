@@ -305,6 +305,8 @@ wget http://down.linuxprobe.com/Tools/zlib-1.2.8.tar.gz
 查看 php 编译选项
 * https://blog.csdn.net/eclothy/article/details/45148313
 
+
+### libiconv-1.10
 ``` 
  1021  wget  http://mirror.hust.edu.cn/gnu/libiconv/libiconv-1.10.tar.gz
  1022  l
@@ -317,6 +319,25 @@ wget http://down.linuxprobe.com/Tools/zlib-1.2.8.tar.gz
  1029  make
  1030  make install
 ```
+### t1lib-5.1.2
+```
+ 1288  wget http://down.linuxprobe.com/Tools/t1lib-5.1.2.tar.gz
+ 1289  ll
+ 1290  tar xvf t1lib-5.1.2.tar.gz 
+ 1291  cd t1lib-5.1.2
+ 1292  ll
+ 1293  ./configure
+ 1294  make
+ 1295   make without_doc
+ 1296  make install
+ 1297  cd /usr/local
+ 1298  ll l1
+ 1299    
+ 1300  history
+[root@dev local]# 
+```
+
+
 
 ```
 [root@dev php-5.6.37]# cat zz1.sh
