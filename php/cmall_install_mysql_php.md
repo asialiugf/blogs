@@ -246,6 +246,10 @@ MySQL server from group: mysqld2 is not running
 [root@dev bin]# 
 ```
 # php install
+* http://www.php.net/releases/
+以上这里可以下载各种版本！！！
+
+
 * http://php.net/manual/zh/install.unix.nginx.php
 * https://www.cnblogs.com/scofi/articles/5135459.html
 ```
