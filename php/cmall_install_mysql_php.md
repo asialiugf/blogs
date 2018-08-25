@@ -475,7 +475,80 @@ pid        /var/log/nginx/nginx.pid;
       server   unix:/dev/shm/php-fpm/php-fpm5.3.sock;
     }
 ````
+### 【mall_configure 】
+```
+[root@dev data]# vi  config.inc.a.php
+<?php
+
+return array (
+  'SITE_URL' => 'http://www.henrongyi.com',
+  'DB_CONFIG' => 'mysql://ecmalldbuser:5t8c93nmc4@localhost:3306/ecmall',
+  'DB_PREFIX' => 'ecm_',
+  'LANG' => 'sc-utf-8',
+  'COOKIE_DOMAIN' => '',
+  'COOKIE_PATH' => '/',
+  'ECM_KEY' => '749bf8a5fd09c7c18a12f33a69fea5f8',
+  'MALL_SITE_ID' => 'EMNDHNmc1a6DGqJB',
+  'ENABLED_GZIP' => 0,
+  'DEBUG_MODE' => 0,
+  'CACHE_SERVER' => 'default',
+  'MEMBER_TYPE' => 'default',
+  'ENABLED_SUBDOMAIN' => 0,
+  'SUBDOMAIN_SUFFIX' => '',
+  'SESSION_TYPE' => 'mysql',
+  'SESSION_MEMCACHED' => 'localhost:11211',
+  'CACHE_MEMCACHED' => 'localhost:11211',
+);
+
+?>
+```
 
 ### 【导入数据库】
+有意思，用localhost不行，用127.0.0.1可以。
+/etc/profile
+```
+unset i
+unset -f pathmunge
+export PATH=/root/anaconda3/bin:$PATH
+export PATH=/usr/local/mysql5.7.23/bin:$PATH
+[root@dev ~]# 
+```
 
+测试数据库的连接
+```
+  990  mysql --socket=/usr/local/mysql3308/mysql.sock -uroot -p
+  991  ./mysql --socket=/usr/local/mysql3308/mysql.sock -uroot -p
+  992  ps -ef | grep mysql
+  993  ./mysqld_multi --defaults-extra-file=/etc/my.cnf start 2
+  996  ./mysqld_multi --defaults-extra-file=/etc/my.cnf start 2
+ 1001  cd /usr/local/mysql5.7.23/
+ 1004  mysqld_multi --defaults-extra-file=/etc/my.cnf start 2
+ 1005  ./mysql -u root -P 3308  -p
+ 1006  mysqld_multi --defaults-extra-file=/etc/my.cnf report   
+ 1009   ./mysql --socket=/usr/local/mysql3308/mysql.sock -uroot -p
+```
+
+```
+[root@dev bin]# ./mysql -u root -P 3308  -p
+Enter password: 
+ERROR 1045 (28000): Access denied for user 'root'@'localhost' (using password: YES)
+[root@dev bin]# 
+[root@dev bin]# 
+[root@dev bin]# ./mysql -u root -P 3308  -p -h127.0.0.1
+Enter password: 
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 5
+Server version: 5.7.23-log MySQL Community Server (GPL)
+
+Copyright (c) 2000, 2018, Oracle and/or its affiliates. All rights reserved.
+
+Oracle is a registered trademark of Oracle Corporation and/or its
+affiliates. Other names may be trademarks of their respective
+owners.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+mysql> 
+
+```
 
