@@ -551,4 +551,8 @@ Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
 mysql> 
 
 ```
-
+导入数据库
+```
+mysql> 
+mysql> source /var/www/backup_20180824/ecmalltaoruanjian.sql
+```
