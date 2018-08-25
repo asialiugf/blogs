@@ -245,6 +245,8 @@ MySQL server from group: mysqld2 is not running
 [root@dev bin]# 
 ```
 # php install
+* http://php.net/manual/zh/install.unix.nginx.php
+* https://www.cnblogs.com/scofi/articles/5135459.html
 ```
  1001  cd software/
  1002  ll
