@@ -277,6 +277,28 @@ MySQL server from group: mysqld2 is not running
  1020   history
 [root@dev php-5.6.37]# 
 ```
+
+### php 5.3.29 
+* https://blog.csdn.net/liangdsh/article/details/54139307
+```
+wget http://down.linuxprobe.com/Tools/cmake-2.8.11.2.tar.gz
+wget http://down.linuxprobe.com/Tools/Discuz_X3.2_SC_GBK.zip
+wget http://down.linuxprobe.com/Tools/freetype-2.5.3.tar.gz
+wget http://down.linuxprobe.com/Tools/jpegsrc.v9a.tar.gz
+wget http://down.linuxprobe.com/Tools/libgd-2.1.0.tar.gz
+wget http://down.linuxprobe.com/Tools/libmcrypt-2.5.8.tar.gz
+wget http://down.linuxprobe.com/Tools/libpng-1.6.12.tar.gz
+wget http://down.linuxprobe.com/Tools/libvpx-v1.3.0.tar.bz2
+wget http://down.linuxprobe.com/Tools/mysql-5.6.19.tar.gz
+wget http://down.linuxprobe.com/Tools/nginx-1.6.0.tar.gz
+wget http://down.linuxprobe.com/Tools/openssl-1.0.1h.tar.gz
+wget http://down.linuxprobe.com/Tools/php-5.5.14.tar.gz
+wget http://down.linuxprobe.com/Tools/pcre-8.35.tar.gz
+wget http://down.linuxprobe.com/Tools/t1lib-5.1.2.tar.gz
+wget http://down.linuxprobe.com/Tools/tiff-4.0.3.tar.gz
+wget http://down.linuxprobe.com/Tools/yasm-1.2.0.tar.gz
+wget http://down.linuxprobe.com/Tools/zlib-1.2.8.tar.gz
+```
 #### [root@dev php-5.6.37]# ./configure --help
 好参考！！
 * https://www.cnblogs.com/scofi/articles/5135459.html
