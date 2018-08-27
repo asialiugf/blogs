@@ -299,13 +299,26 @@ wget http://down.linuxprobe.com/Tools/tiff-4.0.3.tar.gz
 wget http://down.linuxprobe.com/Tools/yasm-1.2.0.tar.gz
 wget http://down.linuxprobe.com/Tools/zlib-1.2.8.tar.gz
 ```
-### php 5.3.29 ./configure
+### php 5.3.29 ./configure ( 有问题）
 ```
 [root@dev php-5.3.29]# cat zz.sh
  ./configure --prefix=/usr/local/php-5.3.29 --with-config-file-path=/usr/local/php-5.3.29/etc --with-mysql=/usr/local/mysql5.7.23 --with-mysqli=/usr/local/mysql5.7.23/bin/mysql_config --with-pdo-mysql=/usr/local/mysql5.7.23 --with-gd --with-png-dir=/usr/local/libpng --with-jpeg-dir=/usr/local/jpeg --with-freetype-dir=/usr/local/freetype --with-vpx-dir=/usr/local/libvpx/ --with-zlib-dir=/usr/local/zlib --with-t1lib=/usr/local/t1lib --with-iconv --enable-libxml --enable-xml --enable-bcmath --enable-shmop --enable-sysvsem --enable-inline-optimization --enable-opcache --enable-mbregex --enable-fpm --enable-mbstring --enable-ftp --enable-gd-native-ttf --with-openssl --enable-pcntl --enable-sockets --with-xmlrpc --enable-zip --enable-soap --without-pear --with-gettext --enable-session  --with-curl --enable-ctype
 [root@dev php-5.3.29]# 
 ```
+### O ---- php 5.3.29 ./configure
+```
+[root@dev php-5.3.29]# cat zz2.sh
+ ./configure --prefix=/usr/local/php-5.3.29 --with-config-file-path=/usr/local/php-5.3.29/etc --with-mysql=/usr/local/mysql5.7.23 --with-pdo-mysql=/usr/local/mysql5.7.23 --with-gd --with-png-dir=/usr/local/libpng --with-jpeg-dir=/usr/local/jpeg --with-freetype-dir=/usr/local/freetype --with-vpx-dir=/usr/local/libvpx/ --with-zlib-dir=/usr/local/zlib --with-t1lib=/usr/local/t1lib --with-iconv --enable-libxml --enable-xml --enable-bcmath --enable-shmop --enable-sysvsem --enable-inline-optimization --enable-opcache --enable-mbregex --enable-fpm --enable-mbstring --enable-ftp --enable-gd-native-ttf --with-openssl --enable-pcntl --enable-sockets --with-xmlrpc --enable-zip --enable-soap --without-pear --with-gettext --enable-session  --with-curl --enable-ctype --enable-mysqlnd 
+[root@dev php-5.3.29]#
+```
+### 修改 Makefile 增加 -liconv
 
+### make make install
+
+### cd /root/software/php-5.3.29/ext/mysqli
+###  /root/software/php-5.3.29/scripts/phpize
+
+==================分割线=======================
 
 #### [root@dev php-5.6.37]# ./configure --help
 好参考！！
