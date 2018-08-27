@@ -68,6 +68,10 @@ total 35760
 root     19837 19749  0 10:23 pts/4    00:00:00 grep memca
 root     30923     1  0 Feb27 ?        00:08:12 /usr/bin/memcached -b -l 127.0.0.1 -p 11211 -m 150 -u root
 [root@localhost ~]# 
+[root@localhost bin]# ./memcached -help
+memcached 1.4.4
+-p <num>      TCP port number to listen on (default: 11211)
+-U <num>      UDP port number to listen on (default: 11211, 0 is off)
 ```
 
 ### /usr/local
