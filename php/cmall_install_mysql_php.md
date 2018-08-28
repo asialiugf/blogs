@@ -628,3 +628,18 @@ mysql>
 mysql> 
 mysql> source /var/www/backup_20180824/ecmalltaoruanjian.sql
 ```
+
+### 【uc 配置】
+
+```
+[root@dev data]# pwd
+/var/www/html/test6.csix.cn/data
+[root@dev data]#
+
+```
+
+##### 将 'MEMBER_TYPE' => 'default', 改成 'MEMBER_TYPE' => 'uc',
+```
+[root@dev data]# vi config.inc.php
+  'MEMBER_TYPE' => 'default',
+```
