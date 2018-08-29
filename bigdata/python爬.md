@@ -1,3 +1,6 @@
+### scrapy 登录
+* https://www.2cto.com/kf/201707/655335.html
+
 ### 异常 + 监控
 * https://segmentfault.com/q/1010000005360571/a-1020000005361720
 * https://scrapy-chs.readthedocs.io/zh_CN/1.0/topics/webservice.html
