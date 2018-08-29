@@ -1,5 +1,6 @@
 ### js翻页
 * https://blog.csdn.net/elecjack/article/details/51532482
+* https://blog.csdn.net/zcc_0015/article/details/50814431
 
 ### scrapy 登录
 * https://www.2cto.com/kf/201707/655335.html
