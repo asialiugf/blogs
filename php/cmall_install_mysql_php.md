@@ -309,7 +309,7 @@ wget http://down.linuxprobe.com/Tools/zlib-1.2.8.tar.gz
  ./configure --prefix=/usr/local/php-5.3.29 --with-config-file-path=/usr/local/php-5.3.29/etc --with-mysql=/usr/local/mysql5.7.23 --with-mysqli=/usr/local/mysql5.7.23/bin/mysql_config --with-pdo-mysql=/usr/local/mysql5.7.23 --with-gd --with-png-dir=/usr/local/libpng --with-jpeg-dir=/usr/local/jpeg --with-freetype-dir=/usr/local/freetype --with-vpx-dir=/usr/local/libvpx/ --with-zlib-dir=/usr/local/zlib --with-t1lib=/usr/local/t1lib --with-iconv --enable-libxml --enable-xml --enable-bcmath --enable-shmop --enable-sysvsem --enable-inline-optimization --enable-opcache --enable-mbregex --enable-fpm --enable-mbstring --enable-ftp --enable-gd-native-ttf --with-openssl --enable-pcntl --enable-sockets --with-xmlrpc --enable-zip --enable-soap --without-pear --with-gettext --enable-session  --with-curl --enable-ctype
 [root@dev php-5.3.29]# 
 ```
-### O ---- php 5.3.29 ./configure
+### OK ---- php 5.3.29 ./configure
 ```
 [root@dev php-5.3.29]# cat zz2.sh
  ./configure --prefix=/usr/local/php-5.3.29 --with-config-file-path=/usr/local/php-5.3.29/etc --with-mysql=/usr/local/mysql5.7.23 --with-pdo-mysql=/usr/local/mysql5.7.23 --with-gd --with-png-dir=/usr/local/libpng --with-jpeg-dir=/usr/local/jpeg --with-freetype-dir=/usr/local/freetype --with-vpx-dir=/usr/local/libvpx/ --with-zlib-dir=/usr/local/zlib --with-t1lib=/usr/local/t1lib --with-iconv --enable-libxml --enable-xml --enable-bcmath --enable-shmop --enable-sysvsem --enable-inline-optimization --enable-opcache --enable-mbregex --enable-fpm --enable-mbstring --enable-ftp --enable-gd-native-ttf --with-openssl --enable-pcntl --enable-sockets --with-xmlrpc --enable-zip --enable-soap --without-pear --with-gettext --enable-session  --with-curl --enable-ctype --enable-mysqlnd 
@@ -322,6 +322,111 @@ wget http://down.linuxprobe.com/Tools/zlib-1.2.8.tar.gz
 ### cd /root/software/php-5.3.29/ext/mysqli
 ###  /root/software/php-5.3.29/scripts/phpize
 
+
+
+###【php 5.4.38 编译】
+* http://www.php.net/releases/
+* 以上这里可以下载各种版本！！！
+* 安装 yum -y install libvpx-devel
+```
+ 1003  wget http://cn2.php.net/distributions/php-5.4.38.tar.gz
+ 1005  tar xvf php-5.4.38.tar.gz
+ 1007  cd php-5.4.38
+ 1009  cp ../php-5.3.29/zz.sh .
+ 1020  yum -y install libvpx-devel
+[root@dev ~/software/php-5.4.38]# 
+```
+#### ./configure 参数
+```
+[root@dev ~/software/php-5.4.38]# cat ./zz2.sh
+ ./configure --prefix=/usr/local/php-5.4.38 --with-config-file-path=/usr/local/php-5.4.38/etc --with-mysql=/usr/local/mysql5.7.23 --with-pdo-mysql=/usr/local/mysql5.7.23 --with-gd --with-png-dir=/usr/local/libpng --with-jpeg-dir=/usr/local/jpeg --with-freetype-dir=/usr/local/freetype --with-vpx-dir=/usr/local/libvpx/ --with-zlib-dir=/usr/local/zlib --with-t1lib=/usr/local/t1lib --with-iconv --enable-libxml --enable-xml --enable-bcmath --enable-shmop --enable-sysvsem --enable-inline-optimization --enable-opcache --enable-mbregex --enable-fpm --enable-mbstring --enable-ftp --enable-gd-native-ttf --with-openssl --enable-pcntl --enable-sockets --with-xmlrpc --enable-zip --enable-soap --without-pear --with-gettext --enable-session  --with-curl --enable-ctype --enable-mysqlnd 
+[root@dev ~/software/php-5.4.38]# 
+```
+#### make && make install
+
+* 注意，要在Makefile 加上  -liconv
+```
+make 
+make install
+```
+
+#### mysqli 
+```
+[root@dev ~/software/php-5.4.38/ext]# cd mysqli/
+[root@dev ~/software/php-5.4.38/ext/mysqli]# /root/software/php-5.4.38/scripts/phpize
+Configuring for:
+PHP Api Version:         20100412
+Zend Module Api No:      20100525
+Zend Extension Api No:   220100525
+[root@dev ~/software/php-5.4.38/ext/mysqli]# 
+```
+
+### 【查看备份的文件】
+
+```
+[root@dev /var/www/backup_20180824]# ll
+total 921772
+-rw-r--r--.  1 root root 177869452 Aug 24 11:10 ecmalltaoruanjian.sql
+-rw-r--r--.  1 root root 111530061 Aug 24 11:09 ecmall_test5.sql
+drwxr-xr-x.  8 root root        70 Sep 22  2017 nginx
+-rw-r--r--.  1 root root  63640560 Aug 24 11:10 nginx_php.tar.gz
+drwxr-xr-x.  9 root root        81 Mar 16  2015 php
+drwxr-xr-x. 10 root root        93 Jan  5  2016 php5.3
+-rw-r--r--.  1 root root 590841468 Aug 24 11:15 test6.csix.cn_clear.tar.gz
+[root@dev /var/www/backup_20180824]# 
+
+```
+
+###【开启 php-fpm】
+```
+[root@dev /var/www/backup_20180824/php/etc]# cp * /usr/local/php-5.4.38/etc
+[root@dev /var/www/backup_20180824/php5.3/etc]# cp * /usr/local/php-5.3.29/etc
+```
+
+```
+[root@dev /usr/local/php-5.3.29]# cd ./sbin
+[root@dev /usr/local/php-5.3.29/sbin]# pwd
+/usr/local/php-5.3.29/sbin
+[root@dev /usr/local/php-5.3.29/sbin]# ./php-fpm
+```
+
+```
+[root@dev /usr/local/php-5.4.38]# cd ./sbin
+[root@dev /usr/local/php-5.4.38/sbin]# pwd
+/usr/local/php-5.3.29/sbin
+[root@dev /usr/local/php-5.4.38/sbin]# ./php-fpm
+```
+
+```
+[root@dev /usr/local/nginx-1.14.0/sbin]# ps -ef | grep php
+root      8162     1  0 Aug27 ?        00:00:08 php-fpm: master process (/usr/local/php-5.3.29/etc/php-fpm.conf)
+nobody    8163  8162  0 Aug27 ?        00:00:00 php-fpm: pool www
+nobody    8164  8162  0 Aug27 ?        00:00:00 php-fpm: pool www
+nobody    8165  8162  0 Aug27 ?        00:00:00 php-fpm: pool www
+nobody    8166  8162  0 Aug27 ?        00:00:00 php-fpm: pool www
+nobody    8167  8162  0 Aug27 ?        00:00:00 php-fpm: pool www
+nobody    8168  8162  0 Aug27 ?        00:00:00 php-fpm: pool www
+nobody    8169  8162  0 Aug27 ?        00:00:00 php-fpm: pool www
+nobody    8170  8162  0 Aug27 ?        00:00:00 php-fpm: pool www
+nobody    8171  8162  0 Aug27 ?        00:00:00 php-fpm: pool www
+nobody    8172  8162  0 Aug27 ?        00:00:00 php-fpm: pool www
+root     21754     1  0 01:25 ?        00:00:00 php-fpm: master process (/usr/local/php-5.4.38/etc/php-fpm.conf)
+nobody   21755 21754  0 01:25 ?        00:00:00 php-fpm: pool www
+nobody   21756 21754  0 01:25 ?        00:00:00 php-fpm: pool www
+nobody   21757 21754  0 01:25 ?        00:00:00 php-fpm: pool www
+nobody   21758 21754  0 01:25 ?        00:00:00 php-fpm: pool www
+nobody   21759 21754  0 01:25 ?        00:00:00 php-fpm: pool www
+nobody   21760 21754  0 01:25 ?        00:00:00 php-fpm: pool www
+nobody   21761 21754  0 01:25 ?        00:00:00 php-fpm: pool www
+nobody   21762 21754  0 01:25 ?        00:00:00 php-fpm: pool www
+nobody   21763 21754  0 01:25 ?        00:00:00 php-fpm: pool www
+nobody   21764 21754  0 01:25 ?        00:00:00 php-fpm: pool www
+root     22205 21373  0 01:28 pts/5    00:00:00 grep --color=auto php
+[root@dev /usr/local/nginx-1.14.0/sbin]# 
+```
+
+
+# ==============================================
 ==================分割线=======================
 
 #### [root@dev php-5.6.37]# ./configure --help
