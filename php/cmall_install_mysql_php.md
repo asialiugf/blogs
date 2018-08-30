@@ -738,11 +738,12 @@ mysql> source /var/www/backup_20180824/ecmalltaoruanjian.sql
 
 ```
 [root@dev data]# pwd
-/var/www/html/test6.csix.cn/data
+/var/www/html/test6.xxxx.cn/data
 [root@dev data]#
 
 ```
-
+##### 配置文件 test.xxxx.cn/config.inc.php
+##### 配置文件 test.xxxx.cn/data/config.inc.php
 ##### 将 'MEMBER_TYPE' => 'default', 改成 'MEMBER_TYPE' => 'uc',
 ```
 [root@dev data]# vi config.inc.php
