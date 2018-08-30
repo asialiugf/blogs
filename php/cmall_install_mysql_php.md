@@ -324,7 +324,7 @@ wget http://down.linuxprobe.com/Tools/zlib-1.2.8.tar.gz
 
 
 
-###【php 5.4.38 编译】
+## 【php 5.4.38 编译】
 * http://www.php.net/releases/
 * 以上这里可以下载各种版本！！！
 * 安装 yum -y install libvpx-devel
