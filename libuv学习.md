@@ -12,6 +12,8 @@
 #### Linux下的I/O复用与epoll详解 (mmap、红黑树、链表)
 * https://www.cnblogs.com/lojunren/p/3856290.html
 * http://blog.51cto.com/11418774/1836638
+#### 是设置成了非阻塞吗？
+* https://www.cnblogs.com/life2refuel/p/5297620.html
 
 <!-- /code_chunk_output -->
 
