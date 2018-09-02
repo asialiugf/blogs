@@ -8,6 +8,8 @@
 * [libuv之线程池的坑，注意避免](#libuv之线程池的坑注意避免)
 * [libuv源码分析(2)](#libuv源码分析2)
 
+#### 一个线程 一个 event_loop，在这个loop中，回调函数不能是死循环。（2018-09-02）
+
 <!-- /code_chunk_output -->
 
 #### libuv github家
