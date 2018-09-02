@@ -9,7 +9,7 @@
 * [libuv源码分析(2)](#libuv源码分析2)
 
 #### 一个线程 一个 event_loop，在这个loop中，回调函数不能是死循环。（2018-09-02）
-####　Linux下的I/O复用与epoll详解
+#### Linux下的I/O复用与epoll详解 (mmap、红黑树、链表)
 * https://www.cnblogs.com/lojunren/p/3856290.html
 * http://blog.51cto.com/11418774/1836638
 
