@@ -3,6 +3,9 @@
 * https://raw.githubusercontent.com/Nyr/openvpn-install/master/openvpn-install.sh
 * https://blog.csdn.net/l1028386804/article/details/72190429
 
+### 下载 openvpn-install.sh 并执行，第一个IP是 server端坚听的IP 公网IP
+* https://github.com/Nyr/openvpn-install
+
 ```
  1001  cd github/
  1005  wget https://raw.githubusercontent.com/Nyr/openvpn-install/master/openvpn-install.sh
