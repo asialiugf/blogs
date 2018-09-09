@@ -1,7 +1,9 @@
-###
+### 最简单安装 openVPN
 * http://netsecurity.51cto.com/art/201704/537925.htm
+
 * https://raw.githubusercontent.com/Nyr/openvpn-install/master/openvpn-install.sh
 * https://blog.csdn.net/l1028386804/article/details/72190429
+* https://blog.csdn.net/huihui1094667985/article/details/79507044
 
 ### 下载 openvpn-install.sh 并执行，第一个IP是 server端坚听的IP 公网IP
 * https://github.com/Nyr/openvpn-install
@@ -32,6 +34,7 @@
 ```
 ### windows client
 * https://www.cnblogs.com/EasonJim/p/8341404.html
+* https://blog.csdn.net/huihui1094667985/article/details/79507044
 * https://openvpn.net/release/ 下载 openvpn-2.1.3-install.exe	21-Feb-2012 00:50	1.6M
 
 将 /tmp/client.ovpn 这个文件复制出来，放在 C:\Program Files (x86)\OpenVPN\config 这个目录下。
