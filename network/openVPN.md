@@ -32,6 +32,52 @@
  1040  ping 10.8.0.2
  1041  ip route
 ```
+### 主机上的配置
+```
+15: tun0: <POINTOPOINT,MULTICAST,NOARP,UP,LOWER_UP> mtu 1500 qdisc fq_codel state UNKNOWN group default qlen 100
+    link/none 
+    inet 10.8.0.1/24 scope global tun0
+       valid_lft forever preferred_lft forever
+    inet6 fe80::b330:adef:86a8:6266/64 scope link stable-privacy 
+       valid_lft forever preferred_lft forever
+lgf@develop:~$ 
+```
+如果主机上看到的 tun0处于DOWN的状态，执行以下命令
+```
+# ip link set tun0 up
+# ip addr add 10.8.0.1/24 dev tun0
+```
+参考如下：
+* https://backreference.org/2010/03/26/tuntap-interface-tutorial/
+```
+# openvpn --mktun --dev tun2
+Fri Mar 26 10:29:29 2010 TUN/TAP device tun2 opened
+Fri Mar 26 10:29:29 2010 Persist state set to: ON
+# ip link set tun2 up
+# ip addr add 10.0.0.1/24 dev tun2
+```
+### 主机上还要配置路由
+配置一条默认路由
+```
+root@develop:/usr/bin# 
+root@develop:/usr/bin# ip route
+default via 192.168.66.1 dev enp11s0f0 
+default via 192.168.66.1 dev enp11s0f0 proto static 
+10.8.0.0/24 dev tun0 proto kernel scope link src 10.8.0.1 
+192.168.66.0/24 dev enp11s0f0 proto kernel scope link src 192.168.66.253 
+root@develop:/usr/bin# 
+root@develop:/usr/bin# route -n
+Kernel IP routing table
+Destination     Gateway         Genmask         Flags Metric Ref    Use Iface
+0.0.0.0         192.168.66.1    0.0.0.0         UG    0      0        0 enp11s0f0
+0.0.0.0         192.168.66.1    0.0.0.0         UG    0      0        0 enp11s0f0
+10.8.0.0        0.0.0.0         255.255.255.0   U     0      0        0 tun0
+192.168.66.0    0.0.0.0         255.255.255.0   U     0      0        0 enp11s0f0
+root@develop:/usr/bin# 
+```
+
+*  https://blog.csdn.net/yuanchao99/article/details/18992567
+
 ### windows client
 * https://www.cnblogs.com/EasonJim/p/8341404.html
 * https://blog.csdn.net/huihui1094667985/article/details/79507044
