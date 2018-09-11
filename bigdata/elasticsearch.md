@@ -57,3 +57,50 @@ naxxm soft nofile 65536
 "/etc/security/limits.conf" 64L, 2509C written
 [root@dev ~]#
 ```
+
+### 案例
+```json
+curl -XPUT http://localhost:9201/index
+
+curl -XPOST http://localhost:9201/index/fulltext/_mapping -H 'Content-Type:application/json' -d'
+{
+        "properties": {
+            "content": {
+                "type": "text",
+                "analyzer": "ik_max_word",
+                "search_analyzer": "ik_max_word"
+            }
+        }
+
+}'
+
+curl -XPOST http://localhost:9201/index/fulltext/1 -H 'Content-Type:application/json' -d'
+{"id":1,"content":"美国留给伊拉克的是个烂摊子吗"}
+'
+curl -XPOST http://localhost:9201/index/fulltext/1 -H 'Content-Type:application/json' -d'
+{"id":2,"content":"美国留给伊拉克的是个烂摊子吗"}
+'
+curl -XPOST http://localhost:9201/index/fulltext/1 -H 'Content-Type:application/json' -d'
+{"id":3,"content":"美国留给伊拉克的是个烂摊子吗"}
+'
+curl -XPOST http://localhost:9201/index/fulltext/1 -H 'Content-Type:application/json' -d'
+{"id":7,"content":"因为我们只需要按照词典分词，所以这边只有一种最大分词模式，test_max_word。接下来就是Analyzer 和Tokenizor。默认"}
+'
+
+curl -XPOST http://localhost:9201/index/fulltext/1 -H 'Content-Type:application/json' -d'
+{"id":5,"content":"默认是custom/mydict.dic;custom/single_word_low_freq.dic，   我这里改为我自己的了。   （自定义热更新词库）   custom/mydict.dic;custom/single_word_low_freq.dic;custom/zhouls.dic"}
+'
+
+curl -XPOST http://localhost:9201/index/fulltext/_search  -H 'Content-Type:application/json' -d'
+{
+    "query" : { "match" : { "content" : "默认" }},
+    "highlight" : {
+        "pre_tags" : ["<tag1>", "<tag2>"],
+        "post_tags" : ["</tag1>", "</tag2>"],
+        "fields" : {
+            "content" : {}
+        }
+    }
+}
+'
+```
