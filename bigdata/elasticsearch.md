@@ -41,3 +41,19 @@ optional 1 - download pre-build package from here: https://github.com/medcl/elas
 create plugin folder cd your-es-root/plugins/ && mkdir ik
 unzip plugin to folder your-es-root/plugins/ik
 ```
+
+### 问题处理
+```
+[1]: max file descriptors [4096] for elasticsearch process is too low, increase to at least [65536]
+```
+```
+#ftp             hard    nproc           0
+#@student        -       maxlogins       4
+naxxm hard nofile 65536
+naxxm soft nofile 65536
+* soft nofile 65536
+* hard nofile 65536
+# End of file
+"/etc/security/limits.conf" 64L, 2509C written
+[root@dev ~]#
+```
