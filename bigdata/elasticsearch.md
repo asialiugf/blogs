@@ -1,3 +1,6 @@
+### 学习网站
+* https://es.xiaoleilu.com/040_Distributed_CRUD/15_Create_index_delete.html
+
 * elasticsearch install
 * https://www.elastic.co/guide/en/elasticsearch/reference/current/zip-targz.html
 
