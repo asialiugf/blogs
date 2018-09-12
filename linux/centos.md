@@ -1,3 +1,9 @@
+#### 修改主机名
+```
+[root@bogon ~]# hostnamectl set-hostname  my_name
+reboot
+```
+
 #### yum install gcc gcc-c++
 #### astyle 安装
 ```c++
