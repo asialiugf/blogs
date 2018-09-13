@@ -117,8 +117,39 @@ export EXTERNAL_URL="http://10.24.160.42"
 yum localinstall  gitlab-ce-10.4.0-ce.0.el7.x86_64.rpm
 ```
 
+```
+git clone https://gitlab.com/xhang/gitlab.git
+cd gitlab/
+git fetch
+```
+然后将 gitlab目录 打包成 gitlab.tar.gz 上传到文件服务器
 
+```
+   25  2018-09-14 00:44:52 root cd /tmp
+   26  2018-09-14 00:45:06 root tar xvf /home/support/gitlab.tar.gz
+   27  2018-09-14 00:45:14 root cd gitlab/
+```
+* 查看版本
+```
+[root@dev_fileserver tmp]#  head  -n 1  /opt/gitlab/version-manifest.txt
+gitlab-ce 11.2.3
+[root@dev_fileserver tmp]#
 
+[root@dev_fileserver tmp]# cat /opt/gitlab/embedded/service/gitlab-rails/VERSION
+11.2.3
+[root@dev_fileserver tmp]# 
+```
+* 生成patch文件
 
+```
+cd /tmp/gitlab
+git diff origin/11-2-stable origin/11-2-stable-zh > /tmp/11.2.diff
+```
+
+* patch
+
+```
+patch -d /opt/gitlab/embedded/service/gitlab-rails -p1 < /tmp/11.2.diff
+```
 
 
