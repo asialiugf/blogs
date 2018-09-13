@@ -56,6 +56,32 @@ Fri Mar 26 10:29:29 2010 Persist state set to: ON
 # ip link set tun2 up
 # ip addr add 10.0.0.1/24 dev tun2
 ```
+
+### 开关机shell
+```
+root@henrongyi:/usr/bin# ll open*.sh
+-rwxr-xr-x 1 root root 321 Sep 13 01:12 openvpn-ctl.sh
+root@henrongyi:/usr/bin# 
+root@henrongyi:/usr/bin# cat open*.sh
+case "$1" in
+start)
+    systemctl start openvpn@server.service
+    sleep 2
+    #ip link set tun0 up
+    #ip addr add 10.8.0.1/24 dev tun0
+;;
+stop)
+    systemctl stop openvpn@server.service
+;;
+*)
+   echo "Usage: $0 {start|stop|reload|restart|force-reload|cond-restart|soft-restart|status}" >&2
+   exit 1
+   ;;
+esac
+exit 0
+root@henrongyi:/usr/bin# 
+```
+
 ### 主机上还要配置路由
 配置一条默认路由
 ```
