@@ -105,13 +105,26 @@ root@develop:/usr/bin#
 *  https://blog.csdn.net/yuanchao99/article/details/18992567
 
 ### windows client
+2.下载客户端
+MAC：
+https://www.tunnelblick.net/downloads.html
+
+WindowOS（64bit）：
+http://swupdate.openvpn.org/community/releases/openvpn-install-2.3.3-I002-x86_64.exe
+WindowOS（32bit）
+http://swupdate.openvpn.org/community/releases/openvpn-install-2.3.3-I002-i686.exe
+
+
 * https://www.cnblogs.com/EasonJim/p/8341404.html
 * https://blog.csdn.net/huihui1094667985/article/details/79507044
 * https://openvpn.net/release/ 下载 openvpn-2.1.3-install.exe	21-Feb-2012 00:50	1.6M
 
+再次运行openvpn-install.sh 可以生成不同的 .opvn 文件。
+
 将 /tmp/client.ovpn 这个文件复制出来，放在 C:\Program Files (x86)\OpenVPN\config 这个目录下。
 然后在window上运行 OpenVPN GUI 这个client，点connect即可。
 
+再次运行openvpn-install.sh 可以生成不同的 .opvn 文件。
 
 ### 其它信息
 
