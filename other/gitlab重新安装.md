@@ -95,3 +95,30 @@ root@henrongyi:/opt/gitlab# gitlab-ctl restart
 ### 【其它】
 * 清华 yum
 * https://mirrors.tuna.tsinghua.edu.cn/gitlab-ce/yum/el7/
+
+## 离线安装
+```
+sudo yum install -y curl policycoreutils-python openssh-server cronie
+sudo yum install curl openssh-server openssh-clients postfix cronie
+sudo service postfix start
+sudo chkconfig postfix on
+sudo lokkit -s http -s ssh
+```
+
+```
+CentOS清华大学的下载路径
+https://mirrors.tuna.tsinghua.edu.cn/gitlab-ce/yum/el7/
+20180125的最新的rpm的安装文件
+https://mirrors.tuna.tsinghua.edu.cn/gitlab-ce/yum/el7/gitlab-ce-10.4.0-ce.0.el7.x86_64.rpm
+```
+
+```
+export EXTERNAL_URL="http://10.24.160.42" 
+yum localinstall  gitlab-ce-10.4.0-ce.0.el7.x86_64.rpm
+```
+
+
+
+
+
+
