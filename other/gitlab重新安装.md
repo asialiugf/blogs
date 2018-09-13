@@ -92,3 +92,6 @@ root@henrongyi:/opt/gitlab# gitlab-ctl restart
 - 在右侧，可以在这个小组内，创建相应的项目。
 - 小组成员如果对某项目有修改，提交时，会产生一个 merge request，需要由小组的创建者来确认是否可以合并。
 
+### 【其它】
+* 清华 yum
+* https://mirrors.tuna.tsinghua.edu.cn/gitlab-ce/yum/el7/
