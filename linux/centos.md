@@ -2,6 +2,7 @@
 ```
 [root@bogon ~]# hostnamectl set-hostname  my_name
 reboot
+不需要reboot，重新登录即可。
 ```
 #### 增加硬盘
 ```
