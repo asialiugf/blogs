@@ -1,8 +1,13 @@
 #### 修改主机名
+7.4
 ```
 [root@bogon ~]# hostnamectl set-hostname  my_name
 reboot
 不需要reboot，重新登录即可。
+```
+6.8 
+```
+sysctl -w kernel.hostname="jumpserver0111"
 ```
 #### 增加硬盘
 ```
