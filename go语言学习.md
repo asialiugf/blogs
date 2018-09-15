@@ -1,4 +1,14 @@
-ubuntu下go语言安装
+## ubuntu下go语言安装
+* https://golang.org/dl/
+* https://golang.org/doc/install
+```
+[root@dev ~/software]# tar -C /usr/local -xzf go1.11.linux-amd64.tar.gz
+```
+执行后，会有一个目录 /usr/local/go
+
+
+
+#### ubuntu下go语言安装
 
 - https://golang.org/dl/
 - https://www.golangtc.com/download
