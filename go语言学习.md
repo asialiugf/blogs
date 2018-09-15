@@ -6,7 +6,12 @@
 ```
 执行后，会有一个目录 /usr/local/go
 
-
+### 环境变量
+```
+export GOPATH=$HOME/gowork            (自己的工作目录，应该放在 自己的用户下, go get 会将下载的程序 放在 这个目录下)
+export GOROOT=/usr/local/go           (安装目录)
+export PATH=$PATH:$GOROOT/bin:$GOPATH/bin
+```
 
 #### ubuntu下go语言安装
 
