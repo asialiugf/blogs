@@ -7,6 +7,9 @@
 * Spark(一): 基本架构及原理
 * http://www.cnblogs.com/tgzhu/p/5818374.html
 * https://blog.csdn.net/ld326/article/details/79369275
+
+* Spark(二): 内存管理
+* https://www.cnblogs.com/tgzhu/p/5822370.html
 * 论文
 * https://www2.eecs.berkeley.edu/Pubs/TechRpts/2011/EECS-2011-82.pdf
 
