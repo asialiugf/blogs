@@ -1,12 +1,16 @@
 ### spark学习
 * Spark修炼之道（进阶篇）——Spark入门到精通：第四节 Spark编程模型（一)
 * https://blog.csdn.net/lovehuangjiaju/article/details/48580863
+* Spark修炼之道（进阶篇）——Spark入门到精通：第七节 Spark运行原理
+* https://blog.csdn.net/lovehuangjiaju/article/details/48634607
 * 论文
 * https://www2.eecs.berkeley.edu/Pubs/TechRpts/2011/EECS-2011-82.pdf
 
 本节内容及部分图片来自： 
-http://blog.csdn.net/book_mmicky/article/details/25714419 
-http://blog.csdn.net/yirenboy/article/details/47441465 
+* Spark1.0.0 运行架构基本概念
+* http://blog.csdn.net/book_mmicky/article/details/25714419 
+* Spark入门实战系列--4.Spark运行架构
+* http://blog.csdn.net/yirenboy/article/details/47441465 
 这两篇文件对Spark的运行架构原理进行了比较深入的讲解，写得非常好，建议大家认真看一下，在此向作者致敬！
 
 
