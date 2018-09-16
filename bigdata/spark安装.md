@@ -1,3 +1,9 @@
+### spark学习
+* Spark修炼之道（进阶篇）——Spark入门到精通：第四节 Spark编程模型（一)
+* https://blog.csdn.net/lovehuangjiaju/article/details/48580863
+* 论文
+* https://www2.eecs.berkeley.edu/Pubs/TechRpts/2011/EECS-2011-82.pdf
+
 ### 安装模式
 * https://blog.csdn.net/songhao22/article/details/79069983
 
