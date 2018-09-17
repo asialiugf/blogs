@@ -1,3 +1,44 @@
+
+#### /etc/openvpn/server.conf
+```js
+root@:/etc/openvpn# cat server.conf
+port 1194
+proto tcp
+dev tun
+sndbuf 0
+rcvbuf 0
+ca ca.crt
+cert server.crt
+key server.key
+dh dh.pem
+auth SHA512
+tls-auth ta.key 0
+topology subnet
+server 10.8.0.0 255.255.255.0
+ifconfig-pool-persist ipp.txt
+push "redirect-gateway def1 bypass-dhcp"
+push "dhcp-option DNS 114.114.114.114"
+push "dhcp-option DNS 192.168.66.1"
+push "route 192.168.64.0 255.255.255.0"
+push "route 192.168.65.0 255.255.255.0"
+push "route 192.168.66.0 255.255.255.0"
+push "route 118.26.172.0 255.255.255.0"
+client-to-client
+duplicate-cn
+keepalive 10 120
+;comp-lzo
+max-clients 1000
+cipher AES-256-CBC
+user nobody
+group nogroup
+persist-key
+persist-tun
+status openvpn-status.log
+verb 3
+crl-verify crl.pem
+root@:/etc/openvpn# 
+```
+
 ### 最简单安装 openVPN
 * http://netsecurity.51cto.com/art/201704/537925.htm
 
