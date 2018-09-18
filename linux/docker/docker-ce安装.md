@@ -35,6 +35,8 @@ docker-ce.x86_64         2:18.09.0.ce-0.5.tp5.el7               docker-ce-test
 docker-ce.x86_64         2:18.09.0.ce-0.4.tp4.el7               docker-ce-test  
 docker-ce.x86_64         2:18.09.0.ce-0.3.tp3.el7               docker-ce-test  
 
+
+$ sudo systemctl enable docker.service 
 $ sudo systemctl start docker
 
 $ sudo docker run hello-world
