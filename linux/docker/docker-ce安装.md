@@ -41,5 +41,7 @@ $ sudo systemctl start docker
 
 $ sudo docker run hello-world
 
+查看日志
+$ journalctl -u docker.service
 
 ```
