@@ -1,4 +1,17 @@
 
+## 【无密码登录】
+从 A  登录  B (110.126.102.150)
+在 A 上执行：
+```
+# ssh-keygen -t rsa
+# ssh-copy-id -i ~/.ssh/id_rsa.pub support@110.126.102.150 -p 20003
+```
+在A 上登录 B 
+```
+# ssh support@110.126.102.150 -p 20003 
+可以直接登录了。
+```
+
 ## ssh配置方式 
 ![](https://github.com/asialiugf/blogs/blob/master/image/ssh_jump.png)
 
