@@ -211,8 +211,11 @@ ca6890292851        hello-world         "/hello"            38 minutes ago      
 6aef6c8a7d7c        hello-world         "/hello"            16 hours ago        Exited (0) 16 hours ago                            wonderful_stonebraker
 [root@dev ~/docker]#
 ```
+#### 重启容器 [root@dev /var/lib/docker]# docker container start 6f7bf9f84c52
+#### 停止容器 [root@dev /var/lib/docker]# docker container stop 6f7bf9f84c52 
 #### 重启容器 [root@dev /var/lib/docker]# docker start 6f7bf9f84c52
 #### 停止容器 [root@dev /var/lib/docker]# docker stop 6f7bf9f84c52 
+
 
 #### /usr/lib/systemd/system/docker.service
 ```
