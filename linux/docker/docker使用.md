@@ -57,6 +57,148 @@ python              2.7-slim            c9cde4658340        2 weeks ago         
 
 
 ***
+## 【创建image并运行】
+
+在pyenv1目录下建议三个文件
+```js
+[root@dev ~/docker/pyenv1]# ll
+total 12
+-rw-r--r--. 1 root root 665 Sep 19 14:42 app.py
+-rw-r--r--. 1 root root 512 Sep 19 14:40 Dockerfile
+-rw-r--r--. 1 root root  12 Sep 19 14:42 requirements.txt
+[root@dev ~/docker/pyenv1]# 
+```
+#### Dockerfile
+```python
+[root@dev ~/docker/pyenv1]# cat Dockerfile 
+# Use an official Python runtime as a parent image
+FROM python:2.7-slim
+
+# Set the working directory to /app
+WORKDIR /app
+
+# Copy the current directory contents into the container at /app
+ADD . /app
+
+# Install any needed packages specified in requirements.txt
+RUN pip install --trusted-host pypi.python.org -r requirements.txt
+
+# Make port 80 available to the world outside this container
+EXPOSE 80
+
+# Define environment variable
+ENV NAME World
+
+# Run app.py when the container launches
+CMD ["python", "app.py"]
+[root@dev ~/docker/pyenv1]# 
+```
+
+#### requirements.txt 
+```
+[root@dev ~/docker/pyenv1]# cat requirements.txt 
+Flask
+Redis
+[root@dev ~/docker/pyenv1]# 
+```
+
+#### app.py
+```python
+[root@dev ~/docker/pyenv1]# cat app.py
+from flask import Flask
+from redis import Redis, RedisError
+import os
+import socket
+
+# Connect to Redis
+redis = Redis(host="redis", db=0, socket_connect_timeout=2, socket_timeout=2)
+
+app = Flask(__name__)
+
+@app.route("/")
+def hello():
+    try:
+        visits = redis.incr("counter")
+    except RedisError:
+        visits = "<i>cannot connect to Redis, counter disabled</i>"
+
+    html = "<h3>Hello {name}!</h3>" \
+           "<b>Hostname:</b> {hostname}<br/>" \
+           "<b>Visits:</b> {visits}"
+    return html.format(name=os.getenv("NAME", "world"), hostname=socket.gethostname(), visits=visits)
+
+if __name__ == "__main__":
+    app.run(host='0.0.0.0', port=80)
+[root@dev ~/docker/pyenv1]# 
+```
+
+#### docker build -t friendlyhello .
+注意后面有个点。
+```
+[root@dev ~/docker/pyenv1]docker build -t friendlyhello .
+```
+#### docker image ls 
+```
+[root@dev ~/docker/pyenv1]# docker image ls 
+REPOSITORY          TAG                 IMAGE ID            CREATED             SIZE
+friendlyhello       latest              c85d9dcb9b0d        13 minutes ago      132MB
+hello-world         latest              4ab4c602aa5e        11 days ago         1.84kB
+python              2.7-slim            c9cde4658340        2 weeks ago         120MB
+[root@dev ~/docker/pyenv1]# 
+```
+#### 修改 /etc/docker/daemon.json
+```
+[root@dev ~/docker/pyenv1]# cat /etc/docker/daemon.json
+{
+  "dns": ["8.8.8.8"]
+}
+[root@dev ~/docker/pyenv1]# 
+```
+
+#### dockerd 重启，运行friendlyhello 这个image
+```
+[root@dev ~/docker/pyenv1]# service docker restart
+[root@dev ~/docker/pyenv1]# docker run -p 4000:80 friendlyhello
+```
+#### correct URL http://localhost:4000.
+
+#### 后台运行
+Now let’s run the app in the background, in detached mode:
+```
+# docker run -d -p 4000:80 friendlyhello
+```
+#### docker维护
+
+```
+[root@dev ~/docker]# docker ps
+CONTAINER ID        IMAGE               COMMAND             CREATED             STATUS              PORTS                  NAMES
+e7e8d99c4a91        friendlyhello       "python app.py"     3 minutes ago       Up 3 minutes        0.0.0.0:4000->80/tcp   hardcore_clarke
+[root@dev ~/docker]# 
+[root@dev ~/docker]# 
+[root@dev ~/docker]# 
+[root@dev ~/docker]# docker container stop e7e8d99c4a91
+
+e7e8d99c4a91
+[root@dev ~/docker]# 
+[root@dev ~/docker]# 
+[root@dev ~/docker]# docker ps
+CONTAINER ID        IMAGE               COMMAND             CREATED             STATUS              PORTS               NAMES
+[root@dev ~/docker]# 
+[root@dev ~/docker]#  docker container ls --all
+CONTAINER ID        IMAGE               COMMAND             CREATED             STATUS                         PORTS               NAMES
+e7e8d99c4a91        friendlyhello       "python app.py"     4 minutes ago       Exited (137) 9 seconds ago                         hardcore_clarke
+6f7bf9f84c52        friendlyhello       "python app.py"     17 minutes ago      Exited (0) 10 minutes ago                          practical_shirley
+9ae111d681c4        hello-world         "/hello"            38 minutes ago      Exited (0) 38 minutes ago                          suspicious_kepler
+ca6890292851        hello-world         "/hello"            38 minutes ago      Exited (0) 38 minutes ago                          happy_davinci
+2dc4128702ef        hello-world         "/hello"            About an hour ago   Exited (0) About an hour ago                       silly_fermat
+879b2c3153f8        hello-world         "/hello"            16 hours ago        Exited (0) 16 hours ago                            eager_lovelace
+6aef6c8a7d7c        hello-world         "/hello"            16 hours ago        Exited (0) 16 hours ago                            wonderful_stonebraker
+[root@dev ~/docker]#
+```
+
+
+
+***
 
 ## 【进入 docker】
 ```
