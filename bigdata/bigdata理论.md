@@ -1,6 +1,7 @@
-###　spark RDD 那些年我们对Spark RDD的理解
+### spark RDD 那些年我们对Spark RDD的理解
 * https://blog.csdn.net/stark_summer/article/details/50218641
-
+### spark常用RDD算子 汇总（java和scala版本）
+* https://blog.csdn.net/T1DMzks/article/details/72077428
 ***
 
 * http://bigdata-madesimple.com/research-papers-that-changed-the-world-of-big-data/
