@@ -1,3 +1,8 @@
+###　spark RDD 那些年我们对Spark RDD的理解
+* https://blog.csdn.net/stark_summer/article/details/50218641
+
+***
+
 * http://bigdata-madesimple.com/research-papers-that-changed-the-world-of-big-data/
 
 * https://sdsi.stanford.edu/
