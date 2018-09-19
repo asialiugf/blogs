@@ -25,7 +25,7 @@ ca6890292851        hello-world         "/hello"            29 seconds ago      
 [root@dev ~]#
 ```
 #### 删除容器 # docker rm 9ae111d681c4
-#### 删除image # docker rm 4ab4c602aa5e
+#### 删除image # docker rmi 4ab4c602aa5e
 ```
 [root@dev /var/lib/docker]# docker images
 REPOSITORY          TAG                 IMAGE ID            CREATED             SIZE
