@@ -1,5 +1,8 @@
+
 ### spark RDD 那些年我们对Spark RDD的理解
 * https://blog.csdn.net/stark_summer/article/details/50218641
+### RDD原文翻译
+* https://blog.csdn.net/weiying7/article/details/51248014
 ### spark常用RDD算子 汇总（java和scala版本）
 * https://blog.csdn.net/T1DMzks/article/details/72077428
 ***
