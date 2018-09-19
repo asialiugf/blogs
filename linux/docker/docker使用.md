@@ -24,6 +24,23 @@ ca6890292851        hello-world         "/hello"            29 seconds ago      
 6aef6c8a7d7c        hello-world         "/hello"            15 hours ago        Exited (0) 15 hours ago                         wonderful_stonebraker
 [root@dev ~]#
 ```
+#### 删除容器 # docker rm 9ae111d681c4
+#### 删除image # docker rm 4ab4c602aa5e
+```
+[root@dev /var/lib/docker]# docker images
+REPOSITORY          TAG                 IMAGE ID            CREATED             SIZE
+friendlyhello       latest              c85d9dcb9b0d        About an hour ago   132MB
+hello-world         latest              4ab4c602aa5e        11 days ago         1.84kB
+python              2.7-slim            c9cde4658340        2 weeks ago         120MB
+[root@dev /var/lib/docker]# 
+[root@dev /var/lib/docker]# 
+[root@dev /var/lib/docker]# docker rm 4ab4c602aa5e
+Error: No such container: 4ab4c602aa5e
+[root@dev /var/lib/docker]# 
+[root@dev /var/lib/docker]# docker rmi 4ab4c602aa5e
+Error response from daemon: conflict: unable to delete 4ab4c602aa5e (must be forced) - image is being used by stopped container ca6890292851
+[root@dev /var/lib/docker]#
+```
 
 #### docker container ls --all
 ```
