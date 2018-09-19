@@ -13,6 +13,39 @@
 Docker version 18.06.1-ce, build e68fc7a
 [root@dev ~]# 
 ```
+#### docker ps -a
+```
+[root@dev ~]# docker ps -a          
+CONTAINER ID        IMAGE               COMMAND             CREATED             STATUS                      PORTS               NAMES
+9ae111d681c4        hello-world         "/hello"            4 seconds ago       Exited (0) 2 seconds ago                        suspicious_kepler
+ca6890292851        hello-world         "/hello"            29 seconds ago      Exited (0) 26 seconds ago                       happy_davinci
+2dc4128702ef        hello-world         "/hello"            43 minutes ago      Exited (0) 43 minutes ago                       silly_fermat
+879b2c3153f8        hello-world         "/hello"            15 hours ago        Exited (0) 15 hours ago                         eager_lovelace
+6aef6c8a7d7c        hello-world         "/hello"            15 hours ago        Exited (0) 15 hours ago                         wonderful_stonebraker
+[root@dev ~]#
+
+#### docker container ls --all
+```
+[root@dev ~]# docker container ls --all
+CONTAINER ID        IMAGE               COMMAND             CREATED             STATUS                         PORTS               NAMES
+9ae111d681c4        hello-world         "/hello"            3 minutes ago       Exited (0) 3 minutes ago                           suspicious_kepler
+ca6890292851        hello-world         "/hello"            3 minutes ago       Exited (0) 3 minutes ago                           happy_davinci
+2dc4128702ef        hello-world         "/hello"            About an hour ago   Exited (0) About an hour ago                       silly_fermat
+879b2c3153f8        hello-world         "/hello"            15 hours ago        Exited (0) 15 hours ago                            eager_lovelace
+6aef6c8a7d7c        hello-world         "/hello"            15 hours ago        Exited (0) 15 hours ago                            wonderful_stonebraker
+[root@dev ~]# 
+```
+
+```
+#### docker images
+```
+[root@dev ~]# docker images
+REPOSITORY          TAG                 IMAGE ID            CREATED             SIZE
+hello-world         latest              4ab4c602aa5e        11 days ago         1.84kB
+[root@dev ~]# 
+```
+
+
 
 
 ***
