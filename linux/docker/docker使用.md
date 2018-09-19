@@ -1,8 +1,20 @@
 ## 【docker-ce使用】
 ***
+#### breif
+```
+[root@dev ~]# docker --version
+[root@dev ~]# docker info
+[root@dev ~]# docker image ls 
+```
+#### detail
+```
+[root@dev ~]# docker --version
+Docker version 18.06.1-ce, build e68fc7a
+[root@dev ~]# 
+```
 
 
-
+***
 
 ### 进入 docker
 ```
