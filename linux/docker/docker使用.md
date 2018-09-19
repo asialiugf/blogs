@@ -44,7 +44,15 @@ REPOSITORY          TAG                 IMAGE ID            CREATED             
 hello-world         latest              4ab4c602aa5e        11 days ago         1.84kB
 [root@dev ~]# 
 ```
-
+#### docker image ls 
+```
+[root@dev ~/docker/pyenv1]# docker image ls 
+REPOSITORY          TAG                 IMAGE ID            CREATED              SIZE
+friendlyhello       latest              c85d9dcb9b0d        About a minute ago   132MB
+hello-world         latest              4ab4c602aa5e        11 days ago          1.84kB
+python              2.7-slim            c9cde4658340        2 weeks ago          120MB
+[root@dev ~/docker/pyenv1]#
+```
 
 
 
