@@ -23,6 +23,7 @@ ca6890292851        hello-world         "/hello"            29 seconds ago      
 879b2c3153f8        hello-world         "/hello"            15 hours ago        Exited (0) 15 hours ago                         eager_lovelace
 6aef6c8a7d7c        hello-world         "/hello"            15 hours ago        Exited (0) 15 hours ago                         wonderful_stonebraker
 [root@dev ~]#
+```
 
 #### docker container ls --all
 ```
@@ -36,7 +37,6 @@ ca6890292851        hello-world         "/hello"            3 minutes ago       
 [root@dev ~]# 
 ```
 
-```
 #### docker images
 ```
 [root@dev ~]# docker images
