@@ -1,3 +1,36 @@
+## nginx install 20180920
+```
+/bin/ld: cannot find -lstdc++
+collect2: error: ld returned 1 exit status
+make[1]: *** [libpcrecpp.la] Error 1
+make[1]: Leaving directory `/root/source/pcre-8.42'
+make: *** [all] Error 2
+[root@iZ23psatkqsZ ~/source/pcre-8.42]# 
+[root@iZ23psatkqsZ ~/source/pcre-8.42]# yum install glibc-static libstdc++-static
+```
+```
+[root@iZ23psatkqsZ ~/source/pcre-8.42]# wget https://ftp.pcre.org/pub/pcre/pcre-8.42.tar.gz
+tar xvf pcre-8.42.tar.gz
+cd pcre-8.42    
+./configure
+make
+make install
+```
+
+* https://github.com/nginx/nginx/releases
+```
+[root@iZ23psatkqsZ ~/source]# wget https://github.com/nginx/nginx/archive/release-1.15.3.tar.gz
+tar xvf release-1.15.3.tar.gz
+cd nginx*
+cp ./auto/configure .
+./configure
+make
+make install
+```
+
+
+***
+
 ## nginx install
 
 #### 先安装 prce
