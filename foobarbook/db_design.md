@@ -32,6 +32,8 @@ node_id     node_name     parrent_ids     child_ids                  desc       
 
 ### 数据库设计
 * https://blog.csdn.net/jim8757/article/details/52385612
+
+Closure Table将树中每个节点与其子孙节点的关系都存储了下来，如下图所示：
 ![](https://github.com/asialiugf/blogs/blob/master/image/1333729578_4459.jpg)
 
 
