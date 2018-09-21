@@ -1,3 +1,6 @@
+## A Model to Represent Directed Acyclic Graphs (DAG) on SQL Databases
+* https://www.codeproject.com/Articles/22824/A-Model-to-Represent-Directed-Acyclic-Graphs-DAG-o
+
 * https://www.helplib.com/database/article_7330
 * https://en.wikipedia.org/wiki/Directed_acyclic_graph
 
