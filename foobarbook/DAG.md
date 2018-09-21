@@ -1,6 +1,7 @@
 
 ## 算法导论 第二十五章：有向图的传递闭包
 * https://blog.csdn.net/u010183397/article/details/46978027
+* https://en.wikipedia.org/wiki/Transitive_closure
 
 #### 传递闭包
 ```
