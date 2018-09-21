@@ -49,5 +49,16 @@ vue create my-project
 # npm install -g node-gyp 
 # npm i -g windows-build-tools
 ```
+***
+# 【20180921】
+如果你在 Windows 上通过 minTTY 使用 Git Bash，交互提示符并不工作。你必须通过 winpty vue.cmd create hello-world 启动这个命令。
+```
+winpty vue.cmd create hello-world
+```
+* ESLint是js中目前比较流行的插件化的静态代码检测工具。通过使用它可以保证高质量的代码，尽量减少和提早发现一些错误。使用eslint可以在工程中保证一致的代码风格，特别是当工程变得越来越大、越来越多的人参与进来时，需要加强一些最佳实践。
+
+* What is Babel? Babel is a JavaScript compiler
+* https://babeljs.io/docs/en/index.html
+
 
 
