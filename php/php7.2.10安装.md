@@ -1,6 +1,30 @@
 ## 从这里下载源码
 * https://github.com/php/php-src/releases
 
+### 升级 curl
+* https://www.quyu.net/info/452.html
+* https://serverfault.com/questions/321321/upgrade-curl-to-latest-on-centos
+```
+This is an old question, but it is still one the first results in google search, so I'd like post the solution that got my problem solved.
+
+1) create a new file /etc/yum.repos.d/city-fan.repo
+
+2) Paste the following contents:
+
+[CityFan]
+name=City Fan Repo
+baseurl=http://www.city-fan.org/ftp/contrib/yum-repo/rhel$releasever/$basearch/
+enabled=1
+gpgcheck=0
+
+3) type:
+
+yum clean all
+yum install curl 
+4) And it's done.
+
+```
+
 ### 这里是编译参考
 * https://www.fashop.cn/guide/issue.html#%E5%A6%82%E4%BD%95%E5%AE%89%E8%A3%85swoole
 * https://github.com/mojisrc/fashop
@@ -81,6 +105,8 @@ cd php
 --enable-opcache
 
 ```
+### 修改Makefile
+加上 -liconv
 
 ```
 make
