@@ -1,4 +1,23 @@
-## 从这里下载源码
+### 【坑坑坑坑】
+
+* php源码要从 github.com下，不要从php.net上下。
+* 要升级curl 到 高版本 7.61.1
+```
+curl.x86_64                              7.61.1-1.0.cf.rhel7           @CityFan 
+libcurl.x86_64                           7.61.1-1.0.cf.rhel7           @CityFan 
+libcurl-devel.x86_64                     7.61.1-1.0.cf.rhel7           @CityFan 
+```
+* 在php源码目录 下 要执行 ./buildconf --force 才能生成./configure
+* 没这个不行 /usr/lib64/libiconv.so.2 -> /usr/local/libiconv/lib/libiconv.so.2.6.0
+* 没有 php.ini  要从php源码目录下 cp php.ini-development /etc/php.ini
+
+* 安装 swoole
+* 编译 hiredis后 一定要安装， 指定 export LD_LIBRARY_PATH=/usr/local/lib
+* 
+
+
+
+### 从这里下载源码
 * https://github.com/php/php-src/releases
 
 ### 升级 curl
@@ -161,7 +180,7 @@ sudo ldconfig
 
 ```
 ### export LD_LIBRARY_PATH=/usr/local/lib
-编译swoole 会用到 hiredis 动态库
+编译 执行 swoole  会用到 hiredis 动态库
 
 ```
 mkdir -p ~/build && \
@@ -197,7 +216,7 @@ Installing shared extensions:     /usr/local/php-7.2.10/lib/php/extensions/no-de
 Installing header files:          /usr/local/php-7.2.10/include/php/
 [root@dev ~/build/swoole-src]# 
 ```
-### pecl安装
+### 用pecl安装
 ```
 
 先安装 hiredis
@@ -219,7 +238,9 @@ You should add "extension=swoole.so" to php.ini
 ###  cp php.ini-development /etc/php.ini
 php源码下的 php.ini-development 复制到 /etc/php.ini
 
-#### 
+### add "extension=swoole.so" to php.ini
+
+### 最后执行以下命令 /usr/local/php-7.2.10/bin/php -m
 ```
 cd /usr/local/php-7.2.10/bin]# 
 /usr/local/php-7.2.10/bin/php --ini
