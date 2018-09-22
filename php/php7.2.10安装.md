@@ -108,6 +108,30 @@ cd php
 ### 修改Makefile
 加上 -liconv
 
+### libiconv.so.2
+```
+[root@dev /lib]# cd /usr/lib64
+[root@dev /usr/lib64]# ln -s /usr/local/libiconv/lib/libiconv.so.2.6.0 libiconv.so.2
+```
+
+### phar.phar
+```
+抛错：
+
+Generating phar.phar
+chmod: cannot access `ext/phar/phar.phar': No such file or directory
+make: [ext/phar/phar.phar] Error 1 (ignored)
+
+Build complete.
+Don't forget to run 'make test'.
+
+此处可以忽略 不过解决办法如下
+
+#cd  ext/phar/
+#cp ./phar.php  ./phar.phar
+
+```
+
 ```
 make
 make install
