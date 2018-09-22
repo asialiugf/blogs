@@ -15,6 +15,46 @@ libcurl-devel.x86_64                     7.61.1-1.0.cf.rhel7           @CityFan
 * 编译 hiredis后 一定要安装， 指定 export LD_LIBRARY_PATH=/usr/local/lib
 * 
 
+#### centos 7.4 库
+```
+[root@dev /usr/lib64]# ll | grep "Sep 22"
+lrwxrwxrwx.  1 root root       23 Sep 22 20:54 libanl.so -> ../../lib64/libanl.so.1
+lrwxrwxrwx.  1 root root       32 Sep 22 20:54 libBrokenLocale.so -> ../../lib64/libBrokenLocale.so.1
+lrwxrwxrwx.  1 root root       15 Sep 22 20:54 libbsd.a -> libbsd-compat.a
+lrwxrwxrwx.  1 root root       24 Sep 22 20:54 libcidn.so -> ../../lib64/libcidn.so.1
+lrwxrwxrwx.  1 root root       25 Sep 22 20:54 libcrypt.so -> ../../lib64/libcrypt.so.1
+lrwxrwxrwx.  1 root root       16 Sep 22 22:50 libcurl.so -> libcurl.so.4.5.0
+lrwxrwxrwx.  1 root root       16 Sep 22 22:50 libcurl.so.4 -> libcurl.so.4.5.0
+lrwxrwxrwx.  1 root root       22 Sep 22 20:54 libdl.so -> ../../lib64/libdl.so.2
+lrwxrwxrwx.  1 root root       18 Sep 22 20:46 libexslt.so -> libexslt.so.0.8.17
+lrwxrwxrwx.  1 root root       19 Sep 22 20:46 libgcrypt.so -> libgcrypt.so.11.8.2
+lrwxrwxrwx.  1 root root       34 Sep 22 20:46 libgpg-error.so -> ../../lib64/libgpg-error.so.0.10.0
+lrwxrwxrwx.  1 root root       41 Sep 22 23:02 libiconv.so.2 -> /usr/local/libiconv/lib/libiconv.so.2.6.0
+lrwxrwxrwx.  1 root root       18 Sep 22 21:03 libmcrypt.so -> libmcrypt.so.4.4.8
+lrwxrwxrwx.  1 root root       20 Sep 22 22:50 libmetalink.so.3 -> libmetalink.so.3.1.0
+lrwxrwxrwx.  1 root root       21 Sep 22 20:54 libm.so -> ../../lib64/libm.so.6
+-rwxr-xr-x.  1 root root   668640 Sep 22 23:42 libnghttp2.so
+lrwxrwxrwx.  1 root root       21 Sep 22 22:50 libnghttp2.so.14 -> libnghttp2.so.14.16.1
+lrwxrwxrwx.  1 root root       23 Sep 22 20:54 libnsl.so -> ../../lib64/libnsl.so.1
+lrwxrwxrwx.  1 root root       30 Sep 22 20:54 libnss_compat.so -> ../../lib64/libnss_compat.so.2
+lrwxrwxrwx.  1 root root       26 Sep 22 20:54 libnss_db.so -> ../../lib64/libnss_db.so.2
+lrwxrwxrwx.  1 root root       27 Sep 22 20:54 libnss_dns.so -> ../../lib64/libnss_dns.so.2
+lrwxrwxrwx.  1 root root       29 Sep 22 20:54 libnss_files.so -> ../../lib64/libnss_files.so.2
+lrwxrwxrwx.  1 root root       30 Sep 22 20:54 libnss_hesiod.so -> ../../lib64/libnss_hesiod.so.2
+lrwxrwxrwx.  1 root root       31 Sep 22 20:54 libnss_nisplus.so -> ../../lib64/libnss_nisplus.so.2
+lrwxrwxrwx.  1 root root       27 Sep 22 20:54 libnss_nis.so -> ../../lib64/libnss_nis.so.2
+lrwxrwxrwx.  1 root root       15 Sep 22 22:50 libpsl.so.0 -> libpsl.so.0.2.4
+lrwxrwxrwx.  1 root root       26 Sep 22 20:54 libresolv.so -> ../../lib64/libresolv.so.2
+lrwxrwxrwx.  1 root root       22 Sep 22 20:54 librt.so -> ../../lib64/librt.so.1
+lrwxrwxrwx.  1 root root       16 Sep 22 22:50 libssh2.so -> libssh2.so.1.0.1
+lrwxrwxrwx.  1 root root       16 Sep 22 22:50 libssh2.so.1 -> libssh2.so.1.0.1
+lrwxrwxrwx.  1 root root       29 Sep 22 20:54 libthread_db.so -> ../../lib64/libthread_db.so.1
+lrwxrwxrwx.  1 root root       24 Sep 22 20:54 libutil.so -> ../../lib64/libutil.so.1
+lrwxrwxrwx.  1 root root       17 Sep 22 20:46 libxslt.so -> libxslt.so.1.1.28
+drwxr-xr-x.  2 root root     4096 Sep 22 22:50 pkgconfig
+[root@dev /usr/lib64]# 
+```
+
 
 
 ### 从这里下载源码
