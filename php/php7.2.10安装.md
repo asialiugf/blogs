@@ -1,3 +1,16 @@
+
+### Composer的安装
+* https://blog.csdn.net/gu_wen_jie/article/details/79257563
+```
+先来大概介绍一下composer 
+Composer是 PHP 用来管理依赖（dependency）关系的工具。你可以在自己的项目中声明所依赖的外部工具库（libraries），Composer 会帮你安装这些依赖的库文件。 
+说的简单一点，Composer 是一个新的安装包管理工具，服务于 PHP 生态系统。它实际上包含了两个部分：Composer 和 Packagist。 
+composer 借鉴了npm，一款javascript安装包管理工具。
+
+---------------------
+
+本文来自 谷谷谷 的CSDN 博客 ，全文地址请点击：https://blog.csdn.net/gu_wen_jie/article/details/79257563?utm_source=copy 
+```
 ### 【坑坑坑坑】
 
 * php源码要从 github.com下，不要从php.net上下。
