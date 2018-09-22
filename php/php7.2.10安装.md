@@ -137,3 +137,94 @@ make
 make install
 ```
 
+## 安装 swoole
+* http://ken.weiaai.com/564.html
+### 安装nghttp2
+```
+2.安装http2(如本来已装则跳过):
+因为swoole的http2模块依赖nghttp2库所以安装nghttp2即可
+wget https://github.com/nghttp2/nghttp2/releases/download/v1.30.0/nghttp2-1.30.0.tar.bz2 && \
+tar -jxvf nghttp2-1.30.0.tar.bz2 && \
+cd nghttp2-1.30.0 && \
+./configure && \
+make clean && make && make install
+```
+### 安装 hiredis编译
+```
+下载hiredis编译
+ 1126  wget https://github.com/redis/hiredis/archive/v0.13.3.tar.gz
+ 1130  cd hiredis-0.13.3/
+ 
+make -j
+sudo make install
+sudo ldconfig
+
+```
+### export LD_LIBRARY_PATH=/usr/local/lib
+编译swoole 会用到 hiredis 动态库
+
+```
+mkdir -p ~/build && \
+cd ~/build && \
+rm -rf ./swoole-src && \
+curl -o ./tmp/swoole.tar.gz https://github.com/swoole/swoole-src/archive/master.tar.gz -L && \
+
+wget https://github.com/swoole/swoole-src/archive/master.tar.gz
+
+tar zxvf ./tmp/swoole.tar.gz && \
+mv swoole-src* swoole-src && \
+cd swoole-src && \
+/usr/local/php-7.2.10/bin/phpize && \
+
+
+./configure \
+--prefix=/usr/swoole \
+--with-php-config=/usr/local/php-7.2.10/bin/php-config \
+--enable-coroutine \
+--enable-openssl  \
+--enable-http2  \
+--enable-async-redis \
+--enable-sockets \
+--enable-mysqlnd 
+
+&& \
+make clean && make && sudo make install
+```
+
+```
+[root@dev ~/build/swoole-src]# make install
+Installing shared extensions:     /usr/local/php-7.2.10/lib/php/extensions/no-debug-non-zts-20170718/
+Installing header files:          /usr/local/php-7.2.10/include/php/
+[root@dev ~/build/swoole-src]# 
+```
+### pecl安装
+```
+
+先安装 hiredis
+export LD_LIBRARY_PATH=/usr/local/lib
+cd /usr/local/php-7.2.10/bin
+/usr/local/php-7.2.10/bin/pecl install swoole
+
+
+
+Build process completed successfully
+Installing '/usr/local/php-7.2.10/lib/php/extensions/no-debug-non-zts-20170718/swoole.so'
+Installing '/usr/local/php-7.2.10/include/php/ext/swoole/config.h'
+install ok: channel://pecl.php.net/swoole-4.2.1
+configuration option "php_ini" is not set to php.ini location
+You should add "extension=swoole.so" to php.ini
+[root@dev /usr/local/php-7.2.10/bin]# 
+```
+
+###  cp php.ini-development /etc/php.ini
+php源码下的 php.ini-development 复制到 /etc/php.ini
+
+#### 
+```
+cd /usr/local/php-7.2.10/bin]# 
+/usr/local/php-7.2.10/bin/php --ini
+/usr/local/php-7.2.10/bin/php -m
+```
+
+
+
