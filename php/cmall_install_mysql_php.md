@@ -249,13 +249,61 @@ MySQL server from group: mysqld1 is not running
 MySQL server from group: mysqld2 is not running
 [root@dev bin]# 
 ```
-
+***
 ### 【mysql 安装在普通用户下】
 
+```
+su - maintain
+tar xvf /tmp/mysql-5.7.23-el7-x86_64.tar.gz
+mv mysql-5.7.23-el7-x86_64 mysql-5.7.23
+mkdir /home/maintain/mysql
+
+```
+```
+cd /home/maintain/mysql
+cat my.cnf
+```
+#### /home/maintain/mysql/my.cnf
+```
+maintain@develop:~/mysql$ cat my.cnf
+[client]
+#password    = your_password
+port        = 8302
+socket        = /home/maintain/mysql/mysql8302.sock
+
+# Here follows entries for some specific programs
+
+# The MySQL server
+[mysqld]
+user=root
+bind-address = 0.0.0.0
+port        = 8302
+socket           = /home/maintain/mysql/mysql8302.sock
+pid-file         = /home/maintain/mysql/mysql.pid
+basedir          = /home/maintain/mysql-5.7.23
+datadir          = /home/maintain/mysql/data
+tmpdir           = /home/maintain/mysql/tmp
+log-error        = /home/maintain/mysql/log/mysql.err
+general_log_file = /home/maintain/mysql/log/mysql.log
+general_log      = 1
+skip-grant-tables
+maintain@develop:~/mysql$ 
+```
+#### 初始化数据库
+```
+maintain@develop:~/mysql-5.7.23/bin$ ./mysqld --defaults-file=/home/maintain/mysql/my.cnf --initialize
+```
+#### 开启 
+```
+maintain@develop:~/mysql-5.7.23/bin$ ./mysqld --defaults-file=/home/maintain/mysql/my.cnf
+```
+
+#### 连接数据库
 ```
 maintain@develop:~/mysql-5.7.23/bin$ ./mysql --socket=/home/maintain/mysql/mysql8302.sock
 ```
 
+***
 ***
 
 # php install
