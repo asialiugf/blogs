@@ -53,6 +53,8 @@ maintain@develop:~/mysql-5.7.23/bin$ ./mysqld --defaults-file=/home/maintain/mys
 #### 连接数据库
 ```
 maintain@develop:~/mysql-5.7.23/bin$ ./mysql --socket=/home/maintain/mysql/mysql8302.sock
+maintain@develop:~/mysql-5.7.23/bin$ ./mysql -h127.0.0.1 -uroot -P8302
+maintain@develop:~/mysql-5.7.23/bin$ ./mysql -h192.169.3.221 -uroot -P8302
 ```
 #### 改密码
 
