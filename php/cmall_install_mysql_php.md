@@ -249,6 +249,15 @@ MySQL server from group: mysqld1 is not running
 MySQL server from group: mysqld2 is not running
 [root@dev bin]# 
 ```
+
+### 【mysql 安装在普通用户下】
+
+```
+maintain@develop:~/mysql-5.7.23/bin$ ./mysql --socket=/home/maintain/mysql/mysql8302.sock
+```
+
+***
+
 # php install
 * http://www.php.net/releases/
 以上这里可以下载各种版本！！！
