@@ -10,3 +10,6 @@ K8S脉络整理(003)-K8S重要概念
 
 The package manager for Kubernetes
 * https://docs.helm.sh/
+
+k8s技术预研8--深入掌握Kubernetes Service
+* https://www.cnblogs.com/DaweiJ/articles/8865802.html
