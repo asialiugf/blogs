@@ -9,6 +9,27 @@
 ```
 #### detail
 ```
+[root@dev ~]# 
+[root@dev ~]# docker version
+Client:
+ Version:           18.06.1-ce
+ API version:       1.38
+ Go version:        go1.10.3
+ Git commit:        e68fc7a
+ Built:             Tue Aug 21 17:23:03 2018
+ OS/Arch:           linux/amd64
+ Experimental:      false
+
+Server:
+ Engine:
+  Version:          18.06.1-ce
+  API version:      1.38 (minimum version 1.12)
+  Go version:       go1.10.3
+  Git commit:       e68fc7a
+  Built:            Tue Aug 21 17:25:29 2018
+  OS/Arch:          linux/amd64
+  Experimental:     false
+[root@dev ~]# 
 [root@dev ~]# docker --version
 Docker version 18.06.1-ce, build e68fc7a
 [root@dev ~]# 
