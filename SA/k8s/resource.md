@@ -13,3 +13,6 @@ The package manager for Kubernetes
 
 k8s技术预研8--深入掌握Kubernetes Service
 * https://www.cnblogs.com/DaweiJ/articles/8865802.html
+
+K8S脉络整理(004)-K8S-Cluster部署
+* https://www.cnblogs.com/DaweiJ/articles/8521587.html
