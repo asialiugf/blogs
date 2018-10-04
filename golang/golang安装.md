@@ -19,3 +19,17 @@ export PATH=$PATH:$GOROOT/bin:$GOPATH/bin
 ```c
 go version
 ```
+#### download go1.11
+```
+wget https://studygolang.com/dl/golang/go1.11.linux-amd64.tar.gz
+tar xvf go1.11.linux-amd64.tar.gz
+mv ./go /usr/local/go-1.11
+```
+#### /etc/profile
+```
+export GOROOT=/usr/local/go-1.11
+export GOBIN=$GOROOT/bin
+export GOPATH=$HOME/gowork
+export PATH=$PATH:$GOBIN:$GOPATH/bin
+```
+
