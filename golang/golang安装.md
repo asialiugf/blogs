@@ -51,3 +51,5 @@ GOPATH允许多个目录，当有多个目录时，请注意分隔符，多个�
 
 #### 标准库
 * https://studygolang.com/pkgdoc
+* https://github.com/golang/gddo
+* https://godoc.org/
