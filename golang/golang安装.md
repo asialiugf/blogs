@@ -48,3 +48,6 @@ GOPATH允许多个目录，当有多个目录时，请注意分隔符，多个�
 * https://astaxie.gitbooks.io/build-web-application-with-golang/content/zh/01.2.html
 
 * https://github.com/asialiugf/blogs/blob/db2e2c8b89bebd39d3a2179a65b47609c68c35a0/other/caddy%2Bfilebrower.md
+
+#### 标准库
+* https://studygolang.com/pkgdoc
