@@ -1,3 +1,4 @@
+```
 Installing github.com/mdempsky/gocode SUCCEEDED
 Installing github.com/uudashr/gopkgs/cmd/gopkgs SUCCEEDED
 Installing github.com/derekparker/delve/cmd/dlv SUCCEEDED
@@ -18,6 +19,7 @@ mv tools $GOPATH/src/golang.org/x/
 git clone  https://github.com/golang/lint
 mv ./lint ~/go/src/golang.org/x/lint
 go install golang.org/x/lint/golint
+```
 
 ### $GOPATH/src 目录
 ```
