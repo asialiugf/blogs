@@ -19,6 +19,7 @@ import ××× 这里使用的也不是包名，也是路径名
 
 ### 静态库
 * http://reborncodinglife.com/2018/04/27/how-to-create-static-lib-in-golang/
+* https://golangtc.com/t/5ae145684ce40d091ecf04bf
 ```
 .a文件可以调用，已经解决。假设 hello.a 在当前文件夹，其他程序叫 main.go
 
