@@ -15,7 +15,15 @@ import ××× 这里使用的也不是包名，也是路径名
 对于标准库，即便是修改了源代码，只要不重新编译Go源码，那么链接时使用的就还是已经编译好的*.a文件
 包导入有三种模式：正常模式、别名模式、简便模式
 
----------------------
+```
 
-本文来自 CMbug 的CSDN 博客 ，全文地址请点击：https://blog.csdn.net/cmbug/article/details/49339341?utm_source=copy 
+### 静态库
+* http://reborncodinglife.com/2018/04/27/how-to-create-static-lib-in-golang/
+```
+.a文件可以调用，已经解决。假设 hello.a 在当前文件夹，其他程序叫 main.go
+
+go tool compile -I . main.go
+go tool link -o main -L . main.o
+
+具体可以参考：http://reborncodinglife.com/2018/04/27/how-to-create-static-lib-in-golang/
 ```
