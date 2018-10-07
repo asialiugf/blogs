@@ -6,3 +6,5 @@
 ### golang interface
 ##### golang技术随笔（一）深入理解interface
 * https://studygolang.com/articles/2268
+##### 【golang-GUI开发】qt之signal和slot（一）
+* https://studygolang.com/articles/13692?fr=sidebar
