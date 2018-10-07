@@ -8,3 +8,5 @@
 * https://studygolang.com/articles/2268
 ##### 【golang-GUI开发】qt之signal和slot（一）
 * https://studygolang.com/articles/13692?fr=sidebar
+##### Golang的Interface是个什么鬼 https://studygolang.com/articles/4482
+
