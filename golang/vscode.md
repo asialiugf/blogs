@@ -1,3 +1,8 @@
+### 下载 git clone https://github.com/golang/tools.git tools
+### 移到相应的目录下 mv tools $GOPATH/src/golang.org/x/
+### 下载 go get -u github.com/stamblerre/gocode
+### 安装 go install golang.org/x/lint/golint
+
 ```
 Installing github.com/mdempsky/gocode SUCCEEDED
 Installing github.com/uudashr/gopkgs/cmd/gopkgs SUCCEEDED
