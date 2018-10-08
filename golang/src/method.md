@@ -50,15 +50,20 @@ func (bl BoxList) PaintItBlack() {
 }
 
 func (c Color) String() string {
-        strings := []string{"WHITE", "BLACK", "BLUE", "RED", "YELLOW"}
+        strings := []string{"WHITE", "BLACK", "BLUE", "RED", "YELLOW"} // 定义字符串数组
         return strings[c]
 }
 
 type IN int
 
 func (i IN) echoo() {
-        fmt.Println(" I am a IN int!!")
+    var nn int = int(i)
+    fmt.Println(" I am a IN int!!")
+    fmt.Printf(" I am a IN int!! %d\n", i)
+    fmt.Printf(" I am a IN int!! %d\n", int(i))
+    fmt.Printf(" I am a IN int!! %d\n", nn)
 }
+
 
 func main() {
         boxes := BoxList{
