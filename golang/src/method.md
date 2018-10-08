@@ -1,10 +1,12 @@
-### 
+### Go语言method详解_Golang
+* https://yq.aliyun.com/ziliao/99597
 ```go
 [GD-0103-0121@rjsys ~/go/src/tt]$ cat a002.go
 package main
 
 import "fmt"
 
+// 定义一堆常量，按顺序为 0， 1， 2， 3，4 （=iota)的功能
 const (
         WHITE = iota
         BLACK
@@ -15,18 +17,18 @@ const (
 
 type Color byte
 
-type Box struct {
+type Box struct { // 定义一个Box 类型
         width, height, depth float64
         color                Color
 }
 
 type BoxList []Box //a slice of boxes
 
-func (b Box) Volume() float64 {
+func (b Box) Volume() float64 { // 给Box 填加方法
         return b.width * b.height * b.depth
 }
 
-func (b *Box) SetColor(c Color) {
+func (b *Box) SetColor(c Color) { // 给Box 填加方法
         b.color = c
 }
 
