@@ -14,3 +14,8 @@
 ### 【观察者模式 Go语言实现】
 ##### Just for fun——go实现一下观察者模式 https://segmentfault.com/a/1190000011972032
 ##### 观察者模式 Go语言实现 https://studygolang.com/articles/6804
+
+###【go restful】
+* golang restful 框架之 go-swagger emicklei https://www.jianshu.com/p/dbca3911419e
+* go restful源码剖析-1 https://www.jianshu.com/p/b905d9701aea?utm_campaign=studygolang.com&utm_medium=studygolang.com&utm_source=studygolang.com
+* go restful源码剖析-1 https://studygolang.com/articles/14523 
