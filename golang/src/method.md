@@ -150,3 +150,95 @@ func (i IN) echoo() {
 如果一个method的receiver是T，你可以在一个*T类型的变量P上面调用这个method，而不需要 *P去调用这个method
 
 所以，你不用担心你是调用的指针的method还是不是指针的method，Go知道你要做的一切，这对于有多年C/C++编程经验的同学来说，真是解决了一个很大的痛苦。
+
+
+
+### method继承
+
+前面一章我们学习了字段的继承，那么你也会发现Go的一个神奇之处，method也是可以继承的。如果匿名字段实现了一个method，那么包含这个匿名字段的struct也能调用该method。让我们来看下面这个例子:
+
+复制代码 代码如下:
+```go
+package main
+import "fmt"
+type Human struct {
+    name string
+    age int
+    phone string
+}
+
+type Student struct {
+    Human //匿名字段
+    school string
+}
+
+type Employee struct {
+    Human //匿名字段
+    company string
+}
+
+//在human上面定义了一个method
+func (h *Human) SayHi() {
+    fmt.Printf("Hi, I am %s you can call me on %s\n", h.name, h.phone)
+}
+
+func main() {
+    mark := Student{Human{"Mark", 25, "222-222-YYYY"}, "MIT"}
+    sam := Employee{Human{"Sam", 45, "111-888-XXXX"}, "Golang Inc"}
+
+    mark.SayHi()
+    sam.SayHi()
+}
+```
+### method重写
+
+上面的例子中，如果Employee想要实现自己的SayHi,怎么办？简单，和匿名字段冲突一样的道理，我们可以在Employee上面定义一个method，重写了匿名字段的方法。请看下面的例子
+
+复制代码 代码如下:
+```go
+package main
+import "fmt"
+type Human struct {
+    name string
+    age int
+    phone string
+}
+
+type Student struct {
+    Human //匿名字段
+    school string
+}
+
+type Employee struct {
+    Human //匿名字段
+    company string
+}
+
+//Human定义method
+func (h *Human) SayHi() {
+    fmt.Printf("Hi, I am %s you can call me on %s\n", h.name, h.phone)
+}
+
+//Employee的method重写Human的method
+func (e *Employee) SayHi() {
+    fmt.Printf("Hi, I am %s, I work at %s. Call me on %s\n", e.name,
+        e.company, e.phone) //Yes you can split into 2 lines here.
+}
+
+func main() {
+    mark := Student{Human{"Mark", 25, "222-222-YYYY"}, "MIT"}
+    sam := Employee{Human{"Sam", 45, "111-888-XXXX"}, "Golang Inc"}
+
+    mark.SayHi()
+    sam.SayHi()
+}
+```
+
+上面的代码设计的是如此的美妙，让人不自觉的为Go的设计惊叹！
+通过这些内容，我们可以设计出基本的面向对象的程序了，但是Go里面的面向对象是如此的简单，没有任何的私有、公有关键字，通过大小写来实现(大写开头的为公有，小写开头的为私有)，方法也同样适用这个原则。
+
+以上是云栖社区小编为您精心准备的的内容，在云栖社区的博客、问答、公众号、人物、课程等栏目也有的相关内容，欢迎继续使用右上角搜索按钮进行搜索go语言 method go语言和golang、golang go语言、go语言为什么叫golang、golang method、golang methodbyname，以便于您获取更多的相关知识。
+
+
+
+
