@@ -28,6 +28,19 @@ func (b Box) Volume() float64 { // 给Box 填加方法
         return b.width * b.height * b.depth
 }
 
+/*
+下面
+func (b *Box) SetColor(c Color) {}
+这里的 (b *Box) 是 receiver，用指针，
+现在让我们回过头来看看SetColor这个method，它的receiver是一个指向Box的指针，是的，你可以使用*Box。想想为啥要使用指针而不是Box本身呢？
+
+我们定义SetColor的真正目的是想改变这个Box的颜色，如果不传Box的指针，那么SetColor接受的其实是Box的一个copy，也就是说method内对于颜色值的修改，其实只作用于Box的copy，而不是真正的Box。所以我们需要传入指针。
+
+这里可以把receiver当作method的第一个参数来看，然后结合前面函数讲解的传值和传引用就不难理解
+
+
+*/
+
 func (b *Box) SetColor(c Color) { // 给Box 填加方法
         b.color = c
 }
@@ -47,7 +60,7 @@ func (bl BoxList) BiggestColor() Color {
 
 func (bl BoxList) PaintItBlack() {
         for i, _ := range bl {
-                bl[i].SetColor(BLACK)
+                bl[i].SetColor(BLACK)  // 这里 bl[i] 是指针？
         }
 }
 
