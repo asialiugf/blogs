@@ -101,3 +101,8 @@ func main() {
  * reciver 如果是指针， 可以传值，也可以传指针， 但都当成 指针 来处理。
  * reciver 如果是值，   可以传值，也可以传指针， 但都当成 值   来处理。
  
+ ### 【断言】
+ * golang断言的使用（Type Assertion） https://studygolang.com/articles/3314
+ 
+ 
+ 
