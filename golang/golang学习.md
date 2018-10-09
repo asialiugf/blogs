@@ -4,6 +4,42 @@
 * _ 本身就是一个特殊的标识符，被称为空白标识符
 
 ### 【golang interface】
+
+interface 的 method 实现，对于reciver，值 还是 指针 要明确。
+```go
+type II interface {
+    R () int
+}
+
+type A struct {
+}
+
+func (a A) R() int {  // 值
+}
+
+//------ 值
+var x A
+var i II
+i = a  // ------ 值
+```
+
+```go
+type II interface {
+    R () int
+}
+
+type A struct {
+}
+
+func (a *A) R() int {  // 指针
+}
+
+//------ 指针
+var x A
+var i II
+i = &a  // ------ 指针
+```
+
 * golang技术随笔（一）深入理解interface  https://studygolang.com/articles/2268
 * 【golang-GUI开发】qt之signal和slot（一）https://studygolang.com/articles/13692?fr=sidebar
 * Golang的Interface是个什么鬼 https://studygolang.com/articles/4482
@@ -28,6 +64,7 @@
  对于函数（function），由函数的参数类型指定，传入的参数的类型不对会报错。
  func(指针），只能传指针， func(值），只能传值。
  
- 对于method， reciver 如果是指针， 可以传值，也可以传指针， 但都当成指针来处理。
-如果 reciver是值， 可以传值，也可以传指针， 但都当成值来处理。
+ 对于method， 
+ * reciver 如果是指针， 可以传值，也可以传指针， 但都当成 指针 来处理。
+ * reciver 如果是值，   可以传值，也可以传指针， 但都当成 值   来处理。
  
