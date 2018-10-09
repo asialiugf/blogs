@@ -51,6 +51,35 @@ i = &a  // ------ 指针
 * Go Data Structures: Interfaces https://research.swtch.com/interfaces
 * Go语言interface详解_Golang https://yq.aliyun.com/ziliao/99596?spm=a2c4e.11155472.blogcont.17.124f14d32S9HqU
 * 鸭子类型 https://zh.wikipedia.org/wiki/%E9%B8%AD%E5%AD%90%E7%B1%BB%E5%9E%8B
+* 神奇的GO语言：空接口（interface） https://www.cnblogs.com/chase-wind/p/6094378.html
+``` go
+神奇的GO语言：空接口（interface）
+　　对于go语言来说，设计最精妙的应该是interface了，直白点说interface是一组method的组合。至于更加详细的描述，本文不做介绍，今天谈谈空接口。
+
+　　空interface(interface{})不包含任何的method，因此所有的类型都实现了空interface。空interface在我们需要存储任意类型的数值的时候相当有用，有点类似于C语言的void*类型。请看下面的代码：
+
+package main
+import (
+    "fmt"
+)
+func main() {
+    slice := make([]interface{}, 10)
+    map1 := make(map[string]string)
+    map2 := make(map[string]int)
+    map2["TaskID"] = 1
+    map1["Command"] = "ping"
+    map3 := make(map[string]map[string]string)
+    map3["mapvalue"] = map1
+    slice[0] = map2
+    slice[1] = map1
+    slice[3] = map3
+    fmt.Println(slice[0])
+    fmt.Println(slice[1])
+    fmt.Println(slice[3])
+}
+这段代码声明了一个空接口的slice，这意味着它的值可以是任意类型，然后我们声明了两个map，一个是map[string]string，一个是map[string]int，然后在声明一个map的map类型，将这三个类型赋值给slice，使得slice可以存贮各种不同类型的数据，想想看，一个可变数组中，存储了一个key为string类型，value为int类型的map，又存储了一个key为string类型，value为string类型的map，还存储了一个map的map，这对c/c++转go的程序员们来说是多么让人吃惊。
+```
+
 ### 【观察者模式 Go语言实现】
 * Just for fun——go实现一下观察者模式 https://segmentfault.com/a/1190000011972032
 * 观察者模式 Go语言实现 https://studygolang.com/articles/6804
