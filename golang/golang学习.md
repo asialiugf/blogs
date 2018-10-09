@@ -10,6 +10,7 @@
 * 如何利用golang 反射值来定义一个变量 https://studygolang.com/articles/6529
 * Go Data Structures: Interfaces https://research.swtch.com/interfaces
 * Go语言interface详解_Golang https://yq.aliyun.com/ziliao/99596?spm=a2c4e.11155472.blogcont.17.124f14d32S9HqU
+* 鸭子类型 https://zh.wikipedia.org/wiki/%E9%B8%AD%E5%AD%90%E7%B1%BB%E5%9E%8B
 ### 【观察者模式 Go语言实现】
 * Just for fun——go实现一下观察者模式 https://segmentfault.com/a/1190000011972032
 * 观察者模式 Go语言实现 https://studygolang.com/articles/6804
