@@ -5,3 +5,7 @@
 
 ### go project
 * https://github.com/golang/go/wiki/Projects
+
+### go examples
+* https://gobyexample.com/interfaces
+* https://github.com/shijuvar/go-web
