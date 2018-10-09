@@ -6,7 +6,10 @@
 ### 【golang interface】
 * 要实现interface内的所有方法
 * 方法的reciver要区分指针 还是 值
-interface 的 method 实现，对于reciver，值 还是 指针 要明确。
+* reciver 如果是指针， 在使用时，revicer 可以是值，也可以是指针， 但都当成 指针 来处理。 
+* reciver 如果是值，   在使用时，revicer 可以是值，也可以是指针， 但都当成 值 来处理。
+* reciver （ var a , b:=&a,  a.test() b.test() 这两种调用方法都行 ）
+* interface 的 method 实现，对于reciver，值 还是 指针 要明确。
 ```go
 type II interface {
     R () int
