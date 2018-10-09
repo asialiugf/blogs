@@ -10,3 +10,4 @@
 * https://gobyexample.com/interfaces
 * https://github.com/shijuvar/go-web
 * Gin - 高性能 Golang Web 框架的介绍和使用 https://www.yoytang.com/go-gin-doc.html
+* 从零开始Gin Web+Vue商城的搭建（二）-- Model设计和ORM框架 https://www.jianshu.com/p/1af44cfca3b9
