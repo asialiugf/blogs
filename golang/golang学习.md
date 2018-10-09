@@ -4,7 +4,8 @@
 * _ 本身就是一个特殊的标识符，被称为空白标识符
 
 ### 【golang interface】
-
+* 要实现interface内的所有方法
+* 方法的reciver要区分指针 还是 值
 interface 的 method 实现，对于reciver，值 还是 指针 要明确。
 ```go
 type II interface {
