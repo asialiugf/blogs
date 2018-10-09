@@ -21,3 +21,13 @@
 * go restful源码剖析-1 https://www.jianshu.com/p/b905d9701aea?utm_campaign=studygolang.com&utm_medium=studygolang.com&utm_source=studygolang.com
 * go restful源码剖析-1 https://studygolang.com/articles/14523 
 * go-restful实战与深入分析之使用篇 https://blog.csdn.net/u010278923/article/details/70482393
+
+### 【指针】
+* Golang 中的指针 - Pointer  https://www.cnblogs.com/jasonxuli/p/6802289.html
+##### struct：
+ 对于函数（function），由函数的参数类型指定，传入的参数的类型不对会报错。
+ func(指针），只能传指针， func(值），只能传值。
+ 
+ 对于method， reciver 如果是指针， 可以传值，也可以传指针， 但都当成指针来处理。
+如果 reciver是值， 可以传值，也可以传指针， 但都当成值来处理。
+ 
