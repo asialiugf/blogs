@@ -54,7 +54,7 @@ i = &a  // ------ 指针
 ### 【观察者模式 Go语言实现】
 * Just for fun——go实现一下观察者模式 https://segmentfault.com/a/1190000011972032
 * 观察者模式 Go语言实现 https://studygolang.com/articles/6804
-
+* 用GO实现的改进的观察者模式 https://studygolang.com/articles/4139
 ### 【go restful】
 * https://github.com/emicklei/go-restful
 * golang restful 框架之 go-swagger emicklei https://www.jianshu.com/p/dbca3911419e
