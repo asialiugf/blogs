@@ -9,3 +9,4 @@
 ### go examples
 * https://gobyexample.com/interfaces
 * https://github.com/shijuvar/go-web
+* Gin - 高性能 Golang Web 框架的介绍和使用 https://www.yoytang.com/go-gin-doc.html
