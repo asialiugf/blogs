@@ -1,22 +1,73 @@
 ### 结论
 * 普通函数
 ```go
-func printFuncValue(p MyPoint) {}
-func printFuncPointer(pp *MyPoint) {}
+func printFuncValue(p MyPoint) {} //参数是值  （值传递）
+func printFuncPointer(pp *MyPoint) {} //参数是指针   （指针传递）
 ```
-* 对于普通函数，参数是值，则只能传值进去。 值传递， 不改变 结构内部数据。
-* 对于普通函数，参数是指针，则只能传指针进去。 指针传递， 会改变 结构内部数据。
+* 对于普通函数，参数是值，则只能传值进去。        值传递， 不改变 结构内部数据。
+* 对于普通函数，参数是指针，则只能传指针进去。  指针传递， 会改变 结构内部数据。
 
 ```go
-func (p MyPoint) printMethodValue() {}
-func (p *MyPoint) printMethodPointer() {}
+func (p MyPoint) printMethodValue() {}  //接收者是值  （值传递）
+func (p *MyPoint) printMethodPointer() {} //接收者是指针  （指针传递）
 ```
-* 对于方法，参数是值，则只能传值进去。 值传递， 不改变 结构内部数据。
-* 对于方法，参数是指针，则只能传指针进去。 指针传递， 会改变 结构内部数据。
-
-
+* 对于方法，接收者是值，    在使用时，值和指针都可以。   值传递， 不改变 结构内部数据。
+* 对于方法，接收者是指针，   在使用时，值和指针都可以。 指针传递， 会改变 结构内部数据。
 
 ```go
+type UU int
+
+func (i UU) kaka1() int {
+        i = i + 1  // 仅在内部改变 ， 值传递
+        x := i + 1
+        return int(x)
+}
+func (i *UU) kaka() int {
+        *i = *i + 1  // 改变了 *i， 外部也改变， 指针传递
+        m := *i
+        m = m + 1
+        x := int(m)
+        return x
+}
+```
+####  调用方法如下：t1=&t0,  t0.kaka() 和 t1.kaka()一样,   t0.kaka1() 和 t1.kaka1()一样
+####  kaka(), 指针传递，会改变数据，  kaka1()是值传递， 不改变数据。
+```go
+        var t0 UU
+        t0 = 6
+        var y0 int
+        t1 := &t0
+        y0 = t0.kaka()
+        y0 = t0.kaka()
+        y0 = t0.kaka()
+        y0 = t0.kaka()
+        fmt.Printf("after point zz --> %v\n", t0)
+        fmt.Printf("after point zz --> %v\n", y0)
+        y0 = t1.kaka()
+        y0 = t1.kaka()
+        y0 = t1.kaka()
+        y0 = t1.kaka()
+        fmt.Printf("after point t1.kaka() --> %v\n", t0)
+        fmt.Printf("after point t1.kaka() --> %v\n", y0)
+        y0 = t0.kaka1()
+        y0 = t0.kaka1()
+        y0 = t0.kaka1()
+        y0 = t0.kaka1()
+        fmt.Printf("after point zz --> %v\n", t0)
+        fmt.Printf("after point zz --> %v\n", y0)
+        y0 = t1.kaka1()
+        y0 = t1.kaka1()
+        y0 = t1.kaka1()
+        y0 = t1.kaka1()
+        fmt.Printf("after point t1.kaka1() --> %v\n", t0)
+        fmt.Printf("after point t1.kaka1() --> %v\n", y0)
+
+```
+
+***
+
+```go
+[GD-0103-0121@rjsys ~/go/src/ptr]$
 [GD-0103-0121@rjsys ~/go/src/ptr]$ cat a.go
 package main
 
@@ -52,20 +103,25 @@ func (p *MyPoint) printMethodPointer() {
         fmt.Printf(" -> %v", p)
 }
 
+/*
 func (i int) kaka1() int {
         x := i + 1
         return int(x)
 }
+*/
 
 type UU int
 
 func (i UU) kaka1() int {
+        i = i + 1
         x := i + 1
         return int(x)
 }
 func (i *UU) kaka() int {
-        var x int
-        x = int(*i)
+        *i = *i + 1
+        m := *i
+        m = m + 1
+        x := int(m)
         return x
 }
 
@@ -147,21 +203,31 @@ func main() {
         var y0 int
         t1 := &t0
         y0 = t0.kaka()
+        y0 = t0.kaka()
+        y0 = t0.kaka()
+        y0 = t0.kaka()
         fmt.Printf("after point zz --> %v\n", t0)
         fmt.Printf("after point zz --> %v\n", y0)
+        y0 = t1.kaka()
+        y0 = t1.kaka()
+        y0 = t1.kaka()
+        y0 = t1.kaka()
+        fmt.Printf("after point t1.kaka() --> %v\n", t0)
+        fmt.Printf("after point t1.kaka() --> %v\n", y0)
+        y0 = t0.kaka1()
+        y0 = t0.kaka1()
+        y0 = t0.kaka1()
         y0 = t0.kaka1()
         fmt.Printf("after point zz --> %v\n", t0)
         fmt.Printf("after point zz --> %v\n", y0)
         y0 = t1.kaka1()
-        fmt.Printf("after point zz --> %v\n", *t1)
-        fmt.Printf("after point zz --> %v\n", y0)
+        y0 = t1.kaka1()
+        y0 = t1.kaka1()
+        y0 = t1.kaka1()
+        fmt.Printf("after point t1.kaka1() --> %v\n", t0)
+        fmt.Printf("after point t1.kaka1() --> %v\n", y0)
 
 }
-[GD-0103-0121@rjsys ~/go/src/ptr]$
-
-```
-#### 运行结果
-```go
 [GD-0103-0121@rjsys ~/go/src/ptr]$ ./ptr.exe
 
  value to func(value): {0 0} -> {1 1} --> {0 0}
@@ -185,12 +251,14 @@ after value zz --> &{0 0}
 after point yy --> {5 5}
 after point zz --> &{5 5}
 
-after point zz --> 6
-after point zz --> 6
-after point zz --> 6
-after point zz --> 7
-after point zz --> 6
-after point zz --> 7
+after point zz --> 10
+after point zz --> 11
+after point t1.kaka() --> 14
+after point t1.kaka() --> 15
+after point zz --> 14
+after point zz --> 16
+after point t1.kaka1() --> 14
+after point t1.kaka1() --> 16
 [GD-0103-0121@rjsys ~/go/src/ptr]$
 
 ```
