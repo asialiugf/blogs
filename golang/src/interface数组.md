@@ -1,5 +1,5 @@
 # 注意他们的区别
-### []interface{}
+### []interface{} 这里是 interface数组
 既然空的 interface 可以接受任何类型的参数，那么一个 interface{}类型的 slice 是不是就可以接受任何类型的 slice ?
 ```go
 func printAll(vals []interface{}) { //1
@@ -26,7 +26,9 @@ for i, d := range dataSlice {
 ```
 
 
-### type IntSlice []int 
+### sort源码，type IntSlice []int 这样是可以的
+* https://github.com/golang/go/blob/master/src/sort/sort.go
+
 ```go
 type Interface interface {
 	// Len is the number of elements in the collection.
