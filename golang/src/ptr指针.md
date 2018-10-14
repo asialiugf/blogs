@@ -1,3 +1,21 @@
+### 结论
+* 普通函数
+```go
+func printFuncValue(p MyPoint) {}
+func printFuncPointer(pp *MyPoint) {}
+```
+* 对于普通函数，参数是值，则只能传值进去。 值传递， 不改变 结构内部数据。
+* 对于普通函数，参数是指针，则只能传指针进去。 指针传递， 会改变 结构内部数据。
+
+```go
+func (p MyPoint) printMethodValue() {}
+func (p *MyPoint) printMethodPointer() {}
+```
+* 对于方法，参数是值，则只能传值进去。 值传递， 不改变 结构内部数据。
+* 对于方法，参数是指针，则只能传指针进去。 指针传递， 会改变 结构内部数据。
+
+
+
 ```go
 [GD-0103-0121@rjsys ~/go/src/ptr]$ cat a.go
 package main
