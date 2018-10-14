@@ -30,8 +30,8 @@ func (i *UU) kaka() int {
         return x
 }
 ```
-####  调用方法如下：t1=&t0,  t0.kaka() 和 t1.kaka()一样,   t0.kaka1() 和 t1.kaka1()一样
-####  kaka(), 指针传递，会改变数据，  kaka1()是值传递， 不改变数据。
+* 调用方法如下：t1=&t0,  t0.kaka() 和 t1.kaka()一样,   t0.kaka1() 和 t1.kaka1()一样
+* kaka(), 指针传递，会改变数据，  kaka1()是值传递， 不改变数据。
 ```go
         var t0 UU
         t0 = 6
