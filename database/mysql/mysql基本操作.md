@@ -1,3 +1,8 @@
+### 仅导出一个库的所有表，不含数据
+```
+./mysqldump -h localhost -uroot -pxxxxxx  -d databasename > /tmp/dump.sql
+```
+
 ### 改root密码
 * 在 my.cnf文件中增加 skip-grant-tables 
 ```
