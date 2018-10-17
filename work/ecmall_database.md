@@ -7,4 +7,5 @@
 *  淘宝网商品SKU系统设计经验分享 https://blog.csdn.net/y87329396/article/details/51660016
 * 设计简单的商城数据库 https://www.zhihu.com/search?type=content&q=%E5%95%86%E5%9F%8E%E6%95%B0%E6%8D%AE%E5%BA%93%E8%AE%BE%E8%AE%A1%20
 * 一个商品SKU是怎么生成的 https://www.jianshu.com/p/1aa9bc5a1158
+* 达尔文商品管理 http://open.taobao.com/doc.htm?docId=102155&docType=1
 
