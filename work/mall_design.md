@@ -1,5 +1,5 @@
 ### mall
-![](https://github.com/asialiugf/blogs/blob/master/image/mall_001.png) 
+![](https://github.com/asialiugf/blogs/blob/master/image/mall_002.png) 
 
 * 类目可以分多级，每级都会有图中ABCD区
 * A区点击三角，会覆盖C区
