@@ -27,9 +27,10 @@ CPU / SSD / 硬盘
 #### 展开同级， 展开下级
 
 
-## 【表设计】
+## 【导航栏 表设计】
 
 ### level
+导航栏 分级，一般情况分为三级， 第一级，主页面， 第二级（家电、电子产品。。。） 第三级。。。
 ```
 ID  name 
 1   level one
@@ -38,7 +39,7 @@ ID  name
 4   level four
 
 ```
-### 【area】
+### 【area】 每级分为5个区，见上图
 ```
 ID  name
 A   area A
@@ -48,7 +49,7 @@ D   arec D
 E   area E
 
 ```
-### 【level_area】
+### 【level_area】 每个  级别_区   对应的名称，以及是否显示名称，    是否展开
 ```
 ID       name           level_ID      area_ID       display       spread 
 0001    “全部商品分类”         1        A              Y             N
@@ -63,6 +64,29 @@ ID       name           level_ID      area_ID       display       spread
 。
 。
 ```
+### 【category】 真正的分类
+```
+ID        name     level_area_ID    group       url
+00001     家居        0006(2D区）     1
+00002     家装        0006           1
+00003     厨具        0006           1
+00004     男装        0006           2
+00005     女装        0006           2
+00006     童装        0006           2
+00007     内衣        0006           2
+00008     美妆        0006           3
+00009     个护清洁    0006            3
+00010     宠物        0006           3
+.
+.
+.
+
+```
+
+
+
+
+
 
 
 
