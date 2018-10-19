@@ -49,6 +49,7 @@ var x A
 var i II
 i = &a  // ------ 指针
 ```
+* Go Data Structures: Interfaces https://research.swtch.com/interfaces
 * golang中interface接口的深度解析  https://www.jb51.net/article/128071.htm
 * golang中interface接口的深度解析 https://www.jb51.net/article/128071.htm
 * InterfaceSlice为什么不会转换  https://github.com/golang/go/wiki/InterfaceSlice
