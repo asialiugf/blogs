@@ -1,4 +1,5 @@
 ### 学习网站
+* Elasticsearch 的 NGram 分词器处理模糊匹配 https://www.imooc.com/article/18578?block_id=tuijian_wz
 * https://es.xiaoleilu.com/040_Distributed_CRUD/15_Create_index_delete.html
 
 * elasticsearch install
