@@ -44,7 +44,7 @@ var i II
 i = &a  // ------ 指针
 ```
 
-* 深入理解 Go Interface https://sanyuesha.com/2017/07/22/how-to-understand-go-interface/
+* 理解 Go interface 的 5 个关键点 https://sanyuesha.com/2017/07/22/how-to-understand-go-interface/
 * golang技术随笔（一）深入理解interface  https://studygolang.com/articles/2268
 * 【golang-GUI开发】qt之signal和slot（一）https://studygolang.com/articles/13692?fr=sidebar
 * Golang的Interface是个什么鬼 https://studygolang.com/articles/4482
