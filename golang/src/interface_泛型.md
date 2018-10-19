@@ -92,6 +92,13 @@ func main() {
 
 ```
 ### 实现
+1. 定义interface 相关函数
+2. 定义泛型调用函数，并使用 interface 的相关函数来实现 这个泛型函数。
+3. 定义自己的类型
+4. 用自己的类型，实现 interface定义的函数
+
+然后，就可以在其它地方（比如main()）中来直接使用 泛型函数了。
+
 ```go
 [GD-0103-0121@rjsys ~/go/src/interfacetest]$ cat t01.go
 package main
