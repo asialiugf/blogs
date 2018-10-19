@@ -12,6 +12,25 @@ shasum -a 512 -c elasticsearch-6.4.0.zip.sha512
 unzip elasticsearch-6.4.0.zip
 cd elasticsearch-6.4.0/ 
 ```
+#### 配置
+* elasticsearch-6.4.0/config/elasticsearch.yml
+```
+#network.host: 192.168.0.1
+network.host: 0.0.0.0
+#
+# Set a custom port for HTTP:
+#
+#http.port: 9200
+http.port: 9201
+#
+# For more information, consult the network module documentation.
+```
+#### 启动
+```
+cd elasticsearch-6.4.0/bin
+./elasticsearch -d
+```
+
 #### .bashrc 环境变量
 ```
 [charmi@dev ~]$ cat .bashrc
