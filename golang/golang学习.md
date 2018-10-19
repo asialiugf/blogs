@@ -3,6 +3,11 @@
 * 不能以数字开头
 * _ 本身就是一个特殊的标识符，被称为空白标识符
 
+###
+
+* Go中string转[]byte的陷阱 https://www.cnblogs.com/mushroom/p/8998538.html
+
+
 ### 【golang interface】
 * 要实现interface内的所有方法
 * 方法的reciver要区分指针 还是 值
