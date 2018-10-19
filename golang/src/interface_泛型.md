@@ -91,3 +91,74 @@ func main() {
 [GD-0103-0121@rjsys ~/go/src/interf]$
 
 ```
+### 实现
+```go
+[GD-0103-0121@rjsys ~/go/src/interfacetest]$ cat t01.go
+package main
+
+import (
+        "fmt"
+)
+
+// ----------  interface ------------
+type TT interface {
+        hello()
+}
+
+func Say(this TT) {
+        this.hello()
+}
+
+// ----------  local1 type ------------
+type SS string
+
+func (this SS) hello() {
+
+        fmt.Println("arHar:", this)
+}
+
+// ----------  local2 type ------------
+type HS []string
+
+func (this HS) hello() {
+        for i := 0; i < len(this); i++ {
+                fmt.Print(this[i], "  ")
+        }
+        fmt.Print("\n")
+}
+
+func (this HS) HS_Say() {
+        Say(this)
+}
+
+// ----------  local3 type ------------
+type IS []int
+
+func (this IS) hello() {
+        for i := 0; i < len(this); i++ {
+                fmt.Print(this[i], "  ")
+        }
+        fmt.Print("\n")
+
+}
+
+// ----------  main ------------
+func main() {
+        var tt SS = "aaaaaaaaa"
+        Say(tt)
+        var hs HS = []string{"aaaa", "bbb", "ccc"}
+        Say(hs)
+        hs.HS_Say()
+        var is IS = []int{1, 2, 45, 33}
+        Say(is)
+}
+[GD-0103-0121@rjsys ~/go/src/interfacetest]$ ./interfacetest.exe
+arHar: aaaaaaaaa
+aaaa  bbb  ccc
+aaaa  bbb  ccc
+1  2  45  33
+[GD-0103-0121@rjsys ~/go/src/interfacetest]$
+
+```
+
+
