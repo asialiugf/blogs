@@ -6,6 +6,7 @@
 ###
 
 * Go中string转[]byte的陷阱 https://www.cnblogs.com/mushroom/p/8998538.html
+* 为什么在Go语言中要少用interface{}的示例代码 https://github.com/HYY-yu/BokeGo_interfaceSample
 
 
 ### 【golang interface】
