@@ -1,12 +1,12 @@
 ## 结论
-### 普通函数
+### 一、【普通函数】
 ```go
 func printFuncValue(p MyPoint) {} //参数是值  （值传递）
 func printFuncPointer(pp *MyPoint) {} //参数是指针   （指针传递）
 ```
 * 对于普通函数，参数是值，则只能传值进去。        值传递， 不改变 结构内部数据。
 * 对于普通函数，参数是指针，则只能传指针进去。  指针传递， 会改变 结构内部数据。
-### 方法
+### 二、【方法】
 ```go
 func (p MyPoint) printMethodValue() {}  //接收者是值  （值传递）
 func (p *MyPoint) printMethodPointer() {} //接收者是指针  （指针传递）
