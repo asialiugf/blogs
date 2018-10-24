@@ -153,3 +153,34 @@ patch -d /opt/gitlab/embedded/service/gitlab-rails -p1 < /tmp/11.2.diff
 ```
 
 
+### git上传新的 VUE项目
+* 在gitlab上创建新项目
+* 执行以下
+```
+  496  ll
+  497  winpty vue.cmd create cpmall
+  498  winpty vue.cmd create cpmall
+  499  cd cpmall
+  500  yarn serve
+  501  cd $VUE
+  502  ll
+  503  cd cpmall
+  504  ll
+  505  cd ..
+  506  ll
+  507  tar cvfz cpmall.tar cpmall/
+  508  ll
+  509  cd cpmall
+  510  ll
+  511  ll -la
+  512  vi .gitignore
+  513  ll
+  514  git add .
+  515  git commit -m "vue"
+  516  git remote add origin http://192.168.66.254/tech_dept/cpmall_vue.git
+  517  git push -u origin --all
+  518  history
+[GD-0103-0121@rjsys /d/github.com/vue/cpmall]$
+
+```
+
