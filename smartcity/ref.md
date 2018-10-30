@@ -5,3 +5,6 @@
 * 中国电信：5G技术白皮书（附下载链接） http://www.3mbang.com/i-1631.html
 * 揭秘腾讯智慧城市版图：“数字政府”+“超级大脑”的新打法 https://baijiahao.baidu.com/s?id=1610193951758677824&wfr=spider&for=pc
 * 智慧城市2.0时代到来 腾讯助力城市智慧美好 http://henan.qq.com/a/20180413/022562.htm
+* http://free.chinabaogao.com/fangchang/201809/09253D3952018.html
+* https://www.sciencedirect.com/science/article/pii/S0167739X17302273
+* https://cloud.tencent.com/solution/wisdom-city-details
