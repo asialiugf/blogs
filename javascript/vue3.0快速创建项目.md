@@ -49,6 +49,11 @@ vue create my-project
 # npm install -g node-gyp 
 # npm i -g windows-build-tools
 ```
+如果安装不上，执行以下：
+```
+[Administrator @ DESKTOP-6IOA0JN /c/e/github.com/vue]$ npm config set registry http://registry.cnpmjs.org
+[Administrator @ DESKTOP-6IOA0JN /c/e/github.com/vue]$ npm i -g windows-build-tools
+```
 ***
 # 【20180921】
 如果你在 Windows 上通过 minTTY 使用 Git Bash，交互提示符并不工作。你必须通过 winpty vue.cmd create hello-world 启动这个命令。
