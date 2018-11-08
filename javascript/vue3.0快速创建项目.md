@@ -65,5 +65,29 @@ winpty vue.cmd create hello-world
 * What is Babel? Babel is a JavaScript compiler
 * https://babeljs.io/docs/en/index.html
 
+### 加element-ui
+```
+vue create my-app
+cd my-app
+vue add element
+```
+
+* main.js 会加一行 import './plugins/element.js'
+
+```
+import Vue from 'vue'
+import App from './App.vue'
+import router from './router'
+import store from './store'
+import './plugins/element.js'
+
+Vue.config.productionTip = false
+
+new Vue({
+  router,
+  store,
+  render: h => h(App)
+}).$mount('#app')
+```
 
 
