@@ -13,7 +13,23 @@ node_id     node_name     parrent_ids     child_ids                  desc       
 001         "数据库"       000,002        100,101,102,103             
 
 ```
+### 临接表
+```c
+Vertex        name        
+1             "database"
+2             "mysql"
+3             "oracle"
+4             "mongdb"
 
+```
+
+```c
+EdgeId	      Start Vertex           	EndVertex
+001             A                       C
+003             A                       D
+004             B                       D
+
+```
 ### 查询设计
 * ElasticSearch
 
