@@ -33,7 +33,6 @@ EdgeId	      Start Vertex           	EndVertex
 ### 查询设计
 * ElasticSearch
 
-
 ### 相关事项
 * 每个节点的访问量
 * 每个节点的人物记
@@ -51,5 +50,12 @@ EdgeId	      Start Vertex           	EndVertex
 
 Closure Table将树中每个节点与其子孙节点的关系都存储了下来，如下图所示：
 ![](https://github.com/asialiugf/blogs/blob/master/image/1333729578_4459.jpg)
+
+### 要实现的目标
+1. DAG以某一节点为root，将其下面的所有子节点以及link全部查询出来。
+2. 每个用户可以独立存储自己的多个不同的DAG
+3. 用户各自的DAG可以相互收藏
+4. 可以全文检索
+5. 可以AI智能推荐
 
 
