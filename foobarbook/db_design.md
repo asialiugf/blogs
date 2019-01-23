@@ -1,14 +1,20 @@
 ### 关于DAG数据库的设计
-1 node表
-2 link表
-3 父子关系表，只记录一个级别，
+1. node表
+2. link表
+3. 父子关系表，只记录一个级别，
 ```
 id father_node_id     son_node_id
 0001                 1001
 0001                 1002
 0001                 2001
 ```
-
+4. 父子关系，保留在redis里
+```
+key             value
+parrent_ids     child_ids                  desc       url...       tags...
+0001            1001,1002,2001 
+0001            5001,5002,5007     
+```
 
 ### 关系数据库设计 
 
