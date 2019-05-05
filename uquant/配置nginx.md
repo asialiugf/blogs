@@ -1,7 +1,4 @@
 ```c
-eee
-```
-```c
 /usr/local/nginx/conf#nginx.conf
 
 root@asiamiao:/usr/local/nginx/conf# cat nginx.conf
