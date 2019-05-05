@@ -1,4 +1,19 @@
-```c
+```python
+root@asiamiao:/usr/local/nginx# ll
+total 36
+drwx------ 2 nobody root 4096 Dec 29  2017 client_body_temp
+drwxr-xr-x 2 root   root 4096 Sep 29  2018 conf
+drwx------ 2 nobody root 4096 Dec 29  2017 fastcgi_temp
+drwxr-xr-x 2 root   root 4096 Dec 29  2017 html
+drwxr-xr-x 2 root   root 4096 Sep 29  2018 logs
+drwx------ 2 nobody root 4096 Dec 29  2017 proxy_temp
+drwxr-xr-x 2 root   root 4096 Dec 29  2017 sbin
+drwx------ 2 nobody root 4096 Dec 29  2017 scgi_temp
+drwx------ 2 nobody root 4096 Dec 29  2017 uwsgi_temp
+root@asiamiao:/usr/local/nginx# 
+```
+
+```python
 /usr/local/nginx/conf#nginx.conf
 
 root@asiamiao:/usr/local/nginx/conf# cat nginx.conf
