@@ -519,7 +519,36 @@ Type '\help' or '\?' for help; '\quit' to exit.
 
 
 
+```
+mysql> 
+mysql> grant all privileges on test.* to alex@localhost;    
+Query OK, 0 rows affected (0.00 sec)
 
+mysql> 
+
+mysql> 
+mysql> 
+mysql> create user 'alex'@'localhost' identified by '123';           
+Query OK, 0 rows affected (0.01 sec)
+
+mysql> 
+mysql> 
+mysql> grant all privileges  on test to "alex"@'%';      
+ERROR 1133 (42000): Can't find any matching row in the user table
+mysql> 
+mysql> grant all privileges  on test to "alex";
+ERROR 1133 (42000): Can't find any matching row in the user table
+mysql> 
+mysql> select database();
++------------+
+| database() |
++------------+
+| test       |
++------------+
+1 row in set (0.00 sec)
+
+mysql> 
+```
 
 
 
