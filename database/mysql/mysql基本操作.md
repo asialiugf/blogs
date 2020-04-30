@@ -100,8 +100,11 @@ mysql> create user 'wpuser'@'localhost' identified by '123456';
 Query OK, 0 rows affected (0.01 sec)
 
 mysql> 
+mysql> 
+mysql> grant all privileges on *.* to 'wpuser'@'localhost';
+Query OK, 0 rows affected (0.00 sec)
 
-
+mysql>flush privileges;
 ```
 
 ```
