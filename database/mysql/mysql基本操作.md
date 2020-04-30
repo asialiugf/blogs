@@ -92,3 +92,43 @@ Rows matched: 1  Changed: 0  Warnings: 0
 
 mysql> 
 ```
+
+```
+mysql> 
+mysql> 
+mysql> create user 'wpuser'@'localhost' identified by '123456';               
+Query OK, 0 rows affected (0.01 sec)
+
+mysql> 
+
+
+```
+
+```
+#查看权限
+show grants for '用户'@'IP地址'
+
+#授权 mjj用户仅对db1.t1文件有查询、插入和更新的操作
+grant select ,insert,update on db1.t1 to "alex"@'%';
+
+# 表示有所有的权限，除了grant这个命令，这个命令是root才有的。mjj用户对db1下的t1文件有任意操作
+grant all privileges  on db1.t1 to "alex"@'%';
+#mjj用户对db1数据库中的文件执行任何操作
+grant all privileges  on db1.* to "alex"@'%';
+#mjj用户对所有数据库中文件有任何操作
+grant all privileges  on *.*  to "alex"@'%';
+ 
+#取消权限
+ 
+# 取消mjj用户对db1的t1文件的任意操作
+revoke all on db1.t1 from 'alex'@"%";  
+
+# 取消来自远程服务器的mjj用户对数据库db1的所有表的所有权限
+
+revoke all on db1.* from 'alex'@"%";  
+
+取消来自远程服务器的mjj用户所有数据库的所有的表的权限
+revoke all privileges on *.* from 'alex'@'%';
+
+MySql备份命令行操作
+```
