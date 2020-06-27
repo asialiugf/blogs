@@ -133,6 +133,9 @@ void Base::onInit(std::function<void()> handler)
   Base::onInitHandler = handler;
 }
 
+/*
+这里的 onTick()的参数 handler，实际上是一个函数。是在策略程序里，由用户自己定义的。 然后 赋给 Base::onTickHandler。 
+*/
 void Base::onTick(std::function<void(sTick *)> handler)
 {
   Base::onTickHandler = handler;
@@ -161,7 +164,7 @@ void Base::onMessageInit()
       it = this->MFuBo.find(this->tick->InstrumentID);
       if(it != this->MFuBo.end()) {
         this->fu = it->second ;
-        this->onTickHandler(this->tick);
+        this->onTickHandler(this->tick);  //在这里执行 策略程序的 onTick里面的代码。
       }
       break;
     case T_BARS:
@@ -183,7 +186,7 @@ void Base::onMessageInit()
         }
         if(j>0) {
           this->fu = it->second ;
-          this->onBarsHandler(this->bars,j);
+          this->onBarsHandler(this->bars,j);  // 在这里执行 策略程序的 onBars里面的代码。 参数请看 策略程序里的定义：  “ BB->onBars([&](sKbar * bar[], int len) { ”
         }
       } // -----  end if(it != this->M_Fu.end())
       break;
