@@ -1,0 +1,14 @@
+mindoc@VM-0-12-ubuntu:~/mindoc$ 
+mindoc@VM-0-12-ubuntu:~/mindoc$ go mod tidy
+go: github.com/PuerkitoBio/goquery@v1.4.1: Get "https://proxy.golang.org/github.com/%21puerkito%21bio/goquery/@v/v1.4.1.mod": dial tcp 216.58.200.49:443: i/o timeout
+mindoc@VM-0-12-ubuntu:~/mindoc$ 
+mindoc@VM-0-12-ubuntu:~/mindoc$ 
+mindoc@VM-0-12-ubuntu:~/mindoc$ 
+mindoc@VM-0-12-ubuntu:~/mindoc$ 
+mindoc@VM-0-12-ubuntu:~/mindoc$ go env -w GOPROXY=https://goproxy.cn,direct
+mindoc@VM-0-12-ubuntu:~/mindoc$ go env -w GOPRIVATE=.gitlab.com,.gitee.com
+mindoc@VM-0-12-ubuntu:~/mindoc$ go env -w GOSUMDB=off
+mindoc@VM-0-12-ubuntu:~/mindoc$ go env -w GOSUMDB="sum.golang.google.cn"
+mindoc@VM-0-12-ubuntu:~/mindoc$ 
+mindoc@VM-0-12-ubuntu:~/mindoc$ go mod tidy
+go: downloading github.com/astaxie/beego v1.12.3
