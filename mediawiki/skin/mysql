@@ -1,0 +1,83 @@
+root@VM-0-12-ubuntu:/var/www/html/mediawiki# 
+root@VM-0-12-ubuntu:/var/www/html/mediawiki# mysql -uroot
+Welcome to the MariaDB monitor.  Commands end with ; or \g.
+Your MariaDB connection id is 248
+Server version: 10.1.47-MariaDB-0ubuntu0.18.04.1 Ubuntu 18.04
+
+Copyright (c) 2000, 2018, Oracle, MariaDB Corporation Ab and others.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+MariaDB [(none)]> 
+MariaDB [(none)]> use my_wiki
+Reading table information for completion of table and column names
+You can turn off this feature to get a quicker startup with -A
+
+Database changed
+MariaDB [my_wiki]> show tables;
++-----------------------+
+| Tables_in_my_wiki     |
++-----------------------+
+| actor                 |
+| archive               |
+| bot_passwords         |
+| category              |
+| categorylinks         |
+| change_tag            |
+| change_tag_def        |
+| comment               |
+| content               |
+| content_models        |
+| externallinks         |
+| filearchive           |
+| image                 |
+| imagelinks            |
+| interwiki             |
+| ip_changes            |
+| ipblocks              |
+| ipblocks_restrictions |
+| iwlinks               |
+| job                   |
+| l10n_cache            |
+| langlinks             |
+| log_search            |
+| logging               |
+| module_deps           |
+| objectcache           |
+| oldimage              |
+| page                  |
+| page_props            |
+| page_restrictions     |
+| pagelinks             |
+| protected_titles      |
+| querycache            |
+| querycache_info       |
+| querycachetwo         |
+| recentchanges         |
+| redirect              |
+| revision              |
+| revision_actor_temp   |
+| revision_comment_temp |
+| searchindex           |
+| site_identifiers      |
+| site_stats            |
+| sites                 |
+| slot_roles            |
+| slots                 |
+| templatelinks         |
+| text                  |
+| updatelog             |
+| uploadstash           |
+| user                  |
+| user_former_groups    |
+| user_groups           |
+| user_newtalk          |
+| user_properties       |
+| watchlist             |
+| watchlist_expiry      |
++-----------------------+
+57 rows in set (0.00 sec)
+
+MariaDB [my_wiki]> 
+MariaDB [my_wiki]> 
+MariaDB [my_wiki]> 
