@@ -1,0 +1,16 @@
+root@VM-0-12-ubuntu:/var/www/html# 
+root@VM-0-12-ubuntu:/var/www/html# a2dismod php5.6
+root@VM-0-12-ubuntu:/var/www/html# a2dismod php7.2
+root@VM-0-12-ubuntu:/var/www/html# a2enmod php7.4
+root@VM-0-12-ubuntu:/var/www/html# a2enmod php8.0
+Considering dependency mpm_prefork for php8.0:
+Considering conflict mpm_event for mpm_prefork:
+Considering conflict mpm_worker for mpm_prefork:
+Module mpm_prefork already enabled
+Considering conflict php5 for php8.0:
+Enabling module php8.0.
+To activate the new configuration, you need to run:
+  systemctl restart apache2
+root@VM-0-12-ubuntu:/var/www/html# 
+root@VM-0-12-ubuntu:/var/www/html# systemctl restart apache2
+root@VM-0-12-ubuntu:/var/www/html# 
