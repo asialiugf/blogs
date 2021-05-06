@@ -1,5 +1,5 @@
 ### class
-``` typescrpit
+``` js
 
 class Car { 
     // 字段 
