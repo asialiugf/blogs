@@ -83,4 +83,26 @@ console.log(hercar.y);
 ```
 ### result 
 ```
+[Running] ts-node "c:\ts\test01.ts"
+Car { engine: 'Engine1', x: 'rrreee', a: 9 }
+Car { engine: 'Engine2', x: 'rrr', a: 9 }
+rrr
+发动机为 :   Engine1
+发动机为 :   Engine2
+red
+kkkk
+rrreee
+bluecar:
+rrreee
+tttt
+ 
+greencar:
+发动机为 :   greenengine
+发动机为 :   greenengine
+109
+129
+
+[Done] exited with code=0 in 1.146 seconds
+
+
 ```
