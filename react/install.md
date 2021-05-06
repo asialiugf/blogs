@@ -102,6 +102,29 @@ You can now view my-app in the browser.
 Note that the development build is not optimized.
 To create a production build, use yarn build.
 ```
-  
+
+### antd design pro
+```
+  244  cd test6
+  245  yarn create umi
+  246   yarn add @ant-design/pro-layout
+  247  yarn add @ant-design/pro-table
+  248  yarn install
+  249  yarn install
+  250  yarn start
+  251  yarn add @umijs/preset-ui -D
+  252  UMI_UI=1 umi dev
+  253  yarn install
+  254  yarn start
+  255  umi block list
+  256  npm install umi -g
+  257  umi block list
+  258   yarn
+  259  yarn start templates/user-dashboard
+  260  umi block list
+  261  yarn start
+  262  ll
+  263  history
+```
   
 
