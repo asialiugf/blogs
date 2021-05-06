@@ -54,7 +54,7 @@ class greencar extends Car {
         this.disp();                   /* this.disp() 和 super.disp() 一样 */
         super.disp();
         this.y = this.y + this.a ;
-        //this.y = this.y + super.a ;  /*不能使用 super.x ! 只能使用 this.x */
+        //this.y = this.y + super.a ;  /*不能使用 super.a ! 只能使用 this.a */
         console.log(this.y);
     }
 }
