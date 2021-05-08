@@ -36,7 +36,7 @@
 
       class App1 extends React.Component {
         render() {
-          return eee;
+           return ( <div>  <div> aaa </div> <a>bbbb</a>  </div> )
         }
       }
 
