@@ -130,3 +130,31 @@ root@foobar:/etc/netplan# ip add
        valid_lft forever preferred_lft forever
 root@foobar:/etc/netplan# 
  ```
+ ```
+    59  apt update
+   60  ll
+   61  wget https://github.com/DaveGamble/cJSON/archive/refs/tags/v1.7.14.tar.gz
+   62  ll
+   63  tar xvf v1.7.14.tar.gz 
+   64  cd cJSON-1.7.14/
+   65  ll
+   66  mkdir build
+   67  cd build/
+   68  ll
+   69  cmake ..
+   70  make
+   71  make install
+   72  ll
+   73  cd 
+   74  apt-get install build-essential autoconf libtool pkg-config
+   75  apt-get install cmake
+   76  cd
+   77  git clone -b RELEASE_TAG_HERE https://github.com/grpc/grpc
+   78  wget https://github.com/grpc/grpc/archive/refs/tags/v1.38.0.tar.gz
+   79  ll
+   80  tar xvf v1.38.0.tar.gz 
+   81  cd grpc-1.38.0/
+   82  ll
+   83  history
+root@foobar:~/grpc-1.38.0# 
+ ```
