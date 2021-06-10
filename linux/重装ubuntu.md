@@ -87,3 +87,46 @@ $ sudo ldconfig # refresh shared library cache.
  $ [sudo] make install
  ```
  
+ ### 网络配置
+ ```
+ root@foobar:~# cd /etc/netplan/
+root@foobar:/etc/netplan# 
+root@foobar:/etc/netplan# 
+root@foobar:/etc/netplan# 
+root@foobar:/etc/netplan# 
+root@foobar:/etc/netplan# ll
+total 12
+drwxr-xr-x  2 root root 4096 Jun 10 07:15 ./
+drwxr-xr-x 94 root root 4096 Jun 10 07:24 ../
+-rw-r--r--  1 root root  257 Jun 10 07:15 00-installer-config.yaml
+root@foobar:/etc/netplan# 
+root@foobar:/etc/netplan# 
+root@foobar:/etc/netplan# cat *
+# This is the network config written by 'subiquity'
+network:
+  ethernets:
+    ens33:
+      dhcp4: no
+      addresses: [192.168.199.161/24]
+      optional: true
+      gateway4: 192.168.199.1
+      nameservers:
+              addresses: [8.8.8.8]
+  version: 2
+root@foobar:/etc/netplan# 
+root@foobar:/etc/netplan# 
+root@foobar:/etc/netplan# ip add
+1: lo: <LOOPBACK,UP,LOWER_UP> mtu 65536 qdisc noqueue state UNKNOWN group default qlen 1000
+    link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00
+    inet 127.0.0.1/8 scope host lo
+       valid_lft forever preferred_lft forever
+    inet6 ::1/128 scope host 
+       valid_lft forever preferred_lft forever
+2: ens33: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc fq_codel state UP group default qlen 1000
+    link/ether 00:0c:29:af:31:21 brd ff:ff:ff:ff:ff:ff
+    inet 192.168.199.161/24 brd 192.168.199.255 scope global ens33
+       valid_lft forever preferred_lft forever
+    inet6 fe80::20c:29ff:feaf:3121/64 scope link 
+       valid_lft forever preferred_lft forever
+root@foobar:/etc/netplan# 
+ ```
