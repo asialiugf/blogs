@@ -127,4 +127,14 @@ To create a production build, use yarn build.
   263  history
 ```
   
+### 初始化 react APP
+```
+npx create-react-app my-app
+cd my-app
+npm start
+
+npm run build
+yarn global add serve
+serve -s build # https::/
+```
 
