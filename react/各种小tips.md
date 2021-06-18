@@ -1,5 +1,5 @@
 ### 加注释的方法
-```
+```js
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
@@ -22,7 +22,7 @@ ReactDOM.render(
 reportWebVitals();
 ```
 ###  jsx单行注释  和 多行注释
-``` jsx
+``` js
 {/* jsx */} 单行注释
 
 {/*
