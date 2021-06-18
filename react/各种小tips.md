@@ -54,3 +54,37 @@ function App() {
 }
 
 ```
+
+### jsx 要用 {} 来引用e
+#### 下面定义了常量 "e" ，在return  中, 用 {e} 来引用
+```js
+const e = <div>
+  <div>abc</div>
+  <div>abc</div>
+  <div>abc</div>
+</div>
+
+function App() {
+  return (
+    <div className="App">
+      <header className="App-header">
+        <img src={logo} className="App-logo" alt="logo" />
+        <p>
+          Edit <code>src/App.tsx</code> and save to reload.
+        </p>
+        <a
+          className="App-link"
+          href="https://reactjs.org"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Learn React
+        </a>
+      </header>
+      {e}
+    </div>
+  );
+}
+
+export default App;
+```
