@@ -10,7 +10,8 @@ import reportWebVitals from './reportWebVitals';
 ReactDOM.render(
   <React.StrictMode>
     <TT />
-    {/* <App /> */} 
+    {/* <App /> */}   
+    
   </React.StrictMode>,
   document.getElementById('root')
 );
@@ -19,5 +20,12 @@ ReactDOM.render(
 // to log results (for example: reportWebVitals(console.log))
 // or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
 reportWebVitals();
+```
+###  jsx单行注释  和 多行注释
+``` jsx
+{/* jsx */} 单行注释
 
+{/*
+    多行注释   
+*/}
 ```
