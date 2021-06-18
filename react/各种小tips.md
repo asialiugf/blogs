@@ -29,3 +29,28 @@ reportWebVitals();
     多行注释   
 */}
 ```
+### ESLint 没有用的VAR 注释  在前面加 // eslint-disable-next-line no-unused-vars
+```js
+// eslint-disable-next-line no-unused-vars
+function App() {
+  return (
+    <div className="App">
+      <header className="App-header">
+        <img src={logo} className="App-logo" alt="logo" />
+        <p>
+          Edit <code>src/App.js</code> and save to reload.
+        </p>
+        <a
+          className="App-link"
+          href="https://reactjs.org"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Learn React
+        </a>
+      </header>
+    </div>
+  );
+}
+
+```
