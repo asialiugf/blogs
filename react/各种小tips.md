@@ -88,3 +88,16 @@ function App() {
 
 export default App;
 ```
+
+### 一个return里，只能有一个主<div></div>
+```js
+return (
+  <div> ==> 第一个
+    <div>
+    </div>
+  </div>
+  <div> ==> 这里并列出现第二个 <div> ，会出错。
+  </div>
+)
+
+```
