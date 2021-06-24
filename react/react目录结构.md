@@ -48,7 +48,8 @@ ReactDOM.render(
   document.getElementById('root1')
 );
 ```
-#### Hello.jsx App.jsx是组件，主要是return一个<div>组件（一个return 只能返回一个 <div>,)
+#### Hello.jsx App.jsx是组件
+主要是return一个<div>组件（一个return 只能返回一个 <div>)
 ```js
 import React from 'react';
 // import logo from './logo.svg';
