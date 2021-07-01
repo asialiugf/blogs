@@ -31,6 +31,10 @@ export function App() {
     s2.current.style.background = "red"
   }
 
+  function Hello1 () {
+    HaHa(bb)
+  }
+
 
 
   return (
@@ -38,12 +42,13 @@ export function App() {
       <p>
         {s1}
       </p>
-      <button type="botton" onClick={() => { HaHa(cc) }}>加1</button>
+      <button type="botton" onClick={() => { HaHa(cc);console.log('ssss') }}>加1</button>
       <button type="botton" onClick={() => { HaHa(dd) }}>加1</button>
       <button type="botton" onClick={() => { HaHa(s1 + 1) }}>加1</button>
       {/* <button type="botton" onClick={HaHa(s1 + 1)}>加1</button>  这一句 是错误的 */}
       <button type="botton" onClick={() => Hello()}>加1</button>
-      <button type="botton" onClick={Hello}>加2</button>
+      <button type="botton" onClick={Hello}>加2</button>    {/* ，Hello 和 Hello1一样都是一个函数 */}
+      <button type="botton" onClick={Hello1}>加3</button>    
       <button type="botton" onClick={() => HaHa(s1 + 1)}>加1</button>
       <button type="botton" onClick={e => { HaHa(bb) }}>加1</button>
       <div ref={s2}>
