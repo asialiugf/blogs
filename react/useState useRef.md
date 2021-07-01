@@ -1,3 +1,18 @@
+### 说明
+```js
+      <button type="botton" onClick={() => { HaHa(cc) }}>加1</button>
+      <button type="botton" onClick={() => { HaHa(dd) }}>加1</button>
+      <button type="botton" onClick={() => { HaHa(s1 + 1) }}>加1</button>
+      {/* <button type="botton" onClick={HaHa(s1 + 1)}>加1</button>  这一句 是错误的 */}
+      <button type="botton" onClick={() => Hello()}>加1</button>
+      <button type="botton" onClick={Hello}>加2</button>
+      <button type="botton" onClick={() => HaHa(s1 + 1)}>加1</button>
+      <button type="botton" onClick={e => { HaHa(bb) }}>加1</button>
+```
+- HaHa() 的参数是 一个函数（如下面的cc\dd\bb ）也可以是一个表达式如： s1 + 1 。
+- cc\bb\dd这些函数的参数x,会传入s1.
+- onClick={} 里面是一个箭头函数
+
 ```js
 import { useState, useRef } from 'react';
 import logo from './logo.svg';
