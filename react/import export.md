@@ -65,6 +65,11 @@ function Foo() {
 
 export {Foo}
 ```
+也可以写成 如下
+```js
+export { Foo, Bar, App }
+```
+也可以不需要export default
 
 #### index.js
 ```js
