@@ -33,7 +33,8 @@ let obj1 = new Object(obj); // 相当于 let obj1 = obj ; 指向同一个对象
 ### 利用以前的对象生成新对象
 #### 【一】  利用以前的对象生成一个新的空对象，原形为以前的对象 let obj3 = Object.create(obj)
 注意：如下例子中
-- 可以用 obj3.d 引用原型对象(obj)中的属性 d (obj.d)
+- 可以用 obj3.d 引用原型对象(obj)中的属性 d (obj.d) 
+- 最好用 console.log(obj3.__proto__.d) 这种方法来引用 原型中的 d这个属性
 - 可以用 obj3.e 新增加属性
 - 如果用 obj3.d = '88888' ，相当于给新的obj3增加了一个d属性。 不会改变 obj.d 'kkkkkk'
 ```js
