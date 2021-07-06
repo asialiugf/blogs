@@ -19,8 +19,15 @@ let obj03 = {
     b:b,
     c:c
 }
-
+```
+###  添加新属性
+```js
 obj01.x = 100
 obj01.y = {a:'dd',b:'cc'}
 
 ```
+### 指向同一个对象
+```js
+let obj1 = new Object(obj); // 相当于 let obj1 = obj ; 指向同一个对象
+```
+
