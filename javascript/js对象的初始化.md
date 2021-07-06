@@ -67,7 +67,7 @@ obj3.e = 'hello'
 // __proto__: Object
 
 ```
-####【二】 复制出一个新对象 let obj4 = Object.assign({},obj2)
+#### 【二】 复制出一个新对象 let obj4 = Object.assign({},obj2)
 注意：
 - 不会复制对象中的对象
 - 不会复制对象中的原型
