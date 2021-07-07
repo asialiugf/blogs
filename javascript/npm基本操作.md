@@ -41,4 +41,10 @@ $ cnpm install [name]
 ```
 更多信息可以查阅：http://npm.taobao.org/。
 
+### 清理chache
+```js
+ npm cache clear --force
+ 
+```
+
 
