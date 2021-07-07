@@ -44,7 +44,17 @@ $ cnpm install [name]
 ### 清理chache
 ```js
  npm cache clear --force
- 
+ npm config set global=false
+npm config set sass_binary_site https://npm.taobao.org/mirrors/node-sass/
+npm config set sharp_dist_base_url https://npm.taobao.org/mirrors/sharp-libvips/
+npm config set electron_mirror https://npm.taobao.org/mirrors/electron/
+npm config set puppeteer_download_host https://npm.taobao.org/mirrors/
+npm config set phantomjs_cdnurl https://npm.taobao.org/mirrors/phantomjs/
+npm config set sentrycli_cdnurl https://npm.taobao.org/mirrors/sentry-cli/
+npm config set sqlite3_binary_site https://npm.taobao.org/mirrors/sqlite3/
+npm config set python_mirror https://npm.taobao.org/mirrors/python/
+
+npm install --force
 ```
 
 
