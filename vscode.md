@@ -1,5 +1,5 @@
 ### 格式化
-#### vscode 安装 editorConfig
+#### :open_mouth: vscode 安装 editorConfig
 #### 项目根目录下配置 .editorconfig
 
 ```js
